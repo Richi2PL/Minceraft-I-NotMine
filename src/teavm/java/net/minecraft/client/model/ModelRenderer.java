@@ -100,16 +100,15 @@ public final class ModelRenderer {
 					var4.startDrawingQuads();
 					TexturedQuad var10000 = var2.faces[var5];
 					float var8 = var3;
-					Tessellator var7 = var4;
 					TexturedQuad var6 = var10000;
 					Vec3D var9 = var6.vertexPositions[1].vector3D.subtract(var6.vertexPositions[0].vector3D).normalize();
 					Vec3D var10 = var6.vertexPositions[1].vector3D.subtract(var6.vertexPositions[2].vector3D).normalize();
 					var9 = (new Vec3D(var9.yCoord * var10.zCoord - var9.zCoord * var10.yCoord, var9.zCoord * var10.xCoord - var9.xCoord * var10.zCoord, var9.xCoord * var10.yCoord - var9.yCoord * var10.xCoord)).normalize();
-					Tessellator.setNormal(-var9.xCoord, -var9.yCoord, -var9.zCoord);
+					var4.setNormal(-var9.xCoord, -var9.yCoord, -var9.zCoord);
 
 					for(int var11 = 0; var11 < 4; ++var11) {
 						PositionTextureVertex var12 = var6.vertexPositions[var11];
-						var7.addVertexWithUV(var12.vector3D.xCoord * var8, var12.vector3D.yCoord * var8, var12.vector3D.zCoord * var8, var12.texturePositionX, var12.texturePositionY);
+						var4.addVertexWithUV(var12.vector3D.xCoord * var8, var12.vector3D.yCoord * var8, var12.vector3D.zCoord * var8, var12.texturePositionX, var12.texturePositionY);
 					}
 
 					var4.draw();

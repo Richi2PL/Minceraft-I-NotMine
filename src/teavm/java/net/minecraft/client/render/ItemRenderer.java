@@ -83,21 +83,21 @@ public final class ItemRenderer {
 				GL11.glRotatef(50.0F, 0.0F, 1.0F, 0.0F);
 				GL11.glRotatef(335.0F, 0.0F, 0.0F, 1.0F);
 				GL11.glTranslatef(-(15.0F / 16.0F), -(1.0F / 16.0F), 0.0F);
-				Tessellator.setNormal(0.0F, 0.0F, 1.0F);
+				var11.setNormal(0.0F, 0.0F, 1.0F);
 				var11.startDrawingQuads();
 				var11.addVertexWithUV(0.0F, 0.0F, 0.0F, var1, var9);
 				var11.addVertexWithUV(1.0F, 0.0F, 0.0F, var5, var9);
 				var11.addVertexWithUV(1.0F, 1.0F, 0.0F, var5, var2);
 				var11.addVertexWithUV(0.0F, 1.0F, 0.0F, var1, var2);
 				var11.draw();
-				Tessellator.setNormal(0.0F, 0.0F, -1.0F);
+				var11.setNormal(0.0F, 0.0F, -1.0F);
 				var11.startDrawingQuads();
 				var11.addVertexWithUV(0.0F, 1.0F, -(1.0F / 16.0F), var1, var2);
 				var11.addVertexWithUV(1.0F, 1.0F, -(1.0F / 16.0F), var5, var2);
 				var11.addVertexWithUV(1.0F, 0.0F, -(1.0F / 16.0F), var5, var9);
 				var11.addVertexWithUV(0.0F, 0.0F, -(1.0F / 16.0F), var1, var9);
 				var11.draw();
-				Tessellator.setNormal(-1.0F, 0.0F, 0.0F);
+				var11.setNormal(-1.0F, 0.0F, 0.0F);
 				var11.startDrawingQuads();
 
 				int var6;
@@ -114,7 +114,7 @@ public final class ItemRenderer {
 				}
 
 				var11.draw();
-				Tessellator.setNormal(1.0F, 0.0F, 0.0F);
+				var11.setNormal(1.0F, 0.0F, 0.0F);
 				var11.startDrawingQuads();
 
 				for(var6 = 0; var6 < 16; ++var6) {
@@ -128,7 +128,7 @@ public final class ItemRenderer {
 				}
 
 				var11.draw();
-				Tessellator.setNormal(0.0F, 1.0F, 0.0F);
+				var11.setNormal(0.0F, 1.0F, 0.0F);
 				var11.startDrawingQuads();
 
 				for(var6 = 0; var6 < 16; ++var6) {
@@ -142,7 +142,7 @@ public final class ItemRenderer {
 				}
 
 				var11.draw();
-				Tessellator.setNormal(0.0F, -1.0F, 0.0F);
+				var11.setNormal(0.0F, -1.0F, 0.0F);
 				var11.startDrawingQuads();
 
 				for(var6 = 0; var6 < 16; ++var6) {

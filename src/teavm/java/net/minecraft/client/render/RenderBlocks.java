@@ -761,44 +761,44 @@ public final class RenderBlocks {
 		if(var3 == 0) {
 			GL11.glTranslatef(-0.5F, -0.5F, -0.5F);
 			var2.startDrawingQuads();
-			Tessellator.setNormal(0.0F, -1.0F, 0.0F);
+			var2.setNormal(0.0F, -1.0F, 0.0F);
 			this.renderBlockBottom(var1, 0.0F, 0.0F, 0.0F, var1.getBlockTextureFromSide(0));
 			var2.draw();
 			var2.startDrawingQuads();
-			Tessellator.setNormal(0.0F, 1.0F, 0.0F);
+			var2.setNormal(0.0F, 1.0F, 0.0F);
 			this.renderBlockTop(var1, 0.0F, 0.0F, 0.0F, var1.getBlockTextureFromSide(1));
 			var2.draw();
 			var2.startDrawingQuads();
-			Tessellator.setNormal(0.0F, 0.0F, -1.0F);
+			var2.setNormal(0.0F, 0.0F, -1.0F);
 			this.renderBlockNorth(var1, 0, 0, 0, var1.getBlockTextureFromSide(2));
 			var2.draw();
 			var2.startDrawingQuads();
-			Tessellator.setNormal(0.0F, 0.0F, 1.0F);
+			var2.setNormal(0.0F, 0.0F, 1.0F);
 			this.renderBlockSouth(var1, 0, 0, 0, var1.getBlockTextureFromSide(3));
 			var2.draw();
 			var2.startDrawingQuads();
-			Tessellator.setNormal(-1.0F, 0.0F, 0.0F);
+			var2.setNormal(-1.0F, 0.0F, 0.0F);
 			this.renderBlockWest(var1, 0, 0, 0, var1.getBlockTextureFromSide(4));
 			var2.draw();
 			var2.startDrawingQuads();
-			Tessellator.setNormal(1.0F, 0.0F, 0.0F);
+			var2.setNormal(1.0F, 0.0F, 0.0F);
 			this.renderBlockEast(var1, 0, 0, 0, var1.getBlockTextureFromSide(5));
 			var2.draw();
 			GL11.glTranslatef(0.5F, 0.5F, 0.5F);
 		} else if(var3 == 1) {
 			var2.startDrawingQuads();
-			Tessellator.setNormal(0.0F, -1.0F, 0.0F);
+			var2.setNormal(0.0F, -1.0F, 0.0F);
 			this.renderBlockPlant(var1, -1, -0.5F, -0.5F, -0.5F);
 			var2.draw();
 		} else if(var3 == 6) {
 			var2.startDrawingQuads();
-			Tessellator.setNormal(0.0F, -1.0F, 0.0F);
+			var2.setNormal(0.0F, -1.0F, 0.0F);
 			this.renderBlockCrops(var1, -1, -0.5F, -0.5F, -0.5F);
 			var2.draw();
 		} else {
 			if(var3 == 2) {
 				var2.startDrawingQuads();
-				Tessellator.setNormal(0.0F, -1.0F, 0.0F);
+				var2.setNormal(0.0F, -1.0F, 0.0F);
 				this.renderBlockTorch(var1, -0.5F, -0.5F, -0.5F, 0.0F, 0.0F);
 				var2.draw();
 			}

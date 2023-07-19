@@ -184,7 +184,7 @@ public final class RenderItem extends Render {
 
 				GL11.glRotatef(180.0F - var12.renderManager.playerViewY, 0.0F, 1.0F, 0.0F);
 				var15.startDrawingQuads();
-				Tessellator.setNormal(0.0F, 1.0F, 0.0F);
+				var15.setNormal(0.0F, 1.0F, 0.0F);
 				var15.addVertexWithUV(-0.5F, -0.25F, 0.0F, var4, var2);
 				var15.addVertexWithUV(0.5F, -0.25F, 0.0F, var5, var2);
 				var15.addVertexWithUV(0.5F, 12.0F / 16.0F, 0.0F, var5, var6);
