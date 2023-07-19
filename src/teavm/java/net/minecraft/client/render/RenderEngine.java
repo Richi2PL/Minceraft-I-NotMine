@@ -3,7 +3,6 @@ package net.minecraft.client.render;
 import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.nio.IntBuffer;
-import java.util.ArrayList;
 import java.util.HashMap;
 
 import org.lwjgl.BufferUtils;
@@ -11,18 +10,15 @@ import org.lwjgl.opengl.GL11;
 
 import net.PeytonPlayz585.minecraft.MinecraftImage;
 import net.minecraft.client.GameSettings;
-import net.minecraft.client.render.texture.TextureFX;
 
 public class RenderEngine {
 
 	public RenderEngine(GameSettings gamesettings) {
-		textureMap = new HashMap();
-		textureNameToImageMap = new HashMap();
+		textureMap = new HashMap<String, Integer>();
+		textureNameToImageMap = new HashMap<Integer, MinecraftImage>();
 		singleIntBuffer = BufferUtils.createIntBuffer(1);
 		imageDataB1 = BufferUtils.createByteBuffer(0x100000);
 		imageDataB2 = BufferUtils.createByteBuffer(0x100000);
-		//imageDataInt = GLAllocation.createDirectIntBuffer(0x40000);
-		textureList = new ArrayList();
 		clampTexture = false;
 		blurTexture = false;
 		options = gamesettings;
@@ -191,12 +187,11 @@ public class RenderEngine {
 	}
 
 	public static boolean useMipmaps = false;
-	private HashMap textureMap;
-	private HashMap textureNameToImageMap;
+	private HashMap<String, Integer> textureMap;
+	private HashMap<Integer, MinecraftImage> textureNameToImageMap;
 	private IntBuffer singleIntBuffer;
 	private ByteBuffer imageDataB1;
 	private ByteBuffer imageDataB2;
-	private java.util.List<TextureFX> textureList;
 	private GameSettings options;
 	private boolean clampTexture;
 	private boolean blurTexture;
