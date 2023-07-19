@@ -1,17 +1,10 @@
 package net.minecraft.client.render;
 
-import java.awt.Graphics;
-import java.awt.image.BufferedImage;
-import java.awt.image.DataBufferInt;
-import java.awt.image.ImageObserver;
-import java.io.File;
-import java.io.FileOutputStream;
 import java.nio.ByteBuffer;
 import java.nio.FloatBuffer;
 import java.text.DecimalFormat;
 import java.util.List;
 import java.util.Random;
-import javax.imageio.ImageIO;
 
 import net.PeytonPlayz585.math.MathHelper;
 import net.minecraft.client.Minecraft;
@@ -22,7 +15,6 @@ import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.player.EntityPlayerSP;
 import net.minecraft.client.render.camera.ClippingHelperImplementation;
 import net.minecraft.client.render.camera.Frustrum;
-import net.minecraft.client.render.camera.IsomCamera;
 import net.minecraft.game.entity.Entity;
 import net.minecraft.game.level.World;
 import net.minecraft.game.level.block.Block;

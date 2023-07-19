@@ -158,9 +158,9 @@ public final class GuiIngame extends Gui {
 			var4.drawStringWithShadow(var23.renderGlobal.getDebugInfoEntities(), 2, 22, 16777215);
 			var23 = this.mc;
 			var4.drawStringWithShadow("P: " + var23.effectRenderer.getStatistics() + ". T: " + var23.theWorld.debugSkylightUpdates(), 2, 32, 16777215);
-			long var24 = Runtime.getRuntime().maxMemory();
-			long var27 = Runtime.getRuntime().totalMemory();
-			long var28 = Runtime.getRuntime().freeMemory();
+			long var24 = GL11.maxMemory();
+			long var27 = GL11.totalMemory();
+			long var28 = GL11.freeMemory();
 			long var16 = var24 - var28;
 			String var18 = "Free memory: " + var16 * 100L / var24 + "% of " + var24 / 1024L / 1024L + "MB";
 			drawString(var4, var18, var3 - var4.getStringWidth(var18) - 2, 2, 14737632);

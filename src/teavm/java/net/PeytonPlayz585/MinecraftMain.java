@@ -48,8 +48,10 @@ public class MinecraftMain {
     
     private static void run1() {
     	Minecraft minecraft = new Minecraft(GL11.getCanvasWidth(), GL11.getCanvasHeight());
-    	minecraft.minecraftUri = "127.0.0.1:25565";
+    	//minecraft.minecraftUri = "127.0.0.1:25565";
     	minecraft.session = new Session("PeytonPlayz595", "WebGL-Emulator");
+    	Thread thread = new Thread (minecraft, "Minecraft main Thread");
+    	thread.run();
     }
 
 	@JSBody(params = { }, script = "return window.classicConfig;")

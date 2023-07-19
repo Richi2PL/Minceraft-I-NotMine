@@ -66,9 +66,9 @@ public final class GuiMainMenu extends GuiScreen {
 		GL11.glPopMatrix();
 		String var16 = "Copyright Mojang Specifications. Do not distribute.";
 		drawString(this.fontRenderer, var16, this.width - this.fontRenderer.getStringWidth(var16) - 2, this.height - 10, 16777215);
-		long var7 = Runtime.getRuntime().maxMemory();
-		long var9 = Runtime.getRuntime().totalMemory();
-		long var11 = Runtime.getRuntime().freeMemory();
+		long var7 = GL11.maxMemory();
+		long var9 = GL11.totalMemory();
+		long var11 = GL11.freeMemory();
 		long var13 = var7 - var11;
 		var16 = "Free memory: " + var13 * 100L / var7 + "% of " + var7 / 1024L / 1024L + "MB";
 		drawString(this.fontRenderer, var16, this.width - this.fontRenderer.getStringWidth(var16) - 2, 2, 8421504);
