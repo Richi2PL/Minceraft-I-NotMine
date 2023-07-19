@@ -73,7 +73,6 @@ public final class GameSettings {
 
 		if(var1 == 6) {
 			this.anaglyph = !this.anaglyph;
-			this.mc.renderEngine.refreshTextures();
 		}
 
 		if(var1 == 7) {
