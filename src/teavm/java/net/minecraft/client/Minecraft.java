@@ -132,122 +132,89 @@ public final class Minecraft implements Runnable {
 
 	public final void run() {
 		this.running = true;
-
-		try {
-			Minecraft var1 = this;
-			this.displayWidth = GL11.getCanvasWidth();
-			this.displayHeight = GL11.getCanvasHeight();
-
-			IntBuffer var24;
-			this.mouseHelper = new MouseHelper();
-
-			GL11.glEnable(GL11.GL_TEXTURE_2D);
-			GL11.glShadeModel(GL11.GL_SMOOTH);
-			GL11.glClearDepth((float)1.0D);
-			GL11.glEnable(GL11.GL_DEPTH_TEST);
-			GL11.glDepthFunc(GL11.GL_LEQUAL);
-			GL11.glEnable(GL11.GL_ALPHA_TEST);
-			GL11.glAlphaFunc(GL11.GL_GREATER, 0.1F);
-			GL11.glCullFace(GL11.GL_BACK);
-			GL11.glMatrixMode(GL11.GL_PROJECTION);
-			GL11.glLoadIdentity();
-			GL11.glMatrixMode(GL11.GL_MODELVIEW);
-			this.glCapabilities = new OpenGlCapsChecker();
-			String var3 = "minecraft";
-			String var26 = System.getProperty("user.home", ".");
-			int[] var10001 = EnumOSMappingHelper.osValues;
-			String var4 = System.getProperty("os.name").toLowerCase();
-			this.options = new GameSettings(this);
-			this.renderEngine = new RenderEngine(this.options);
-//			this.renderEngine.registerTextureFX(this.textureLavaFX);
-//			this.renderEngine.registerTextureFX(this.textureWaterFX);
-//			this.renderEngine.registerTextureFX(new TextureWaterFlowFX());
-//			this.renderEngine.registerTextureFX(new TextureFlamesFX(0));
-//			this.renderEngine.registerTextureFX(new TextureFlamesFX(1));
-//			this.renderEngine.registerTextureFX(new TextureGearsFX(0));
-//			this.renderEngine.registerTextureFX(new TextureGearsFX(1));
-			this.fontRenderer = new FontRenderer(this.options, "/default.png", this.renderEngine);
-			var24 = BufferUtils.createIntBuffer(256);
-			var24.clear().limit(256);
-			this.renderGlobal = new RenderGlobal(this, this.renderEngine);
-			GL11.glViewport(0, 0, this.displayWidth, this.displayHeight);
-			if(this.server != null && this.session != null) {
-				World var31 = new World();
-				var31.generate(8, 8, 8, new byte[512], new byte[512]);
-				this.setLevel(var31);
-			} else if(this.theWorld == null) {
-				this.displayGuiScreen(new GuiMainMenu());
-			}
-
-			this.effectRenderer = new EffectRenderer(this.theWorld, this.renderEngine);
-			this.ingameGUI = new GuiIngame(this);
-		} catch (Exception var22) {
-			var22.printStackTrace();
-			return;
+		this.displayWidth = GL11.getCanvasWidth();
+		this.displayHeight = GL11.getCanvasHeight();
+		IntBuffer var24;
+		this.mouseHelper = new MouseHelper();
+		GL11.glEnable(GL11.GL_TEXTURE_2D);
+		GL11.glShadeModel(GL11.GL_SMOOTH);
+		GL11.glClearDepth((float)1.0D);
+		GL11.glEnable(GL11.GL_DEPTH_TEST);
+		GL11.glDepthFunc(GL11.GL_LEQUAL);
+		GL11.glEnable(GL11.GL_ALPHA_TEST);
+		GL11.glAlphaFunc(GL11.GL_GREATER, 0.1F);
+		GL11.glCullFace(GL11.GL_BACK);
+		GL11.glMatrixMode(GL11.GL_PROJECTION);
+		GL11.glLoadIdentity();
+		GL11.glMatrixMode(GL11.GL_MODELVIEW);
+		this.glCapabilities = new OpenGlCapsChecker();
+		this.options = new GameSettings(this);
+		this.renderEngine = new RenderEngine(this.options);
+		this.fontRenderer = new FontRenderer(this.options, "/default.png", this.renderEngine);
+		var24 = BufferUtils.createIntBuffer(256);
+		var24.clear().limit(256);
+		this.renderGlobal = new RenderGlobal(this, this.renderEngine);
+		GL11.glViewport(0, 0, this.displayWidth, this.displayHeight);
+		if(this.server != null && this.session != null) {
+			World var31 = new World();
+			var31.generate(8, 8, 8, new byte[512], new byte[512]);
+			this.setLevel(var31);
+		} else if(this.theWorld == null) {
+			this.displayGuiScreen(new GuiMainMenu());
 		}
+
+		this.effectRenderer = new EffectRenderer(this.theWorld, this.renderEngine);
+		this.ingameGUI = new GuiIngame(this);
 
 		long var23 = System.currentTimeMillis();
 		int var28 = 0;
+		
+		while(this.running) {
+			if(this.theWorld != null) {
+				this.theWorld.updateLighting();
+			}
 
-		try {
-			while(this.running) {
-				if(this.theWorld != null) {
-					this.theWorld.updateLighting();
-				}
+			if(this.isGamePaused) {
+				float var29 = this.timer.renderPartialTicks;
+				this.timer.updateTimer();
+				this.timer.renderPartialTicks = var29;
+			} else {
+				this.timer.updateTimer();
+			}
 
+			for(int var30 = 0; var30 < this.timer.elapsedTicks; ++var30) {
+				++this.ticksRan;
+				this.runTick();
+			}
+
+			GL11.glEnable(GL11.GL_TEXTURE_2D);
+			this.playerController.setPartialTime(this.timer.renderPartialTicks);
+			this.entityRenderer.updateCameraAndRender(this.timer.renderPartialTicks);
+
+			if(GL11.getCanvasWidth() != this.displayWidth || GL11.getCanvasHeight() != this.displayHeight) {
+				this.displayWidth = GL11.getCanvasWidth();
+				this.displayHeight = GL11.getCanvasHeight();
+				this.resize(this.displayWidth, this.displayHeight);
+			}
+
+			if(this.options.limitFramerate) {
 				try {
-					if(this.isGamePaused) {
-						float var29 = this.timer.renderPartialTicks;
-						this.timer.updateTimer();
-						this.timer.renderPartialTicks = var29;
-					} else {
-						this.timer.updateTimer();
-					}
-
-					for(int var30 = 0; var30 < this.timer.elapsedTicks; ++var30) {
-						++this.ticksRan;
-						this.runTick();
-					}
-
-					GL11.glEnable(GL11.GL_TEXTURE_2D);
-					this.playerController.setPartialTime(this.timer.renderPartialTicks);
-					this.entityRenderer.updateCameraAndRender(this.timer.renderPartialTicks);
-
-					if(GL11.getCanvasWidth() != this.displayWidth || GL11.getCanvasHeight() != this.displayHeight) {
-						this.displayWidth = GL11.getCanvasWidth();
-						this.displayHeight = GL11.getCanvasHeight();
-						this.resize(this.displayWidth, this.displayHeight);
-					}
-
-					if(this.options.limitFramerate) {
-						Thread.sleep(5L);
-					}
-
-					++var28;
-					this.isGamePaused = this.currentScreen != null && this.currentScreen.doesGuiPauseGame();
-				} catch (Exception var18) {
-					this.displayGuiScreen(new GuiErrorScreen("Client error", "The game broke! [" + var18 + "]"));
-					var18.printStackTrace();
-					return;
-				}
-
-				while(System.currentTimeMillis() >= var23 + 1000L) {
-					this.debug = var28 + " fps, " + WorldRenderer.chunksUpdated + " chunk updates";
-					WorldRenderer.chunksUpdated = 0;
-					var23 += 1000L;
-					var28 = 0;
+					Thread.sleep(5L);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
 				}
 			}
 
-			return;
-		} catch (MinecraftError var19) {
-			return;
-		} catch (Exception var20) {
-			var20.printStackTrace();
-		} finally {
-			this.shutdownMinecraftApplet();
-		}
+			++var28;
+			this.isGamePaused = this.currentScreen != null && this.currentScreen.doesGuiPauseGame();
 
+			while(System.currentTimeMillis() >= var23 + 1000L) {
+				this.debug = var28 + " fps, " + WorldRenderer.chunksUpdated + " chunk updates";
+				WorldRenderer.chunksUpdated = 0;
+				var23 += 1000L;
+				var28 = 0;
+			}
+		}
 	}
 
 	public final void setIngameFocus() {

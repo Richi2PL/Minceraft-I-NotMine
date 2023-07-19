@@ -13,6 +13,7 @@ import org.teavm.jso.dom.html.HTMLElement;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.Session;
+import net.minecraft.client.gui.GuiErrorScreen;
 import net.PeytonPlayz585.storage.LocalStorageManager;
 
 public class MinecraftMain {
@@ -51,7 +52,13 @@ public class MinecraftMain {
     	//minecraft.minecraftUri = "127.0.0.1:25565";
     	minecraft.session = new Session("PeytonPlayz595", "WebGL-Emulator");
     	Thread thread = new Thread (minecraft, "Minecraft main Thread");
-    	thread.run();
+    	try {
+    		thread.run();
+    	} catch(Exception e) {
+    		minecraft.displayGuiScreen(new GuiErrorScreen("Client error", "The game broke! [" + e + "]"));
+			e.printStackTrace();
+			return;
+    	}
     }
 
 	@JSBody(params = { }, script = "return window.classicConfig;")

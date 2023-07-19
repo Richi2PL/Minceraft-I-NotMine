@@ -79,15 +79,12 @@ public final class RenderGlobal implements IWorldAccess {
 				this.glOcclusionQueryBase.limit(262144);
 			}
 		}
-
+		
 		this.glSkyList = GL11.glGenLists(1);
 		GL11.glNewList(this.glSkyList, GL11.GL_COMPILE);
 		Random var5 = new Random(10842L);
 
 		for(int var6 = 0; var6 < 500; ++var6) {
-			GL11.glRotatef(var5.nextFloat() * 360.0F, 1.0F, 0.0F, 0.0F);
-			GL11.glRotatef(var5.nextFloat() * 360.0F, 0.0F, 1.0F, 0.0F);
-			GL11.glRotatef(var5.nextFloat() * 360.0F, 0.0F, 0.0F, 1.0F);
 			Tessellator var3 = Tessellator.instance;
 			float var4 = 0.25F + var5.nextFloat() * 0.25F;
 			var3.startDrawingQuads();

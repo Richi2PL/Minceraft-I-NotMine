@@ -1,0 +1,1071 @@
+Manifest-Version: 1.0
+Created-By: 1.6.0_17 (Sun Microsystems Inc.)
+
+Name: net/minecraft/client/b/f.class
+SHA1-Digest: BeO7KtppMEfASYEDn58Nl7sP6/M=
+
+Name: com/jcraft/jorbis/Residue0$InfoResidue0.class
+SHA1-Digest: EpUxwZVp9pvEwhw3aKI2HaGle4Y=
+
+Name: paulscode/sound/libraries/LibraryLWJGLOpenAL.class
+SHA1-Digest: a8aQDWdF+EwIwH3qUMx29ZJ4y90=
+
+Name: mob/spider.png
+SHA1-Digest: VfPrCa+PWJ8sbbk6togxQiGTDZo=
+
+Name: net/minecraft/a/c/e.class
+SHA1-Digest: zCZnTQVE6FcVUihl3HnvfPPoe/w=
+
+Name: net/minecraft/client/a/c/e.class
+SHA1-Digest: XPS02bPSp9C1SzS1wyyn3TSHP44=
+
+Name: net/minecraft/a/a/b/h.class
+SHA1-Digest: EdDLYDqHRt5QdCfeoeEHYEGh0Kc=
+
+Name: net/minecraft/client/c/m.class
+SHA1-Digest: Re0ETDZD6OKasP3GwruulLRecgU=
+
+Name: net/minecraft/client/q.class
+SHA1-Digest: Ac0j2c2gT6gBryWmBDhPsKC0Ig0=
+
+Name: net/minecraft/a/a/a/b.class
+SHA1-Digest: 7WaRKpwdBEzoFVaX+9CkNx0SjT0=
+
+Name: com/a/a/l.class
+SHA1-Digest: VeLIFkR2TdWqkYjCevnm2TVZot4=
+
+Name: rock.png
+SHA1-Digest: UoVeRazJGD0QR2OtuiGYwAGXzj0=
+
+Name: net/minecraft/client/a/a/m.class
+SHA1-Digest: XPgWwSxf4Ih+4o4c7yluujQIQug=
+
+Name: net/minecraft/client/b/h.class
+SHA1-Digest: N3nK720Wkaprcb1uDaB5SpRoW8I=
+
+Name: com/jcraft/jorbis/Residue0$LookResidue0.class
+SHA1-Digest: 1dZJAHdmFlEsY6XNuzV2O3xA0gk=
+
+Name: net/minecraft/a/b/l.class
+SHA1-Digest: 0nHHPizAgoSSPqsuV6TMkMwgphw=
+
+Name: net/minecraft/client/e/b.class
+SHA1-Digest: NF4/k2X61ymZC/l+iS/M7b5O70E=
+
+Name: misc/gear.png
+SHA1-Digest: iDbIPE0hBLaGPG2ayFzd1sMzUA8=
+
+Name: net/minecraft/client/c/q.class
+SHA1-Digest: R0FXOpnyHQ4wFLTOPvSKDQTfsGQ=
+
+Name: net/minecraft/client/b/a.class
+SHA1-Digest: XHYftaDXKYW486QdCLpxOwKXC78=
+
+Name: net/minecraft/client/c/k.class
+SHA1-Digest: zbqyqxkpEI5GDyU9hjY6Ps9auKM=
+
+Name: paulscode/sound/MidiChannel$1.class
+SHA1-Digest: /CRy0Qzxz8AbubmVhDEjyYvOjB4=
+
+Name: com/jcraft/jorbis/Floor1$LookFloor1.class
+SHA1-Digest: WJHZDySSFyMeqHts568+npPVma4=
+
+Name: item/arrows.png
+SHA1-Digest: moAHRC2YmEi5jR+688Gvp1bSdS8=
+
+Name: net/minecraft/client/c/a/e.class
+SHA1-Digest: tc2GcwtE3S1PEfFoKYsItUmxCYc=
+
+Name: paulscode/sound/FilenameURL.class
+SHA1-Digest: DP6HMJuAN6jKQLbArX/1ugn8CYs=
+
+Name: terrain.png
+SHA1-Digest: c9HvREFyW9zJrDYWIF+qPf9G4So=
+
+Name: net/minecraft/a/a/b/j.class
+SHA1-Digest: sbnNjAJ/mQg45vGHd5sHYFIABBY=
+
+Name: net/minecraft/a/a/c.class
+SHA1-Digest: 2JPDp5PxAGFvkqcDNkZG7yuqcDQ=
+
+Name: armor/chain_2.png
+SHA1-Digest: o82RYls52TnsQgTA0mgK+e6bfCo=
+
+Name: net/minecraft/a/b/p.class
+SHA1-Digest: 8BFsn7QYZKDTWakheUaojs2e80Q=
+
+Name: net/minecraft/client/c/d.class
+SHA1-Digest: lSG4TJQfg8BRcaSqAMqbNOh6bKQ=
+
+Name: net/minecraft/client/c/a/g.class
+SHA1-Digest: qc7j5AstDhp3PjXoYO/YBMcLZhs=
+
+Name: com/a/a/j.class
+SHA1-Digest: QrQ0Va884B7zjLUI5t/hHM3Hq40=
+
+Name: net/minecraft/client/d/a.class
+SHA1-Digest: Vp0p/XVrbo6YVOUgy4xENd5k1Lo=
+
+Name: net/minecraft/a/c/a/e.class
+SHA1-Digest: pJhei4ncF2KKn1VoJdRTKHgaOi0=
+
+Name: paulscode/sound/CommandThread.class
+SHA1-Digest: JOiWewLKphu/BS1YOr2HVQ1dWrM=
+
+Name: net/minecraft/a/c/d.class
+SHA1-Digest: Ghf84Nd/f8+ji37DgnZd5l4RfHI=
+
+Name: net/minecraft/client/a/i.class
+SHA1-Digest: rDVm/gcnUEK0giHL94HHw96u40M=
+
+Name: net/minecraft/a/b/m.class
+SHA1-Digest: IWvffyLLjK0i6dvyw5NY0O4HEDU=
+
+Name: net/minecraft/a/a/a/d.class
+SHA1-Digest: XO3b4fb6rXslCDuzE8t0y4vSxog=
+
+Name: com/jcraft/jorbis/Comment.class
+SHA1-Digest: AsoBUtmrOUOgnCgPlaWHM1UV9XI=
+
+Name: net/minecraft/client/a/b/b.class
+SHA1-Digest: ktPBWQ4f4UEfNO6QMUIMpmrYJn0=
+
+Name: net/minecraft/client/a/a/c.class
+SHA1-Digest: Y3LaiGV98fxLtSM+bfPf9gCe2LM=
+
+Name: net/minecraft/client/c/a/d.class
+SHA1-Digest: AHiaPFrNgE3ZN3ShdFMy/eqCs9c=
+
+Name: armor/diamond_2.png
+SHA1-Digest: kT7xzmEkk35t40yRefv8ZLtnrwM=
+
+Name: armor/cloth_1.png
+SHA1-Digest: qPyk7hlFpOIH4G+JjuhBwvgXLjw=
+
+Name: net/minecraft/a/a/b/t.class
+SHA1-Digest: qfNwyVuaartLEQAXKbpKYkJAVnM=
+
+Name: paulscode/sound/ICodec.class
+SHA1-Digest: Z/Z6C/5dIWKYuLIn5lBwjVLefKc=
+
+Name: net/minecraft/a/a/b/aj.class
+SHA1-Digest: aoNDZ026ad91W+gYOdNm3AdNOVs=
+
+Name: net/minecraft/a/c/b.class
+SHA1-Digest: +90z1xyGyAN7b/0Z3sisgEP5fFc=
+
+Name: net/minecraft/a/a/b/ag.class
+SHA1-Digest: BH+hqXa9QvHufukoU9VOYTYfQxo=
+
+Name: net/minecraft/a/b/i.class
+SHA1-Digest: PXP2LLzfxTh2GwOdEuqwtgqZbIM=
+
+Name: net/minecraft/client/b/i.class
+SHA1-Digest: 9sGlxtHcsT/6sJl+H3PbwUCTMLU=
+
+Name: a/b.class
+SHA1-Digest: w1xNKZb2xNVnEU+NmKygDotEmmw=
+
+Name: net/minecraft/a/a/c/a.class
+SHA1-Digest: oY1HPYBM5w+l/S3eJa7DMat/ViE=
+
+Name: net/minecraft/client/f/f.class
+SHA1-Digest: urogxtnP8lFrMPlPNIRDFvUL5E4=
+
+Name: armor/iron_1.png
+SHA1-Digest: cTTpRCYFt3TCDAyDWDcuKuOCdF8=
+
+Name: net/minecraft/a/a/d/a.class
+SHA1-Digest: zr5v1xWIXX/neea5CO+oyU1SJuY=
+
+Name: net/minecraft/a/b/j.class
+SHA1-Digest: BXdrpVNMFJ+asUpvHUuwPiwjqgs=
+
+Name: net/minecraft/a/a/b/a/b.class
+SHA1-Digest: Z9Bo3ToFOjP6T0S/ntr87RSTTl0=
+
+Name: net/minecraft/client/b.class
+SHA1-Digest: HPWuL6Jnx3wUBnjG6MIsO5blqbw=
+
+Name: gui/inventory.png
+SHA1-Digest: bEfElGShH3Lyjm3xUIj8f+wYnzE=
+
+Name: net/minecraft/a/a/b/ai.class
+SHA1-Digest: zMLSoqFIbAV7wx60xCSDXaXwUm4=
+
+Name: com/jcraft/jogg/SyncState.class
+SHA1-Digest: cjwGEJiZAGsGqsCSKPuDj8TMWvM=
+
+Name: clouds.png
+SHA1-Digest: HtJx4+gThjxj54jGeXnNmxmW7o0=
+
+Name: com/jcraft/jorbis/PsyLook.class
+SHA1-Digest: 7/8AQ5U0NjtX6dtb0n/YJq2ZD44=
+
+Name: net/minecraft/a/a/e.class
+SHA1-Digest: Bwuc/WnyOJFrHPXGiuKhldQjifE=
+
+Name: net/minecraft/a/b/a/b.class
+SHA1-Digest: 6DJtf1w80sqygw8MGy/IUaul3jg=
+
+Name: net/minecraft/a/a/b/g.class
+SHA1-Digest: cl+nxz6t7p9HD4WsDHRSadXlfHk=
+
+Name: mob/sheep_fur.png
+SHA1-Digest: 6cwQ8RybUwyf2yHSclgK9ArVk30=
+
+Name: paulscode/sound/SimpleThread$1.class
+SHA1-Digest: tFeG3SeCXVIkG6LAuzaNyGaakbA=
+
+Name: net/minecraft/client/h.class
+SHA1-Digest: LUdBbG/i5qs0j1/CQ4LgL1a8I5c=
+
+Name: paulscode/sound/libraries/SourceLWJGLOpenAL.class
+SHA1-Digest: eLZaPKGPzkCCdhSMXJyYdwbFL5Y=
+
+Name: net/minecraft/client/a/a/k.class
+SHA1-Digest: ev6Vl3lqPFqso/VnFxki5yyxys0=
+
+Name: net/minecraft/client/c/g.class
+SHA1-Digest: GSvjBv1vdaC1wYbJNmbxJYBE6co=
+
+Name: net/minecraft/a/a/b.class
+SHA1-Digest: 0FRF2rW+VJVmEp+inUG3CV5d2bM=
+
+Name: com/jcraft/jorbis/FuncResidue.class
+SHA1-Digest: QXPna60GbyEfTnbfaIlmWKoch2g=
+
+Name: net/minecraft/a/a/h.class
+SHA1-Digest: 6HUZi47/rrYOfW/h62HuPcPjoaM=
+
+Name: net/minecraft/client/a/f.class
+SHA1-Digest: TLlVuJ7XT66A3YAP8jnJO7fpIkQ=
+
+Name: net/minecraft/a/a/b/aa.class
+SHA1-Digest: 5Pj6ZGzO9esV6KHD9yho3gIqa5c=
+
+Name: net/minecraft/client/b/b.class
+SHA1-Digest: Zyuco/5YFIdj9+Yx9VD12igcscE=
+
+Name: net/minecraft/client/a/a/b.class
+SHA1-Digest: ECDuB9kanBXqlRD0Xona8vMyZ1k=
+
+Name: com/jcraft/jorbis/Floor1$EchstateFloor1.class
+SHA1-Digest: IOO2PrDl/SAvZO6Ll0dpB756hh0=
+
+Name: net/minecraft/a/a/b/ah.class
+SHA1-Digest: JPeqdT+89Wq+PWXloatG0Ah6b6I=
+
+Name: com/jcraft/jorbis/Residue1.class
+SHA1-Digest: lOVhlqvSucF6/BPrQmFGmuM4pzI=
+
+Name: net/minecraft/a/c/a/f.class
+SHA1-Digest: tb8slxyoigaSOa3MREaEeqPUseg=
+
+Name: net/minecraft/a/d/b.class
+SHA1-Digest: GMIuYTGQr+thd8Wv6fJbrIaBHIc=
+
+Name: com/a/a/h.class
+SHA1-Digest: fGWYWrTVfS5q6Mx/xRMnmQc4y/4=
+
+Name: net/minecraft/a/b/a/d.class
+SHA1-Digest: N5q5vVZFxGpZFZnB98eVR39tvmI=
+
+Name: paulscode/sound/Library.class
+SHA1-Digest: 2+NUSxjnh9qcZE8XhzSU78Fs32Y=
+
+Name: net/minecraft/a/b/g.class
+SHA1-Digest: caHd6Lorz35qmgw/3Lw37lQjGDM=
+
+Name: net/minecraft/a/b/a/a.class
+SHA1-Digest: +Ao+OHXBGid47OMJYUw38tCxDoY=
+
+Name: com/jcraft/jorbis/Lsp.class
+SHA1-Digest: k+uj0vG25lwk2vbOWZj7OtoA04Q=
+
+Name: com/jcraft/jorbis/Mapping0.class
+SHA1-Digest: l+0DT+BEY87Mq2A5uvXXKRcxc3I=
+
+Name: net/minecraft/a/c/d/a.class
+SHA1-Digest: El+9l7Fql3R1jlRiPseMBMTrfqg=
+
+Name: net/minecraft/client/a/k.class
+SHA1-Digest: yq2V8I6PzatMhvtGz7eRq1KdFL4=
+
+Name: net/minecraft/client/a/c/a.class
+SHA1-Digest: IxI1LpYm4XUBo/9FvU1FbHQ/Qmc=
+
+Name: art/kz.png
+SHA1-Digest: VVwyGLFaWSpwmgHLPUAP8939Txo=
+
+Name: net/minecraft/client/c/h.class
+SHA1-Digest: yh9t5PBfIGRbvqlQXkN+ykKE8jw=
+
+Name: com/jcraft/jorbis/CodeBook.class
+SHA1-Digest: J3WqMcEnRoLefU1rkWgv0p3sxF8=
+
+Name: paulscode/sound/ListenerData.class
+SHA1-Digest: aa2lXcoPHxQJoYi0NQlzGEnlRm0=
+
+Name: net/minecraft/a/a/b/p.class
+SHA1-Digest: JelmC2Htnt8JuhXeUWopaW4GmPs=
+
+Name: net/minecraft/client/c/a/a.class
+SHA1-Digest: HNykm/wlHWIiUkuJRO+yNXnfw4w=
+
+Name: net/minecraft/a/a/a.class
+SHA1-Digest: VkgPbehKVZMjAX6RElk1RcMhy/k=
+
+Name: net/minecraft/a/b/o.class
+SHA1-Digest: o24YcfzsOT2GwHgz5JiyHZOsITQ=
+
+Name: net/minecraft/a/a/b/m.class
+SHA1-Digest: C84WjeFVCHO2zylleNRTTLr17Qc=
+
+Name: net/minecraft/a/a/g.class
+SHA1-Digest: RaCs6aDSHll3WfcPq3WiO8R09u8=
+
+Name: net/minecraft/client/b/k.class
+SHA1-Digest: BwMtjSxL9rHJWbmaRymD2OGqWTY=
+
+Name: misc/gearmiddle.png
+SHA1-Digest: B9RkV5qKMPDnFhToYH+pOZ6kP5w=
+
+Name: net/minecraft/client/a/a/a.class
+SHA1-Digest: vwauECPBx4ufVVAUrzmfL/w7oso=
+
+Name: net/minecraft/a/a/d/d.class
+SHA1-Digest: TejGfMrAZNTdpUxrtfCPoc8Qctg=
+
+Name: terrain/moon.png
+SHA1-Digest: SDIpawrYTACa3ShpzcTIQtnsck4=
+
+Name: com/jcraft/jorbis/Residue2.class
+SHA1-Digest: khMkSqJ1dv+yQ/wjAvwE4bIwoO8=
+
+Name: net/minecraft/a/b/h.class
+SHA1-Digest: XFdUOb2P4nraS+yQknTpzm8uAj0=
+
+Name: net/minecraft/a/b/c.class
+SHA1-Digest: idqtFkGRf3tzxOqcq3laOIxCgLo=
+
+Name: dirt.png
+SHA1-Digest: Tj5g6xm/Asnn8FmrzIyNN26+r8w=
+
+Name: net/minecraft/client/a/a.class
+SHA1-Digest: pi4yrp4bCD9iisvZGsBv8RSzpHU=
+
+Name: net/minecraft/client/a/b/c.class
+SHA1-Digest: L/p+hVaVIfzt7KIugGbODl6C6NY=
+
+Name: net/minecraft/client/a/g.class
+SHA1-Digest: tstuXl1P1KTf2osTGZULbGQRjK8=
+
+Name: char.png
+SHA1-Digest: 9fkV0U8Uc0ecQ5YqOnJUqbGgNGA=
+
+Name: mob/spider_eyes.png
+SHA1-Digest: 30MeaE6D/w4aOZw2BHxe98tnq1E=
+
+Name: com/jcraft/jorbis/Floor1$Lsfit_acc.class
+SHA1-Digest: L3G4H4R0e3AqzRzHuvQYySujX5E=
+
+Name: paulscode/sound/MidiChannel$FadeThread.class
+SHA1-Digest: JmMmth0nba3jW4bBsJXXGSf97/w=
+
+Name: net/minecraft/client/c/i.class
+SHA1-Digest: V67ewERK3kk9O35gX/0JM9Ap2LQ=
+
+Name: net/minecraft/client/a/c/f.class
+SHA1-Digest: tMw/S+Vv7+Z8nOefaxkYfdf3yc8=
+
+Name: paulscode/sound/SoundSystem.class
+SHA1-Digest: W4ymdeyYlJXTRPCsxwplc/s1XhE=
+
+Name: net/minecraft/client/e.class
+SHA1-Digest: c9xSfdesncWCS/FCZeSL9DuCy54=
+
+Name: net/minecraft/a/a/b/f.class
+SHA1-Digest: puu4+Ad+gcHG7GEqWgIrwEC8qnE=
+
+Name: net/minecraft/client/b/g.class
+SHA1-Digest: Oei5Rml4wByYceaI8kB8/jSRU6k=
+
+Name: net/minecraft/client/c/a/f.class
+SHA1-Digest: 3U6M3fok8qFZJTjIUVLBNfH2Cr8=
+
+Name: net/minecraft/client/c/p.class
+SHA1-Digest: QyWwcjS8vAEX7eiEz93ydHpBWu8=
+
+Name: paulscode/sound/CommandObject.class
+SHA1-Digest: Ix4bGaLMfIau9NfEt11ZKaM/BX8=
+
+Name: paulscode/sound/codecs/CodecWav.class
+SHA1-Digest: 7yACrGOSJjgLIzMVclFywUOewAg=
+
+Name: net/minecraft/a/a/d/c.class
+SHA1-Digest: sTIvVpIe0ixI8yk5iuEp4ZhEVkQ=
+
+Name: gui/crafting.png
+SHA1-Digest: 8TJ2Be84ftY/6oE+S5aRfa6Z7CY=
+
+Name: net/minecraft/client/c/a/b.class
+SHA1-Digest: VM4LPP5cwen99saFx5Bs8V5Zm6k=
+
+Name: net/minecraft/a/a/b/k.class
+SHA1-Digest: d8ByeD7S3AkgGABumjLnlu08//I=
+
+Name: net/minecraft/a/a/b/c.class
+SHA1-Digest: wcAEO7V5NP/T4oFjREy90ZSGT78=
+
+Name: net/minecraft/client/j.class
+SHA1-Digest: oBD9LngKeCqHgUfGcNe9P4elxxo=
+
+Name: net/minecraft/client/r.class
+SHA1-Digest: 89ED4CWg02PbJrrmiX+dS/ssdqk=
+
+Name: mob/pig.png
+SHA1-Digest: V48hcqRI4LD2yLy6gi9TWuKCOB8=
+
+Name: com/jcraft/jorbis/FuncMapping.class
+SHA1-Digest: n97bvwCxnJX2FCIuLvwOcQgJp8s=
+
+Name: net/minecraft/a/a/b/ae.class
+SHA1-Digest: +TxUr9W2LtA4JUvzn4tre7n7fmo=
+
+Name: net/minecraft/client/c/f.class
+SHA1-Digest: 4fjq11mPVtDi0rUHo+H4B1R6Yr0=
+
+Name: net/minecraft/client/MinecraftApplet.class
+SHA1-Digest: TfFCTlb5KtMeYArmbuxntE2VWcQ=
+
+Name: net/minecraft/a/a/b/i.class
+SHA1-Digest: SAskxe+xM9x/B45eHkwQjq/4cwo=
+
+Name: com/jcraft/jogg/Page.class
+SHA1-Digest: jY5BT/FUnZvgCrnr3t0IC2AGzeI=
+
+Name: armor/cloth_2.png
+SHA1-Digest: rLjWgIiUGP7Y6od62FZqqeB/vaA=
+
+Name: net/minecraft/client/a/h.class
+SHA1-Digest: Z5tp0wkXpRYXll7uz1nrP7CYxR8=
+
+Name: mob/zombie.png
+SHA1-Digest: FcMQrfVTy+3DLbWmNt19tcrs//w=
+
+Name: net/minecraft/client/p.class
+SHA1-Digest: 95fssRHRGkz97ruiVbG1j4aSehs=
+
+Name: water.png
+SHA1-Digest: Vhq7UdiyZLnQqLLJ4yxoNYXxRGA=
+
+Name: net/minecraft/client/f/c.class
+SHA1-Digest: aejzlkXJxQSYKWeFAS5SrsdrbcM=
+
+Name: com/jcraft/jorbis/Floor1.class
+SHA1-Digest: YIjOD0DtOqADZYzAd+FUnM1u0vU=
+
+Name: net/minecraft/client/a/c/c.class
+SHA1-Digest: WRKOkZwlWrV2olcJWr9VFWyCIMQ=
+
+Name: net/minecraft/a/a/c/a/d.class
+SHA1-Digest: D27e2liLdgGsOA8OryvdV1Cb+/M=
+
+Name: net/minecraft/client/a/a/h.class
+SHA1-Digest: lKGPj3+hN/B4PIKMgx8fSgBhFHA=
+
+Name: net/minecraft/a/b/e.class
+SHA1-Digest: pSjw+x6HN1KlzYJUP33xWHbDLDI=
+
+Name: net/minecraft/a/b/a/i.class
+SHA1-Digest: y4tSCP1n1A1ckZFmlpSrfD2F2yU=
+
+Name: com/a/a/e.class
+SHA1-Digest: +DunhGrIZ69UFUwEJyj/Z3PDB7Y=
+
+Name: net/minecraft/client/a/b/d.class
+SHA1-Digest: Mh9KFy6G6uG0FXgshgmSvezsnQE=
+
+Name: net/minecraft/a/a/b/v.class
+SHA1-Digest: xrRrxmQFDWqdPw3CrW/SbqFUh0E=
+
+Name: net/minecraft/client/a/j.class
+SHA1-Digest: 5PJUWGnXh6XFw0yV52/DDjTmFeo=
+
+Name: net/minecraft/a/a/d.class
+SHA1-Digest: PDQF11PE8X/BMrpRYG8aYK1tLGQ=
+
+Name: net/minecraft/client/a/d.class
+SHA1-Digest: l6MuPf8usdJgXhQvIY29VG+lx6o=
+
+Name: net/minecraft/client/c/j.class
+SHA1-Digest: kP0kMi1VjaDWReZk3UA/v/0pIYo=
+
+Name: net/minecraft/client/b/d.class
+SHA1-Digest: uGua+uU/Qufzh/vpQGtsvgO/CK0=
+
+Name: net/minecraft/client/n.class
+SHA1-Digest: KQS760611PLmCfr25d7BVd0kj2Q=
+
+Name: net/minecraft/client/i.class
+SHA1-Digest: EbmBauAqonCtviTsLen2v3ZzgaQ=
+
+Name: net/minecraft/client/a/c/d.class
+SHA1-Digest: 8pE3w5j1JxkLTJU7eqEqmNOH8W4=
+
+Name: paulscode/sound/Source.class
+SHA1-Digest: cHZ9dxeZCAPOilYFj7E9h1oDiHY=
+
+Name: paulscode/sound/SoundSystemLogger.class
+SHA1-Digest: Q+jTcYfDykBicNS3j0P86TQBdHk=
+
+Name: gui/container.png
+SHA1-Digest: s4IxEeI0il8FV4xtSwRXr1emQ/Q=
+
+Name: net/minecraft/a/c/c.class
+SHA1-Digest: V4dU3Yp2KvE6CKQmJaKDmwmKCiU=
+
+Name: net/minecraft/a/a/b/s.class
+SHA1-Digest: x4PPyXC/iQgNcgZYff2GjLUwdJ0=
+
+Name: net/minecraft/client/a/a/d.class
+SHA1-Digest: teh6ng5CC9M6FnUySFSCAV+W3H0=
+
+Name: net/minecraft/client/d/c.class
+SHA1-Digest: CGZBC66I9b9TzgvJcysmUj1H2N0=
+
+Name: net/minecraft/client/a/a/g.class
+SHA1-Digest: 3/UPW+klX0jfecb3JosSbyJyWFY=
+
+Name: mob/skeleton.png
+SHA1-Digest: 3pt7XEpvzlc2/peM8zcFO0VKYT4=
+
+Name: net/minecraft/a/a/b/r.class
+SHA1-Digest: NTR5nagEnmiIcSFIxI3ZPGQBSvM=
+
+Name: net/minecraft/client/a/a/f.class
+SHA1-Digest: niEZMXhQDYUHZ/ykM9vXggaT07k=
+
+Name: net/minecraft/a/a/a/a.class
+SHA1-Digest: K0+9QMRwUAiwNGzddlqXxIcY3ww=
+
+Name: net/minecraft/a/c/c/b.class
+SHA1-Digest: fXmfurfBySK9eVpLWH0wwv7MJhA=
+
+Name: gui/items.png
+SHA1-Digest: et/KzT++jK4o7c2FM0Aivp7muKU=
+
+Name: net/minecraft/a/b/a/h.class
+SHA1-Digest: rccvo1t3tqA2+MH8lDWqHmaNOlc=
+
+Name: com/jcraft/jorbis/Floor0$LookFloor0.class
+SHA1-Digest: vgobWMKKs60ZuRKimXbi6StuJMg=
+
+Name: gui/icons.png
+SHA1-Digest: 3d7hw+UskcGywysCm8Pe0kd9chg=
+
+Name: com/jcraft/jorbis/DspState.class
+SHA1-Digest: yn+PaKTo4ByDJDVQ+2qxxR7bM64=
+
+Name: net/minecraft/a/a/b/a/c.class
+SHA1-Digest: 1+BEm6xWNV8HPG+iPLlw8kravXI=
+
+Name: com/a/a/a.class
+SHA1-Digest: 8K/vYg3Rx1/ItHesougAirPsZ1E=
+
+Name: armor/gold_1.png
+SHA1-Digest: l+li03RiLjA7BP6eKgq0nSRvEi8=
+
+Name: net/minecraft/a/c/b/a.class
+SHA1-Digest: S7qFH168vDDAk+eUTJxxrbgAwS4=
+
+Name: net/minecraft/client/f/i.class
+SHA1-Digest: unz+e8keSPD4Q2/XGcxL9vjvXPc=
+
+Name: com/jcraft/jorbis/Floor0$InfoFloor0.class
+SHA1-Digest: fsI8PCp2zNx3fzrba2hau5pquO0=
+
+Name: net/minecraft/client/d.class
+SHA1-Digest: Nk5MgsmK5x/6dHG6mgOaupuVVmo=
+
+Name: mob/sheep.png
+SHA1-Digest: rqiKnjtsXva+IZaNQdjryUJkaKk=
+
+Name: net/minecraft/a/a/d/b.class
+SHA1-Digest: y1G67Pcq5+QAsTFBbYf3qz3KZcA=
+
+Name: com/jcraft/jogg/Packet.class
+SHA1-Digest: 9o8Y2MQOtmK0o03l+RcXYn7gcng=
+
+Name: gui/furnace.png
+SHA1-Digest: VtRb3N+F8S29VcKuKlIWzmV2Wso=
+
+Name: net/minecraft/client/m.class
+SHA1-Digest: Yvu1bOJtR/5VEXcDNqlr6zk1PD4=
+
+Name: com/a/a/c.class
+SHA1-Digest: J0atHBBLO6jpsurWQfPUW4+CNyM=
+
+Name: net/minecraft/client/f/a.class
+SHA1-Digest: 1/P4PrQM6BpTgS3RvZggkXkEOLY=
+
+Name: com/jcraft/jogg/StreamState.class
+SHA1-Digest: Mf0FEQwPGlXiyUBCzwsTeYCctI8=
+
+Name: com/jcraft/jorbis/Mdct.class
+SHA1-Digest: Bpxoe90OhJ8HbHr7H1xMdUBdVdo=
+
+Name: particles.png
+SHA1-Digest: ahtWHOAuAZvI2DsUEr9n0M7aS1E=
+
+Name: shadow.png
+SHA1-Digest: AYFQ3xpHp3kTFkRPiWGj3TvGWxc=
+
+Name: net/minecraft/client/c/n.class
+SHA1-Digest: 5PZ9rK2wb0kSu/hOV2OozZJPt2I=
+
+Name: mob/creeper.png
+SHA1-Digest: 3HtuKTBjFiOMuk8NXG6vQCQtMVA=
+
+Name: net/minecraft/a/a/b/b.class
+SHA1-Digest: UPRuSadMeqYgFPiRoA1l5ybmos0=
+
+Name: net/minecraft/a/b/b.class
+SHA1-Digest: U3M5a4RDhnqcS1ORpWkyHTnfJZ4=
+
+Name: net/minecraft/client/a/a/e.class
+SHA1-Digest: 9C8Rv2sjGC4lZ5TkxC4LB/QYa9M=
+
+Name: net/minecraft/client/c/a/h.class
+SHA1-Digest: bLkMV3eDwXkNHCkFmmwcEBJBP6I=
+
+Name: gui/gui.png
+SHA1-Digest: gRdhQou4Hz7VsKfsMQAzIyCdFg0=
+
+Name: net/minecraft/client/a/b.class
+SHA1-Digest: heQkJgdTwqd5oxdvGOawRlAc3+Y=
+
+Name: net/minecraft/client/f/j.class
+SHA1-Digest: wXO5QaNB14hkWZ02QJRZLB+Cx0Q=
+
+Name: net/minecraft/a/b/a/g.class
+SHA1-Digest: Cq/vYrFfJn1dbnM8SbRT3K4wQ0M=
+
+Name: net/minecraft/a/c/b/b.class
+SHA1-Digest: jhRYvdHNlSI6/LQnzHs6cVdXa/Q=
+
+Name: net/minecraft/client/g/b.class
+SHA1-Digest: cm2QzbTEkm/BzVyx0K9HT42TB6Q=
+
+Name: com/jcraft/jorbis/Util.class
+SHA1-Digest: gt6IxK9ARf9wc2FZG1Iu4m1jNoA=
+
+Name: net/minecraft/a/a/b/n.class
+SHA1-Digest: 7dHoOzsWcYxclFxb6TKrzVR0xZ0=
+
+Name: paulscode/sound/SoundSystemConfig.class
+SHA1-Digest: MIUHaefhMRt48MtSFv8eQLYDK6A=
+
+Name: paulscode/sound/SimpleThread.class
+SHA1-Digest: bk3yxep24a8qQ3c5DMwnI322M4s=
+
+Name: net/minecraft/a/a/b/w.class
+SHA1-Digest: 0GLAQ8ey0obn0/3PUbZAZMLHayQ=
+
+Name: net/minecraft/client/f/k.class
+SHA1-Digest: LFWPp08q1FpBsPND+IZXR7R45Z4=
+
+Name: com/jcraft/jorbis/FuncFloor.class
+SHA1-Digest: KV/TjT4AJE7bZJU88eK4l3K6wXA=
+
+Name: com/jcraft/jorbis/Floor0$EchstateFloor0.class
+SHA1-Digest: T2YEbmRi88PtxyppVrZeGRbXS0Y=
+
+Name: net/minecraft/a/c/a.class
+SHA1-Digest: 9omnuXj69JZHVZFHCPhZbHESiUU=
+
+Name: net/minecraft/a/a/i.class
+SHA1-Digest: +/h3YTd1QGKAKHNFe04HDcvt+fo=
+
+Name: net/minecraft/a/a/b/x.class
+SHA1-Digest: 0rbER+LN7jZ77NqjJAGAsI9Y3rk=
+
+Name: com/jcraft/jorbis/Mapping0$LookMapping0.class
+SHA1-Digest: PJdcIlCTRIv9ITtUWJSypz3FcJA=
+
+Name: gui/logo.png
+SHA1-Digest: VrsKWcrukW60B8Oi5N7vsINm2bU=
+
+Name: net/minecraft/client/k.class
+SHA1-Digest: Z2NtQn8k6FB+oDpLoP0yYgXsV3c=
+
+Name: com/jcraft/jorbis/PsyInfo.class
+SHA1-Digest: 6zf6oJkK1g4chbaMSjyb6oU9cso=
+
+Name: net/minecraft/a/a/b/q.class
+SHA1-Digest: Whut9jqSkqxLJeHJTUPGD/LPqro=
+
+Name: com/a/a/d.class
+SHA1-Digest: AXF2f54W9yfp1QUfC6MvgR2lwxw=
+
+Name: a/a.class
+SHA1-Digest: 3wZD++2xDEjr/fNCR3ya6Q87GwI=
+
+Name: net/minecraft/client/b/j.class
+SHA1-Digest: UBSWWJfZWobNzcExW/Rb4UB4TIU=
+
+Name: net/minecraft/client/c/r.class
+SHA1-Digest: tAlKI7ZoipVwtqfzeONCygX82fo=
+
+Name: net/minecraft/a/b/a/f.class
+SHA1-Digest: KvCtuuVY2fpbU0OzsvfTiWWxKVY=
+
+Name: net/minecraft/a/d/c.class
+SHA1-Digest: 8/TENxPqfCxyHlGEWs6W8+jbNm0=
+
+Name: net/minecraft/a/a/b/y.class
+SHA1-Digest: 3rAccjUcSxI8v9efOhhuz7eJsBM=
+
+Name: net/minecraft/client/d/b.class
+SHA1-Digest: wb4S5W4nnXdz7WIcsKnvNfRgH8Q=
+
+Name: paulscode/sound/Vector3D.class
+SHA1-Digest: AoAWSBg0cNtz/Jswx2p9emC77Dw=
+
+Name: net/minecraft/client/c/a/j.class
+SHA1-Digest: Kgr8vkEptWyeXwWdPU7c7lpJrSI=
+
+Name: net/minecraft/client/a/b/e.class
+SHA1-Digest: 69i3VdW7EoEY3pFVNue8efSYIWg=
+
+Name: net/minecraft/a/c/a/b.class
+SHA1-Digest: tB06K7h3qLShGDyDTUP9g1iIF/4=
+
+Name: net/minecraft/client/o.class
+SHA1-Digest: enmu29Hy7fPcUzacUBp1R2/ANs4=
+
+Name: paulscode/sound/SoundSystemException.class
+SHA1-Digest: Xr+NzFZiJ7FrnRFnn9pTe1OwYtY=
+
+Name: null
+SHA1-Digest: 2jmj7l5rSw0yVb/vlWAYkK/YBwk=
+
+Name: net/minecraft/client/g/c.class
+SHA1-Digest: TFu2eVfot6rNHZNFa4+JjQ1WnRg=
+
+Name: armor/chain_1.png
+SHA1-Digest: kjVR+O9K/uHjjos6pVmhxzKWvHI=
+
+Name: net/minecraft/client/b/m.class
+SHA1-Digest: eVI6AFUej9izlrSkj/OQAE+sUlI=
+
+Name: net/minecraft/a/c/e/a.class
+SHA1-Digest: erNy0vIsN4whBqWYJpNXVwsQ/b0=
+
+Name: net/minecraft/a/c/e/b.class
+SHA1-Digest: 1/7FLBoxooHFEDNnTIhotvk606c=
+
+Name: default.png
+SHA1-Digest: c55oAQhZhgD2TLZmYdWTiM+AnYY=
+
+Name: com/jcraft/jorbis/FuncTime.class
+SHA1-Digest: 4ulrJQRZbXVbipI7zlAEzd7VDrk=
+
+Name: net/minecraft/a/b/a.class
+SHA1-Digest: M5hdfDjn6/kNf27667DD5G+/I4s=
+
+Name: net/minecraft/a/a/b/z.class
+SHA1-Digest: otD8ZueOHVSziPgoLBz9PtKAqAk=
+
+Name: net/minecraft/client/f/e.class
+SHA1-Digest: iA6NIAvJEJjSk5ydXDIf3NLdtx4=
+
+Name: net/minecraft/a/c/c/a.class
+SHA1-Digest: ijSQGW2l+Pfa7b9KQx9u9YpKMMc=
+
+Name: net/minecraft/client/b/e.class
+SHA1-Digest: kPMnekPX/9t23gYdwgDLk5LYNfg=
+
+Name: net/minecraft/a/b/f.class
+SHA1-Digest: 7x2NX/hcUeXW8bl3XLEAADYt148=
+
+Name: com/jcraft/jorbis/Residue0.class
+SHA1-Digest: fCKnmsiJFrVlTEDiTjxF7LQgGTE=
+
+Name: net/minecraft/client/b/c.class
+SHA1-Digest: UkvRQdunm/3TOZLmK5Io2LfiprE=
+
+Name: paulscode/sound/libraries/ChannelLWJGLOpenAL.class
+SHA1-Digest: ccLD16RhU6xfVRGQ2sdc6KpCuz4=
+
+Name: net/minecraft/a/b/a/e.class
+SHA1-Digest: 6Ph/3IFD1s1bFLZC6ROSQDfawWY=
+
+Name: paulscode/sound/StreamThread.class
+SHA1-Digest: msJyrWOkfNFJmngv+WzMspIJfK8=
+
+Name: net/minecraft/client/a.class
+SHA1-Digest: J0O9qp8PNLoRBJzGc0loHwkJrfs=
+
+Name: net/minecraft/client/c/o.class
+SHA1-Digest: 6WVtTjGT8FdVnGKMcijRqzL3oAc=
+
+Name: net/minecraft/a/b/k.class
+SHA1-Digest: ODES7AxKZyfHUY6ikM6FcV9A6f4=
+
+Name: net/minecraft/client/l.class
+SHA1-Digest: WLU3auQyxl54610So70KJjmzuaA=
+
+Name: net/minecraft/a/a/b/e.class
+SHA1-Digest: pww/QHSSe79Jq/s8yIo7E3D7+wM=
+
+Name: item/sign.png
+SHA1-Digest: DpIepeRBc7gFPtk3qQw3Rl4u1JE=
+
+Name: net/minecraft/client/a/a/l.class
+SHA1-Digest: l/tr4KTBGi6hsEyiiEfdU9aakQM=
+
+Name: com/jcraft/jogg/Buffer.class
+SHA1-Digest: eSEUpCsV0KA4zlxbRpoNzu+VG5U=
+
+Name: net/minecraft/a/a/c/a/b.class
+SHA1-Digest: e1wgJIeBUdItwjGEaTu9tA+W9IE=
+
+Name: com/jcraft/jorbis/Lookup.class
+SHA1-Digest: txqUSJbu42z5R4wsb8Zsu8z6r2Y=
+
+Name: paulscode/sound/codecs/CodecJOrbis.class
+SHA1-Digest: /q2M1qXYL4oTY/3jguYakaWPoAw=
+
+Name: net/minecraft/client/c/e.class
+SHA1-Digest: H79qqdI+KDulP7iYpKZfbeoHgT4=
+
+Name: net/minecraft/client/b/l.class
+SHA1-Digest: 9ubDZ4BZZTi50uEyLys2oKBDL3I=
+
+Name: terrain/sun.png
+SHA1-Digest: wLz+S2x4Wr6XIHIdyo5Jv4dTPIw=
+
+Name: armor/gold_2.png
+SHA1-Digest: vMsNeaaeai8J3wVArlXiGci7rIc=
+
+Name: net/minecraft/client/f/b.class
+SHA1-Digest: aH6wIGmIIcBXX/nXr/+ezXoT0Ws=
+
+Name: net/minecraft/a/c/a/d.class
+SHA1-Digest: 8wz2hAePLjlSU28UvzgGF7pPrKs=
+
+Name: armor/iron_2.png
+SHA1-Digest: C4f8PZXXCONaefuQifGBJDzX5DU=
+
+Name: com/a/a/k.class
+SHA1-Digest: 1uB/br/tdLvZShqApsy8pE8xf5Q=
+
+Name: paulscode/sound/MidiChannel.class
+SHA1-Digest: 8PhGufTX++YLirv1X2FT4e1jYNc=
+
+Name: net/minecraft/a/b.class
+SHA1-Digest: KFLYw5qTSc3pZ23oDmld1A0Q9QM=
+
+Name: com/jcraft/jorbis/StaticCodeBook.class
+SHA1-Digest: ZA0yctzxDRdPc85OD7/gDqfL+KM=
+
+Name: rain.png
+SHA1-Digest: jyvAPez7AFeHH3PDyIxGeoE9PGk=
+
+Name: net/minecraft/client/a/e.class
+SHA1-Digest: XWMz2PNiayi6goN/QCtP5RxbjyY=
+
+Name: com/a/a/b.class
+SHA1-Digest: LqPS6FwVkgn91n7FXplYVAjyszc=
+
+Name: net/minecraft/a/a/f.class
+SHA1-Digest: OZlLrorsOmWZCFYrzabN0xkw0YU=
+
+Name: net/minecraft/a/a/b/o.class
+SHA1-Digest: SgqKesRfzHkaV6iRTr6NGrBnuKM=
+
+Name: net/minecraft/client/c/c.class
+SHA1-Digest: opjdRZg/dVK5ENcWj+fsywqvDuE=
+
+Name: net/minecraft/client/c.class
+SHA1-Digest: Ws9+S4YlKuLHLs8hu1BDDkHWTcQ=
+
+Name: net/minecraft/a/a/b/a/a.class
+SHA1-Digest: mf60X96fS/c5fosGklpPjptrhAc=
+
+Name: net/minecraft/a/a/b/a.class
+SHA1-Digest: CMxZtrUhKeBmjiCHi+b506l4kTo=
+
+Name: net/minecraft/client/e/a.class
+SHA1-Digest: uz3YLnubnVEoUx6rLiIQ/Vv/HtQ=
+
+Name: net/minecraft/a/a/b/ab.class
+SHA1-Digest: 4cc2oLNwPlBDM0LZGTYmAl8luaM=
+
+Name: com/a/a/i.class
+SHA1-Digest: e5zVnEIV6L4yZHwWVECwjYtOwQA=
+
+Name: paulscode/sound/Channel.class
+SHA1-Digest: Ik7Zbg4SqfOyPhvfG04pEon7cAc=
+
+Name: net/minecraft/a/a/b/ad.class
+SHA1-Digest: ebiNF3gObdCjzNVQf3WlSfHVCYU=
+
+Name: net/minecraft/client/g.class
+SHA1-Digest: XUMM3yfpwz2OyQQNjaGSFvWUEKc=
+
+Name: net/minecraft/client/f/d.class
+SHA1-Digest: Et4ohmn3VhwG+vKKvyqsELcYcMI=
+
+Name: net/minecraft/client/f.class
+SHA1-Digest: Y7Rvh0f/mrT3lY/cjLl59VJu+GA=
+
+Name: default.gif
+SHA1-Digest: PzOSbc68P9QHU9hZnyf9SKXEedI=
+
+Name: com/a/a/g.class
+SHA1-Digest: 0x87vGXZcg1B3vGmUQHCekRELWc=
+
+Name: net/minecraft/client/a/b/a.class
+SHA1-Digest: eCyCREOeauBTLdEKMg227d5Gvvc=
+
+Name: net/minecraft/client/a/c.class
+SHA1-Digest: Xni5PAU2cl0RrsvPV+FPmrCb27M=
+
+Name: net/minecraft/a/a/b/af.class
+SHA1-Digest: 1QBIkrBfU9FqwB5xZRuzX4DB6ns=
+
+Name: net/minecraft/a/a/b/u.class
+SHA1-Digest: sG8KYsB40kHmKTlrnSYrppYqWOk=
+
+Name: net/minecraft/client/c/a.class
+SHA1-Digest: guC1BXgT26zxy7s9K++CUg8DgP8=
+
+Name: net/minecraft/a/a/c/a/c.class
+SHA1-Digest: fbdKUI6V47TuBbeofpzGE0UXrsM=
+
+Name: net/minecraft/a/a/c/a/a.class
+SHA1-Digest: Nf6tqnJFlw4k/gg6rgIXrgakbLM=
+
+Name: com/jcraft/jorbis/Drft.class
+SHA1-Digest: WbbHQCocGWX5KiK0nlVCURQCX/E=
+
+Name: net/minecraft/a/b/d.class
+SHA1-Digest: EmRSJk2hbnU7q1zQXCQLbAdToSQ=
+
+Name: net/minecraft/a/a/b/d.class
+SHA1-Digest: vQ42HI5o8UHKUWLe4bB+0Xxb4eI=
+
+Name: com/jcraft/jorbis/Time0.class
+SHA1-Digest: WqtKGJIprSprePf+HIRPDqtXc1A=
+
+Name: net/minecraft/client/a/a/j.class
+SHA1-Digest: bfKYayaRdyCbIqx4+1Qs17D1fls=
+
+Name: net/minecraft/a/a/b/ac.class
+SHA1-Digest: NmD1S37rkBkzVIvS9WM2QBuXkyk=
+
+Name: net/minecraft/a/c/a/c.class
+SHA1-Digest: FAREWDrk+CEv4VdFCrzcPrHCLMw=
+
+Name: paulscode/sound/SoundBuffer.class
+SHA1-Digest: JlGOv2WKZaR8cZWHfNPlaylUoN8=
+
+Name: com/jcraft/jorbis/Lpc.class
+SHA1-Digest: JTGrZ6vzAbH04kqo9FGuI/q5x/M=
+
+Name: net/minecraft/client/e/c.class
+SHA1-Digest: RNpKl3SE2i3ZDEUpyd8Ft4GGUoM=
+
+Name: net/minecraft/a/c/a/a.class
+SHA1-Digest: mKQw4XIQrN2iXEUnjBprdVcqYVE=
+
+Name: net/minecraft/a/a/b/l.class
+SHA1-Digest: AM3EDnn1T+3+XTnuswx7R1Oje/A=
+
+Name: net/minecraft/client/a/l.class
+SHA1-Digest: kdWXwLW0TUEG21CWNxJTlb1EF0g=
+
+Name: net/minecraft/a/a.class
+SHA1-Digest: ob9WqbnYpjZSka0I7ckkAvWtPMg=
+
+Name: net/minecraft/client/f/h.class
+SHA1-Digest: 2AfslLuKWDTUDY6s41DwPNr8Is8=
+
+Name: 2char.png
+SHA1-Digest: B0Pf5i6tplTKrunb8p5YRkLt+OA=
+
+Name: com/jcraft/jorbis/Mapping0$InfoMapping0.class
+SHA1-Digest: UJMDPM3S/I2gGH4kFrLWK5Q5UCE=
+
+Name: grass.png
+SHA1-Digest: /jLq3jqQxu3wZJcVd9gY24N60pU=
+
+Name: net/minecraft/a/b/n.class
+SHA1-Digest: 6NxcYpfPAtoo6Mx8rt2sMD2FWh0=
+
+Name: com/jcraft/jorbis/CodeBook$DecodeAux.class
+SHA1-Digest: 64SVZaw8qiQNi83V5JClgfUs/Eg=
+
+Name: com/jcraft/jorbis/Floor0.class
+SHA1-Digest: GPmWVNySf2pdOsPcdrXmR8uIfnk=
+
+Name: com/a/a/f.class
+SHA1-Digest: 40s2lW+pp4mNQ+fxDiQozJ8W4sI=
+
+Name: net/minecraft/client/a/a/i.class
+SHA1-Digest: tCrI3V6unn5UQyJ5Q1XGvAo4X8w=
+
+Name: com/jcraft/jorbis/Info.class
+SHA1-Digest: PyFmVKgpu9/5cTtoEAcGS2rbLCw=
+
+Name: net/minecraft/a/c/b/c.class
+SHA1-Digest: +wdMGNX/XXpCRosQZ3Ro9zj+qvs=
+
+Name: net/minecraft/a/a/a/c.class
+SHA1-Digest: JGjpmqznkoUnHmoIaB4rbzEFQAQ=
+
+Name: net/minecraft/client/c/l.class
+SHA1-Digest: QKggXfF5sFdLtRsCt7xh41oJyIg=
+
+Name: com/jcraft/jorbis/Block.class
+SHA1-Digest: 0n+ng9h6301L0/P7aG5RMCGgAts=
+
+Name: com/jcraft/jorbis/InfoMode.class
+SHA1-Digest: 1OHC9cStS6Cf2jzUX/HZBvecQKs=
+
+Name: net/minecraft/client/a/c/b.class
+SHA1-Digest: r4pDx+ktiUR2zLsGz/8Xj4PLKwM=
+
+Name: armor/diamond_1.png
+SHA1-Digest: Rsd1MWYxhXeKfeWKvHhl3FmsdbM=
+
+Name: com/jcraft/jorbis/Floor1$InfoFloor1.class
+SHA1-Digest: lOevV7Qm+VEuuyFMYAexJOVgt0c=
+
+Name: net/minecraft/a/d/a.class
+SHA1-Digest: 6SbsUi/qLOpA5aIBU4/yRnHe6EU=
+
+Name: net/minecraft/client/c/a/i.class
+SHA1-Digest: GVk/4TGb/Hzayb0vOUhC+roHgnQ=
+
+Name: net/minecraft/client/g/a.class
+SHA1-Digest: KupR86t0ObOUctoDzeRJfY1oUe8=
+
+Name: paulscode/sound/SoundSystemConfig$Codec.class
+SHA1-Digest: CYKvlwUTQp8/V0Y69Cu7ssm4QN8=
+
+Name: net/minecraft/client/f/g.class
+SHA1-Digest: sJJih1oADEOgQwPc2JqJR+70Oig=
+
+Name: net/minecraft/a/b/a/c.class
+SHA1-Digest: satlIJ0nWzUYhsz0EogUEhHr6IQ=
+
+Name: net/minecraft/client/c/a/c.class
+SHA1-Digest: b2N02SgfevRKobcQSBUiszXoudY=
+
+Name: net/minecraft/client/c/b.class
+SHA1-Digest: 8tcBI2PprHmfL6+TP/ZB9iwq2kI=
+
