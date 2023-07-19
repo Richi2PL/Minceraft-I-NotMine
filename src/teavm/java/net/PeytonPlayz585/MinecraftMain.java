@@ -11,6 +11,8 @@ import org.teavm.jso.core.JSError;
 import org.teavm.jso.dom.html.HTMLDocument;
 import org.teavm.jso.dom.html.HTMLElement;
 
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.Session;
 import net.PeytonPlayz585.storage.LocalStorageManager;
 
 public class MinecraftMain {
@@ -45,6 +47,9 @@ public class MinecraftMain {
     }
     
     private static void run1() {
+    	Minecraft minecraft = new Minecraft(GL11.getCanvasWidth(), GL11.getCanvasHeight());
+    	minecraft.minecraftUri = "127.0.0.1:25565";
+    	minecraft.session = new Session("PeytonPlayz595", "WebGL-Emulator");
     }
 
 	@JSBody(params = { }, script = "return window.classicConfig;")

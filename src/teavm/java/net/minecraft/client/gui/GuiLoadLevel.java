@@ -92,9 +92,9 @@ public class GuiLoadLevel extends GuiScreen implements Runnable {
 
 				if(this.finished || this.loaded && var1.id == 5) {
 					this.frozen = true;
-					GuiLevelDialog var2 = new GuiLevelDialog(this);
-					var2.setDaemon(true);
-					var2.start();
+//					GuiLevelDialog var2 = new GuiLevelDialog(this);
+//					var2.setDaemon(true);
+//					var2.start();
 				}
 
 				if(this.finished || this.loaded && var1.id == 6) {

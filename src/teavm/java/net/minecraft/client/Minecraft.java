@@ -53,7 +53,6 @@ public final class Minecraft implements Runnable {
 	public EffectRenderer effectRenderer;
 	public Session session = null;
 	public String minecraftUri;
-	public boolean appletMode = true;
 	public volatile boolean isGamePaused = false;
 	public RenderEngine renderEngine;
 	public FontRenderer fontRenderer;
