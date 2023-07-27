@@ -180,7 +180,7 @@ public final class ItemRenderer {
 				GL11.glRotatef(-var4 * 20.0F, 0.0F, 0.0F, 1.0F);
 			}
 
-			GL11.glBindTexture(GL11.GL_TEXTURE_2D, this.mc.renderEngine.getTextureForDownloadableImage(this.mc.thePlayer.skinUrl, this.mc.thePlayer.getTexture()));
+			GL11.glBindTexture(GL11.GL_TEXTURE_2D, this.mc.renderEngine.getTextureForDownloadableImage(this.mc.thePlayer.getTexture()));
 			GL11.glTranslatef(-0.2F, -0.3F, 0.1F);
 			GL11.glRotatef(120.0F, 0.0F, 0.0F, 1.0F);
 			GL11.glRotatef(200.0F, 1.0F, 0.0F, 0.0F);

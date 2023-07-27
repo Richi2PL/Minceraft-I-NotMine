@@ -33,9 +33,6 @@ public class RenderEngine {
 			singleIntBuffer.clear();
 			BufferUtils.generateTextureNames(singleIntBuffer);
 			int i = singleIntBuffer.get(0);
-			//if (s.startsWith("##")) {
-			//	setupTexture(unwrapImageByColumns(readTextureImage(texturepackbase.func_6481_a(s.substring(2)))), i);
-			//} else 
 			if (s.startsWith("%clamp%")) {
 				clampTexture = true;
 				setupTexture(readTextureImage(GL11.loadResourceBytes(s.substring(7))), i);
@@ -162,8 +159,15 @@ public class RenderEngine {
 		GL11.glDeleteTextures(i);
 	}
 
-	public int getTextureForDownloadableImage(String s, String s1) {
-		return getTexture("/char.png");
+	public int getTextureForDownloadableImage(String s) {
+//		if(s.contains("creeper")) {
+//			return getTexture("/mob/creeper.png");
+//		} else if(s.contains("pig")) {
+//			return getTexture("/mob/pig.png");
+//		} else if(s.contains("sheep")) {
+//			return getTexture("/mob/sheep.png");
+//		}
+		return getTexture(s);
 	}
 
 	private int averageColor(int i, int j) {

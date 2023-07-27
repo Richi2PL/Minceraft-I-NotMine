@@ -48,7 +48,7 @@ public class RenderLiving extends Render {
 			var3 = 1.0F;
 		}
 
-		this.loadDownloadableImageTexture(var1.skinUrl, var1.getTexture());
+		this.loadDownloadableImageTexture(var1.getTexture());
 		GL11.glEnable(GL11.GL_ALPHA_TEST);
 		this.mainModel.render(var4, var3, var2, var7 - var5, var8, 1.0F);
 

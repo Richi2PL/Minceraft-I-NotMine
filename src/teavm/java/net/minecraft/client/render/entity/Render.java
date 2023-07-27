@@ -29,9 +29,9 @@ public abstract class Render {
 		RenderEngine.bindTexture(var2.getTexture(var1));
 	}
 
-	protected final void loadDownloadableImageTexture(String var1, String var2) {
+	protected final void loadDownloadableImageTexture(String var1) {
 		RenderEngine var3 = this.renderManager.renderEngine;
-		RenderEngine.bindTexture(var3.getTextureForDownloadableImage(var1, var2));
+		RenderEngine.bindTexture(var3.getTextureForDownloadableImage(var1));
 	}
 
 	public static void renderOffsetAABB(AxisAlignedBB var0) {
