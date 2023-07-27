@@ -10,11 +10,8 @@ public final class GuiIngameMenu extends GuiScreen {
 		this.controlList.add(new GuiButton(2, this.width / 2 - 100, this.height / 4 + 48, "Save level.."));
 		this.controlList.add(new GuiButton(3, this.width / 2 - 100, this.height / 4 + 72, "Load level.."));
 		this.controlList.add(new GuiButton(4, this.width / 2 - 100, this.height / 4 + 120, "Back to game"));
-		if(this.mc.session == null) {
-			((GuiButton)this.controlList.get(2)).enabled = false;
-			((GuiButton)this.controlList.get(3)).enabled = false;
-		}
-
+		((GuiButton)this.controlList.get(2)).enabled = false;
+		((GuiButton)this.controlList.get(3)).enabled = false;
 	}
 
 	protected final void actionPerformed(GuiButton var1) {

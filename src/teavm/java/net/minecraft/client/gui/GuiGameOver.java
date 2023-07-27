@@ -8,10 +8,7 @@ public final class GuiGameOver extends GuiScreen {
 		this.controlList.clear();
 		this.controlList.add(new GuiButton(1, this.width / 2 - 100, this.height / 4 + 72, "Generate new level..."));
 		this.controlList.add(new GuiButton(2, this.width / 2 - 100, this.height / 4 + 96, "Load level.."));
-		if(this.mc.session == null) {
-			((GuiButton)this.controlList.get(1)).enabled = false;
-		}
-
+		((GuiButton)this.controlList.get(1)).enabled = false;
 	}
 
 	protected final void keyTyped(char var1, int var2) {
