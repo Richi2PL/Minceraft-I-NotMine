@@ -42,7 +42,6 @@ public final class Minecraft implements Runnable {
 	private boolean fullscreen = false;
 	public int displayWidth;
 	public int displayHeight;
-	private OpenGlCapsChecker glCapabilities;
 	private Timer timer = new Timer(20.0F);
 	public World theWorld;
 	public RenderGlobal renderGlobal;
@@ -147,7 +146,6 @@ public final class Minecraft implements Runnable {
 		GL11.glMatrixMode(GL11.GL_PROJECTION);
 		GL11.glLoadIdentity();
 		GL11.glMatrixMode(GL11.GL_MODELVIEW);
-		this.glCapabilities = new OpenGlCapsChecker();
 		this.options = new GameSettings(this);
 		this.renderEngine = new RenderEngine(this.options);
 		this.fontRenderer = new FontRenderer(this.options, "/default.png", this.renderEngine);
@@ -357,6 +355,12 @@ public final class Minecraft implements Runnable {
 	}
 
 	private void runTick() {
+		
+		if(!this.inventoryScreen) {
+			this.mouseHelper.ungrabMouse();
+			GL11.mouseSetGrabbed(false);
+		}
+		
 		this.ingameGUI.addChatMessage();
 		if(!this.isGamePaused && this.theWorld != null) {
 			this.playerController.onUpdate();

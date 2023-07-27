@@ -1,5 +1,7 @@
 package net.minecraft.client.gui;
 
+import org.lwjgl.opengl.GL11;
+
 public final class GuiIngameMenu extends GuiScreen {
 	public final void initGui() {
 		this.controlList.clear();
@@ -37,6 +39,8 @@ public final class GuiIngameMenu extends GuiScreen {
 		if(var1.id == 4) {
 			this.mc.displayGuiScreen((GuiScreen)null);
 			this.mc.setIngameFocus();
+			this.mc.mouseHelper.grabMouse();
+			GL11.mouseSetGrabbed(true);
 		}
 
 	}

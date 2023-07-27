@@ -108,61 +108,18 @@ public final class EntityRenderer {
 		}
 
 		this.anaglyphEnable = GL11.isFocused();
-		int var5;
-		int var6;
-		if(this.mc.inventoryScreen) {
-			GL11.mouseGetDX();
-			byte var2 = 0;
-			GL11.mouseGetDY();
-			byte var3 = 0;
-			this.mc.mouseHelper.ungrabMouse();
-			byte var4 = 1;
-			if(this.mc.options.invertMouse) {
-				var4 = -1;
-			}
-
-			var5 = var2 + this.mc.mouseHelper.deltaX;
-			var6 = var3 - this.mc.mouseHelper.deltaY;
-			if(var2 != 0 || this.entityRendererInt1 != 0) {
-				System.out.println("xxo: " + var2 + ", " + this.entityRendererInt1 + ": " + this.entityRendererInt1 + ", xo: " + var5);
-			}
-
-			if(this.entityRendererInt1 != 0) {
-				this.entityRendererInt1 = 0;
-			}
-
-			if(this.entityRendererInt2 != 0) {
-				this.entityRendererInt2 = 0;
-			}
-
-			if(var2 != 0) {
-				this.entityRendererInt1 = var2;
-			}
-
-			if(var3 != 0) {
-				this.entityRendererInt2 = var3;
-			}
-
-			float var10001 = (float)var5;
-			float var11 = (float)(var6 * var4);
-			float var9 = var10001;
-			EntityPlayerSP var7 = this.mc.thePlayer;
-			float var13 = var7.rotationPitch;
-			float var14 = var7.rotationYaw;
-			var7.rotationYaw = (float)((double)var7.rotationYaw + (double)var9 * 0.15D);
-			var7.rotationPitch = (float)((double)var7.rotationPitch - (double)var11 * 0.15D);
-			if(var7.rotationPitch < -90.0F) {
-				var7.rotationPitch = -90.0F;
-			}
-
-			if(var7.rotationPitch > 90.0F) {
-				var7.rotationPitch = 90.0F;
-			}
-
-			var7.prevRotationPitch += var7.rotationPitch - var13;
-			var7.prevRotationYaw += var7.rotationYaw - var14;
+		int var5 = GL11.mouseGetDX();
+		int var6 = GL11.mouseGetDY();;
+		byte var91 = 1;
+		
+		if(this.mc.options.invertMouse) {
+			var91 = -1;
 		}
 
+		if(this.mc.inventoryScreen && this.mc.theWorld != null) {
+			this.mc.thePlayer.turn((float)var5, (float)(var6 * var91));
+		}
+		
 		ScaledResolution var8 = new ScaledResolution(this.mc.displayWidth, this.mc.displayHeight);
 		int var10 = var8.getScaledWidth();
 		int var12 = var8.getScaledHeight();
