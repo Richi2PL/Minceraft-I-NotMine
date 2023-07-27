@@ -74,6 +74,8 @@ public final class Minecraft implements Runnable {
 	public boolean inventoryScreen;
 	private int prevFrameTime;
 	public boolean inGameHasFocus;
+	
+	public static Minecraft mc;
 
 	public Minecraft(int var3, int var4) {
 		new ModelBiped(0.0F);
@@ -93,6 +95,7 @@ public final class Minecraft implements Runnable {
 		this.displayWidth = var3;
 		this.displayHeight = var4;
 		this.fullscreen = false;
+		mc = this;
 	}
 
 	public final void setServer(String var1, int var2) {
@@ -487,13 +490,15 @@ public final class Minecraft implements Runnable {
 									}
 
 									if(this.playerController instanceof PlayerControllerCreative) {
-										if(GL11.getEventKey() == this.options.keyBindLoad.keyCode) {
-											this.thePlayer.preparePlayerToSpawn();
-										}
+										if(this.inventoryScreen) {
+											if(GL11.getEventKey() == this.options.keyBindLoad.keyCode) {
+												this.thePlayer.preparePlayerToSpawn();
+											}
 
-										if(GL11.getEventKey() == this.options.keyBindSave.keyCode) {
-											this.theWorld.setSpawnLocation((int)this.thePlayer.posX, (int)this.thePlayer.posY, (int)this.thePlayer.posZ, this.thePlayer.rotationYaw);
-											this.thePlayer.preparePlayerToSpawn();
+											if(GL11.getEventKey() == this.options.keyBindSave.keyCode) {
+												this.theWorld.setSpawnLocation((int)this.thePlayer.posX, (int)this.thePlayer.posY, (int)this.thePlayer.posZ, this.thePlayer.rotationYaw);
+												this.thePlayer.preparePlayerToSpawn();
+											}
 										}
 									}
 
@@ -505,7 +510,7 @@ public final class Minecraft implements Runnable {
 										this.displayGuiScreen(new GuiInventory(this.thePlayer.inventory));
 									}
 
-									if(GL11.getEventKey() == this.options.keyBindDrop.keyCode) {
+									if(GL11.getEventKey() == this.options.keyBindDrop.keyCode && this.inventoryScreen) {
 										this.thePlayer.dropPlayerItemWithRandomChoice(this.thePlayer.inventory.decrStackSize(this.thePlayer.inventory.currentItem, 1), false);
 									}
 								}
@@ -516,7 +521,7 @@ public final class Minecraft implements Runnable {
 									}
 								}
 
-								if(GL11.getEventKey() == this.options.keyBindToggleFog.keyCode) {
+								if(GL11.getEventKey() == this.options.keyBindToggleFog.keyCode && this.inventoryScreen) {
 									this.options.setOptionValue(4, !GL11.isKeyDown(42) && !GL11.isKeyDown(54) ? 1 : -1);
 								}
 						}
@@ -645,5 +650,9 @@ public final class Minecraft implements Runnable {
 		}
 
 		System.gc();
+	}
+	
+	public static Minecraft getMinecraft() {
+		return mc;
 	}
 }

@@ -1,6 +1,7 @@
 package net.minecraft.client.player;
 
 import net.minecraft.client.GameSettings;
+import net.minecraft.client.Minecraft;
 
 public final class MovementInputFromOptions extends MovementInput {
 	private boolean[] movementKeyStates = new boolean[10];
@@ -12,24 +13,26 @@ public final class MovementInputFromOptions extends MovementInput {
 
 	public final void checkKeyForMovementInput(int var1, boolean var2) {
 		byte var3 = -1;
-		if(var1 == this.gameSettings.keyBindForward.keyCode) {
-			var3 = 0;
-		}
+		if(Minecraft.getMinecraft().inventoryScreen) {
+			if(var1 == this.gameSettings.keyBindForward.keyCode) {
+				var3 = 0;
+			}
 
-		if(var1 == this.gameSettings.keyBindBack.keyCode) {
-			var3 = 1;
-		}
+			if(var1 == this.gameSettings.keyBindBack.keyCode) {
+				var3 = 1;
+			}
 
-		if(var1 == this.gameSettings.keyBindLeft.keyCode) {
-			var3 = 2;
-		}
+			if(var1 == this.gameSettings.keyBindLeft.keyCode) {
+				var3 = 2;
+			}
 
-		if(var1 == this.gameSettings.keyBindRight.keyCode) {
-			var3 = 3;
-		}
+			if(var1 == this.gameSettings.keyBindRight.keyCode) {
+				var3 = 3;
+			}
 
-		if(var1 == this.gameSettings.keyBindJump.keyCode) {
-			var3 = 4;
+			if(var1 == this.gameSettings.keyBindJump.keyCode) {
+				var3 = 4;
+			}
 		}
 
 		if(var3 >= 0) {
