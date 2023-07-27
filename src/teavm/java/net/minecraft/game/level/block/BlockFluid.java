@@ -167,7 +167,7 @@ public class BlockFluid extends Block {
 	}
 
 	public int getRenderBlockPass() {
-		return this.material == Material.water ? 1 : 0;
+		return 0;
 	}
 
 	public final void randomDisplayTick(World var1, int var2, int var3, int var4, Random var5) {

@@ -14724,44 +14724,44 @@ function nmcr_RenderBlocks_renderBlockOnInventory($this, $var1) {
     if ($var3) {
         if ($var3 == 1) {
             nmcr_Tessellator_startDrawingQuads($var2);
-            nmcr_Tessellator_setNormal($var2, 0.0, (-1.0), 0.0);
+            olo_WebGLManager_glNormal3f(0.0, (-1.0), 0.0);
             nmcr_RenderBlocks_renderBlockPlant($this, $var1, (-1), (-0.5), (-0.5), (-0.5));
             nmcr_Tessellator_draw($var2);
         } else if ($var3 == 6) {
             nmcr_Tessellator_startDrawingQuads($var2);
-            nmcr_Tessellator_setNormal($var2, 0.0, (-1.0), 0.0);
+            olo_WebGLManager_glNormal3f(0.0, (-1.0), 0.0);
             nmcr_RenderBlocks_renderBlockCrops($this, $var1, (-1), (-0.5), (-0.5), (-0.5));
             nmcr_Tessellator_draw($var2);
         } else if ($var3 == 2) {
             nmcr_Tessellator_startDrawingQuads($var2);
-            nmcr_Tessellator_setNormal($var2, 0.0, (-1.0), 0.0);
+            olo_WebGLManager_glNormal3f(0.0, (-1.0), 0.0);
             nmcr_RenderBlocks_renderBlockTorch($this, $var1, (-0.5), (-0.5), (-0.5), 0.0, 0.0);
             nmcr_Tessellator_draw($var2);
         }
     } else {
         olo_WebGLManager_glTranslatef((-0.5), (-0.5), (-0.5));
         nmcr_Tessellator_startDrawingQuads($var2);
-        nmcr_Tessellator_setNormal($var2, 0.0, (-1.0), 0.0);
+        olo_WebGLManager_glNormal3f(0.0, (-1.0), 0.0);
         nmcr_RenderBlocks_renderBlockBottom($this, $var1, 0.0, 0.0, 0.0, $var1.$getBlockTextureFromSide(0));
         nmcr_Tessellator_draw($var2);
         nmcr_Tessellator_startDrawingQuads($var2);
-        nmcr_Tessellator_setNormal($var2, 0.0, 1.0, 0.0);
+        olo_WebGLManager_glNormal3f(0.0, 1.0, 0.0);
         nmcr_RenderBlocks_renderBlockTop($this, $var1, 0.0, 0.0, 0.0, $var1.$getBlockTextureFromSide(1));
         nmcr_Tessellator_draw($var2);
         nmcr_Tessellator_startDrawingQuads($var2);
-        nmcr_Tessellator_setNormal($var2, 0.0, 0.0, (-1.0));
+        olo_WebGLManager_glNormal3f(0.0, 0.0, (-1.0));
         nmcr_RenderBlocks_renderBlockNorth($this, $var1, 0, 0, 0, $var1.$getBlockTextureFromSide(2));
         nmcr_Tessellator_draw($var2);
         nmcr_Tessellator_startDrawingQuads($var2);
-        nmcr_Tessellator_setNormal($var2, 0.0, 0.0, 1.0);
+        olo_WebGLManager_glNormal3f(0.0, 0.0, 1.0);
         nmcr_RenderBlocks_renderBlockSouth($this, $var1, 0, 0, 0, $var1.$getBlockTextureFromSide(3));
         nmcr_Tessellator_draw($var2);
         nmcr_Tessellator_startDrawingQuads($var2);
-        nmcr_Tessellator_setNormal($var2, (-1.0), 0.0, 0.0);
+        olo_WebGLManager_glNormal3f((-1.0), 0.0, 0.0);
         nmcr_RenderBlocks_renderBlockWest($this, $var1, 0, 0, 0, $var1.$getBlockTextureFromSide(4));
         nmcr_Tessellator_draw($var2);
         nmcr_Tessellator_startDrawingQuads($var2);
-        nmcr_Tessellator_setNormal($var2, 1.0, 0.0, 0.0);
+        olo_WebGLManager_glNormal3f(1.0, 0.0, 0.0);
         nmcr_RenderBlocks_renderBlockEast($this, $var1, 0, 0, 0, $var1.$getBlockTextureFromSide(5));
         nmcr_Tessellator_draw($var2);
         olo_WebGLManager_glTranslatef(0.5, 0.5, 0.5);
@@ -14933,7 +14933,7 @@ function nmcm_ModelRenderer_render($this, $var1) {
                 $var9 = nmgp_Vec3D_normalize(nmgp_Vec3D_subtract($var10000.$vertexPositions.data[1].$vector3D, $var10000.$vertexPositions.data[0].$vector3D));
                 $var10 = nmgp_Vec3D_normalize(nmgp_Vec3D_subtract($var10000.$vertexPositions.data[1].$vector3D, $var10000.$vertexPositions.data[2].$vector3D));
                 $var12 = nmgp_Vec3D_normalize(nmgp_Vec3D__init_($var9.$yCoord * $var10.$zCoord - $var9.$zCoord * $var10.$yCoord, $var9.$zCoord * $var10.$xCoord - $var9.$xCoord * $var10.$zCoord, $var9.$xCoord * $var10.$yCoord - $var9.$yCoord * $var10.$xCoord));
-                nmcr_Tessellator_setNormal($var4,  -$var12.$xCoord,  -$var12.$yCoord,  -$var12.$zCoord);
+                olo_WebGLManager_glNormal3f( -$var12.$xCoord,  -$var12.$yCoord,  -$var12.$zCoord);
                 $var11 = 0;
                 while ($var11 < 4) {
                     $var12 = $var10000.$vertexPositions.data[$var11];
@@ -15885,7 +15885,7 @@ function nmglb_BlockFluid_quantityDropped($this, $var1) {
     return 0;
 }
 function nmglb_BlockFluid_getRenderBlockPass($this) {
-    return $this.$material !== nmglm_Material_water ? 0 : 1;
+    return 0;
 }
 function nmglb_BlockFluid_randomDisplayTick($this, $var1, $var2, $var3, $var4, $var5) {
     var $var9, $var9_0, var$8, var$9, var$10, $var6;
@@ -29169,7 +29169,6 @@ function nmcr_Tessellator() {
     a.$color = 0;
     a.$hasColor = 0;
     a.$hasTexture = 0;
-    a.$hasNormals = 0;
     a.$rawBufferIndex = 0;
     a.$addedVertices = 0;
     a.$isColorDisabled = 0;
@@ -29177,10 +29176,7 @@ function nmcr_Tessellator() {
     a.$xOffset = 0.0;
     a.$yOffset = 0.0;
     a.$zOffset = 0.0;
-    a.$normal = 0;
     a.$isDrawing = 0;
-    a.$useVBO = 0;
-    a.$bufferSize = 0;
 }
 var nmcr_Tessellator_instance = null;
 function nmcr_Tessellator_$callClinit() {
@@ -29197,8 +29193,6 @@ function nmcr_Tessellator_draw($this) {
             olo_WebGLManager_glEnableVertexAttrib(32888);
         if ($this.$hasColor)
             olo_WebGLManager_glEnableVertexAttrib(32886);
-        if ($this.$hasNormals)
-            olo_WebGLManager_glEnableVertexAttrib(32885);
         var$1 = $this.$drawMode;
         var$2 = $this.$vertexCount;
         var$3 = $this.$intBuffer.buffer;
@@ -29208,8 +29202,6 @@ function nmcr_Tessellator_draw($this) {
             olo_WebGLManager_glDisableVertexAttrib(32888);
         if ($this.$hasColor)
             olo_WebGLManager_glDisableVertexAttrib(32886);
-        if ($this.$hasNormals)
-            olo_WebGLManager_glDisableVertexAttrib(32885);
     }
     $var1 = $this.$rawBufferIndex * 4 | 0;
     nmcr_Tessellator_reset($this);
@@ -29229,7 +29221,6 @@ function nmcr_Tessellator_startDrawing($this, $par1) {
     $this.$isDrawing = 1;
     nmcr_Tessellator_reset($this);
     $this.$drawMode = $par1;
-    $this.$hasNormals = 0;
     $this.$hasColor = 0;
     $this.$hasTexture = 0;
     $this.$isColorDisabled = 0;
@@ -29275,7 +29266,7 @@ function nmcr_Tessellator_addVertexWithUV($this, $par1, $par3, $par5, $par7, $pa
     nmcr_Tessellator_addVertex($this, $par1, $par3, $par5);
 }
 function nmcr_Tessellator_addVertex($this, $par1, $par3, $par5) {
-    var $bufferIndex, $intBuffer0, $floatBuffer0, var$7, var$8, var$9;
+    var $bufferIndex, $intBuffer0, $floatBuffer0, var$7, var$8;
     if ($this.$addedVertices > 65534)
         return;
     $this.$addedVertices = $this.$addedVertices + 1 | 0;
@@ -29302,13 +29293,8 @@ function nmcr_Tessellator_addVertex($this, $par1, $par3, $par5) {
     }
     if ($this.$hasColor) {
         var$7 = $bufferIndex + 5 | 0;
-        var$9 = $this.$color;
-        $intBuffer0[var$7] = var$9;
-    }
-    if ($this.$hasNormals) {
-        $bufferIndex = $bufferIndex + 6 | 0;
-        var$7 = $this.$normal;
-        $intBuffer0[$bufferIndex] = var$7;
+        $bufferIndex = $this.$color;
+        $intBuffer0[var$7] = $bufferIndex;
     }
     $this.$rawBufferIndex = $this.$rawBufferIndex + 7 | 0;
 }
@@ -29319,10 +29305,7 @@ function nmcr_Tessellator_disableColor($this) {
     $this.$isColorDisabled = 1;
 }
 function nmcr_Tessellator_setNormal($this, $par1, $par2, $par3) {
-    var $len;
-    $this.$hasNormals = 1;
-    $len = jl_Math_sqrt($par1 * $par1 + $par2 * $par2 + $par3 * $par3);
-    $this.$normal = (($par1 / $len * 125.0 | 0) + 125 | 0) & 255 | ((($par2 / $len * 125.0 | 0) + 125 | 0) & 255) << 8 | ((($par3 / $len * 125.0 | 0) + 125 | 0) & 255) << 16;
+    olo_WebGLManager_glNormal3f($par1, $par2, $par3);
 }
 function nmcr_Tessellator__clinit_() {
     var var$1, var$2;
@@ -29331,13 +29314,10 @@ function nmcr_Tessellator__clinit_() {
     var$1.$vertexCount = 0;
     var$1.$hasColor = 0;
     var$1.$hasTexture = 0;
-    var$1.$hasNormals = 0;
     var$1.$rawBufferIndex = 0;
     var$1.$addedVertices = 0;
     var$1.$isColorDisabled = 0;
     var$1.$isDrawing = 0;
-    var$1.$useVBO = 0;
-    var$1.$bufferSize = 285000;
     var$2 = new ArrayBuffer(1140000);
     var$1.$intBuffer = new Int32Array(var$2);
     var$1.$floatBuffer = new Float32Array(var$2);
@@ -35270,32 +35250,32 @@ function nmcre_Render_renderOffsetAABB($var0) {
     $var1 = nmcr_Tessellator_instance;
     olo_WebGLManager_glColor4f(1.0, 1.0, 1.0, 1.0);
     nmcr_Tessellator_startDrawingQuads($var1);
-    nmcr_Tessellator_setNormal($var1, 0.0, 0.0, (-1.0));
+    olo_WebGLManager_glNormal3f(0.0, 0.0, (-1.0));
     nmcr_Tessellator_addVertex($var1, $var0.$minX0, $var0.$maxY0, $var0.$minZ0);
     nmcr_Tessellator_addVertex($var1, $var0.$maxX0, $var0.$maxY0, $var0.$minZ0);
     nmcr_Tessellator_addVertex($var1, $var0.$maxX0, $var0.$minY0, $var0.$minZ0);
     nmcr_Tessellator_addVertex($var1, $var0.$minX0, $var0.$minY0, $var0.$minZ0);
-    nmcr_Tessellator_setNormal($var1, 0.0, 0.0, 1.0);
+    olo_WebGLManager_glNormal3f(0.0, 0.0, 1.0);
     nmcr_Tessellator_addVertex($var1, $var0.$minX0, $var0.$minY0, $var0.$maxZ0);
     nmcr_Tessellator_addVertex($var1, $var0.$maxX0, $var0.$minY0, $var0.$maxZ0);
     nmcr_Tessellator_addVertex($var1, $var0.$maxX0, $var0.$maxY0, $var0.$maxZ0);
     nmcr_Tessellator_addVertex($var1, $var0.$minX0, $var0.$maxY0, $var0.$maxZ0);
-    nmcr_Tessellator_setNormal($var1, 0.0, (-1.0), 0.0);
+    olo_WebGLManager_glNormal3f(0.0, (-1.0), 0.0);
     nmcr_Tessellator_addVertex($var1, $var0.$minX0, $var0.$minY0, $var0.$minZ0);
     nmcr_Tessellator_addVertex($var1, $var0.$maxX0, $var0.$minY0, $var0.$minZ0);
     nmcr_Tessellator_addVertex($var1, $var0.$maxX0, $var0.$minY0, $var0.$maxZ0);
     nmcr_Tessellator_addVertex($var1, $var0.$minX0, $var0.$minY0, $var0.$maxZ0);
-    nmcr_Tessellator_setNormal($var1, 0.0, 1.0, 0.0);
+    olo_WebGLManager_glNormal3f(0.0, 1.0, 0.0);
     nmcr_Tessellator_addVertex($var1, $var0.$minX0, $var0.$maxY0, $var0.$maxZ0);
     nmcr_Tessellator_addVertex($var1, $var0.$maxX0, $var0.$maxY0, $var0.$maxZ0);
     nmcr_Tessellator_addVertex($var1, $var0.$maxX0, $var0.$maxY0, $var0.$minZ0);
     nmcr_Tessellator_addVertex($var1, $var0.$minX0, $var0.$maxY0, $var0.$minZ0);
-    nmcr_Tessellator_setNormal($var1, (-1.0), 0.0, 0.0);
+    olo_WebGLManager_glNormal3f((-1.0), 0.0, 0.0);
     nmcr_Tessellator_addVertex($var1, $var0.$minX0, $var0.$minY0, $var0.$maxZ0);
     nmcr_Tessellator_addVertex($var1, $var0.$minX0, $var0.$maxY0, $var0.$maxZ0);
     nmcr_Tessellator_addVertex($var1, $var0.$minX0, $var0.$maxY0, $var0.$minZ0);
     nmcr_Tessellator_addVertex($var1, $var0.$minX0, $var0.$minY0, $var0.$minZ0);
-    nmcr_Tessellator_setNormal($var1, 1.0, 0.0, 0.0);
+    olo_WebGLManager_glNormal3f(1.0, 0.0, 0.0);
     nmcr_Tessellator_addVertex($var1, $var0.$maxX0, $var0.$minY0, $var0.$minZ0);
     nmcr_Tessellator_addVertex($var1, $var0.$maxX0, $var0.$maxY0, $var0.$minZ0);
     nmcr_Tessellator_addVertex($var1, $var0.$maxX0, $var0.$maxY0, $var0.$maxZ0);
@@ -35713,7 +35693,7 @@ function nmcre_RenderItem_doRender($this, $var1, $var2, $var3, $var4, $var5, $va
                 olo_WebGLManager_glTranslatef((ju_Random_nextFloat($this.$random3) * 2.0 - 1.0) * 0.30000001192092896, (ju_Random_nextFloat($this.$random3) * 2.0 - 1.0) * 0.30000001192092896, (ju_Random_nextFloat($this.$random3) * 2.0 - 1.0) * 0.30000001192092896);
             olo_WebGLManager_glRotatef(180.0 - $this.$renderManager.$playerViewY, 0.0, 1.0, 0.0);
             nmcr_Tessellator_startDrawingQuads($var15);
-            nmcr_Tessellator_setNormal($var15, 0.0, 1.0, 0.0);
+            olo_WebGLManager_glNormal3f(0.0, 1.0, 0.0);
             nmcr_Tessellator_addVertexWithUV($var15, (-0.5), (-0.25), 0.0, var$15, var$16);
             nmcr_Tessellator_addVertexWithUV($var15, 0.5, (-0.25), 0.0, var$17, var$16);
             nmcr_Tessellator_addVertexWithUV($var15, 0.5, 0.75, 0.0, var$17, var$18);
@@ -35749,7 +35729,7 @@ function nmcre_RenderItem_doRender($this, $var1, $var2, $var3, $var4, $var5, $va
                 olo_WebGLManager_glTranslatef((ju_Random_nextFloat($this.$random3) * 2.0 - 1.0) * 0.30000001192092896, (ju_Random_nextFloat($this.$random3) * 2.0 - 1.0) * 0.30000001192092896, (ju_Random_nextFloat($this.$random3) * 2.0 - 1.0) * 0.30000001192092896);
             olo_WebGLManager_glRotatef(180.0 - $this.$renderManager.$playerViewY, 0.0, 1.0, 0.0);
             nmcr_Tessellator_startDrawingQuads($var15);
-            nmcr_Tessellator_setNormal($var15, 0.0, 1.0, 0.0);
+            olo_WebGLManager_glNormal3f(0.0, 1.0, 0.0);
             nmcr_Tessellator_addVertexWithUV($var15, (-0.5), (-0.25), 0.0, var$15, var$16);
             nmcr_Tessellator_addVertexWithUV($var15, 0.5, (-0.25), 0.0, var$17, var$16);
             nmcr_Tessellator_addVertexWithUV($var15, 0.5, 0.75, 0.0, var$17, var$18);
@@ -40911,7 +40891,7 @@ function nmcre_RenderPainting_doRender($this, $var1, $var2, $var3, $var4, $var5,
                 nmcr_Tessellator_$callClinit();
                 $var29 = nmcr_Tessellator_instance;
                 nmcr_Tessellator_startDrawingQuads($var29);
-                nmcr_Tessellator_setNormal($var29, 0.0, 0.0, (-1.0));
+                olo_WebGLManager_glNormal3f(0.0, 0.0, (-1.0));
                 var$36 = $var11;
                 var$37 = $var14;
                 var$38 = $var16;
@@ -40924,27 +40904,27 @@ function nmcre_RenderPainting_doRender($this, $var1, $var2, $var3, $var4, $var5,
                 var$39 = $var10002;
                 nmcr_Tessellator_addVertexWithUV($var29, var$40, var$42, (-0.5), var$41, var$39);
                 nmcr_Tessellator_addVertexWithUV($var29, var$36, var$42, (-0.5), var$38, var$39);
-                nmcr_Tessellator_setNormal($var29, 0.0, 0.0, 1.0);
+                olo_WebGLManager_glNormal3f(0.0, 0.0, 1.0);
                 nmcr_Tessellator_addVertexWithUV($var29, var$36, var$42, 0.5, 0.75, 0.0);
                 nmcr_Tessellator_addVertexWithUV($var29, var$40, var$42, 0.5, 0.8125, 0.0);
                 nmcr_Tessellator_addVertexWithUV($var29, var$40, var$37, 0.5, 0.8125, 0.0625);
                 nmcr_Tessellator_addVertexWithUV($var29, var$36, var$37, 0.5, 0.75, 0.0625);
-                nmcr_Tessellator_setNormal($var29, 0.0, (-1.0), 0.0);
+                olo_WebGLManager_glNormal3f(0.0, (-1.0), 0.0);
                 nmcr_Tessellator_addVertexWithUV($var29, var$36, var$42, (-0.5), 0.75, 0.001953125);
                 nmcr_Tessellator_addVertexWithUV($var29, var$40, var$42, (-0.5), 0.8125, 0.001953125);
                 nmcr_Tessellator_addVertexWithUV($var29, var$40, var$42, 0.5, 0.8125, 0.001953125);
                 nmcr_Tessellator_addVertexWithUV($var29, var$36, var$42, 0.5, 0.75, 0.001953125);
-                nmcr_Tessellator_setNormal($var29, 0.0, 1.0, 0.0);
+                olo_WebGLManager_glNormal3f(0.0, 1.0, 0.0);
                 nmcr_Tessellator_addVertexWithUV($var29, var$36, var$37, 0.5, 0.75, 0.001953125);
                 nmcr_Tessellator_addVertexWithUV($var29, var$40, var$37, 0.5, 0.8125, 0.001953125);
                 nmcr_Tessellator_addVertexWithUV($var29, var$40, var$37, (-0.5), 0.8125, 0.001953125);
                 nmcr_Tessellator_addVertexWithUV($var29, var$36, var$37, (-0.5), 0.75, 0.001953125);
-                nmcr_Tessellator_setNormal($var29, (-1.0), 0.0, 0.0);
+                olo_WebGLManager_glNormal3f((-1.0), 0.0, 0.0);
                 nmcr_Tessellator_addVertexWithUV($var29, var$36, var$42, 0.5, 0.751953125, 0.0);
                 nmcr_Tessellator_addVertexWithUV($var29, var$36, var$37, 0.5, 0.751953125, 0.0625);
                 nmcr_Tessellator_addVertexWithUV($var29, var$36, var$37, (-0.5), 0.751953125, 0.0625);
                 nmcr_Tessellator_addVertexWithUV($var29, var$36, var$42, (-0.5), 0.751953125, 0.0);
-                nmcr_Tessellator_setNormal($var29, 1.0, 0.0, 0.0);
+                olo_WebGLManager_glNormal3f(1.0, 0.0, 0.0);
                 nmcr_Tessellator_addVertexWithUV($var29, var$40, var$42, (-0.5), 0.751953125, 0.0);
                 nmcr_Tessellator_addVertexWithUV($var29, var$40, var$37, (-0.5), 0.751953125, 0.0625);
                 nmcr_Tessellator_addVertexWithUV($var29, var$40, var$37, 0.5, 0.751953125, 0.0625);
