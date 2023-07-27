@@ -95,7 +95,7 @@ public abstract class Render {
 				Render var27 = this;
 				GL11.glEnable(GL11.GL_BLEND);
 				RenderEngine var10 = this.renderManager.renderEngine;
-				RenderEngine.bindTexture(var10.getTexture("%%/shadow.png"));
+				RenderEngine.bindTexture(var10.getTexture("%clamp%/shadow.png"));
 				World var11 = this.renderManager.worldObj;
 				GL11.glDepthMask(false);
 				var12 = this.shadowSize;

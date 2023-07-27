@@ -52,13 +52,7 @@ public class MinecraftMain {
     	//minecraft.minecraftUri = "127.0.0.1:25565";
     	minecraft.session = new Session("PeytonPlayz595", "WebGL-Emulator");
     	Thread thread = new Thread (minecraft, "Minecraft main Thread");
-    	try {
-    		thread.run();
-    	} catch(Exception e) {
-    		minecraft.displayGuiScreen(new GuiErrorScreen("Client error", "The game broke! [" + e + "]"));
-			e.printStackTrace();
-			return;
-    	}
+    	thread.run();
     }
 
 	@JSBody(params = { }, script = "return window.classicConfig;")

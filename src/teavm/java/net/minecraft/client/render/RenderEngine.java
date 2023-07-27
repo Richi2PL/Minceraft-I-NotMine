@@ -163,7 +163,7 @@ public class RenderEngine {
 	}
 
 	public int getTextureForDownloadableImage(String s, String s1) {
-		return getTexture("/mob/char.png");
+		return getTexture("/char.png");
 	}
 
 	private int averageColor(int i, int j) {

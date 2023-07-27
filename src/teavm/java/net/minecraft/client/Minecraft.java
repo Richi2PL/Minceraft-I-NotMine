@@ -596,6 +596,9 @@ public final class Minecraft implements Runnable {
 	}
 
 	public final void setLevel(World var1) {
+		
+		this.theWorld = var1;
+		
 		if(this.theWorld != null) {
 			this.theWorld.setLevel();
 		}
