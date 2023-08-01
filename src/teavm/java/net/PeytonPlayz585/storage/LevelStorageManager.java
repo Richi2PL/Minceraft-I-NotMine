@@ -23,6 +23,8 @@ public class LevelStorageManager {
 			if(nbtBase != null && nbtBase instanceof NBTTagCompound) {
 				levelStorage = (NBTTagCompound)nbtBase;
 			}
+		} else {
+			return;
 		}
 		
 		if(levelStorage.tagMap == null) {
