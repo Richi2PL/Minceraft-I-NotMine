@@ -137,9 +137,9 @@ public final class RenderGlobal implements IWorldAccess {
 			for(int var4 = 0; var4 < this.renderChunksTall; ++var4) {
 				for(int var5 = 0; var5 < this.renderChunksDeep; ++var5) {
 					this.worldRenderers[(var5 * this.renderChunksTall + var4) * this.renderChunksWide + var3] = new WorldRenderer(this.worldObj, var3 << 4, var4 << 4, var5 << 4, 16, this.glRenderListBase + var1);
-					if(this.occlusionEnabled) {
-						this.worldRenderers[(var5 * this.renderChunksTall + var4) * this.renderChunksWide + var3].glOcclusionQuery = this.glOcclusionQueryBase.get(var2);
-					}
+					//if(this.occlusionEnabled) {
+						//this.worldRenderers[(var5 * this.renderChunksTall + var4) * this.renderChunksWide + var3].glOcclusionQuery = this.glOcclusionQueryBase.get(var2);
+					//}
 
 					++var2;
 					this.sortedWorldRenderers[(var5 * this.renderChunksTall + var4) * this.renderChunksWide + var3] = this.worldRenderers[(var5 * this.renderChunksTall + var4) * this.renderChunksWide + var3];
@@ -251,7 +251,7 @@ public final class RenderGlobal implements IWorldAccess {
 		int var8;
 		if(this.occlusionEnabled && var2 == 0) {
 			int var10 = 8;
-			this.checkOcclusionQueryResult(0, 8);
+			//this.checkOcclusionQueryResult(0, 8);
 
 			int var6;
 			for(var6 = 0; var6 < 8; ++var6) {
@@ -272,21 +272,21 @@ public final class RenderGlobal implements IWorldAccess {
 				GL11.glDisable(GL11.GL_ALPHA_TEST);
 				GL11.glColorMask(false, false, false, false);
 				GL11.glDepthMask(false);
-				this.checkOcclusionQueryResult(var9, var10);
+				//this.checkOcclusionQueryResult(var9, var10);
 
 				for(var6 = var9; var6 < var10; ++var6) {
 					if(!this.sortedWorldRenderers[var6].isInFrustrum) {
 						this.sortedWorldRenderers[var6].isVisible = true;
 					}
 
-					if(this.sortedWorldRenderers[var6].isInFrustrum && !this.sortedWorldRenderers[var6].isWaitingOnOcclusionQuery) {
-						float var7 = MathHelper.sqrt_float(this.sortedWorldRenderers[var6].distanceToEntitySquared(var1));
-						int var11 = (int)(1.0F + var7 / 64.0F);
-						if(this.cloudOffsetX % var11 == var6 % var11) {
-							this.sortedWorldRenderers[var6].callOcclusionQueryList();
-							this.sortedWorldRenderers[var6].isWaitingOnOcclusionQuery = true;
-						}
-					}
+					//if(this.sortedWorldRenderers[var6].isInFrustrum && !this.sortedWorldRenderers[var6].isWaitingOnOcclusionQuery) {
+						//float var7 = MathHelper.sqrt_float(this.sortedWorldRenderers[var6].distanceToEntitySquared(var1));
+						//int var11 = (int)(1.0F + var7 / 64.0F);
+						//if(this.cloudOffsetX % var11 == var6 % var11) {
+							//this.sortedWorldRenderers[var6].callOcclusionQueryList();
+							//this.sortedWorldRenderers[var6].isWaitingOnOcclusionQuery = true;
+						//}
+					//}
 				}
 
 				GL11.glColorMask(true, true, true, true);
@@ -302,19 +302,19 @@ public final class RenderGlobal implements IWorldAccess {
 		return var8;
 	}
 
-	private void checkOcclusionQueryResult(int var1, int var2) {
-		for(var1 = var1; var1 < var2; ++var1) {
-			if(this.sortedWorldRenderers[var1].isWaitingOnOcclusionQuery) {
-				this.occlusionResult.clear();
-				if(this.occlusionResult.get(0) != 0) {
-					this.sortedWorldRenderers[var1].isWaitingOnOcclusionQuery = false;
-					this.occlusionResult.clear();
-					this.sortedWorldRenderers[var1].isVisible = this.occlusionResult.get(0) != 0;
-				}
-			}
-		}
-
-	}
+//	private void checkOcclusionQueryResult(int var1, int var2) {
+//		for(var1 = var1; var1 < var2; ++var1) {
+//			if(this.sortedWorldRenderers[var1].isWaitingOnOcclusionQuery) {
+//				this.occlusionResult.clear();
+//				if(this.occlusionResult.get(0) != 0) {
+//					this.sortedWorldRenderers[var1].isWaitingOnOcclusionQuery = false;
+//					this.occlusionResult.clear();
+//					this.sortedWorldRenderers[var1].isVisible = this.occlusionResult.get(0) != 0;
+//				}
+//			}
+//		}
+//
+//	}
 
 	private int renderSortedRenderers(int var1, int var2, int var3) {
 		int var4 = 0;
@@ -595,7 +595,9 @@ public final class RenderGlobal implements IWorldAccess {
 				var6 = Block.stone;
 			}
 
+			GL11.flipLightMatrix();
 			this.globalRenderBlocks.renderBlockUsingTexture(var6, var1.blockX, var1.blockY, var1.blockZ, 240 + (int)(this.damagePartialTime * 10.0F));
+			GL11.flipLightMatrix();
 			var4.draw();
 			GL11.glEnable(GL11.GL_ALPHA_TEST);
 			GL11.glDepthMask(true);

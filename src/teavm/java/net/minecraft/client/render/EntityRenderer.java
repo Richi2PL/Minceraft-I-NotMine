@@ -30,16 +30,16 @@ public final class EntityRenderer {
 	private boolean anaglyphEnable = false;
 	private float farPlaneDistance = 0.0F;
 	public ItemRenderer itemRenderer;
-	private int rendererUpdateCount;
+	//private int rendererUpdateCount;
 	private Entity pointedEntity = null;
-	private int entityRendererInt1;
-	private int entityRendererInt2;
-	private DecimalFormat entityDecimalFormat = new DecimalFormat("0000");
-	private ByteBuffer entityByteBuffer;
-	private FloatBuffer entityFloatBuffer = BufferUtils.createFloatBuffer(16);
-	private Random random = new Random();
-	private volatile int unusedInt0 = 0;
-	private volatile int unusedInt1 = 0;
+	//private int entityRendererInt1;
+	//private int entityRendererInt2;
+	//private DecimalFormat entityDecimalFormat = new DecimalFormat("0000");
+	//private ByteBuffer entityByteBuffer;
+	//private FloatBuffer entityFloatBuffer = BufferUtils.createFloatBuffer(16);
+	//private Random random = new Random();
+	//private volatile int unusedInt0 = 0;
+	//private volatile int unusedInt1 = 0;
 	private FloatBuffer fogColorBuffer = BufferUtils.createFloatBuffer(16);
 	private float fogColorRed;
 	private float fogColorGreen;
@@ -58,7 +58,7 @@ public final class EntityRenderer {
 		float var2 = (float)(3 - this.mc.options.renderDistance) / 3.0F;
 		var1 = var1 * (1.0F - var2) + var2;
 		this.fogColor += (var1 - this.fogColor) * 0.1F;
-		++this.rendererUpdateCount;
+		//++this.rendererUpdateCount;
 		this.itemRenderer.updateEquippedItem();
 	}
 
@@ -376,12 +376,16 @@ public final class EntityRenderer {
 			}
 
 			if(!this.mc.options.thirdPersonView) {
+				GL11.flipLightMatrix();
 				this.itemRenderer.renderItemInFirstPerson(var1);
+				GL11.flipLightMatrix();
 			}
 
 			GL11.glPopMatrix();
 			if(!this.mc.options.thirdPersonView) {
+				GL11.flipLightMatrix();
 				this.itemRenderer.renderOverlays(var1);
+				GL11.flipLightMatrix();
 				this.hurtCameraEffect(var1);
 			}
 

@@ -52,6 +52,8 @@ public final class RenderArrow extends Render {
 		}
 
 		GL11.glDisable(GL11.GL_NORMALIZE);
+		GL11.flipLightMatrix();
 		GL11.glPopMatrix();
+		GL11.flipLightMatrix();
 	}
 }

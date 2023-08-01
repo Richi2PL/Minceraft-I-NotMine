@@ -2,7 +2,15 @@ package net.minecraft.client.gui;
 
 import org.lwjgl.opengl.GL11;
 
+import net.minecraft.game.level.LevelLoader;
+
 public final class GuiIngameMenu extends GuiScreen {
+	
+	public GuiIngameMenu() {
+		LevelLoader loader = new LevelLoader();
+		loader.save();
+	}
+	
 	public final void initGui() {
 		this.controlList.clear();
 		this.controlList.add(new GuiButton(0, this.width / 2 - 100, this.height / 4, "Options..."));

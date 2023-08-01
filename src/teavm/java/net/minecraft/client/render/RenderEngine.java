@@ -18,7 +18,6 @@ public class RenderEngine {
 		textureNameToImageMap = new HashMap<Integer, MinecraftImage>();
 		singleIntBuffer = BufferUtils.createIntBuffer(1);
 		imageDataB1 = BufferUtils.createByteBuffer(0x100000);
-		imageDataB2 = BufferUtils.createByteBuffer(0x100000);
 		clampTexture = false;
 		blurTexture = false;
 		options = gamesettings;
@@ -36,17 +35,13 @@ public class RenderEngine {
 			if (s.startsWith("%clamp%")) {
 				clampTexture = true;
 				setupTexture(readTextureImage(GL11.loadResourceBytes(s.substring(7))), i);
-				clampTexture = false;
+			    clampTexture = false;
 			} else if (s.startsWith("%blur%")) {
 				blurTexture = true;
 				setupTexture(readTextureImage(GL11.loadResourceBytes(s.substring(6))), i);
 				blurTexture = false;
 			} else {
-				if(s.equals("/terrain.png")) {
-					useMipmaps = true;
-				}
 				setupTexture(readTextureImage(GL11.loadResourceBytes(s)), i);
-				useMipmaps = false;
 			}
 			textureMap.put(s, Integer.valueOf(i));
 			return i;
@@ -81,14 +76,8 @@ public class RenderEngine {
 
 	public void setupTexture(MinecraftImage bufferedimage, int i) {
 		bindTexture(i);
-		if (useMipmaps) {
-			GL11.glTexParameteri(3553 /* GL_TEXTURE_2D */, 10241 /* GL_TEXTURE_MIN_FILTER */, GL11.GL_NEAREST_MIPMAP_LINEAR);
-			GL11.glTexParameteri(3553 /* GL_TEXTURE_2D */, 10240 /* GL_TEXTURE_MAG_FILTER */, GL11.GL_NEAREST /* GL_LINEAR */);
-			GL11.glTexParameteri(3553 /* GL_TEXTURE_2D */, GL11.GL_TEXTURE_MAX_LEVEL, 4);
-		} else {
-			GL11.glTexParameteri(3553 /* GL_TEXTURE_2D */, 10241 /* GL_TEXTURE_MIN_FILTER */, 9728 /* GL_NEAREST */);
-			GL11.glTexParameteri(3553 /* GL_TEXTURE_2D */, 10240 /* GL_TEXTURE_MAG_FILTER */, 9728 /* GL_NEAREST */);
-		}
+		GL11.glTexParameteri(3553 /* GL_TEXTURE_2D */, 10241 /* GL_TEXTURE_MIN_FILTER */, 9728 /* GL_NEAREST */);
+		GL11.glTexParameteri(3553 /* GL_TEXTURE_2D */, 10240 /* GL_TEXTURE_MAG_FILTER */, 9728 /* GL_NEAREST */);
 		if (blurTexture) {
 			GL11.glTexParameteri(3553 /* GL_TEXTURE_2D */, 10241 /* GL_TEXTURE_MIN_FILTER */, 9729 /* GL_LINEAR */);
 			GL11.glTexParameteri(3553 /* GL_TEXTURE_2D */, 10240 /* GL_TEXTURE_MAG_FILTER */, 9729 /* GL_LINEAR */);
@@ -127,32 +116,6 @@ public class RenderEngine {
 		imageDataB1.position(0).limit(abyte0.length);
 		GL11.glTexImage2D(3553 /* GL_TEXTURE_2D */, 0, 6408 /* GL_RGBA */, j, k, 0, 6408 /* GL_RGBA */,
 				5121 /* GL_UNSIGNED_BYTE */, imageDataB1);
-		if (useMipmaps) {
-			for (int i1 = 1; i1 <= 4; i1++) {
-				int k1 = j >> i1 - 1;
-				int i2 = j >> i1;
-				int k2 = k >> i1;
-				imageDataB2.clear();
-				for (int i3 = 0; i3 < i2; i3++) {
-					for (int k3 = 0; k3 < k2; k3++) {
-						int i4 = imageDataB1.getInt((i3 * 2 + 0 + (k3 * 2 + 0) * k1) * 4);
-						int k4 = imageDataB1.getInt((i3 * 2 + 1 + (k3 * 2 + 0) * k1) * 4);
-						int l4 = imageDataB1.getInt((i3 * 2 + 1 + (k3 * 2 + 1) * k1) * 4);
-						int i5 = imageDataB1.getInt((i3 * 2 + 0 + (k3 * 2 + 1) * k1) * 4);
-						int j5 = averageColor(averageColor(i4, k4), averageColor(l4, i5));
-						imageDataB2.putInt((i3 + k3 * i2) * 4, j5);
-					}
-
-				}
-				
-				GL11.glTexImage2D(3553 /* GL_TEXTURE_2D */, i1, 6408 /* GL_RGBA */, i2, k2, 0, 6408 /* GL_RGBA */,
-						5121 /* GL_UNSIGNED_BYTE */, imageDataB2);
-				ByteBuffer tmp = imageDataB1;
-				imageDataB1 = imageDataB2;
-				imageDataB2 = tmp;
-			}
-
-		}
 	}
 
 	public void deleteTexture(int i) {
@@ -160,21 +123,7 @@ public class RenderEngine {
 	}
 
 	public int getTextureForDownloadableImage(String s) {
-//		if(s.contains("creeper")) {
-//			return getTexture("/mob/creeper.png");
-//		} else if(s.contains("pig")) {
-//			return getTexture("/mob/pig.png");
-//		} else if(s.contains("sheep")) {
-//			return getTexture("/mob/sheep.png");
-//		}
 		return getTexture(s);
-	}
-
-	private int averageColor(int i, int j) {
-		int k = (i & 0xff000000) >> 24 & 0xff;
-		int l = (j & 0xff000000) >> 24 & 0xff;
-		return ((k + l >> 1) << 24) + ((i & 0xfefefe) + (j & 0xfefefe) >> 1);
-		
 	}
 
 	private MinecraftImage readTextureImage(byte[] inputstream) throws IOException {
@@ -190,12 +139,10 @@ public class RenderEngine {
 		}
 	}
 
-	public static boolean useMipmaps = false;
 	private HashMap<String, Integer> textureMap;
 	private HashMap<Integer, MinecraftImage> textureNameToImageMap;
 	private IntBuffer singleIntBuffer;
 	private ByteBuffer imageDataB1;
-	private ByteBuffer imageDataB2;
 	private GameSettings options;
 	private boolean clampTexture;
 	private boolean blurTexture;

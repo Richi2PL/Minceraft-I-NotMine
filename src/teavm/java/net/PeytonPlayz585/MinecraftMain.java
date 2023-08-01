@@ -1,5 +1,6 @@
 package net.PeytonPlayz585;
 
+import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 
@@ -14,17 +15,16 @@ import org.teavm.jso.dom.html.HTMLElement;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.Session;
 import net.minecraft.client.gui.GuiErrorScreen;
+import net.PeytonPlayz585.storage.LevelStorageManager;
 import net.PeytonPlayz585.storage.LocalStorageManager;
 
 public class MinecraftMain {
-	public static Thread thread = null;
-	
 	public static class AbortedLaunchException extends RuntimeException {
 		// yee
 	}
 	
 	public static HTMLElement rootElement = null;
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
     	registerErrorHandler();
     	String[] e = getOpts();
     	try {
@@ -41,18 +41,17 @@ public class MinecraftMain {
     	run0();
     }
 
-    private static void run0() {
+    private static void run0() throws IOException {
     	System.out.println(" -------- starting minecraft -------- ");
     	LocalStorageManager.loadStorage();
+    	LevelStorageManager.loadLevelData();
     	run1();
     }
     
     private static void run1() {
     	Minecraft minecraft = new Minecraft(GL11.getCanvasWidth(), GL11.getCanvasHeight());
-    	//minecraft.minecraftUri = "127.0.0.1:25565";
-    	minecraft.session = new Session("PeytonPlayz595", "WebGL-Emulator");
-    	Thread thread = new Thread (minecraft, "Minecraft main Thread");
-    	thread.run();
+    	minecraft.session = new Session("PeytonPlayz595", "Indev-WebGL");
+    	minecraft.run();
     }
 
 	@JSBody(params = { }, script = "return window.classicConfig;")

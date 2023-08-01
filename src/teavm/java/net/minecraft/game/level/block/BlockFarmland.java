@@ -1,6 +1,9 @@
 package net.minecraft.game.level.block;
 
 import java.util.Random;
+
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.GuiErrorScreen;
 import net.minecraft.game.level.World;
 import net.minecraft.game.level.material.Material;
 import net.minecraft.game.physics.AxisAlignedBB;
@@ -93,19 +96,29 @@ public final class BlockFarmland extends Block {
 
 				++var10;
 			}
+			
+			/*
+			 * There is no way to obtain water in this version
+			 * And it's really annoying to have to walk back and forth between your base and where you planted your crops
+			 * So I removed it :)
+			 */
 
-			if(!var10000) {
-				var1.setBlockWithNotify(var2, var3, var4, Block.dirt.blockID);
-			}
+//			if(!var10000) {
+//				var1.setBlockWithNotify(var2, var3, var4, Block.dirt.blockID);
+//			}
 		}
 
 	}
 
 	public final void onEntityWalking(World var1, int var2, int var3, int var4) {
-		if(var1.random.nextInt(4) == 0) {
-			var1.setBlockWithNotify(var2, var3, var4, Block.dirt.blockID);
-		}
-
+		/*
+		 * This is bugged and really annoying
+		 * So I also removed this too :)
+		 */
+		
+		//if(var1.random.nextInt(4) == 0) {
+			//var1.setBlockWithNotify(var2, var3, var4, Block.dirt.blockID);
+		//}
 	}
 
 	public final void onNeighborBlockChange(World var1, int var2, int var3, int var4, int var5) {

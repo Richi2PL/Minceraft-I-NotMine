@@ -1,9 +1,8 @@
 package net.minecraft.client;
 
-import java.nio.ByteBuffer;
-import java.nio.ByteOrder;
 import java.nio.IntBuffer;
-import javax.swing.JOptionPane;
+
+import net.PeytonPlayz585.storage.LevelStorageManager;
 import net.minecraft.client.controller.PlayerController;
 import net.minecraft.client.controller.PlayerControllerCreative;
 import net.minecraft.client.controller.PlayerControllerSP;
@@ -15,6 +14,7 @@ import net.minecraft.client.gui.GuiIngame;
 import net.minecraft.client.gui.GuiIngameMenu;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.gui.ScaledResolution;
+import net.minecraft.client.gui.container.GuiContainer;
 import net.minecraft.client.gui.container.GuiInventory;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.player.EntityPlayerSP;
@@ -30,10 +30,13 @@ import net.minecraft.game.entity.EntityLiving;
 import net.minecraft.game.entity.player.InventoryPlayer;
 import net.minecraft.game.item.Item;
 import net.minecraft.game.item.ItemStack;
+import net.minecraft.game.level.LevelLoader;
 import net.minecraft.game.level.World;
 import net.minecraft.game.level.block.Block;
 import net.minecraft.game.level.generator.LevelGenerator;
 import net.minecraft.game.physics.MovingObjectPosition;
+import util.IProgressUpdate;
+
 import org.lwjgl.BufferUtils;
 import org.lwjgl.opengl.GL11;
 
@@ -42,7 +45,7 @@ public final class Minecraft implements Runnable {
 	private boolean fullscreen = false;
 	public int displayWidth;
 	public int displayHeight;
-	private Timer timer = new Timer(20.0F);
+	public Timer timer = new Timer(20.0F);
 	public World theWorld;
 	public RenderGlobal renderGlobal;
 	public EntityPlayerSP thePlayer;
@@ -55,7 +58,7 @@ public final class Minecraft implements Runnable {
 	public GuiScreen currentScreen = null;
 	public LoadingScreenRenderer loadingScreen = new LoadingScreenRenderer(this);
 	public EntityRenderer entityRenderer = new EntityRenderer(this);
-	private int ticksRan = 0;
+	public int ticksRan = 0;
 	private int leftClickCounter = 0;
 	private int tempDisplayWidth;
 	private int tempDisplayHeight;
@@ -69,7 +72,7 @@ public final class Minecraft implements Runnable {
 	private String server;
 	private TextureWaterFX textureWaterFX;
 	private TextureLavaFX textureLavaFX;
-	volatile boolean running;
+	public boolean running;
 	public String debug;
 	public boolean inventoryScreen;
 	private int prevFrameTime;
@@ -149,7 +152,7 @@ public final class Minecraft implements Runnable {
 		GL11.glMatrixMode(GL11.GL_PROJECTION);
 		GL11.glLoadIdentity();
 		GL11.glMatrixMode(GL11.GL_MODELVIEW);
-		this.options = new GameSettings(this);
+		this.options = new GameSettings();
 		this.renderEngine = new RenderEngine(this.options);
 		this.fontRenderer = new FontRenderer(this.options, "/default.png", this.renderEngine);
 		var24 = BufferUtils.createIntBuffer(256);
@@ -210,7 +213,7 @@ public final class Minecraft implements Runnable {
 			this.isGamePaused = this.currentScreen != null && this.currentScreen.doesGuiPauseGame();
 
 			while(System.currentTimeMillis() >= var23 + 1000L) {
-				this.debug = var28 + " fps, " + WorldRenderer.chunksUpdated + " chunk updates";
+				this.debug = "FPS: " + var28 + ", Chunk Updates: " + WorldRenderer.chunksUpdated;
 				WorldRenderer.chunksUpdated = 0;
 				var23 += 1000L;
 				var28 = 0;
@@ -358,6 +361,15 @@ public final class Minecraft implements Runnable {
 	}
 
 	private void runTick() {
+		mc = this;
+
+		this.levelSave();
+		
+		if(this.playerController instanceof PlayerControllerCreative) {
+			for(int var1 = 0; var1 < 9; var1++) {
+				this.thePlayer.inventory.mainInventory[var1].stackSize = 64;
+			}
+		}
 		
 		if(!this.inventoryScreen) {
 			this.mouseHelper.ungrabMouse();
@@ -506,7 +518,7 @@ public final class Minecraft implements Runnable {
 										this.options.thirdPersonView = !this.options.thirdPersonView;
 									}
 
-									if(GL11.getEventKey() == this.options.keyBindInventory.keyCode) {
+									if(GL11.getEventKey() == this.options.keyBindInventory.keyCode && !(this.playerController instanceof PlayerControllerCreative)) {
 										this.displayGuiScreen(new GuiInventory(this.thePlayer.inventory));
 									}
 
@@ -578,6 +590,29 @@ public final class Minecraft implements Runnable {
 		}
 
 	}
+	
+	public int ticksUntilSave = 6000;
+	public int ticksUntilSave2 = 100;
+	public static int inventoryTicks = 0;
+
+	private void levelSave() {
+		if(this.theWorld == null) {
+			ticksUntilSave = this.ticksRan + 6000;
+			this.ticksUntilSave2 = this.ticksRan + 100;
+		}
+		
+		if(this.ticksRan >= this.ticksUntilSave2 && this.theWorld != null && this.currentScreen instanceof GuiContainer) {
+			this.ticksUntilSave2 = this.ticksRan + 100;
+			LevelLoader loader = new LevelLoader();
+			loader.save();
+		}
+		
+		if(this.ticksRan >= this.ticksUntilSave) {
+			LevelLoader loader = new LevelLoader();
+			loader.save();
+			ticksUntilSave = this.ticksRan + 6000;
+		}
+	}
 
 	public final void generateLevel(int var1, int var2, int var3, int var4) {
 		this.setLevel((World)null);
@@ -614,6 +649,9 @@ public final class Minecraft implements Runnable {
 		
 		if(var1 != null) {
 			var1.load();
+			//PlayerControllerCreative creative = new PlayerControllerCreative(this);
+			//creative.onWorldChange(var1);
+			this.playerController = new PlayerControllerSP(this);
 			this.playerController.onWorldChange(var1);
 			this.thePlayer = (EntityPlayerSP)var1.findSubclassOf(EntityPlayerSP.class);
 			var1.playerEntity = this.thePlayer;
@@ -647,6 +685,10 @@ public final class Minecraft implements Runnable {
 			} else {
 				this.textureLavaFX.textureId = var4;
 			}
+		}
+		
+		if(this.thePlayer != null && LevelStorageManager.levelStorage != null) {
+			this.thePlayer.readEntityFromNBT(LevelStorageManager.levelStorage);
 		}
 
 		System.gc();

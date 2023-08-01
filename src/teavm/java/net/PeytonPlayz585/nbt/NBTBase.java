@@ -39,11 +39,12 @@ public abstract class NBTBase {
 
 	public static void writeTag(NBTBase var0, DataOutput var1) throws IOException {
 		var1.writeByte(var0.getType());
-		if(var0.getType() != 0) {
-			byte[] var2 = var0.getKey().getBytes("UTF-8");
-			var1.writeShort(var2.length);
-			var1.write(var2);
+		if (var0.getType() == 0) {
+			return;
+		} else {
+			var1.writeUTF(var0.getKey());
 			var0.writeTagContents(var1);
+			return;
 		}
 	}
 

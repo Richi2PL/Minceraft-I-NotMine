@@ -39,7 +39,7 @@ public class EntityPlayerSP extends EntityPlayer {
 		super.onLivingUpdate();
 	}
 
-	protected final void writeEntityToNBT(NBTTagCompound var1) {
+	public final void writeEntityToNBT(NBTTagCompound var1) {
 		super.writeEntityToNBT(var1);
 		var1.setInteger("Score", this.getScore);
 		InventoryPlayer var10002 = this.inventory;
@@ -69,7 +69,7 @@ public class EntityPlayerSP extends EntityPlayer {
 		var1.setTag("Inventory", var2);
 	}
 
-	protected final void readEntityFromNBT(NBTTagCompound var1) {
+	public final void readEntityFromNBT(NBTTagCompound var1) {
 		super.readEntityFromNBT(var1);
 		this.getScore = var1.getInteger("Score");
 		NBTTagList var6 = var1.getTagList("Inventory");

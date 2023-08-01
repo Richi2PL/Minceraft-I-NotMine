@@ -8,7 +8,7 @@ import java.util.Iterator;
 import java.util.Map;
 
 public final class NBTTagCompound extends NBTBase {
-	private Map tagMap = new HashMap();
+	public Map tagMap = new HashMap();
 
 	final void writeTagContents(DataOutput var1) throws IOException {
 		Iterator var2 = this.tagMap.values().iterator();

@@ -93,7 +93,7 @@ public abstract class Render {
 				float var7 = var3;
 				float var6 = var2;
 				Render var27 = this;
-				GL11.glEnable(GL11.GL_BLEND);
+				GL11.glAlphaFunc(516, 0.1F);
 				RenderEngine var10 = this.renderManager.renderEngine;
 				RenderEngine.bindTexture(var10.getTexture("%clamp%/shadow.png"));
 				World var11 = this.renderManager.worldObj;
@@ -172,7 +172,9 @@ public abstract class Render {
 			}
 
 			var35.draw();
+			GL11.flipLightMatrix();
 			GL11.glPopMatrix();
+			GL11.flipLightMatrix();
 			GL11.glEnable(GL11.GL_LIGHTING);
 		}
 

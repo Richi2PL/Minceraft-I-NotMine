@@ -9,8 +9,8 @@ import util.IProgressUpdate;
 public final class PlayerLoader extends LevelLoader {
 	private Minecraft mc;
 
-	public PlayerLoader(Minecraft var1, IProgressUpdate var2) {
-		super(var2);
+	public PlayerLoader(Minecraft var1) {
+		super();
 		this.mc = var1;
 	}
 

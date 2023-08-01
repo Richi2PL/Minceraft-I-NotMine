@@ -127,9 +127,9 @@ public class GuiLoadLevel extends GuiScreen implements Runnable {
 	protected void openLevel(File var1) {
 		try {
 			FileInputStream var4 = new FileInputStream(var1);
-			World var2 = (new PlayerLoader(this.mc, this.mc.loadingScreen)).load(var4);
+			//World var2 = (new PlayerLoader(this.mc, this.mc.loadingScreen)).load(var4);
 			var4.close();
-			this.mc.setLevel(var2);
+			//this.mc.setLevel(var2);
 		} catch (IOException var3) {
 			var3.printStackTrace();
 		}

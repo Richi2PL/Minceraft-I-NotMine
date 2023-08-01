@@ -7,6 +7,7 @@ import net.PeytonPlayz585.math.MathHelper;
 import net.PeytonPlayz585.nbt.NBTTagCompound;
 import net.PeytonPlayz585.nbt.NBTTagFloat;
 import net.PeytonPlayz585.nbt.NBTTagList;
+import net.PeytonPlayz585.storage.LevelStorageManager;
 import net.minecraft.game.entity.misc.EntityItem;
 import net.minecraft.game.entity.player.EntityPlayer;
 import net.minecraft.game.item.ItemStack;
@@ -65,7 +66,11 @@ public abstract class Entity {
 
 	public Entity(World var1) {
 		this.worldObj = var1;
-		this.setPosition(0.0F, 0.0F, 0.0F);
+		if(this instanceof EntityPlayer && LevelStorageManager.levelStorage != null) {
+			this.setPosition(LevelStorageManager.levelStorage.getFloat("player-x"), LevelStorageManager.levelStorage.getFloat("player-y"), LevelStorageManager.levelStorage.getFloat("player-z"));
+		} else {
+			this.setPosition(0.0F, 0.0F, 0.0F);
+		}
 	}
 
 	protected void preparePlayerToSpawn() {
@@ -74,7 +79,11 @@ public abstract class Entity {
 			float var2 = (float)this.worldObj.ySpawn;
 
 			for(float var3 = (float)this.worldObj.zSpawn + 0.5F; var2 > 0.0F; ++var2) {
-				this.setPosition(var1, var2, var3);
+				if(this instanceof EntityPlayer && LevelStorageManager.levelStorage != null) {
+					this.setPosition(LevelStorageManager.levelStorage.getFloat("player-x"), LevelStorageManager.levelStorage.getFloat("player-y"), LevelStorageManager.levelStorage.getFloat("player-z"));
+				} else {
+					this.setPosition(var1, var2, var3);
+				}
 				if(this.worldObj.getCollidingBoundingBoxes(this.boundingBox).size() == 0) {
 					break;
 				}

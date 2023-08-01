@@ -29,8 +29,6 @@ public final class WorldRenderer {
 	private AxisAlignedBB rendererBoundingBox;
 	private RenderBlocks renderBlocks;
 	public boolean isVisible = true;
-	public boolean isWaitingOnOcclusionQuery;
-	public int glOcclusionQuery;
 
 	public WorldRenderer(World var1, int var2, int var3, int var4, int var5, int var6) {
 		this.renderBlocks = new RenderBlocks(var1);
@@ -139,9 +137,5 @@ public final class WorldRenderer {
 
 	public final void updateInFrustrum(ICamera var1) {
 		this.isInFrustrum = var1.isBoundingBoxInFrustrum(this.rendererBoundingBox);
-	}
-
-	public final void callOcclusionQueryList() {
-		GL11.glCallList(this.glRenderList + 2);
 	}
 }

@@ -1,17 +1,14 @@
 package net.minecraft.game.level;
 
-import java.io.DataOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
 import java.util.Iterator;
-import java.util.zip.GZIPOutputStream;
+import java.util.Random;
 
-import net.PeytonPlayz585.nbt.NBTBase;
 import net.PeytonPlayz585.nbt.NBTTagCompound;
 import net.PeytonPlayz585.nbt.NBTTagList;
 import net.PeytonPlayz585.nbt.NBTTagShort;
-import net.minecraft.client.LoadingScreenRenderer;
+import net.PeytonPlayz585.storage.LevelStorageManager;
+import net.minecraft.client.Minecraft;
 import net.minecraft.game.entity.Entity;
 import net.minecraft.game.entity.EntityPainting;
 import net.minecraft.game.entity.animal.EntityPig;
@@ -26,25 +23,31 @@ import net.minecraft.game.level.block.Block;
 import net.minecraft.game.level.block.tileentity.TileEntity;
 import net.minecraft.game.level.block.tileentity.TileEntityChest;
 import net.minecraft.game.level.block.tileentity.TileEntityFurnace;
-import util.IProgressUpdate;
 
-public abstract class LevelLoader {
-	private IProgressUpdate guiLoading;
+public class LevelLoader {
 
-	public LevelLoader(IProgressUpdate var1) {
-		this.guiLoading = var1;
-	}
-
-	public final World load(InputStream var1) throws IOException {
-		if(this.guiLoading != null) {
-			this.guiLoading.displayProgressMessage("Loading level");
+	public final World load() {
+		String[] randomText = new String[]{"Hi from PeytonPlayz585", "You Eagler!", "Setting up World", ":)", "Isn't Indev the best version?", "I hate Microsoft!", "Notch is the best!", "PeytonPlayz585!", "Random text lol...", "Spam ping Winix!", "Ghost ping Winix!", "DM Winix for no reason!", "Spam ping Winix lol!", "Ghost ping Winix!", "DM Winix for no reason!", "PeytonPlayz585's Birthday is 10/11", "Yee!", "WebGL 2.0!", "ShadowCraft!"};
+		Minecraft.getMinecraft().loadingScreen.displayProgressMessage("Loading level");
+		Minecraft.getMinecraft().loadingScreen.displayLoadingString(randomText[(int)(Math.random() * (double)randomText.length)]);
+		Minecraft.getMinecraft().loadingScreen.setLoadingProgress(25);
+		
+		try {
+			Thread.sleep(3000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
 		}
 
-		if(this.guiLoading != null) {
-			this.guiLoading.displayLoadingString("Reading..");
+		Minecraft.getMinecraft().loadingScreen.displayLoadingString("Reading..");
+		Minecraft.getMinecraft().loadingScreen.setLoadingProgress(50);
+		
+		try {
+			Thread.sleep(1000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
 		}
 
-		NBTTagCompound var13 = LoadingScreenRenderer.writeLevelTags(var1);
+		NBTTagCompound var13 = LevelStorageManager.levelStorage;
 		NBTTagCompound var2 = var13.getCompoundTag("About");
 		NBTTagCompound var3 = var13.getCompoundTag("Map");
 		NBTTagCompound var4 = var13.getCompoundTag("Environment");
@@ -53,10 +56,15 @@ public abstract class LevelLoader {
 		short var7 = var3.getShort("Length");
 		short var8 = var3.getShort("Height");
 		World var9 = new World();
-		if(this.guiLoading != null) {
-			this.guiLoading.displayLoadingString("Preparing level..");
+		Minecraft.getMinecraft().loadingScreen.displayLoadingString("Preparing level..");
+		Minecraft.getMinecraft().loadingScreen.setLoadingProgress(75);
+		
+		try {
+			Thread.sleep(1000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
 		}
-
+		
 		NBTTagList var10 = var3.getTagList("Spawn");
 		var9.xSpawn = ((NBTTagShort)var10.tagAt(0)).shortValue;
 		var9.ySpawn = ((NBTTagShort)var10.tagAt(1)).shortValue;
@@ -83,10 +91,15 @@ public abstract class LevelLoader {
 		var9.worldTime = var4.getShort("TimeOfDay");
 		var9.skylightSubtracted = var9.getSkyBrightness();
 		var9.generate(var6, var8, var7, var3.getByteArray("Blocks"), var3.getByteArray("Data"));
-		if(this.guiLoading != null) {
-			this.guiLoading.displayLoadingString("Preparing entities..");
+		Minecraft.getMinecraft().loadingScreen.displayLoadingString("Preparing entities..");
+		Minecraft.getMinecraft().loadingScreen.setLoadingProgress(100);
+		
+		try {
+			Thread.sleep(1000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
 		}
-
+		
 		for(int var16 = 0; var16 < var5.tagCount(); ++var16) {
 			try {
 				var3 = (NBTTagCompound)var5.tagAt(var16);
@@ -134,14 +147,16 @@ public abstract class LevelLoader {
 		return (Entity)(var2.equals("Pig") ? new EntityPig(var1) : (var2.equals("Sheep") ? new EntitySheep(var1) : (var2.equals("Creeper") ? new EntityCreeper(var1) : (var2.equals("Skeleton") ? new EntitySkeleton(var1) : (var2.equals("Spider") ? new EntitySpider(var1) : (var2.equals("Zombie") ? new EntityZombie(var1) : (var2.equals("Giant") ? new EntityGiantZombie(var1) : (var2.equals("Item") ? new EntityItem(var1) : (var2.equals("Painting") ? new EntityPainting(var1) : null)))))))));
 	}
 
-	public final void save(World var1, OutputStream var2) throws IOException {
-		if(this.guiLoading != null) {
-			this.guiLoading.displayProgressMessage("Saving level");
-		}
+	public final void save() {
+//		if(this.guiLoading != null) {
+//			this.guiLoading.displayProgressMessage("Saving level");
+//		}
 
-		if(this.guiLoading != null) {
-			this.guiLoading.displayLoadingString("Preparing level..");
-		}
+//		if(this.guiLoading != null) {
+//			this.guiLoading.displayLoadingString("Preparing level..");
+//		}
+		
+		World var1 = Minecraft.getMinecraft().theWorld;
 
 		NBTTagCompound var3 = new NBTTagCompound();
 		var3.setInteger("CloudColor", var1.cloudColor);
@@ -169,12 +184,12 @@ public abstract class LevelLoader {
 		var15.setString("Author", var1.authorName);
 		var15.setString("Name", var1.name);
 		var15.setLong("CreatedOn", var1.createTime);
-		if(this.guiLoading != null) {
-			this.guiLoading.displayLoadingString("Preparing entities..");
-		}
+//		if(this.guiLoading != null) {
+//			this.guiLoading.displayLoadingString("Preparing entities..");
+//		}
 
 		NBTTagList var6 = new NBTTagList();
-		Iterator var7 = var1.entityMap.entities.iterator();
+		Iterator<?> var7 = var1.entityMap.entities.iterator();
 
 		while(var7.hasNext()) {
 			Entity var8 = (Entity)var7.next();
@@ -186,7 +201,7 @@ public abstract class LevelLoader {
 		}
 
 		NBTTagList var16 = new NBTTagList();
-		Iterator var17 = var1.map.keySet().iterator();
+		Iterator<?> var17 = var1.map.keySet().iterator();
 
 		while(var17.hasNext()) {
 			int var19 = ((Integer)var17.next()).intValue();
@@ -204,18 +219,27 @@ public abstract class LevelLoader {
 		var18.setCompoundTag("Environment", var3);
 		var18.setTag("Entities", var6);
 		var18.setTag("TileEntities", var16);
-		if(this.guiLoading != null) {
-			this.guiLoading.displayLoadingString("Writing..");
-		}
-
-		NBTTagCompound var13 = var18;
-		DataOutputStream var14 = new DataOutputStream(new GZIPOutputStream(var2));
-
-		try {
-			NBTBase.writeTag(var13, var14);
-		} finally {
-			var14.close();
-		}
-
+		
+		var18.setFloat("player-x", Minecraft.getMinecraft().thePlayer.posX);
+		var18.setFloat("player-y", Minecraft.getMinecraft().thePlayer.posY);
+		var18.setFloat("player-z", Minecraft.getMinecraft().thePlayer.posZ);
+		
+		Minecraft.getMinecraft().thePlayer.writeEntityToNBT(var18);
+		
+//		if(this.guiLoading != null) {
+//			this.guiLoading.displayLoadingString("Writing..");
+//		}
+		
+		LevelStorageManager.levelStorage = var18;
+		new Thread(new Runnable() {
+			@Override
+			public void run() {
+				try {
+					LevelStorageManager.saveLevelData();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+		}).run(); 
 	}
 }

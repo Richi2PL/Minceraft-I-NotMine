@@ -11,7 +11,7 @@ import net.minecraft.game.level.block.Block;
 public final class PlayerControllerCreative extends PlayerController {
 	private MobSpawner mobSpawner;
 
-	private PlayerControllerCreative(Minecraft var1) {
+	public PlayerControllerCreative(Minecraft var1) {
 		super(var1);
 	}
 

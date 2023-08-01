@@ -6,6 +6,7 @@ import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 
+import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.WebGL;
 
 import net.PeytonPlayz585.minecraft.Base64;
@@ -48,24 +49,16 @@ public class LocalStorageManager {
 		
 	}
 	
-	public static void saveStorageG() {
-		try {
-			ByteArrayOutputStream s = new ByteArrayOutputStream();
-			NBTBase.writeTag(gameSettingsStorage, new DataOutputStream(s));
-			WebGL.saveLocalStorage("g", s.toByteArray());
-		} catch (IOException e) {
-			;
-		}
+	public static void saveStorageG() throws IOException {
+		ByteArrayOutputStream s = new ByteArrayOutputStream();
+		NBTBase.writeTag(gameSettingsStorage, new DataOutputStream(s));
+		WebGL.saveLocalStorage("g", s.toByteArray());
 	}
 	
-	public static void saveStorageP() {
-		try {
-			ByteArrayOutputStream s = new ByteArrayOutputStream();
-			NBTBase.writeTag(profileSettingsStorage, new DataOutputStream(s));
-			WebGL.saveLocalStorage("p", s.toByteArray());
-		} catch (IOException e) {
-			;
-		}
+	public static void saveStorageP() throws IOException {
+		ByteArrayOutputStream s = new ByteArrayOutputStream();
+		NBTBase.writeTag(profileSettingsStorage, new DataOutputStream(s));
+		WebGL.saveLocalStorage("p", s.toByteArray());
 	}
 	
 	public static String dumpConfiguration() {

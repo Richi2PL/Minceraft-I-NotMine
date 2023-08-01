@@ -1,9 +1,24 @@
 package net.minecraft.client.gui;
 
+import net.PeytonPlayz585.nbt.NBTTagCompound;
+import net.PeytonPlayz585.storage.LevelStorageManager;
 import net.minecraft.client.player.EntityPlayerSP;
+
+import java.io.IOException;
+
 import org.lwjgl.opengl.GL11;
 
 public final class GuiGameOver extends GuiScreen {
+	
+	public GuiGameOver() {
+		LevelStorageManager.levelStorage = new NBTTagCompound();
+		try {
+			LevelStorageManager.saveLevelData();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
 	public final void initGui() {
 		this.controlList.clear();
 		this.controlList.add(new GuiButton(1, this.width / 2 - 100, this.height / 4 + 72, "Generate new level..."));

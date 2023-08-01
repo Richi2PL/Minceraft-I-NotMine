@@ -34,7 +34,7 @@ public final class GuiSaveLevel extends GuiLoadLevel {
 	protected final void openLevel(File var1) {
 		try {
 			FileOutputStream var3 = new FileOutputStream(var1);
-			(new PlayerLoader(this.mc, this.mc.loadingScreen)).save(this.mc.theWorld, var3);
+			//(new PlayerLoader(this.mc, this.mc.loadingScreen)).save(this.mc.theWorld, var3);
 			var3.close();
 		} catch (IOException var2) {
 			var2.printStackTrace();

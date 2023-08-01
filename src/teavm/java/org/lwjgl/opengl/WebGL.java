@@ -65,9 +65,8 @@ import net.PeytonPlayz585.math.MathHelper;
 import net.PeytonPlayz585.minecraft.AssetRepository;
 import net.PeytonPlayz585.minecraft.Base64;
 import net.PeytonPlayz585.minecraft.MinecraftImage;
+import net.PeytonPlayz585.storage.IndexedDBFilesystem;
 import net.PeytonPlayz585.storage.LocalStorageManager;
-//import net.PeytonPlayz585.teavm.IndexedDBFilesystem;
-//import net.PeytonPlayz585.teavm.IndexedDBFilesystem.OpenState;
 import net.PeytonPlayz585.teavm.WebGL2RenderingContext;
 import net.PeytonPlayz585.teavm.WebGLQuery;
 import net.PeytonPlayz585.teavm.WebGLVertexArray;
@@ -116,7 +115,7 @@ public class WebGL {
 		}
 	}
 	
-	public static void onWindowUnload() {
+	public static void onWindowUnload() throws IOException {
 		LocalStorageManager.saveStorageG();
 		LocalStorageManager.saveStorageP();
 	}
@@ -319,15 +318,15 @@ public class WebGL {
 		onBeforeCloseRegister();
 		initFileChooser();
 		
-//		OpenState st = IndexedDBFilesystem.initialize();
-//		if(st != OpenState.OPENED) {
-//			if(st == OpenState.LOCKED) {
-//				MinecraftMain.showDatabaseLockedScreen("\nError: World folder is locked!\n\nYou are already playing Minecraft in a different Window.\nClose all other Minecraft instances and reload");
-//			}else {
-//				MinecraftMain.showDatabaseLockedScreen("\nError: World folder could not be loaded!\n\n" + IndexedDBFilesystem.errorDetail());
-//			}
-//			throw new MinecraftMain.AbortedLaunchException();
-//		}
+		IndexedDBFilesystem.OpenState st = IndexedDBFilesystem.initialize();
+		if(st != IndexedDBFilesystem.OpenState.OPENED) {
+			if(st == IndexedDBFilesystem.OpenState.LOCKED) {
+				MinecraftMain.showDatabaseLockedScreen("\nError: World folder is locked!\n\nYou are already playing Minecraft in a different Window.\nClose all other Minecraft instances and reload");
+			}else {
+				MinecraftMain.showDatabaseLockedScreen("\nError: World folder could not be loaded!\n\n" + IndexedDBFilesystem.errorDetail());
+			}
+			throw new MinecraftMain.AbortedLaunchException();
+		}
 		
 		downloadAssetPack(assetPackageURI);
 		
@@ -1887,57 +1886,57 @@ public class WebGL {
 	@JSBody(params = { "obj" }, script = "return typeof obj === \"string\";")
 	private static native boolean isString(JSObject obj);
 	
-//	public static final boolean fileExists(String path) {
-//		return IndexedDBFilesystem.fileExists(path);
-//	}
-//	
-//	public static final boolean directoryExists(String path) {
-//		return IndexedDBFilesystem.directoryExists(path);
-//	}
-//	
-//	public static final boolean pathExists(String path) {
-//		return IndexedDBFilesystem.pathExists(path);
-//	}
-//	
-//	public static final void writeFile(String path, byte[] data) {
-//		IndexedDBFilesystem.writeFile(path, data);
-//	}
-//	
-//	public static final byte[] readFile(String path) {
-//		return IndexedDBFilesystem.readFile(path);
-//	}
-//	
-//	public static final long getLastModified(String path) {
-//		return IndexedDBFilesystem.getLastModified(path);
-//	}
-//	
-//	public static final int getFileSize(String path) {
-//		return IndexedDBFilesystem.getFileSize(path);
-//	}
-//	
-//	public static final void renameFile(String oldPath, String newPath) {
-//		IndexedDBFilesystem.renameFile(oldPath, newPath);
-//	}
-//	
-//	public static final void copyFile(String oldPath, String newPath) {
-//		IndexedDBFilesystem.copyFile(oldPath, newPath);
-//	}
-//	
-//	public static final void deleteFile(String path) {
-//		IndexedDBFilesystem.deleteFile(path);
-//	}
-//
-//	public static final Collection<FileEntry> listFiles(String path, boolean listDirs, boolean recursiveDirs) {
-//		return IndexedDBFilesystem.listFiles(path, listDirs, recursiveDirs);
-//	}
+	public static final boolean fileExists(String path) {
+		return IndexedDBFilesystem.fileExists(path);
+	}
 	
-//	public static final Collection<FileEntry> listFilesAndDirectories(String path) {
-//		return listFiles(path, true, false);
-//	}
-//	
-//	public static final Collection<FileEntry> listFilesRecursive(String path) {
-//		return listFiles(path, false, true);
-//	}
+	public static final boolean directoryExists(String path) {
+		return IndexedDBFilesystem.directoryExists(path);
+	}
+	
+	public static final boolean pathExists(String path) {
+		return IndexedDBFilesystem.pathExists(path);
+	}
+	
+	public static final void writeFile(String path, byte[] data) {
+		IndexedDBFilesystem.writeFile(path, data);
+	}
+	
+	public static final byte[] readFile(String path) {
+		return IndexedDBFilesystem.readFile(path);
+	}
+	
+	public static final long getLastModified(String path) {
+		return IndexedDBFilesystem.getLastModified(path);
+	}
+	
+	public static final int getFileSize(String path) {
+		return IndexedDBFilesystem.getFileSize(path);
+	}
+	
+	public static final void renameFile(String oldPath, String newPath) {
+		IndexedDBFilesystem.renameFile(oldPath, newPath);
+	}
+	
+	public static final void copyFile(String oldPath, String newPath) {
+		IndexedDBFilesystem.copyFile(oldPath, newPath);
+	}
+	
+	public static final void deleteFile(String path) {
+		IndexedDBFilesystem.deleteFile(path);
+	}
+
+	public static final Collection<FileEntry> listFiles(String path, boolean listDirs, boolean recursiveDirs) {
+		return IndexedDBFilesystem.listFiles(path, listDirs, recursiveDirs);
+	}
+	
+	public static final Collection<FileEntry> listFilesAndDirectories(String path) {
+		return listFiles(path, true, false);
+	}
+	
+	public static final Collection<FileEntry> listFilesRecursive(String path) {
+		return listFiles(path, false, true);
+	}
 
 	public static class FileEntry {
 		

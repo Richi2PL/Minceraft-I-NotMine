@@ -151,13 +151,15 @@ public final class GuiIngame extends Gui {
 		RenderHelper.disableStandardItemLighting();
 		GL11.glDisable(GL11.GL_NORMALIZE);
 		if(this.mc.options.showFPS) {
-			var4.drawStringWithShadow("Minecraft Indev (" + this.mc.debug + ")", 2, 2, 16777215);
+			var4.drawStringWithShadow("Minecraft Indev (Made by PeytonPlayz585)", 2, 2, 16777215);
 			Minecraft var23 = this.mc;
-			var4.drawStringWithShadow(var23.renderGlobal.getDebugInfoRenders(), 2, 12, 16777215);
+			var4.drawStringWithShadow(this.mc.debug, 2, 12, 16777215);
 			var23 = this.mc;
-			var4.drawStringWithShadow(var23.renderGlobal.getDebugInfoEntities(), 2, 22, 16777215);
+			var4.drawStringWithShadow(var23.renderGlobal.getDebugInfoRenders(), 2, 22, 16777215);
 			var23 = this.mc;
-			var4.drawStringWithShadow("P: " + var23.effectRenderer.getStatistics() + ". T: " + var23.theWorld.debugSkylightUpdates(), 2, 32, 16777215);
+			var4.drawStringWithShadow(var23.renderGlobal.getDebugInfoEntities(), 2, 32, 16777215);
+			var23 = this.mc;
+			var4.drawStringWithShadow("P: " + var23.effectRenderer.getStatistics() + ". T: " + var23.theWorld.debugSkylightUpdates(), 2, 42, 16777215);
 			long var24 = GL11.maxMemory();
 			long var27 = GL11.totalMemory();
 			long var28 = GL11.freeMemory();
@@ -167,7 +169,7 @@ public final class GuiIngame extends Gui {
 			var18 = "Allocated memory: " + var27 * 100L / var24 + "% (" + var27 / 1024L / 1024L + "MB)";
 			drawString(var4, var18, var3 - var4.getStringWidth(var18) - 2, 12, 14737632);
 		} else {
-			var4.drawStringWithShadow("Minecraft Indev", 2, 2, 16777215);
+			var4.drawStringWithShadow("Minecraft Indev (Made by PeytonPlayz585)", 2, 2, 16777215);
 		}
 
 		for(var12 = 0; var12 < this.chatMessageList.size() && var12 < 10; ++var12) {

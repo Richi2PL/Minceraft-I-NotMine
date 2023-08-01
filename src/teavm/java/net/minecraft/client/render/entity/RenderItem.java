@@ -36,7 +36,9 @@ public final class RenderItem extends Render {
 				GL11.glRotatef(210.0F, 1.0F, 0.0F, 0.0F);
 				GL11.glRotatef(45.0F, 0.0F, 1.0F, 0.0F);
 				GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
+				GL11.flipLightMatrix();
 				this.renderBlocks.renderBlockOnInventory(var8);
+				GL11.flipLightMatrix();
 				GL11.glPopMatrix();
 			} else {
 				if(var2.getItem().getIconIndex() >= 0) {
@@ -155,7 +157,9 @@ public final class RenderItem extends Render {
 					GL11.glTranslatef(var4, var5, var6);
 				}
 
+				GL11.flipLightMatrix();
 				var12.renderBlocks.renderBlockOnInventory(Block.blocksList[var7.itemID]);
+				GL11.flipLightMatrix();
 				GL11.glPopMatrix();
 			}
 		} else {
@@ -189,7 +193,9 @@ public final class RenderItem extends Render {
 				var15.addVertexWithUV(0.5F, -0.25F, 0.0F, var5, var2);
 				var15.addVertexWithUV(0.5F, 12.0F / 16.0F, 0.0F, var5, var6);
 				var15.addVertexWithUV(-0.5F, 12.0F / 16.0F, 0.0F, var4, var6);
+				GL11.flipLightMatrix();
 				var15.draw();
+				GL11.flipLightMatrix();
 				GL11.glPopMatrix();
 			}
 		}

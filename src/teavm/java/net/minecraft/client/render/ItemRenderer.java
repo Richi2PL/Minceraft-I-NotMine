@@ -30,7 +30,9 @@ public final class ItemRenderer {
 		GL11.glPushMatrix();
 		GL11.glRotatef(var3.prevRotationPitch + (var3.rotationPitch - var3.prevRotationPitch) * var1, 1.0F, 0.0F, 0.0F);
 		GL11.glRotatef(var3.prevRotationYaw + (var3.rotationYaw - var3.prevRotationYaw) * var1, 0.0F, 1.0F, 0.0F);
+		GL11.flipLightMatrix();
 		RenderHelper.enableStandardItemLighting();
+		GL11.flipLightMatrix();
 		GL11.glPopMatrix();
 		float var9 = this.mc.theWorld.getLightBrightness((int)var3.posX, (int)var3.posY, (int)var3.posZ);
 		GL11.glColor4f(var9, var9, var9, 1.0F);
@@ -155,7 +157,9 @@ public final class ItemRenderer {
 					var11.addVertexWithUV(1.0F, var7, -(1.0F / 16.0F), var5, var8);
 				}
 
+				GL11.flipLightMatrix();
 				var11.draw();
+				GL11.flipLightMatrix();
 				GL11.glDisable(GL11.GL_NORMALIZE);
 			}
 
@@ -189,12 +193,16 @@ public final class ItemRenderer {
 			GL11.glTranslatef(6.0F, 0.0F, 0.0F);
 			Render var13 = RenderManager.instance.getEntityRenderObject(this.mc.thePlayer);
 			RenderPlayer var12 = (RenderPlayer)var13;
+			GL11.flipLightMatrix();
 			var12.drawFirstPersonHand();
+			GL11.flipLightMatrix();
 			GL11.glPopMatrix();
 		}
 
 		GL11.glDisable(GL11.GL_NORMALIZE);
+		GL11.flipLightMatrix();
 		RenderHelper.disableStandardItemLighting();
+		GL11.flipLightMatrix();
 	}
 
 	public final void renderOverlays(float var1) {
@@ -227,7 +235,9 @@ public final class ItemRenderer {
 				var3.addVertexWithUV(0.5F, -0.5F, -0.5F, var6, var9);
 				var3.addVertexWithUV(0.5F, 0.5F, -0.5F, var6, var7);
 				var3.addVertexWithUV(-0.5F, 0.5F, -0.5F, var10, var7);
+				GL11.flipLightMatrix();
 				var3.draw();
+				GL11.flipLightMatrix();
 				GL11.glPopMatrix();
 			}
 
@@ -251,7 +261,9 @@ public final class ItemRenderer {
 			var3.addVertexWithUV(1.0F, -1.0F, -0.5F, var7 + 0.0F, var9 + 4.0F);
 			var3.addVertexWithUV(1.0F, 1.0F, -0.5F, var7 + 0.0F, var9 + 0.0F);
 			var3.addVertexWithUV(-1.0F, 1.0F, -0.5F, var7 + 4.0F, var9 + 0.0F);
+			GL11.flipLightMatrix();
 			var3.draw();
+			GL11.flipLightMatrix();
 			GL11.glPopMatrix();
 			GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
 			GL11.glDisable(GL11.GL_BLEND);

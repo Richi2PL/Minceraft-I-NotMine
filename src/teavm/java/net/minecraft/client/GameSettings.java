@@ -1,6 +1,11 @@
 package net.minecraft.client;
 
+import java.io.IOException;
+
 import org.lwjgl.opengl.GL11;
+
+import net.PeytonPlayz585.nbt.NBTTagCompound;
+import net.PeytonPlayz585.storage.LocalStorageManager;
 
 public final class GameSettings {
 	private static final String[] RENDER_DISTANCES = new String[]{"FAR", "NORMAL", "SHORT", "TINY"};
@@ -25,15 +30,11 @@ public final class GameSettings {
 	public KeyBinding keyBindSave = new KeyBinding("Save location", 28);
 	public KeyBinding keyBindLoad = new KeyBinding("Load location", 19);
 	public KeyBinding[] keyBindings = new KeyBinding[]{this.keyBindForward, this.keyBindLeft, this.keyBindBack, this.keyBindRight, this.keyBindJump, this.keyBindDrop, this.keyBindInventory, this.keyBindChat, this.keyBindToggleFog, this.keyBindSave, this.keyBindLoad};
-	private Minecraft mc;
-//	private File optionsFile;
 	public int numberOfOptions = 9;
 	public int difficulty = 2;
 	public boolean thirdPersonView = false;
 
-	public GameSettings(Minecraft var1) {
-		this.mc = var1;
-//		this.optionsFile = new File(var2, "options.txt");
+	public GameSettings() {
 		this.loadOptions();
 	}
 
@@ -91,88 +92,73 @@ public final class GameSettings {
 	}
 
 	private void loadOptions() {
-//		try {
-//			if(this.optionsFile.exists()) {
-//				BufferedReader var1 = new BufferedReader(new FileReader(this.optionsFile));
-//
-//				while(true) {
-//					String var2 = var1.readLine();
-//					if(var2 == null) {
-//						var1.close();
-//						return;
-//					}
-//
-//					String[] var5 = var2.split(":");
-//					if(var5[0].equals("music")) {
-//						this.music = var5[1].equals("true");
-//					}
-//
-//					if(var5[0].equals("sound")) {
-//						this.sound = var5[1].equals("true");
-//					}
-//
-//					if(var5[0].equals("invertYMouse")) {
-//						this.invertMouse = var5[1].equals("true");
-//					}
-//
-//					if(var5[0].equals("showFrameRate")) {
-//						this.showFPS = var5[1].equals("true");
-//					}
-//
-//					if(var5[0].equals("viewDistance")) {
-//						this.renderDistance = Integer.parseInt(var5[1]);
-//					}
-//
-//					if(var5[0].equals("bobView")) {
-//						this.fancyGraphics = var5[1].equals("true");
-//					}
-//
-//					if(var5[0].equals("anaglyph3d")) {
-//						this.anaglyph = var5[1].equals("true");
-//					}
-//
-//					if(var5[0].equals("limitFramerate")) {
-//						this.limitFramerate = var5[1].equals("true");
-//					}
-//
-//					if(var5[0].equals("difficulty")) {
-//						this.difficulty = Integer.parseInt(var5[1]);
-//					}
-//
-//					for(int var3 = 0; var3 < this.keyBindings.length; ++var3) {
-//						if(var5[0].equals("key_" + this.keyBindings[var3].keyDescription)) {
-//							this.keyBindings[var3].keyCode = Integer.parseInt(var5[1]);
-//						}
-//					}
-//				}
-//			}
-//		} catch (Exception var4) {
-//			System.out.println("Failed to load options");
-//			var4.printStackTrace();
-//		}
+		NBTTagCompound settingsFile = LocalStorageManager.gameSettingsStorage;
+		
+		if(settingsFile.tagMap.size() == 0) {
+			return;
+		} else {
+			if(settingsFile.hasKey("music")) {
+				this.music = settingsFile.getBoolean("music");
+			}
+			
+			if(settingsFile.hasKey("sound")) {
+				this.sound = settingsFile.getBoolean("sound");
+			}
+			
+			if(settingsFile.hasKey("invertYMouse")) {
+				this.invertMouse = settingsFile.getBoolean("invertYMouse");
+			}
+			
+			if(settingsFile.hasKey("showFrameRate")) {
+				this.showFPS = settingsFile.getBoolean("showFrameRate");
+			}
+			
+			if(settingsFile.hasKey("viewDistance")) {
+				this.renderDistance = settingsFile.getInteger("viewDistance");
+			}
+			
+			if(settingsFile.hasKey("bobView")) {
+				this.fancyGraphics = settingsFile.getBoolean("bobView");
+			}
+			
+			if(settingsFile.hasKey("anaglyph3d")) {
+				this.anaglyph = settingsFile.getBoolean("anaglyph3d");
+			}
+			
+			if(settingsFile.hasKey("limitFramerate")) {
+				this.limitFramerate = settingsFile.getBoolean("music");
+			}
+			
+			if(settingsFile.hasKey("difficulty")) {
+				this.difficulty = settingsFile.getInteger("difficulty");
+			}
+			
+			for(int i = 0; i < keyBindings.length; ++i) {
+				String k = "key_" + keyBindings[i].keyDescription;
+				if(settingsFile.hasKey(k)) keyBindings[i].keyCode = (int)settingsFile.getShort(k) & 0xFFFF;
+			}
+		}
 	}
 
 	public final void saveOptions() {
-//		try {
-//			PrintWriter var1 = new PrintWriter(new FileWriter(this.optionsFile));
-//			var1.println("music:" + this.music);
-//			var1.println("sound:" + this.sound);
-//			var1.println("invertYMouse:" + this.invertMouse);
-//			var1.println("showFrameRate:" + this.showFPS);
-//			var1.println("viewDistance:" + this.renderDistance);
-//			var1.println("bobView:" + this.fancyGraphics);
-//			var1.println("anaglyph3d:" + this.anaglyph);
-//			var1.println("limitFramerate:" + this.limitFramerate);
-//			var1.println("difficulty:" + this.difficulty);
-//
-//			for(int var2 = 0; var2 < this.keyBindings.length; ++var2) {
-//				var1.println("key_" + this.keyBindings[var2].keyDescription + ":" + this.keyBindings[var2].keyCode);
-//			}
-//
-//			var1.close();
-//		} catch (Exception var3) {
-//			System.out.println("Failed to save options");
-//			var3.printStackTrace();
-//		}
+		NBTTagCompound settingsFile = LocalStorageManager.gameSettingsStorage;
+		settingsFile.setBoolean("music", this.music);
+		settingsFile.setBoolean("sound", this.sound);
+		settingsFile.setBoolean("invertYMouse", this.invertMouse);
+		settingsFile.setBoolean("showFrameRate", this.showFPS);
+		settingsFile.setInteger("viewDistance", this.renderDistance);
+		settingsFile.setBoolean("bobView", this.fancyGraphics);
+		settingsFile.setBoolean("anaglyph3d", this.anaglyph);
+		settingsFile.setBoolean("limitFramerate", this.limitFramerate);
+		settingsFile.setInteger("difficulty", this.difficulty);
+		for(int i = 0; i < keyBindings.length; ++i) {
+			String k = "key_" + keyBindings[i].keyDescription;
+			settingsFile.setShort(k, (short)keyBindings[i].keyCode);
+		}
+		try {
+			LocalStorageManager.saveStorageG();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 }

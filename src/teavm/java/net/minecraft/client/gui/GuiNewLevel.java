@@ -1,5 +1,10 @@
 package net.minecraft.client.gui;
 
+import java.io.IOException;
+
+import net.PeytonPlayz585.nbt.NBTTagCompound;
+import net.PeytonPlayz585.storage.LevelStorageManager;
+
 public final class GuiNewLevel extends GuiScreen {
 	private GuiScreen prevGui;
 	private String[] worldType = new String[]{"Inland", "Island", "Floating", "Flat"};
@@ -37,6 +42,13 @@ public final class GuiNewLevel extends GuiScreen {
 		if(var1.id == 5) {
 			this.mc.displayGuiScreen(this.prevGui);
 		} else if(var1.id == 4) {
+			LevelStorageManager.levelStorage = new NBTTagCompound();
+			try {
+				LevelStorageManager.saveLevelData();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			this.mc.ticksUntilSave = this.mc.ticksRan + 6000;
 			this.mc.generateLevel(this.selectedWorldSize, this.selectedWorldShape, this.selectedWorldType, this.selectedWorldTheme);
 			this.mc.displayGuiScreen((GuiScreen)null);
 		} else if(var1.id == 0) {

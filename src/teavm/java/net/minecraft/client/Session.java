@@ -5,7 +5,7 @@ import java.util.List;
 import net.minecraft.game.level.block.Block;
 
 public final class Session {
-	public static List registeredBlocksList;
+	public static List<Block> registeredBlocksList;
 	public String username;
 	public String sessionId;
 
@@ -15,7 +15,7 @@ public final class Session {
 	}
 
 	static {
-		(registeredBlocksList = new ArrayList()).add(Block.stone);
+		(registeredBlocksList = new ArrayList<Block>()).add(Block.stone);
 		registeredBlocksList.add(Block.cobblestone);
 		registeredBlocksList.add(Block.brick);
 		registeredBlocksList.add(Block.dirt);

@@ -1,33 +1,39 @@
 package net.minecraft.client;
 
 import net.PeytonPlayz585.math.MathHelper;
+import net.PeytonPlayz585.storage.LevelStorageManager;
 import net.minecraft.client.gui.GuiButton;
-import net.minecraft.client.gui.GuiLoadLevel;
 import net.minecraft.client.gui.GuiNewLevel;
 import net.minecraft.client.gui.GuiOptions;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.render.Tessellator;
+import net.minecraft.game.item.ItemStack;
+import net.minecraft.game.level.LevelLoader;
+import util.IProgressUpdate;
+
 import org.lwjgl.opengl.GL11;
 
 public final class GuiMainMenu extends GuiScreen {
-	private float updateCounter = 0.0F;
-	private String[] splashes = new String[]{"Pre-beta!", "As seen on TV!", "Awesome!", "100% pure!", "May contain nuts!", "Better than Prey!", "More polygons!", "Sexy!", "Limited edition!", "Flashing letters!", "Made by Notch!", "Coming soon!", "Best in class!", "When it\'s finished!", "Absolutely dragon free!", "Excitement!", "More than 5000 sold!", "One of a kind!", "700+ hits on YouTube!", "Indev!", "Spiders everywhere!", "Check it out!", "Holy cow, man!", "It\'s a game!", "Made in Sweden!", "Uses LWJGL!", "Reticulating splines!", "Minecraft!", "Yaaay!", "Alpha version!", "Singleplayer!", "Keyboard compatible!", "Undocumented!", "Ingots!", "Exploding creepers!", "That\'s not a moon!", "l33t!", "Create!", "Survive!", "Dungeon!", "Exclusive!", "The bee\'s knees!", "Down with O.P.P.!", "Closed source!", "Classy!", "Wow!", "Not on steam!", "9.95 euro!", "Half price!", "Oh man!", "Check it out!", "Awesome community!", "Pixels!", "Teetsuuuuoooo!", "Kaaneeeedaaaa!", "Now with difficulty!", "Enhanced!", "90% bug free!", "Pretty!", "12 herbs and spices!", "Fat free!", "Absolutely no memes!", "Free dental!", "Ask your doctor!", "Minors welcome!", "Cloud computing!", "Legal in Finland!", "Hard to label!", "Technically good!", "Bringing home the bacon!", "Indie!", "GOTY!", "Ceci n\'est pas une title screen!", "Euclidian!", "Now in 3D!", "Inspirational!", "Herregud!", "Complex cellular automata!", "Yes, sir!", "Played by cowboys!", "OpenGL 1.1!", "Thousands of colors!", "Try it!", "Age of Wonders is better!", "Try the mushroom stew!", "Sensational!", "Hot tamale, hot hot tamale!", "Play him off, keyboard cat!", "Guaranteed!", "Macroscopic!", "Bring it on!", "Random splash!", "Call your mother!", "Monster infighting!", "Loved by millions!", "Ultimate edition!", "Freaky!", "You\'ve got a brand new key!", "Water proof!", "Uninflammable!", "Whoa, dude!", "All inclusive!", "Tell your friends!", "NP is not in P!", "Notch <3 Ez!", "Music by C418!"};
-	private String currentSplash = this.splashes[(int)(Math.random() * (double)this.splashes.length)];
+	//private float updateCounter = 0.0F;
+	//private String[] splashes = new String[]{"Pre-beta!", "As seen on TV!", "Awesome!", "100% pure!", "May contain nuts!", "Better than Prey!", "More polygons!", "Sexy!", "Limited edition!", "Flashing letters!", "Made by Notch!", "Coming soon!", "Best in class!", "When it\'s finished!", "Absolutely dragon free!", "Excitement!", "More than 5000 sold!", "One of a kind!", "700+ hits on YouTube!", "Indev!", "Spiders everywhere!", "Check it out!", "Holy cow, man!", "It\'s a game!", "Made in Sweden!", "Uses WebGL!", "Reticulating splines!", "Minecraft!", "Yaaay!", "Indev version!", "Singleplayer!", "Keyboard compatible!", "Undocumented!", "Ingots!", "Exploding creepers!", "That\'s not a moon!", "l33t!", "Create!", "Survive!", "Dungeon!", "Exclusive!", "The bee\'s knees!", "Down with O.P.P.!", "Open source!", "Classy!", "Wow!", "Not on steam!", "9.95 euro!", "Half price!", "Oh man!", "Check it out!", "Awesome community!", "Pixels!", "Teetsuuuuoooo!", "Kaaneeeedaaaa!", "Now with difficulty!", "Enhanced!", "90% bug free!", "Pretty!", "12 herbs and spices!", "Fat free!", "Absolutely no memes!", "Free dental!", "Ask your doctor!", "Minors welcome!", "Cloud computing!", "Legal in Finland!", "Hard to label!", "Technically good!", "Bringing home the bacon!", "Indie!", "GOTY!", "Ceci n\'est pas une title screen!", "Euclidian!", "Now in 3D!", "Inspirational!", "Herregud!", "Complex cellular automata!", "Yes, sir!", "Played by cowboys!", "WebGL 2.0!", "Thousands of colors!", "Try it!", "Age of Wonders is better!", "Try the mushroom stew!", "Sensational!", "Hot tamale, hot hot tamale!", "Play him off, keyboard cat!", "Guaranteed!", "Macroscopic!", "Bring it on!", "Random splash!", "Call your mother!", "Monster infighting!", "Loved by millions!", "Ultimate edition!", "Freaky!", "You\'ve got a brand new key!", "Water proof!", "Uninflammable!", "Whoa, dude!", "All inclusive!", "Tell your friends!", "NP is not in P!", "Notch <3 Ez!", "Music by C418!"};
+	private String currentSplash = "Made by PeytonPlayz585!";
 
-	public final void updateScreen() {
-		this.updateCounter += 0.01F;
-	}
+	//public final void updateScreen() {
+		//this.updateCounter += 0.01F;
+	//}
 
 	protected final void keyTyped(char var1, int var2) {
 	}
 
 	public final void initGui() {
 		this.controlList.clear();
-		this.controlList.add(new GuiButton(1, this.width / 2 - 100, this.height / 4 + 48, "Generate new level..."));
-		this.controlList.add(new GuiButton(2, this.width / 2 - 100, this.height / 4 + 72, "Load level.."));
+		this.controlList.add(new GuiButton(1, this.width / 2 - 100, this.height / 4 + 72, "Generate new level..."));
+		this.controlList.add(new GuiButton(2, this.width / 2 - 100, this.height / 4 + 48, "Load level.."));
 		this.controlList.add(new GuiButton(3, this.width / 2 - 100, this.height / 4 + 96, "Play tutorial level"));
 		this.controlList.add(new GuiButton(0, this.width / 2 - 100, this.height / 4 + 120 + 12, "Options..."));
-		((GuiButton)this.controlList.get(1)).enabled = false;
+		if(LevelStorageManager.levelStorage == null) {
+			((GuiButton)this.controlList.get(1)).enabled = false;	
+		}
 		((GuiButton)this.controlList.get(2)).enabled = false;
 	}
 
@@ -40,8 +46,10 @@ public final class GuiMainMenu extends GuiScreen {
 			this.mc.displayGuiScreen(new GuiNewLevel(this));
 		}
 
-		if(this.mc.session != null && var1.id == 2) {
-			this.mc.displayGuiScreen(new GuiLoadLevel(this));
+		if(var1.id == 2) {
+			LevelLoader loader = new LevelLoader();
+			Minecraft.getMinecraft().setLevel(loader.load());
+			this.mc.displayGuiScreen((GuiScreen)null);
 		}
 
 	}
@@ -61,7 +69,7 @@ public final class GuiMainMenu extends GuiScreen {
 		GL11.glScalef(var15, var15, var15);
 		drawCenteredString(this.fontRenderer, this.currentSplash, 0, -8, 16776960);
 		GL11.glPopMatrix();
-		String var16 = "Copyright Mojang Specifications. Do not distribute.";
+		String var16 = "Fuck Mojang, Distribute to everyone!";
 		drawString(this.fontRenderer, var16, this.width - this.fontRenderer.getStringWidth(var16) - 2, this.height - 10, 16777215);
 		long var7 = GL11.maxMemory();
 		long var9 = GL11.totalMemory();
