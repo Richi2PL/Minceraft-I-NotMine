@@ -25,7 +25,9 @@ public class LevelStorageManager {
 			}
 		}
 		
-		if(levelStorage.tagMap == null || levelStorage.tagMap.size() == 0) {
+		if(levelStorage.tagMap == null) {
+			levelStorage = null;
+		} else if(levelStorage.tagMap.size() == 0) {
 			levelStorage = null;
 		}
 	}
@@ -34,7 +36,9 @@ public class LevelStorageManager {
 		ByteArrayOutputStream s = new ByteArrayOutputStream();
 		NBTBase.writeTag(levelStorage, new DataOutputStream(s));
 		GL11.writeFile("/saves/level1.dat", s.toByteArray());
-		if(levelStorage.tagMap == null || levelStorage.tagMap.size() == 0) {
+		if(levelStorage.tagMap == null) {
+			levelStorage = null;
+		} else if(levelStorage.tagMap.size() == 0) {
 			levelStorage = null;
 		}
 	}
