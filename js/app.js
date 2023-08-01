@@ -1130,7 +1130,7 @@ function nP_MinecraftMain_main($args) {
             if ($ex2 !== null && $ex2 instanceof nPn_NBTTagCompound)
                 nPs_LevelStorageManager_levelStorage = $ex2;
         }
-        if (!nPs_LevelStorageManager_levelStorage.$tagMap.$elementCount)
+        if (!(nPs_LevelStorageManager_levelStorage.$tagMap !== null && nPs_LevelStorageManager_levelStorage.$tagMap.$elementCount))
             nPs_LevelStorageManager_levelStorage = null;
         $ex2 = nmc_Minecraft__init_(olo_WebGL_getCanvasWidth(), olo_WebGL_getCanvasHeight());
         var$7 = new nmc_Session;
@@ -4585,7 +4585,7 @@ function nPs_LevelStorageManager_saveLevelData() {
         if ($rt_suspending()) {
             break main;
         }
-        if (!nPs_LevelStorageManager_levelStorage.$tagMap.$elementCount)
+        if (!(nPs_LevelStorageManager_levelStorage.$tagMap !== null && nPs_LevelStorageManager_levelStorage.$tagMap.$elementCount))
             nPs_LevelStorageManager_levelStorage = null;
         return;
     case 2:
