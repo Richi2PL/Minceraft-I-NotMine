@@ -24,6 +24,6 @@ Pros:
 Cons:
 - It's technically a pirated version of the game
 - There will be unexpected bugs and glitches
-- Probably will be removed due to a DMCA or something
+- Probably will be removed due to a DMCA
 
 # Screenshots
