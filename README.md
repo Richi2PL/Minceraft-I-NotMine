@@ -1,9 +1,9 @@
 # Minecraft Indev WebGL
 
-This project aims to be a 1:1 replica of Minecraft Indev 20100223 made using TeaVM and WebGL. This project can be played on almost any device and can be played in the web browser.
+This project aims to be a 1:1 replica of Minecraft Indev 20100223 made using TeaVM and WebGL. This project can be played on almost any device and can be played in the web browser on low-end devices like Chromebooks.
 
 # Project Takedown
-This project was just for fun, If this project has to be taken down for any legal reasons please email me at PeytonPlayz585@gmail.com
+This project is just for fun, If this project has to be taken down for any legal reasons please email me at PeytonPlayz585@gmail.com
 
 # Playing in the Web Browser
 To play in the web browser please [click here](https://peytonplayz595.github.io/Minecraft-Indev-WebGL/js/). If for some reason it doesn't work please open an issue [here](https://github.com/PeytonPlayz595/Minecraft-Indev-WebGL/issues).
