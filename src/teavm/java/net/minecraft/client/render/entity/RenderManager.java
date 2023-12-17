@@ -91,11 +91,11 @@ public final class RenderManager {
 		this.renderEntityWithPosYaw(var1, var3, var4, var5, var6, var2);
 	}
 
-	public final void renderEntityWithPosYaw(Entity var1, float var2, float var3, float var4, float var5, float var6) {
-		Render var7 = this.getEntityRenderObject(var1);
-		if(var7 != null) {
-			var7.doRender(var1, var2, var3, var4, var5, var6);
-			var7.renderShadow(var1, var2, var3, var4, var6);
+	public void renderEntityWithPosYaw(Entity var1, float var2, float var4, float var6, float var8, float var9) {
+		Render var10 = this.getEntityRenderObject(var1);
+		if(var10 != null) {
+			var10.doRender(var1, var2, var4, var6, var8, var9);
+			var10.doRenderShadowAndFire(var1, var2, var4, var6, var8, var9);
 		}
 
 	}

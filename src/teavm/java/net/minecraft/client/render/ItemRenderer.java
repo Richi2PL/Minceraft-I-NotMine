@@ -211,39 +211,6 @@ public final class ItemRenderer {
 		Tessellator var3;
 		float var7;
 		float var9;
-		if(this.mc.thePlayer.fire > 0) {
-			var2 = this.mc.renderEngine.getTexture("/terrain.png");
-			GL11.glBindTexture(GL11.GL_TEXTURE_2D, var2);
-			var3 = Tessellator.instance;
-			GL11.glColor4f(1.0F, 1.0F, 1.0F, 0.9F);
-			GL11.glEnable(GL11.GL_BLEND);
-			GL11.glBlendFunc(GL11.GL_SRC_ALPHA, GL11.GL_ONE_MINUS_SRC_ALPHA);
-
-			for(var2 = 0; var2 < 2; ++var2) {
-				GL11.glPushMatrix();
-				int var4 = Block.fire.blockIndexInTexture + (var2 << 4);
-				int var5 = (var4 & 15) << 4;
-				var4 &= 240;
-				float var6 = (float)var5 / 256.0F;
-				float var10 = ((float)var5 + 15.99F) / 256.0F;
-				var7 = (float)var4 / 256.0F;
-				var9 = ((float)var4 + 15.99F) / 256.0F;
-				GL11.glTranslatef((float)(-((var2 << 1) - 1)) * 0.24F, -0.3F, 0.0F);
-				GL11.glRotatef((float)((var2 << 1) - 1) * 10.0F, 0.0F, 1.0F, 0.0F);
-				var3.startDrawingQuads();
-				var3.addVertexWithUV(-0.5F, -0.5F, -0.5F, var10, var9);
-				var3.addVertexWithUV(0.5F, -0.5F, -0.5F, var6, var9);
-				var3.addVertexWithUV(0.5F, 0.5F, -0.5F, var6, var7);
-				var3.addVertexWithUV(-0.5F, 0.5F, -0.5F, var10, var7);
-				GL11.flipLightMatrix();
-				var3.draw();
-				GL11.flipLightMatrix();
-				GL11.glPopMatrix();
-			}
-
-			GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
-			GL11.glDisable(GL11.GL_BLEND);
-		}
 
 		if(this.mc.thePlayer.isInsideOfWater()) {
 			var2 = this.mc.renderEngine.getTexture("/water.png");

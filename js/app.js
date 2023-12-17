@@ -6210,10 +6210,6 @@ function olo_WebGLManager_glDepthFunc($p1) {
     olo_WebGL_$callClinit();
     olo_WebGL_webgl.depthFunc($f);
 }
-function olo_WebGLManager_glAlphaFunc($p1, $p2) {
-    olo_WebGLManager_$callClinit();
-    olo_WebGLManager_alphaThresh = $p2;
-}
 function olo_WebGLManager_glMatrixMode($p1) {
     olo_WebGLManager_$callClinit();
     olo_WebGLManager_matrixMode = $p1;
@@ -7134,11 +7130,11 @@ function nmc_Minecraft_displayGuiScreen($this, $var1) {
     $rt_nativeThread().push($this, $var1, $var2, $ptr);
 }
 function nmc_Minecraft_run($this) {
-    var $var24, $var31, $e, var$4, $var28, $var23, $var29, $var30, var$9, var$10, var$11, $$je, $ptr, $tmp;
+    var $var24, $var31, $e, var$4, $var28, $var23, $var29, $var30, var$9, var$10, $$je, $ptr, $tmp;
     $ptr = 0;
     if ($rt_resuming()) {
         var $thread = $rt_nativeThread();
-        $ptr = $thread.pop();var$11 = $thread.pop();var$10 = $thread.pop();var$9 = $thread.pop();$var30 = $thread.pop();$var29 = $thread.pop();$var23 = $thread.pop();$var28 = $thread.pop();var$4 = $thread.pop();$e = $thread.pop();$var31 = $thread.pop();$var24 = $thread.pop();$this = $thread.pop();
+        $ptr = $thread.pop();var$10 = $thread.pop();var$9 = $thread.pop();$var30 = $thread.pop();$var29 = $thread.pop();$var23 = $thread.pop();$var28 = $thread.pop();var$4 = $thread.pop();$e = $thread.pop();$var31 = $thread.pop();$var24 = $thread.pop();$this = $thread.pop();
     }
     main: while (true) { switch ($ptr) {
     case 0:
@@ -7151,7 +7147,7 @@ function nmc_Minecraft_run($this) {
         olo_WebGLManager_glEnable(2929);
         olo_WebGLManager_glDepthFunc(515);
         olo_WebGLManager_glEnable(3008);
-        olo_WebGLManager_glAlphaFunc(516, 0.10000000149011612);
+        olo_WebGLManager_alphaThresh = 0.10000000149011612;
         olo_WebGL_webgl.cullFace(1029);
         olo_WebGLManager_glMatrixMode(5889);
         olo_WebGLManager_glLoadIdentity();
@@ -7351,20 +7347,11 @@ function nmc_Minecraft_run($this) {
         if (!(olo_WebGL_getCanvasWidth() == $this.$displayWidth && olo_WebGL_getCanvasHeight() == $this.$displayHeight)) {
             $this.$displayWidth = olo_WebGL_getCanvasWidth();
             $this.$displayHeight = olo_WebGL_getCanvasHeight();
-            $var30 = $this.$displayWidth;
-            var$9 = $this.$displayHeight;
-            $this.$displayWidth = $var30;
-            $this.$displayHeight = var$9;
-            if ($this.$currentScreen !== null) {
-                $var24 = nmcg_ScaledResolution__init_($var30, var$9);
-                var$9 = $var24.$scaledWidth;
-                $var30 = nmcg_ScaledResolution_getScaledHeight($var24);
-                nmcg_GuiScreen_setWorldAndResolution($this.$currentScreen, $this, var$9, $var30);
-            }
+            nmc_Minecraft_resize($this, $this.$displayWidth, $this.$displayHeight);
         }
         if ($this.$options.$limitFramerate) {
             try {
-                var$10 = Long_fromInt(5);
+                var$9 = Long_fromInt(5);
                 $ptr = 6;
                 continue main;
             } catch ($$e) {
@@ -7380,16 +7367,18 @@ function nmc_Minecraft_run($this) {
         $var28 = $var28 + 1 | 0;
         $this.$isGamePaused = $this.$currentScreen !== null && $this.$currentScreen.$doesGuiPauseGame() ? 1 : 0;
         while (true) {
-            var$10 = jl_System_currentTimeMillis();
-            var$11 = Long_add($var23, Long_fromInt(1000));
-            if (Long_lt(var$10, var$11))
+            var$9 = jl_System_currentTimeMillis();
+            var$10 = Long_add($var23, Long_fromInt(1000));
+            if (Long_lt(var$9, var$10))
                 break;
-            $var24 = jl_StringBuilder_append(jl_StringBuilder_append1(jl_StringBuilder_append(jl_StringBuilder__init_(), $rt_s(203)), $var28), $rt_s(204));
+            $var24 = new jl_StringBuilder;
+            jl_AbstractStringBuilder__init_($var24);
+            $var24 = jl_StringBuilder_append(jl_StringBuilder_append1(jl_StringBuilder_append($var24, $rt_s(203)), $var28), $rt_s(204));
             nmcr_WorldRenderer_$callClinit();
-            $this.$debug = jl_StringBuilder_toString(jl_StringBuilder_append1($var24, nmcr_WorldRenderer_chunksUpdated));
+            $this.$debug = jl_AbstractStringBuilder_toString(jl_StringBuilder_append1($var24, nmcr_WorldRenderer_chunksUpdated));
             nmcr_WorldRenderer_chunksUpdated = 0;
             $var28 = 0;
-            $var23 = var$11;
+            $var23 = var$10;
         }
         if (!$this.$running)
             return;
@@ -7432,7 +7421,7 @@ function nmc_Minecraft_run($this) {
     case 6:
         a: {
             try {
-                jl_Thread_sleep(var$10);
+                jl_Thread_sleep(var$9);
                 if ($rt_suspending()) {
                     break main;
                 }
@@ -7450,16 +7439,18 @@ function nmc_Minecraft_run($this) {
         $var28 = $var28 + 1 | 0;
         $this.$isGamePaused = $this.$currentScreen !== null && $this.$currentScreen.$doesGuiPauseGame() ? 1 : 0;
         while (true) {
-            var$10 = jl_System_currentTimeMillis();
-            var$11 = Long_add($var23, Long_fromInt(1000));
-            if (Long_lt(var$10, var$11))
+            var$9 = jl_System_currentTimeMillis();
+            var$10 = Long_add($var23, Long_fromInt(1000));
+            if (Long_lt(var$9, var$10))
                 break;
-            $var24 = jl_StringBuilder_append(jl_StringBuilder_append1(jl_StringBuilder_append(jl_StringBuilder__init_(), $rt_s(203)), $var28), $rt_s(204));
+            $var24 = new jl_StringBuilder;
+            jl_AbstractStringBuilder__init_($var24);
+            $var24 = jl_StringBuilder_append(jl_StringBuilder_append1(jl_StringBuilder_append($var24, $rt_s(203)), $var28), $rt_s(204));
             nmcr_WorldRenderer_$callClinit();
-            $this.$debug = jl_StringBuilder_toString(jl_StringBuilder_append1($var24, nmcr_WorldRenderer_chunksUpdated));
+            $this.$debug = jl_AbstractStringBuilder_toString(jl_StringBuilder_append1($var24, nmcr_WorldRenderer_chunksUpdated));
             nmcr_WorldRenderer_chunksUpdated = 0;
             $var28 = 0;
-            $var23 = var$11;
+            $var23 = var$10;
         }
         if (!$this.$running)
             return;
@@ -7486,7 +7477,7 @@ function nmc_Minecraft_run($this) {
         continue main;
     default: $rt_invalidPointer();
     }}
-    $rt_nativeThread().push($this, $var24, $var31, $e, var$4, $var28, $var23, $var29, $var30, var$9, var$10, var$11, $ptr);
+    $rt_nativeThread().push($this, $var24, $var31, $e, var$4, $var28, $var23, $var29, $var30, var$9, var$10, $ptr);
 }
 function nmc_Minecraft_setIngameFocus($this) {
     var var$1, $ptr, $tmp;
@@ -7672,6 +7663,17 @@ function nmc_Minecraft_clickMouse($this, $var1) {
     default: $rt_invalidPointer();
     }}
     $rt_nativeThread().push($this, $var1, $var2, $var3, $var7, $var5, $var4, $var14, $var12, $var11, $var9, $var17, $var10, $var13, $var15, $var6, $var16, $ptr);
+}
+function nmc_Minecraft_resize($this, $var1, $var2) {
+    var $var3;
+    $this.$displayWidth = $var1;
+    $this.$displayHeight = $var2;
+    if ($this.$currentScreen !== null) {
+        $var3 = nmcg_ScaledResolution__init_($var1, $var2);
+        $var2 = $var3.$scaledWidth;
+        $var1 = $var3.$scaledHeight;
+        nmcg_GuiScreen_setWorldAndResolution($this.$currentScreen, $this, $var2, $var1);
+    }
 }
 function nmc_Minecraft_runTick($this) {
     var $var1, $var10001, $var5, $var10000, $var3, $var2, $var8, $var4, $var7, $ptr, $tmp;
@@ -14332,83 +14334,24 @@ function nmcr_ItemRenderer_renderItemInFirstPerson($this, $var1) {
     $rt_nativeThread().push($this, $var1, $var2, $var3, $var9, $var4, var$6, $var11, $var5, $var6, $var12, var$11, var$12, var$13, var$14, var$15, var$16, $var7, $var8, var$19, var$20, var$21, $ptr);
 }
 function nmcr_ItemRenderer_renderOverlays($this, $var1) {
-    var $var3, var$3, $var2, var$5, $var4, $var5, $var8, $var6, $var10, $var7, $var9, var$13, var$14, var$15, $ptr, $tmp;
+    var var$2, $var3, $var2, $var8, $var7, $var9, var$8, var$9, var$10, $ptr, $tmp;
     $ptr = 0;
     if ($rt_resuming()) {
         var $thread = $rt_nativeThread();
-        $ptr = $thread.pop();var$15 = $thread.pop();var$14 = $thread.pop();var$13 = $thread.pop();$var9 = $thread.pop();$var7 = $thread.pop();$var10 = $thread.pop();$var6 = $thread.pop();$var8 = $thread.pop();$var5 = $thread.pop();$var4 = $thread.pop();var$5 = $thread.pop();$var2 = $thread.pop();var$3 = $thread.pop();$var3 = $thread.pop();$var1 = $thread.pop();$this = $thread.pop();
+        $ptr = $thread.pop();var$10 = $thread.pop();var$9 = $thread.pop();var$8 = $thread.pop();$var9 = $thread.pop();$var7 = $thread.pop();$var8 = $thread.pop();$var2 = $thread.pop();$var3 = $thread.pop();var$2 = $thread.pop();$var1 = $thread.pop();$this = $thread.pop();
     }
     main: while (true) { switch ($ptr) {
     case 0:
         olo_WebGLManager_glDisable(3008);
-        if ($this.$mc1.$thePlayer.$fire > 0) {
-            $var3 = $this.$mc1.$renderEngine;
-            var$3 = $rt_s(205);
-            $ptr = 1;
-            continue main;
-        }
         if (!nmge_Entity_isInsideOfWater($this.$mc1.$thePlayer)) {
             olo_WebGLManager_glEnable(3008);
             return;
         }
-        var$3 = $this.$mc1.$renderEngine;
+        var$2 = $this.$mc1.$renderEngine;
         $var3 = $rt_s(210);
-        $ptr = 2;
-        continue main;
+        $ptr = 1;
     case 1:
-        $tmp = nmcr_RenderEngine_getTexture($var3, var$3);
-        if ($rt_suspending()) {
-            break main;
-        }
-        $var2 = $tmp;
-        olo_WebGLManager_glBindTexture(3553, $var2);
-        nmcr_Tessellator_$callClinit();
-        $var3 = nmcr_Tessellator_instance;
-        olo_WebGLManager_glColor4f(1.0, 1.0, 1.0, 0.8999999761581421);
-        olo_WebGLManager_glEnable(3042);
-        olo_WebGLManager_glBlendFunc(770, 771);
-        var$5 = 0;
-        while (var$5 < 2) {
-            olo_WebGLManager_glPushMatrix();
-            nmglb_Block_$callClinit();
-            $var4 = nmglb_Block_fire.$blockIndexInTexture + (var$5 << 4) | 0;
-            $var5 = ($var4 & 15) << 4;
-            $var2 = $var4 & 240;
-            $var8 = $var5;
-            $var6 = $var8 / 256.0;
-            $var10 = ($var8 + 15.989999771118164) / 256.0;
-            $var8 = $var2;
-            $var7 = $var8 / 256.0;
-            $var9 = ($var8 + 15.989999771118164) / 256.0;
-            $var2 = (var$5 << 1) - 1 | 0;
-            olo_WebGLManager_glTranslatef( -$var2 * 0.23999999463558197, (-0.30000001192092896), 0.0);
-            olo_WebGLManager_glRotatef($var2 * 10.0, 0.0, 1.0, 0.0);
-            nmcr_Tessellator_startDrawingQuads($var3);
-            var$13 = $var10;
-            var$14 = $var9;
-            nmcr_Tessellator_addVertexWithUV($var3, (-0.5), (-0.5), (-0.5), var$13, var$14);
-            var$15 = $var6;
-            nmcr_Tessellator_addVertexWithUV($var3, 0.5, (-0.5), (-0.5), var$15, var$14);
-            var$14 = $var7;
-            nmcr_Tessellator_addVertexWithUV($var3, 0.5, 0.5, (-0.5), var$15, var$14);
-            nmcr_Tessellator_addVertexWithUV($var3, (-0.5), 0.5, (-0.5), var$13, var$14);
-            olo_WebGLManager_flipLightMatrix();
-            nmcr_Tessellator_draw($var3);
-            olo_WebGLManager_flipLightMatrix();
-            olo_WebGLManager_glPopMatrix();
-            var$5 = var$5 + 1 | 0;
-        }
-        olo_WebGLManager_glColor4f(1.0, 1.0, 1.0, 1.0);
-        olo_WebGLManager_glDisable(3042);
-        if (!nmge_Entity_isInsideOfWater($this.$mc1.$thePlayer)) {
-            olo_WebGLManager_glEnable(3008);
-            return;
-        }
-        var$3 = $this.$mc1.$renderEngine;
-        $var3 = $rt_s(210);
-        $ptr = 2;
-    case 2:
-        $tmp = nmcr_RenderEngine_getTexture(var$3, $var3);
+        $tmp = nmcr_RenderEngine_getTexture(var$2, $var3);
         if ($rt_suspending()) {
             break main;
         }
@@ -14424,14 +14367,14 @@ function nmcr_ItemRenderer_renderOverlays($this, $var1) {
         $var7 =  -$this.$mc1.$thePlayer.$rotationYaw / 64.0;
         $var9 = $this.$mc1.$thePlayer.$rotationPitch / 64.0;
         nmcr_Tessellator_startDrawingQuads($var3);
-        var$13 = $var7 + 4.0;
-        var$14 = $var9 + 4.0;
-        nmcr_Tessellator_addVertexWithUV($var3, (-1.0), (-1.0), (-0.5), var$13, var$14);
-        var$15 = $var7 + 0.0;
-        nmcr_Tessellator_addVertexWithUV($var3, 1.0, (-1.0), (-0.5), var$15, var$14);
-        var$14 = $var9 + 0.0;
-        nmcr_Tessellator_addVertexWithUV($var3, 1.0, 1.0, (-0.5), var$15, var$14);
-        nmcr_Tessellator_addVertexWithUV($var3, (-1.0), 1.0, (-0.5), var$13, var$14);
+        var$8 = $var7 + 4.0;
+        var$9 = $var9 + 4.0;
+        nmcr_Tessellator_addVertexWithUV($var3, (-1.0), (-1.0), (-0.5), var$8, var$9);
+        var$10 = $var7 + 0.0;
+        nmcr_Tessellator_addVertexWithUV($var3, 1.0, (-1.0), (-0.5), var$10, var$9);
+        var$9 = $var9 + 0.0;
+        nmcr_Tessellator_addVertexWithUV($var3, 1.0, 1.0, (-0.5), var$10, var$9);
+        nmcr_Tessellator_addVertexWithUV($var3, (-1.0), 1.0, (-0.5), var$8, var$9);
         olo_WebGLManager_flipLightMatrix();
         nmcr_Tessellator_draw($var3);
         olo_WebGLManager_flipLightMatrix();
@@ -14442,7 +14385,7 @@ function nmcr_ItemRenderer_renderOverlays($this, $var1) {
         return;
     default: $rt_invalidPointer();
     }}
-    $rt_nativeThread().push($this, $var1, $var3, var$3, $var2, var$5, $var4, $var5, $var8, $var6, $var10, $var7, $var9, var$13, var$14, var$15, $ptr);
+    $rt_nativeThread().push($this, $var1, var$2, $var3, $var2, $var8, $var7, $var9, var$8, var$9, var$10, $ptr);
 }
 function nmcr_ItemRenderer_updateEquippedItem($this) {
     var $var3, $var2;
@@ -32765,173 +32708,219 @@ function nmcre_Render_renderOffsetAABB($var0) {
 function nmcre_Render_setRenderManager($this, $var1) {
     $this.$renderManager = $var1;
 }
-function nmcre_Render_renderShadow($this, $var1, $var2, $var3, $var4, $var5) {
-    var $var31, $var10, $var35, $var26, $var29, $var30, $var12, $var32, $var33, $var34, $var36, $var18, $var19, var$19, var$20, var$21, var$22, var$23, var$24, $var11, $var12_0, $var29_0, var$28, var$29, $var13, $var14, $var15, $var16, $var25, $var20, $var21, $var22, $var17, $var23, var$40, var$41, $ptr, $tmp;
+function nmcre_Render_renderEntityOnFire($this, $var1, $var2, $var4, $var6, $var8) {
+    var $var9, $var10, $var11, $var12, $var13, $var14, $var15, $var16, $var17, $var18, $var20, $var21, var$18, var$19, var$20, $ptr, $tmp;
     $ptr = 0;
     if ($rt_resuming()) {
         var $thread = $rt_nativeThread();
-        $ptr = $thread.pop();var$41 = $thread.pop();var$40 = $thread.pop();$var23 = $thread.pop();$var17 = $thread.pop();$var22 = $thread.pop();$var21 = $thread.pop();$var20 = $thread.pop();$var25 = $thread.pop();$var16 = $thread.pop();$var15 = $thread.pop();$var14 = $thread.pop();$var13 = $thread.pop();var$29 = $thread.pop();var$28 = $thread.pop();$var29_0 = $thread.pop();$var12_0 = $thread.pop();$var11 = $thread.pop();var$24 = $thread.pop();var$23 = $thread.pop();var$22 = $thread.pop();var$21 = $thread.pop();var$20
-        = $thread.pop();var$19 = $thread.pop();$var19 = $thread.pop();$var18 = $thread.pop();$var36 = $thread.pop();$var34 = $thread.pop();$var33 = $thread.pop();$var32 = $thread.pop();$var12 = $thread.pop();$var30 = $thread.pop();$var29 = $thread.pop();$var26 = $thread.pop();$var35 = $thread.pop();$var10 = $thread.pop();$var31 = $thread.pop();$var5 = $thread.pop();$var4 = $thread.pop();$var3 = $thread.pop();$var2 = $thread.pop();$var1 = $thread.pop();$this = $thread.pop();
+        $ptr = $thread.pop();var$20 = $thread.pop();var$19 = $thread.pop();var$18 = $thread.pop();$var21 = $thread.pop();$var20 = $thread.pop();$var18 = $thread.pop();$var17 = $thread.pop();$var16 = $thread.pop();$var15 = $thread.pop();$var14 = $thread.pop();$var13 = $thread.pop();$var12 = $thread.pop();$var11 = $thread.pop();$var10 = $thread.pop();$var9 = $thread.pop();$var8 = $thread.pop();$var6 = $thread.pop();$var4 = $thread.pop();$var2 = $thread.pop();$var1 = $thread.pop();$this = $thread.pop();
     }
     main: while (true) { switch ($ptr) {
     case 0:
-        if ($this.$shadowSize > 0.0) {
-            $var31 = (1.0 - nmcre_RenderManager_getDistanceToCamera($this.$renderManager, $var2, $var3, $var4) / 256.0) * $this.$shadowOpaque;
-            if ($var31 > 0.0) {
-                olo_WebGLManager_glAlphaFunc(516, 0.10000000149011612);
-                $var10 = $this.$renderManager.$renderEngine2;
-                $var35 = $rt_s(460);
+        olo_WebGLManager_glDisable(2896);
+        nmglb_Block_$callClinit();
+        $var9 = nmglb_Block_fire.$blockIndexInTexture;
+        $var10 = ($var9 & 15) << 4;
+        $var11 = $var9 & 240;
+        $var8 = $var10;
+        $var12 = $var8 / 256.0;
+        $var13 = ($var8 + 15.989999771118164) / 256.0;
+        $var8 = $var11;
+        $var14 = $var8 / 256.0;
+        $var15 = ($var8 + 15.989999771118164) / 256.0;
+        olo_WebGLManager_glPushMatrix();
+        olo_WebGLManager_glTranslatef($var2, $var4, $var6);
+        $var16 = $var1.$width2 * 1.399999976158142;
+        olo_WebGLManager_glScalef($var16, $var16, $var16);
+        $var17 = $rt_s(205);
+        $ptr = 1;
+    case 1:
+        nmcre_Render_loadTexture($this, $var17);
+        if ($rt_suspending()) {
+            break main;
+        }
+        nmcr_Tessellator_$callClinit();
+        $var17 = nmcr_Tessellator_instance;
+        $var18 = 1.0;
+        $var20 = 0.0;
+        $var21 = $var1.$height2 / $var1.$width2;
+        olo_WebGLManager_glRotatef( -$this.$renderManager.$playerViewY, 0.0, 1.0, 0.0);
+        olo_WebGLManager_glTranslatef(0.0, 0.0, 0.4000000059604645 + ($var21 | 0) * 0.019999999552965164);
+        olo_WebGLManager_glColor4f(1.0, 1.0, 1.0, 1.0);
+        nmcr_Tessellator_startDrawingQuads($var17);
+        $var6 = $var13;
+        var$18 = $var15;
+        var$19 = $var12;
+        var$20 = $var14;
+        while ($var21 > 0.0) {
+            $var2 = $var18 - 0.5;
+            $var4 = 0.0 - $var20;
+            nmcr_Tessellator_addVertexWithUV($var17, $var2, $var4, 0.0, $var6, var$18);
+            nmcr_Tessellator_addVertexWithUV($var17, (-0.5), $var4, 0.0, var$19, var$18);
+            $var4 = 1.399999976158142 - $var20;
+            nmcr_Tessellator_addVertexWithUV($var17, (-0.5), $var4, 0.0, var$19, var$20);
+            nmcr_Tessellator_addVertexWithUV($var17, $var2, $var4, 0.0, $var6, var$20);
+            $var21 = $var21 - 1.0;
+            $var20 = $var20 - 1.0;
+            $var18 = $var18 * 0.8999999761581421;
+            olo_WebGLManager_glTranslatef(0.0, 0.0, (-0.03999999910593033));
+        }
+        nmcr_Tessellator_draw($var17);
+        olo_WebGLManager_glPopMatrix();
+        olo_WebGLManager_glEnable(2896);
+        return;
+    default: $rt_invalidPointer();
+    }}
+    $rt_nativeThread().push($this, $var1, $var2, $var4, $var6, $var8, $var9, $var10, $var11, $var12, $var13, $var14, $var15, $var16, $var17, $var18, $var20, $var21, var$18, var$19, var$20, $ptr);
+}
+function nmcre_Render_renderShadow($this, $var1, $var2, $var4, $var6, $var8, $var9) {
+    var $var10, $var11, $var32, $var12, $var17, var$12, var$13, $var13, $var15, $var20, $var21, $var22, $var23, $var24, var$21, $var25, var$23, $var27, var$25, $var29, $var31, var$28, $var33, $var34, $var35, var$32, var$33, var$34, var$35, $ptr, $tmp;
+    $ptr = 0;
+    if ($rt_resuming()) {
+        var $thread = $rt_nativeThread();
+        $ptr = $thread.pop();var$35 = $thread.pop();var$34 = $thread.pop();var$33 = $thread.pop();var$32 = $thread.pop();$var35 = $thread.pop();$var34 = $thread.pop();$var33 = $thread.pop();var$28 = $thread.pop();$var31 = $thread.pop();$var29 = $thread.pop();var$25 = $thread.pop();$var27 = $thread.pop();var$23 = $thread.pop();$var25 = $thread.pop();var$21 = $thread.pop();$var24 = $thread.pop();$var23 = $thread.pop();$var22 = $thread.pop();$var21 = $thread.pop();$var20 = $thread.pop();$var15 = $thread.pop();$var13
+        = $thread.pop();var$13 = $thread.pop();var$12 = $thread.pop();$var17 = $thread.pop();$var12 = $thread.pop();$var32 = $thread.pop();$var11 = $thread.pop();$var10 = $thread.pop();$var9 = $thread.pop();$var8 = $thread.pop();$var6 = $thread.pop();$var4 = $thread.pop();$var2 = $thread.pop();$var1 = $thread.pop();$this = $thread.pop();
+    }
+    main: while (true) { switch ($ptr) {
+    case 0:
+        olo_WebGLManager_glEnable(3042);
+        olo_WebGLManager_glBlendFunc(770, 771);
+        $var10 = $this.$renderManager.$renderEngine2;
+        $var11 = $rt_s(460);
+        $ptr = 1;
+    case 1:
+        $tmp = nmcr_RenderEngine_getTexture($var10, $var11);
+        if ($rt_suspending()) {
+            break main;
+        }
+        $var32 = $tmp;
+        nmcr_RenderEngine_bindTexture($var32);
+        $var11 = nmcre_Render_getWorldFromRenderManager($this);
+        olo_WebGLManager_glDepthMask(0);
+        $var12 = $this.$shadowSize;
+        $var17 = $var1.$lastTickPosX;
+        var$12 = $var1.$posX - $var1.$lastTickPosX;
+        var$13 = $var9;
+        $var13 = $var17 + var$12 * var$13;
+        $var15 = $var1.$lastTickPosY + ($var1.$posY - $var1.$lastTickPosY) * var$13;
+        $var17 = $var1.$lastTickPosZ + ($var1.$posZ - $var1.$lastTickPosZ) * var$13;
+        var$12 = $var12;
+        $var32 = nPm_MathHelper_floor_double($var13 - var$12);
+        $var20 = nPm_MathHelper_floor_double($var13 + var$12);
+        $var21 = nPm_MathHelper_floor_double($var15 - var$12);
+        $var22 = nPm_MathHelper_floor_double($var15);
+        $var23 = nPm_MathHelper_floor_double($var17 - var$12);
+        $var24 = nPm_MathHelper_floor_double($var17 + var$12);
+        var$21 = $var2;
+        $var25 = var$21 - $var13;
+        var$23 = $var4;
+        $var27 = var$23 - $var15;
+        var$25 = $var6;
+        $var29 = var$25 - $var17;
+        nmcr_Tessellator_$callClinit();
+        $var31 = nmcr_Tessellator_instance;
+        nmcr_Tessellator_startDrawingQuads($var31);
+        var$28 = $var8;
+        while ($var32 <= $var20) {
+            $var33 = $var21;
+            while ($var33 <= $var22) {
+                $var34 = $var23;
+                while ($var34 <= $var24) {
+                    $var35 = nmgl_World_getBlockId($var11, $var32, $var33 - 1 | 0, $var34);
+                    if ($var35 > 0 && nmgl_World_getBlockLightValue($var11, $var32, $var33, $var34) > 3) {
+                        nmglb_Block_$callClinit();
+                        $var1 = nmglb_Block_blocksList.data[$var35];
+                        $var10 = nmcr_Tessellator_instance;
+                        if ($var1.$renderAsNormalBlock()) {
+                            $var15 = $var33;
+                            var$13 = (var$28 - (var$23 - ($var15 + $var27)) / 2.0) * 0.5 * nmgl_World_getLightBrightness(nmcre_Render_getWorldFromRenderManager($this), $var32, $var33, $var34);
+                            if (var$13 >= 0.0) {
+                                if (var$13 > 1.0)
+                                    var$13 = 1.0;
+                                nmcr_Tessellator_setColorRGBA_F($var10, 1.0, 1.0, 1.0, var$13);
+                                $var17 = $var32;
+                                var$13 = $var17 + $var1.$minX + $var25;
+                                var$32 = $var17 + $var1.$maxX + $var25;
+                                var$33 = $var15 + $var1.$minY + $var27 + 0.015625;
+                                $var17 = $var34;
+                                var$34 = $var17 + $var1.$minZ + $var29;
+                                var$35 = $var17 + $var1.$maxZ + $var29;
+                                $var6 = (var$21 - var$13) / 2.0 / var$12 + 0.5;
+                                $var8 = (var$21 - var$32) / 2.0 / var$12 + 0.5;
+                                $var4 = (var$25 - var$34) / 2.0 / var$12 + 0.5;
+                                $var2 = (var$25 - var$35) / 2.0 / var$12 + 0.5;
+                                $var17 = $var6;
+                                $var13 = $var4;
+                                nmcr_Tessellator_addVertexWithUV($var10, var$13, var$33, var$34, $var17, $var13);
+                                $var15 = $var2;
+                                nmcr_Tessellator_addVertexWithUV($var10, var$13, var$33, var$35, $var17, $var15);
+                                $var17 = $var8;
+                                nmcr_Tessellator_addVertexWithUV($var10, var$32, var$33, var$35, $var17, $var15);
+                                nmcr_Tessellator_addVertexWithUV($var10, var$32, var$33, var$34, $var17, $var13);
+                            }
+                        }
+                    }
+                    $var34 = $var34 + 1 | 0;
+                }
+                $var33 = $var33 + 1 | 0;
+            }
+            $var32 = $var32 + 1 | 0;
+        }
+        nmcr_Tessellator_draw($var31);
+        olo_WebGLManager_glColor4f(1.0, 1.0, 1.0, 1.0);
+        olo_WebGLManager_glDisable(3042);
+        olo_WebGLManager_glDepthMask(1);
+        return;
+    default: $rt_invalidPointer();
+    }}
+    $rt_nativeThread().push($this, $var1, $var2, $var4, $var6, $var8, $var9, $var10, $var11, $var32, $var12, $var17, var$12, var$13, $var13, $var15, $var20, $var21, $var22, $var23, $var24, var$21, $var25, var$23, $var27, var$25, $var29, $var31, var$28, $var33, $var34, $var35, var$32, var$33, var$34, var$35, $ptr);
+}
+function nmcre_Render_getWorldFromRenderManager($this) {
+    return $this.$renderManager.$worldObj1;
+}
+function nmcre_Render_doRenderShadowAndFire($this, $var1, $var2, $var4, $var6, $var8, $var9) {
+    var $var12, $var10, var$9, var$10, $ptr, $tmp;
+    $ptr = 0;
+    if ($rt_resuming()) {
+        var $thread = $rt_nativeThread();
+        $ptr = $thread.pop();var$10 = $thread.pop();var$9 = $thread.pop();$var10 = $thread.pop();$var12 = $thread.pop();$var9 = $thread.pop();$var8 = $thread.pop();$var6 = $thread.pop();$var4 = $thread.pop();$var2 = $thread.pop();$var1 = $thread.pop();$this = $thread.pop();
+    }
+    main: while (true) { switch ($ptr) {
+    case 0:
+        if (nmc_Minecraft_mc.$options.$fancyGraphics && $this.$shadowSize > 0.0) {
+            $var12 = (1.0 - nmcre_RenderManager_getDistanceToCamera($this.$renderManager, $var1.$posX, $var1.$posY, $var1.$posZ) / 256.0) * $this.$shadowOpaque;
+            if ($var12 > 0.0) {
                 $ptr = 2;
                 continue main;
             }
         }
         if ($var1.$fire <= 0)
             return;
-        olo_WebGLManager_glDisable(2896);
-        nmglb_Block_$callClinit();
-        $var26 = nmglb_Block_fire.$blockIndexInTexture;
-        $var29 = ($var26 & 15) << 4;
-        $var30 = $var26 & 240;
-        $var5 = $var29;
-        $var12 = $var5 / 256.0;
-        $var31 = ($var5 + 15.989999771118164) / 256.0;
-        $var5 = $var30;
-        $var32 = $var5 / 256.0;
-        $var33 = ($var5 + 15.989999771118164) / 256.0;
-        olo_WebGLManager_glPushMatrix();
-        olo_WebGLManager_glTranslatef($var2, $var3, $var4);
-        $var34 = $var1.$width2 * 1.399999976158142;
-        olo_WebGLManager_glScalef($var34, $var34, $var34);
-        $var35 = $rt_s(205);
+        $var10 = $var2;
+        var$9 = $var4;
+        var$10 = $var6;
         $ptr = 1;
     case 1:
-        nmcre_Render_loadTexture($this, $var35);
+        nmcre_Render_renderEntityOnFire($this, $var1, $var10, var$9, var$10, $var9);
         if ($rt_suspending()) {
             break main;
         }
-        nmcr_Tessellator_$callClinit();
-        $var35 = nmcr_Tessellator_instance;
-        $var36 = 1.0;
-        $var18 = 0.0;
-        $var19 = $var1.$height2 / $var1.$width2;
-        olo_WebGLManager_glRotatef( -$this.$renderManager.$playerViewY, 0.0, 1.0, 0.0);
-        olo_WebGLManager_glTranslatef(0.0, 0.0, 0.4000000059604645 + ($var19 | 0) * 0.019999999552965164);
-        olo_WebGLManager_glColor4f(1.0, 1.0, 1.0, 1.0);
-        nmcr_Tessellator_startDrawingQuads($var35);
-        var$19 = $var31;
-        var$20 = $var33;
-        var$21 = $var12;
-        var$22 = $var32;
-        while ($var19 > 0.0) {
-            var$23 = $var36 - 0.5;
-            var$24 = 0.0 - $var18;
-            nmcr_Tessellator_addVertexWithUV($var35, var$23, var$24, 0.0, var$19, var$20);
-            nmcr_Tessellator_addVertexWithUV($var35, (-0.5), var$24, 0.0, var$21, var$20);
-            var$24 = 1.399999976158142 - $var18;
-            nmcr_Tessellator_addVertexWithUV($var35, (-0.5), var$24, 0.0, var$21, var$22);
-            nmcr_Tessellator_addVertexWithUV($var35, var$23, var$24, 0.0, var$19, var$22);
-            $var19 = $var19 - 1.0;
-            $var18 = $var18 - 1.0;
-            $var36 = $var36 * 0.8999999761581421;
-            olo_WebGLManager_glTranslatef(0.0, 0.0, (-0.03999999910593033));
-        }
-        nmcr_Tessellator_draw($var35);
-        olo_WebGLManager_flipLightMatrix();
-        olo_WebGLManager_glPopMatrix();
-        olo_WebGLManager_flipLightMatrix();
-        olo_WebGLManager_glEnable(2896);
         return;
     case 2:
-        $tmp = nmcr_RenderEngine_getTexture($var10, $var35);
+        nmcre_Render_renderShadow($this, $var1, $var2, $var4, $var6, $var12, $var9);
         if ($rt_suspending()) {
             break main;
         }
-        $var30 = $tmp;
-        nmcr_RenderEngine_bindTexture($var30);
-        $var11 = $this.$renderManager.$worldObj1;
-        olo_WebGLManager_glDepthMask(0);
-        $var12_0 = $this.$shadowSize;
-        $var29_0 = $var2 - $var12_0 | 0;
-        var$28 = $var2 + $var12_0 | 0;
-        $var30 = $var3 - 2.0 | 0;
-        $var29 = $var3 | 0;
-        $var26 = $var4 - $var12_0 | 0;
-        var$29 = $var4 + $var12_0 | 0;
-        while ($var29_0 <= var$28) {
-            $var13 = $var30;
-            while ($var13 <= $var29) {
-                $var14 = $var26;
-                while ($var14 <= var$29) {
-                    $var15 = nmgl_World_getBlockId($var11, $var29_0, $var13 - 1 | 0, $var14);
-                    if ($var15 > 0 && nmgl_World_getBlockLightValue($var11, $var29_0, $var13, $var14) > 3) {
-                        nmglb_Block_$callClinit();
-                        $var16 = nmglb_Block_blocksList.data[$var15];
-                        nmcr_Tessellator_$callClinit();
-                        $var25 = nmcr_Tessellator_instance;
-                        $var20 = $var13;
-                        $var34 = ($var31 - ($var3 - $var20) / 2.0) * 0.5 * nmgl_World_getLightBrightness($this.$renderManager.$worldObj1, $var29_0, $var13, $var14);
-                        if ($var34 >= 0.0) {
-                            olo_WebGLManager_glColor4f(1.0, 1.0, 1.0, $var34);
-                            nmcr_Tessellator_startDrawingQuads($var25);
-                            $var5 = $var29_0;
-                            $var12 = $var5 + $var16.$minX;
-                            $var18 = $var5 + $var16.$maxX;
-                            $var20 = $var20 + $var16.$minY;
-                            $var5 = $var14;
-                            $var21 = $var5 + $var16.$minZ;
-                            $var36 = $var5 + $var16.$maxZ;
-                            $var22 = ($var2 - $var12) / 2.0 / $var12_0 + 0.5;
-                            $var17 = ($var2 - $var18) / 2.0 / $var12_0 + 0.5;
-                            $var23 = ($var4 - $var21) / 2.0 / $var12_0 + 0.5;
-                            $var19 = ($var4 - $var36) / 2.0 / $var12_0 + 0.5;
-                            var$19 = $var12;
-                            var$20 = $var20;
-                            var$21 = $var21;
-                            var$40 = $var22;
-                            var$23 = $var23;
-                            nmcr_Tessellator_addVertexWithUV($var25, var$19, var$20, var$21, var$40, var$23);
-                            var$24 = $var36;
-                            var$41 = $var19;
-                            nmcr_Tessellator_addVertexWithUV($var25, var$19, var$20, var$24, var$40, var$41);
-                            var$19 = $var18;
-                            var$40 = $var17;
-                            nmcr_Tessellator_addVertexWithUV($var25, var$19, var$20, var$24, var$40, var$41);
-                            nmcr_Tessellator_addVertexWithUV($var25, var$19, var$20, var$21, var$40, var$23);
-                            nmcr_Tessellator_draw($var25);
-                        }
-                    }
-                    $var14 = $var14 + 1 | 0;
-                }
-                $var13 = $var13 + 1 | 0;
-            }
-            $var29_0 = $var29_0 + 1 | 0;
-        }
-        olo_WebGLManager_glColor4f(1.0, 1.0, 1.0, 1.0);
-        olo_WebGLManager_glDisable(3042);
-        olo_WebGLManager_glDepthMask(1);
         if ($var1.$fire <= 0)
             return;
-        olo_WebGLManager_glDisable(2896);
-        nmglb_Block_$callClinit();
-        $var26 = nmglb_Block_fire.$blockIndexInTexture;
-        $var29 = ($var26 & 15) << 4;
-        $var30 = $var26 & 240;
-        $var5 = $var29;
-        $var12 = $var5 / 256.0;
-        $var31 = ($var5 + 15.989999771118164) / 256.0;
-        $var5 = $var30;
-        $var32 = $var5 / 256.0;
-        $var33 = ($var5 + 15.989999771118164) / 256.0;
-        olo_WebGLManager_glPushMatrix();
-        olo_WebGLManager_glTranslatef($var2, $var3, $var4);
-        $var34 = $var1.$width2 * 1.399999976158142;
-        olo_WebGLManager_glScalef($var34, $var34, $var34);
-        $var35 = $rt_s(205);
+        $var10 = $var2;
+        var$9 = $var4;
+        var$10 = $var6;
         $ptr = 1;
         continue main;
     default: $rt_invalidPointer();
     }}
-    $rt_nativeThread().push($this, $var1, $var2, $var3, $var4, $var5, $var31, $var10, $var35, $var26, $var29, $var30, $var12, $var32, $var33, $var34, $var36, $var18, $var19, var$19, var$20, var$21, var$22, var$23, var$24, $var11, $var12_0, $var29_0, var$28, var$29, $var13, $var14, $var15, $var16, $var25, $var20, $var21, $var22, $var17, $var23, var$40, var$41, $ptr);
+    $rt_nativeThread().push($this, $var1, $var2, $var4, $var6, $var8, $var9, $var12, $var10, var$9, var$10, $ptr);
 }
 function nmcre_RenderItem() {
     var a = this; nmcre_Render.call(a);
@@ -40998,34 +40987,34 @@ function nmcre_RenderManager_renderEntity($this, $var1, $var2) {
     }}
     $rt_nativeThread().push($this, $var1, $var2, $var3, $var4, $var5, $var6, $var7, $ptr);
 }
-function nmcre_RenderManager_renderEntityWithPosYaw($this, $var1, $var2, $var3, $var4, $var5, $var6) {
-    var $var7, $ptr, $tmp;
+function nmcre_RenderManager_renderEntityWithPosYaw($this, $var1, $var2, $var4, $var6, $var8, $var9) {
+    var $var10, $ptr, $tmp;
     $ptr = 0;
     if ($rt_resuming()) {
         var $thread = $rt_nativeThread();
-        $ptr = $thread.pop();$var7 = $thread.pop();$var6 = $thread.pop();$var5 = $thread.pop();$var4 = $thread.pop();$var3 = $thread.pop();$var2 = $thread.pop();$var1 = $thread.pop();$this = $thread.pop();
+        $ptr = $thread.pop();$var10 = $thread.pop();$var9 = $thread.pop();$var8 = $thread.pop();$var6 = $thread.pop();$var4 = $thread.pop();$var2 = $thread.pop();$var1 = $thread.pop();$this = $thread.pop();
     }
     main: while (true) { switch ($ptr) {
     case 0:
-        $var7 = nmcre_RenderManager_getEntityRenderObject($this, $var1);
-        if ($var7 === null)
+        $var10 = nmcre_RenderManager_getEntityRenderObject($this, $var1);
+        if ($var10 === null)
             return;
         $ptr = 1;
     case 1:
-        $var7.$doRender($var1, $var2, $var3, $var4, $var5, $var6);
+        $var10.$doRender($var1, $var2, $var4, $var6, $var8, $var9);
         if ($rt_suspending()) {
             break main;
         }
         $ptr = 2;
     case 2:
-        nmcre_Render_renderShadow($var7, $var1, $var2, $var3, $var4, $var6);
+        nmcre_Render_doRenderShadowAndFire($var10, $var1, $var2, $var4, $var6, $var8, $var9);
         if ($rt_suspending()) {
             break main;
         }
         return;
     default: $rt_invalidPointer();
     }}
-    $rt_nativeThread().push($this, $var1, $var2, $var3, $var4, $var5, $var6, $var7, $ptr);
+    $rt_nativeThread().push($this, $var1, $var2, $var4, $var6, $var8, $var9, $var10, $ptr);
 }
 function nmcre_RenderManager_set($this, $var1) {
     $this.$worldObj1 = $var1;
