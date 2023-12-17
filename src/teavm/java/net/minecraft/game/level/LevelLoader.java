@@ -27,9 +27,7 @@ import net.minecraft.game.level.block.tileentity.TileEntityFurnace;
 public class LevelLoader {
 
 	public final World load() {
-		String[] randomText = new String[]{"Hi from PeytonPlayz585", "You Eagler!", "Setting up World", ":)", "Isn't Indev the best version?", "I hate Microsoft!", "Notch is the best!", "PeytonPlayz585!", "Random text lol...", "Spam ping Winix!", "Ghost ping Winix!", "DM Winix for no reason!", "Spam ping Winix lol!", "Ghost ping Winix!", "DM Winix for no reason!", "PeytonPlayz585's Birthday is 10/11", "Yee!", "WebGL 2.0!", "ShadowCraft!"};
 		Minecraft.getMinecraft().loadingScreen.displayProgressMessage("Loading level");
-		Minecraft.getMinecraft().loadingScreen.displayLoadingString(randomText[(int)(Math.random() * (double)randomText.length)]);
 		Minecraft.getMinecraft().loadingScreen.setLoadingProgress(25);
 		
 		try {

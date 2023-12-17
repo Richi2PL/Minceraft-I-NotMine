@@ -9494,9 +9494,6 @@ function nmc_Minecraft_setLevel($this, $var1) {
     }}
     $rt_nativeThread().push($this, $var1, var$2, var$3, var$4, $var4, var$6, $ptr);
 }
-function nmc_Minecraft_getMinecraft() {
-    return nmc_Minecraft_mc;
-}
 function nmc_Minecraft_setLighting($this, $var1) {
     var $var3;
     if (!$var1) {
@@ -33262,55 +33259,27 @@ function nmgl_LevelLoader() {
     jl_Object.call(this);
 }
 function nmgl_LevelLoader_load($this) {
-    var $randomText, $var2, $var13, $var16, var$5, $e, $var3, $var4, $var5, $var6, $var7, $var8, $var9, $var10, $var19, $var21, $var12, $var17, $var18, $var22, $var14, $var20, $var15, $var23, $var11, $$je, $ptr, $tmp;
+    var $var2, $var16, var$3, $e, $var13, $var3, $var4, $var5, $var6, $var7, $var8, $var9, $var10, $var19, $var21, $var12, $var17, $var18, $var22, $var14, $var20, $var15, $var23, $var11, $$je, $ptr, $tmp;
     $ptr = 0;
     if ($rt_resuming()) {
         var $thread = $rt_nativeThread();
-        $ptr = $thread.pop();$var11 = $thread.pop();$var23 = $thread.pop();$var15 = $thread.pop();$var20 = $thread.pop();$var14 = $thread.pop();$var22 = $thread.pop();$var18 = $thread.pop();$var17 = $thread.pop();$var12 = $thread.pop();$var21 = $thread.pop();$var19 = $thread.pop();$var10 = $thread.pop();$var9 = $thread.pop();$var8 = $thread.pop();$var7 = $thread.pop();$var6 = $thread.pop();$var5 = $thread.pop();$var4 = $thread.pop();$var3 = $thread.pop();$e = $thread.pop();var$5 = $thread.pop();$var16 = $thread.pop();$var13
-        = $thread.pop();$var2 = $thread.pop();$randomText = $thread.pop();$this = $thread.pop();
+        $ptr = $thread.pop();$var11 = $thread.pop();$var23 = $thread.pop();$var15 = $thread.pop();$var20 = $thread.pop();$var14 = $thread.pop();$var22 = $thread.pop();$var18 = $thread.pop();$var17 = $thread.pop();$var12 = $thread.pop();$var21 = $thread.pop();$var19 = $thread.pop();$var10 = $thread.pop();$var9 = $thread.pop();$var8 = $thread.pop();$var7 = $thread.pop();$var6 = $thread.pop();$var5 = $thread.pop();$var4 = $thread.pop();$var3 = $thread.pop();$var13 = $thread.pop();$e = $thread.pop();var$3 = $thread.pop();$var16
+        = $thread.pop();$var2 = $thread.pop();$this = $thread.pop();
     }
     main: while (true) { switch ($ptr) {
     case 0:
-        $randomText = $rt_createArray(jl_String, 19).data;
-        $randomText[0] = $rt_s(461);
-        $randomText[1] = $rt_s(462);
-        $randomText[2] = $rt_s(463);
-        $randomText[3] = $rt_s(464);
-        $randomText[4] = $rt_s(465);
-        $randomText[5] = $rt_s(466);
-        $randomText[6] = $rt_s(467);
-        $randomText[7] = $rt_s(468);
-        $randomText[8] = $rt_s(469);
-        $randomText[9] = $rt_s(470);
-        $randomText[10] = $rt_s(471);
-        $randomText[11] = $rt_s(472);
-        $randomText[12] = $rt_s(473);
-        $randomText[13] = $rt_s(471);
-        $randomText[14] = $rt_s(472);
-        $randomText[15] = $rt_s(474);
-        $randomText[16] = $rt_s(475);
-        $randomText[17] = $rt_s(476);
-        $randomText[18] = $rt_s(477);
-        nmc_LoadingScreenRenderer_displayProgressMessage(nmc_Minecraft_getMinecraft().$loadingScreen, $rt_s(478));
-        $var2 = nmc_Minecraft_getMinecraft().$loadingScreen;
-        $var13 = $randomText[jl_Math_random() * $randomText.length | 0];
+        nmc_LoadingScreenRenderer_displayProgressMessage(nmc_Minecraft_mc.$loadingScreen, $rt_s(461));
+        $var2 = nmc_Minecraft_mc.$loadingScreen;
+        $var16 = 25;
         $ptr = 1;
     case 1:
-        nmc_LoadingScreenRenderer_displayLoadingString($var2, $var13);
-        if ($rt_suspending()) {
-            break main;
-        }
-        $var2 = nmc_Minecraft_getMinecraft().$loadingScreen;
-        $var16 = 25;
-        $ptr = 2;
-    case 2:
         nmc_LoadingScreenRenderer_setLoadingProgress($var2, $var16);
         if ($rt_suspending()) {
             break main;
         }
         try {
-            var$5 = Long_fromInt(3000);
-            $ptr = 3;
+            var$3 = Long_fromInt(3000);
+            $ptr = 2;
             continue main;
         } catch ($$e) {
             $$je = $rt_wrapException($$e);
@@ -33321,14 +33290,14 @@ function nmgl_LevelLoader_load($this) {
             }
         }
         $e.$printStackTrace1();
-        $var2 = nmc_Minecraft_getMinecraft().$loadingScreen;
-        $var13 = $rt_s(479);
-        $ptr = 4;
+        $var2 = nmc_Minecraft_mc.$loadingScreen;
+        $var13 = $rt_s(462);
+        $ptr = 3;
         continue main;
-    case 3:
+    case 2:
         a: {
             try {
-                jl_Thread_sleep(var$5);
+                jl_Thread_sleep(var$3);
                 if ($rt_suspending()) {
                     break main;
                 }
@@ -33343,25 +33312,25 @@ function nmgl_LevelLoader_load($this) {
             }
             $e.$printStackTrace1();
         }
-        $var2 = nmc_Minecraft_getMinecraft().$loadingScreen;
-        $var13 = $rt_s(479);
+        $var2 = nmc_Minecraft_mc.$loadingScreen;
+        $var13 = $rt_s(462);
+        $ptr = 3;
+    case 3:
+        nmc_LoadingScreenRenderer_displayLoadingString($var2, $var13);
+        if ($rt_suspending()) {
+            break main;
+        }
+        $var2 = nmc_Minecraft_mc.$loadingScreen;
+        $var16 = 50;
         $ptr = 4;
     case 4:
-        nmc_LoadingScreenRenderer_displayLoadingString($var2, $var13);
-        if ($rt_suspending()) {
-            break main;
-        }
-        $var2 = nmc_Minecraft_getMinecraft().$loadingScreen;
-        $var16 = 50;
-        $ptr = 5;
-    case 5:
         nmc_LoadingScreenRenderer_setLoadingProgress($var2, $var16);
         if ($rt_suspending()) {
             break main;
         }
         try {
-            var$5 = Long_fromInt(1000);
-            $ptr = 6;
+            var$3 = Long_fromInt(1000);
+            $ptr = 5;
             continue main;
         } catch ($$e) {
             $$je = $rt_wrapException($$e);
@@ -33373,22 +33342,22 @@ function nmgl_LevelLoader_load($this) {
         }
         $e.$printStackTrace1();
         $var13 = nPs_LevelStorageManager_levelStorage;
-        $var2 = nPn_NBTTagCompound_getCompoundTag($var13, $rt_s(480));
-        $var3 = nPn_NBTTagCompound_getCompoundTag($var13, $rt_s(481));
-        $var4 = nPn_NBTTagCompound_getCompoundTag($var13, $rt_s(482));
-        $var5 = nPn_NBTTagCompound_getTagList($var13, $rt_s(483));
-        $var6 = nPn_NBTTagCompound_getShort($var3, $rt_s(484));
-        $var7 = nPn_NBTTagCompound_getShort($var3, $rt_s(485));
-        $var8 = nPn_NBTTagCompound_getShort($var3, $rt_s(486));
+        $var2 = nPn_NBTTagCompound_getCompoundTag($var13, $rt_s(463));
+        $var3 = nPn_NBTTagCompound_getCompoundTag($var13, $rt_s(464));
+        $var4 = nPn_NBTTagCompound_getCompoundTag($var13, $rt_s(465));
+        $var5 = nPn_NBTTagCompound_getTagList($var13, $rt_s(466));
+        $var6 = nPn_NBTTagCompound_getShort($var3, $rt_s(467));
+        $var7 = nPn_NBTTagCompound_getShort($var3, $rt_s(468));
+        $var8 = nPn_NBTTagCompound_getShort($var3, $rt_s(469));
         $var9 = nmgl_World__init_();
-        $var10 = nmc_Minecraft_getMinecraft().$loadingScreen;
-        $e = $rt_s(487);
-        $ptr = 7;
+        $e = nmc_Minecraft_mc.$loadingScreen;
+        $var10 = $rt_s(470);
+        $ptr = 6;
         continue main;
-    case 6:
+    case 5:
         a: {
             try {
-                jl_Thread_sleep(var$5);
+                jl_Thread_sleep(var$3);
                 if ($rt_suspending()) {
                     break main;
                 }
@@ -33404,33 +33373,33 @@ function nmgl_LevelLoader_load($this) {
             $e.$printStackTrace1();
         }
         $var13 = nPs_LevelStorageManager_levelStorage;
-        $var2 = nPn_NBTTagCompound_getCompoundTag($var13, $rt_s(480));
-        $var3 = nPn_NBTTagCompound_getCompoundTag($var13, $rt_s(481));
-        $var4 = nPn_NBTTagCompound_getCompoundTag($var13, $rt_s(482));
-        $var5 = nPn_NBTTagCompound_getTagList($var13, $rt_s(483));
-        $var6 = nPn_NBTTagCompound_getShort($var3, $rt_s(484));
-        $var7 = nPn_NBTTagCompound_getShort($var3, $rt_s(485));
-        $var8 = nPn_NBTTagCompound_getShort($var3, $rt_s(486));
+        $var2 = nPn_NBTTagCompound_getCompoundTag($var13, $rt_s(463));
+        $var3 = nPn_NBTTagCompound_getCompoundTag($var13, $rt_s(464));
+        $var4 = nPn_NBTTagCompound_getCompoundTag($var13, $rt_s(465));
+        $var5 = nPn_NBTTagCompound_getTagList($var13, $rt_s(466));
+        $var6 = nPn_NBTTagCompound_getShort($var3, $rt_s(467));
+        $var7 = nPn_NBTTagCompound_getShort($var3, $rt_s(468));
+        $var8 = nPn_NBTTagCompound_getShort($var3, $rt_s(469));
         $var9 = nmgl_World__init_();
-        $var10 = nmc_Minecraft_getMinecraft().$loadingScreen;
-        $e = $rt_s(487);
-        $ptr = 7;
-    case 7:
-        nmc_LoadingScreenRenderer_displayLoadingString($var10, $e);
+        $e = nmc_Minecraft_mc.$loadingScreen;
+        $var10 = $rt_s(470);
+        $ptr = 6;
+    case 6:
+        nmc_LoadingScreenRenderer_displayLoadingString($e, $var10);
         if ($rt_suspending()) {
             break main;
         }
-        $var10 = nmc_Minecraft_getMinecraft().$loadingScreen;
+        $e = nmc_Minecraft_mc.$loadingScreen;
         $var16 = 75;
-        $ptr = 8;
-    case 8:
-        nmc_LoadingScreenRenderer_setLoadingProgress($var10, $var16);
+        $ptr = 7;
+    case 7:
+        nmc_LoadingScreenRenderer_setLoadingProgress($e, $var16);
         if ($rt_suspending()) {
             break main;
         }
         try {
-            var$5 = Long_fromInt(1000);
-            $ptr = 9;
+            var$3 = Long_fromInt(1000);
+            $ptr = 8;
             continue main;
         } catch ($$e) {
             $$je = $rt_wrapException($$e);
@@ -33441,36 +33410,36 @@ function nmgl_LevelLoader_load($this) {
             }
         }
         $e.$printStackTrace1();
-        $var10 = nPn_NBTTagCompound_getTagList($var3, $rt_s(488));
+        $var10 = nPn_NBTTagCompound_getTagList($var3, $rt_s(471));
         $var9.$xSpawn = nPn_NBTTagList_tagAt($var10, 0).$shortValue;
         $var9.$ySpawn = nPn_NBTTagList_tagAt($var10, 1).$shortValue;
         $var9.$zSpawn = nPn_NBTTagList_tagAt($var10, 2).$shortValue;
-        $var9.$authorName = nPn_NBTTagCompound_getString($var2, $rt_s(489));
-        $var9.$name3 = nPn_NBTTagCompound_getString($var2, $rt_s(490));
-        $var9.$createTime = nPn_NBTTagCompound_getLong($var2, $rt_s(491));
-        $var9.$cloudColor = nPn_NBTTagCompound_getInteger($var4, $rt_s(492));
-        $var9.$skyColor = nPn_NBTTagCompound_getInteger($var4, $rt_s(493));
-        $var9.$fogColor0 = nPn_NBTTagCompound_getInteger($var4, $rt_s(494));
-        $var9.$skyBrightness = nPn_NBTTagCompound_getByte($var4, $rt_s(495));
+        $var9.$authorName = nPn_NBTTagCompound_getString($var2, $rt_s(472));
+        $var9.$name3 = nPn_NBTTagCompound_getString($var2, $rt_s(473));
+        $var9.$createTime = nPn_NBTTagCompound_getLong($var2, $rt_s(474));
+        $var9.$cloudColor = nPn_NBTTagCompound_getInteger($var4, $rt_s(475));
+        $var9.$skyColor = nPn_NBTTagCompound_getInteger($var4, $rt_s(476));
+        $var9.$fogColor0 = nPn_NBTTagCompound_getInteger($var4, $rt_s(477));
+        $var9.$skyBrightness = nPn_NBTTagCompound_getByte($var4, $rt_s(478));
         if ($var9.$skyBrightness < 0)
             $var9.$skyBrightness = 0;
         if ($var9.$skyBrightness > 16)
             $var9.$skyBrightness = ($var9.$skyBrightness * 15 | 0) / 100 | 0;
-        $var9.$cloudHeight = nPn_NBTTagCompound_getShort($var4, $rt_s(496));
-        $var9.$groundLevel = nPn_NBTTagCompound_getShort($var4, $rt_s(497));
-        $var9.$waterLevel = nPn_NBTTagCompound_getShort($var4, $rt_s(498));
-        $var9.$defaultFluid = nPn_NBTTagCompound_getByte($var4, $rt_s(499));
-        $var9.$worldTime = nPn_NBTTagCompound_getShort($var4, $rt_s(500));
+        $var9.$cloudHeight = nPn_NBTTagCompound_getShort($var4, $rt_s(479));
+        $var9.$groundLevel = nPn_NBTTagCompound_getShort($var4, $rt_s(480));
+        $var9.$waterLevel = nPn_NBTTagCompound_getShort($var4, $rt_s(481));
+        $var9.$defaultFluid = nPn_NBTTagCompound_getByte($var4, $rt_s(482));
+        $var9.$worldTime = nPn_NBTTagCompound_getShort($var4, $rt_s(483));
         $var9.$skylightSubtracted = nmgl_World_getSkyBrightness($var9);
-        nmgl_World_generate($var9, $var6, $var8, $var7, nPn_NBTTagCompound_getByteArray($var3, $rt_s(501)), nPn_NBTTagCompound_getByteArray($var3, $rt_s(502)));
-        $var2 = nmc_Minecraft_getMinecraft().$loadingScreen;
-        $var3 = $rt_s(503);
-        $ptr = 10;
+        nmgl_World_generate($var9, $var6, $var8, $var7, nPn_NBTTagCompound_getByteArray($var3, $rt_s(484)), nPn_NBTTagCompound_getByteArray($var3, $rt_s(485)));
+        $var2 = nmc_Minecraft_mc.$loadingScreen;
+        $var3 = $rt_s(486);
+        $ptr = 9;
         continue main;
-    case 9:
+    case 8:
         a: {
             try {
-                jl_Thread_sleep(var$5);
+                jl_Thread_sleep(var$3);
                 if ($rt_suspending()) {
                     break main;
                 }
@@ -33485,47 +33454,47 @@ function nmgl_LevelLoader_load($this) {
             }
             $e.$printStackTrace1();
         }
-        $var10 = nPn_NBTTagCompound_getTagList($var3, $rt_s(488));
+        $var10 = nPn_NBTTagCompound_getTagList($var3, $rt_s(471));
         $var9.$xSpawn = nPn_NBTTagList_tagAt($var10, 0).$shortValue;
         $var9.$ySpawn = nPn_NBTTagList_tagAt($var10, 1).$shortValue;
         $var9.$zSpawn = nPn_NBTTagList_tagAt($var10, 2).$shortValue;
-        $var9.$authorName = nPn_NBTTagCompound_getString($var2, $rt_s(489));
-        $var9.$name3 = nPn_NBTTagCompound_getString($var2, $rt_s(490));
-        $var9.$createTime = nPn_NBTTagCompound_getLong($var2, $rt_s(491));
-        $var9.$cloudColor = nPn_NBTTagCompound_getInteger($var4, $rt_s(492));
-        $var9.$skyColor = nPn_NBTTagCompound_getInteger($var4, $rt_s(493));
-        $var9.$fogColor0 = nPn_NBTTagCompound_getInteger($var4, $rt_s(494));
-        $var9.$skyBrightness = nPn_NBTTagCompound_getByte($var4, $rt_s(495));
+        $var9.$authorName = nPn_NBTTagCompound_getString($var2, $rt_s(472));
+        $var9.$name3 = nPn_NBTTagCompound_getString($var2, $rt_s(473));
+        $var9.$createTime = nPn_NBTTagCompound_getLong($var2, $rt_s(474));
+        $var9.$cloudColor = nPn_NBTTagCompound_getInteger($var4, $rt_s(475));
+        $var9.$skyColor = nPn_NBTTagCompound_getInteger($var4, $rt_s(476));
+        $var9.$fogColor0 = nPn_NBTTagCompound_getInteger($var4, $rt_s(477));
+        $var9.$skyBrightness = nPn_NBTTagCompound_getByte($var4, $rt_s(478));
         if ($var9.$skyBrightness < 0)
             $var9.$skyBrightness = 0;
         if ($var9.$skyBrightness > 16)
             $var9.$skyBrightness = ($var9.$skyBrightness * 15 | 0) / 100 | 0;
-        $var9.$cloudHeight = nPn_NBTTagCompound_getShort($var4, $rt_s(496));
-        $var9.$groundLevel = nPn_NBTTagCompound_getShort($var4, $rt_s(497));
-        $var9.$waterLevel = nPn_NBTTagCompound_getShort($var4, $rt_s(498));
-        $var9.$defaultFluid = nPn_NBTTagCompound_getByte($var4, $rt_s(499));
-        $var9.$worldTime = nPn_NBTTagCompound_getShort($var4, $rt_s(500));
+        $var9.$cloudHeight = nPn_NBTTagCompound_getShort($var4, $rt_s(479));
+        $var9.$groundLevel = nPn_NBTTagCompound_getShort($var4, $rt_s(480));
+        $var9.$waterLevel = nPn_NBTTagCompound_getShort($var4, $rt_s(481));
+        $var9.$defaultFluid = nPn_NBTTagCompound_getByte($var4, $rt_s(482));
+        $var9.$worldTime = nPn_NBTTagCompound_getShort($var4, $rt_s(483));
         $var9.$skylightSubtracted = nmgl_World_getSkyBrightness($var9);
-        nmgl_World_generate($var9, $var6, $var8, $var7, nPn_NBTTagCompound_getByteArray($var3, $rt_s(501)), nPn_NBTTagCompound_getByteArray($var3, $rt_s(502)));
-        $var2 = nmc_Minecraft_getMinecraft().$loadingScreen;
-        $var3 = $rt_s(503);
-        $ptr = 10;
-    case 10:
+        nmgl_World_generate($var9, $var6, $var8, $var7, nPn_NBTTagCompound_getByteArray($var3, $rt_s(484)), nPn_NBTTagCompound_getByteArray($var3, $rt_s(485)));
+        $var2 = nmc_Minecraft_mc.$loadingScreen;
+        $var3 = $rt_s(486);
+        $ptr = 9;
+    case 9:
         nmc_LoadingScreenRenderer_displayLoadingString($var2, $var3);
         if ($rt_suspending()) {
             break main;
         }
-        $var2 = nmc_Minecraft_getMinecraft().$loadingScreen;
+        $var2 = nmc_Minecraft_mc.$loadingScreen;
         $var16 = 100;
-        $ptr = 11;
-    case 11:
+        $ptr = 10;
+    case 10:
         nmc_LoadingScreenRenderer_setLoadingProgress($var2, $var16);
         if ($rt_suspending()) {
             break main;
         }
         try {
-            var$5 = Long_fromInt(1000);
-            $ptr = 12;
+            var$3 = Long_fromInt(1000);
+            $ptr = 11;
             continue main;
         } catch ($$e) {
             $$je = $rt_wrapException($$e);
@@ -33547,7 +33516,7 @@ function nmgl_LevelLoader_load($this) {
                         nmge_Entity_readFromNBT($var21, $var2);
                         nmgl_World_spawnEntityInWorld($var9, $var21);
                     } else
-                        ji_PrintStream_println(jl_System_out(), jl_StringBuilder_toString(jl_StringBuilder_append(jl_StringBuilder_append(jl_StringBuilder_append(jl_StringBuilder__init_(), $rt_s(504)), $var19), $rt_s(505))));
+                        ji_PrintStream_println(jl_System_out(), jl_StringBuilder_toString(jl_StringBuilder_append(jl_StringBuilder_append(jl_StringBuilder_append(jl_StringBuilder__init_(), $rt_s(487)), $var19), $rt_s(488))));
                     break b;
                 } catch ($$e) {
                     $$je = $rt_wrapException($$e);
@@ -33557,12 +33526,12 @@ function nmgl_LevelLoader_load($this) {
                         throw $$e;
                     }
                 }
-                ji_PrintStream_println(jl_System_out(), $rt_s(506));
+                ji_PrintStream_println(jl_System_out(), $rt_s(489));
                 jl_Throwable_printStackTrace0($var12);
             }
             $var16 = $var16 + 1 | 0;
         }
-        $var17 = nPn_NBTTagCompound_getTagList($var13, $rt_s(507));
+        $var17 = nPn_NBTTagCompound_getTagList($var13, $rt_s(490));
         $var18 = 0;
         while ($var18 < nPn_NBTTagList_tagCount($var17)) {
             c: {
@@ -33570,9 +33539,9 @@ function nmgl_LevelLoader_load($this) {
                     $var2 = nPn_NBTTagList_tagAt($var17, $var18);
                     $var22 = nPn_NBTTagCompound_getInteger($var2, $rt_s(403));
                     $var14 = nPn_NBTTagCompound_getString($var2, $rt_s(402));
-                    $var20 = jl_String_equals($var14, $rt_s(508)) ? nmglbt_TileEntityChest__init_() : !jl_String_equals($var14, $rt_s(509)) ? null : nmglbt_TileEntityFurnace__init_();
+                    $var20 = jl_String_equals($var14, $rt_s(491)) ? nmglbt_TileEntityChest__init_() : !jl_String_equals($var14, $rt_s(492)) ? null : nmglbt_TileEntityFurnace__init_();
                     if ($var20 === null)
-                        ji_PrintStream_println(jl_System_out(), jl_StringBuilder_toString(jl_StringBuilder_append(jl_StringBuilder_append(jl_StringBuilder_append(jl_StringBuilder__init_(), $rt_s(510)), $var14), $rt_s(505))));
+                        ji_PrintStream_println(jl_System_out(), jl_StringBuilder_toString(jl_StringBuilder_append(jl_StringBuilder_append(jl_StringBuilder_append(jl_StringBuilder__init_(), $rt_s(493)), $var14), $rt_s(488))));
                     else {
                         $var15 = $var22 % 1024 | 0;
                         $var23 = ($var22 >> 10) % 1024 | 0;
@@ -33590,16 +33559,16 @@ function nmgl_LevelLoader_load($this) {
                         throw $$e;
                     }
                 }
-                ji_PrintStream_println(jl_System_out(), $rt_s(511));
+                ji_PrintStream_println(jl_System_out(), $rt_s(494));
                 jl_Throwable_printStackTrace0($var11);
             }
             $var18 = $var18 + 1 | 0;
         }
         return $var9;
-    case 12:
+    case 11:
         a: {
             try {
-                jl_Thread_sleep(var$5);
+                jl_Thread_sleep(var$3);
                 if ($rt_suspending()) {
                     break main;
                 }
@@ -33625,7 +33594,7 @@ function nmgl_LevelLoader_load($this) {
                         nmge_Entity_readFromNBT($var21, $var2);
                         nmgl_World_spawnEntityInWorld($var9, $var21);
                     } else
-                        ji_PrintStream_println(jl_System_out(), jl_StringBuilder_toString(jl_StringBuilder_append(jl_StringBuilder_append(jl_StringBuilder_append(jl_StringBuilder__init_(), $rt_s(504)), $var19), $rt_s(505))));
+                        ji_PrintStream_println(jl_System_out(), jl_StringBuilder_toString(jl_StringBuilder_append(jl_StringBuilder_append(jl_StringBuilder_append(jl_StringBuilder__init_(), $rt_s(487)), $var19), $rt_s(488))));
                     break d;
                 } catch ($$e) {
                     $$je = $rt_wrapException($$e);
@@ -33635,12 +33604,12 @@ function nmgl_LevelLoader_load($this) {
                         throw $$e;
                     }
                 }
-                ji_PrintStream_println(jl_System_out(), $rt_s(506));
+                ji_PrintStream_println(jl_System_out(), $rt_s(489));
                 jl_Throwable_printStackTrace0($var12);
             }
             $var16 = $var16 + 1 | 0;
         }
-        $var17 = nPn_NBTTagCompound_getTagList($var13, $rt_s(507));
+        $var17 = nPn_NBTTagCompound_getTagList($var13, $rt_s(490));
         $var18 = 0;
         while ($var18 < nPn_NBTTagList_tagCount($var17)) {
             e: {
@@ -33648,9 +33617,9 @@ function nmgl_LevelLoader_load($this) {
                     $var2 = nPn_NBTTagList_tagAt($var17, $var18);
                     $var22 = nPn_NBTTagCompound_getInteger($var2, $rt_s(403));
                     $var14 = nPn_NBTTagCompound_getString($var2, $rt_s(402));
-                    $var20 = jl_String_equals($var14, $rt_s(508)) ? nmglbt_TileEntityChest__init_() : !jl_String_equals($var14, $rt_s(509)) ? null : nmglbt_TileEntityFurnace__init_();
+                    $var20 = jl_String_equals($var14, $rt_s(491)) ? nmglbt_TileEntityChest__init_() : !jl_String_equals($var14, $rt_s(492)) ? null : nmglbt_TileEntityFurnace__init_();
                     if ($var20 === null)
-                        ji_PrintStream_println(jl_System_out(), jl_StringBuilder_toString(jl_StringBuilder_append(jl_StringBuilder_append(jl_StringBuilder_append(jl_StringBuilder__init_(), $rt_s(510)), $var14), $rt_s(505))));
+                        ji_PrintStream_println(jl_System_out(), jl_StringBuilder_toString(jl_StringBuilder_append(jl_StringBuilder_append(jl_StringBuilder_append(jl_StringBuilder__init_(), $rt_s(493)), $var14), $rt_s(488))));
                     else {
                         $var15 = $var22 % 1024 | 0;
                         $var23 = ($var22 >> 10) % 1024 | 0;
@@ -33668,7 +33637,7 @@ function nmgl_LevelLoader_load($this) {
                         throw $$e;
                     }
                 }
-                ji_PrintStream_println(jl_System_out(), $rt_s(511));
+                ji_PrintStream_println(jl_System_out(), $rt_s(494));
                 jl_Throwable_printStackTrace0($var11);
             }
             $var18 = $var18 + 1 | 0;
@@ -33676,38 +33645,38 @@ function nmgl_LevelLoader_load($this) {
         return $var9;
     default: $rt_invalidPointer();
     }}
-    $rt_nativeThread().push($this, $randomText, $var2, $var13, $var16, var$5, $e, $var3, $var4, $var5, $var6, $var7, $var8, $var9, $var10, $var19, $var21, $var12, $var17, $var18, $var22, $var14, $var20, $var15, $var23, $var11, $ptr);
+    $rt_nativeThread().push($this, $var2, $var16, var$3, $e, $var13, $var3, $var4, $var5, $var6, $var7, $var8, $var9, $var10, $var19, $var21, $var12, $var17, $var18, $var22, $var14, $var20, $var15, $var23, $var11, $ptr);
 }
 function nmgl_LevelLoader_loadEntity($this, $var1, $var2) {
     a: {
-        if (jl_String_equals($var2, $rt_s(512))) {
+        if (jl_String_equals($var2, $rt_s(495))) {
             $var2 = nmgea_EntityPig__init_($var1);
             break a;
         }
-        if (jl_String_equals($var2, $rt_s(513))) {
+        if (jl_String_equals($var2, $rt_s(496))) {
             $var2 = nmgea_EntitySheep__init_($var1);
             break a;
         }
-        if (jl_String_equals($var2, $rt_s(514))) {
+        if (jl_String_equals($var2, $rt_s(497))) {
             $var2 = nmgem_EntityCreeper__init_($var1);
             break a;
         }
-        if (jl_String_equals($var2, $rt_s(515))) {
+        if (jl_String_equals($var2, $rt_s(498))) {
             $var2 = nmgem_EntitySkeleton__init_($var1);
             break a;
         }
-        if (jl_String_equals($var2, $rt_s(516))) {
+        if (jl_String_equals($var2, $rt_s(499))) {
             $var2 = nmgem_EntitySpider__init_($var1);
             break a;
         }
-        if (jl_String_equals($var2, $rt_s(517))) {
+        if (jl_String_equals($var2, $rt_s(500))) {
             $var2 = nmgem_EntityZombie__init_($var1);
             break a;
         }
-        if (jl_String_equals($var2, $rt_s(518))) {
+        if (jl_String_equals($var2, $rt_s(501))) {
             $var2 = new nmgem_EntityGiantZombie;
             nmgem_EntityMob__init_($var2, $var1);
-            $var2.$texture = $rt_s(519);
+            $var2.$texture = $rt_s(502);
             $var2.$moveSpeed = 0.5;
             $var2.$attackStrength = 50;
             $var2.$health = $var2.$health * 10 | 0;
@@ -33715,8 +33684,8 @@ function nmgl_LevelLoader_loadEntity($this, $var1, $var2) {
             nmge_Entity_setSize($var2, $var2.$width2 * 6.0, $var2.$height2 * 6.0);
             break a;
         }
-        if (!jl_String_equals($var2, $rt_s(520))) {
-            if (!jl_String_equals($var2, $rt_s(521))) {
+        if (!jl_String_equals($var2, $rt_s(503))) {
+            if (!jl_String_equals($var2, $rt_s(504))) {
                 $var2 = null;
                 break a;
             }
@@ -33742,32 +33711,32 @@ function nmgl_LevelLoader_save($this) {
     case 0:
         $var1 = nmc_Minecraft_mc.$theWorld;
         $var3 = nPn_NBTTagCompound__init_();
-        nPn_NBTTagCompound_setInteger($var3, $rt_s(492), $var1.$cloudColor);
-        nPn_NBTTagCompound_setInteger($var3, $rt_s(493), $var1.$skyColor);
-        nPn_NBTTagCompound_setInteger($var3, $rt_s(494), $var1.$fogColor0);
-        nPn_NBTTagCompound_setByte($var3, $rt_s(495), $var1.$skyBrightness << 24 >> 24);
-        nPn_NBTTagCompound_setShort($var3, $rt_s(496), $var1.$cloudHeight << 16 >> 16);
-        nPn_NBTTagCompound_setShort($var3, $rt_s(497), $var1.$groundLevel << 16 >> 16);
-        nPn_NBTTagCompound_setShort($var3, $rt_s(498), $var1.$waterLevel << 16 >> 16);
+        nPn_NBTTagCompound_setInteger($var3, $rt_s(475), $var1.$cloudColor);
+        nPn_NBTTagCompound_setInteger($var3, $rt_s(476), $var1.$skyColor);
+        nPn_NBTTagCompound_setInteger($var3, $rt_s(477), $var1.$fogColor0);
+        nPn_NBTTagCompound_setByte($var3, $rt_s(478), $var1.$skyBrightness << 24 >> 24);
+        nPn_NBTTagCompound_setShort($var3, $rt_s(479), $var1.$cloudHeight << 16 >> 16);
+        nPn_NBTTagCompound_setShort($var3, $rt_s(480), $var1.$groundLevel << 16 >> 16);
+        nPn_NBTTagCompound_setShort($var3, $rt_s(481), $var1.$waterLevel << 16 >> 16);
         nmglb_Block_$callClinit();
-        nPn_NBTTagCompound_setByte($var3, $rt_s(522), nmglb_Block_grass.$blockID << 24 >> 24);
-        nPn_NBTTagCompound_setByte($var3, $rt_s(499), $var1.$defaultFluid << 24 >> 24);
-        nPn_NBTTagCompound_setShort($var3, $rt_s(500), $var1.$worldTime << 16 >> 16);
+        nPn_NBTTagCompound_setByte($var3, $rt_s(505), nmglb_Block_grass.$blockID << 24 >> 24);
+        nPn_NBTTagCompound_setByte($var3, $rt_s(482), $var1.$defaultFluid << 24 >> 24);
+        nPn_NBTTagCompound_setShort($var3, $rt_s(483), $var1.$worldTime << 16 >> 16);
         $var4 = nPn_NBTTagCompound__init_();
-        nPn_NBTTagCompound_setShort($var4, $rt_s(484), $var1.$width << 16 >> 16);
-        nPn_NBTTagCompound_setShort($var4, $rt_s(485), $var1.$length1 << 16 >> 16);
-        nPn_NBTTagCompound_setShort($var4, $rt_s(486), $var1.$height << 16 >> 16);
-        nPn_NBTTagCompound_setByteArray($var4, $rt_s(501), $var1.$blocks);
-        nPn_NBTTagCompound_setByteArray($var4, $rt_s(502), $var1.$data2);
+        nPn_NBTTagCompound_setShort($var4, $rt_s(467), $var1.$width << 16 >> 16);
+        nPn_NBTTagCompound_setShort($var4, $rt_s(468), $var1.$length1 << 16 >> 16);
+        nPn_NBTTagCompound_setShort($var4, $rt_s(469), $var1.$height << 16 >> 16);
+        nPn_NBTTagCompound_setByteArray($var4, $rt_s(484), $var1.$blocks);
+        nPn_NBTTagCompound_setByteArray($var4, $rt_s(485), $var1.$data2);
         $var5 = nPn_NBTTagList__init_();
         nPn_NBTTagList_setTag($var5, nPn_NBTTagShort__init_($var1.$xSpawn << 16 >> 16));
         nPn_NBTTagList_setTag($var5, nPn_NBTTagShort__init_($var1.$ySpawn << 16 >> 16));
         nPn_NBTTagList_setTag($var5, nPn_NBTTagShort__init_($var1.$zSpawn << 16 >> 16));
-        nPn_NBTTagCompound_setTag($var4, $rt_s(488), $var5);
+        nPn_NBTTagCompound_setTag($var4, $rt_s(471), $var5);
         $var15 = nPn_NBTTagCompound__init_();
-        nPn_NBTTagCompound_setString($var15, $rt_s(489), $var1.$authorName);
-        nPn_NBTTagCompound_setString($var15, $rt_s(490), $var1.$name3);
-        nPn_NBTTagCompound_setLong($var15, $rt_s(491), $var1.$createTime);
+        nPn_NBTTagCompound_setString($var15, $rt_s(472), $var1.$authorName);
+        nPn_NBTTagCompound_setString($var15, $rt_s(473), $var1.$name3);
+        nPn_NBTTagCompound_setLong($var15, $rt_s(474), $var1.$createTime);
         $var6 = nPn_NBTTagList__init_();
         $var7 = ju_AbstractList_iterator($var1.$entityMap.$entities);
         while (ju_AbstractList$1_hasNext($var7)) {
@@ -33787,12 +33756,12 @@ function nmgl_LevelLoader_save($this) {
             nPn_NBTTagList_setTag($var16, $var10);
         }
         $var18 = nPn_NBTTagCompound__init_();
-        $var18.$key = $rt_s(523);
-        nPn_NBTTagCompound_setCompoundTag($var18, $rt_s(480), $var15);
-        nPn_NBTTagCompound_setCompoundTag($var18, $rt_s(481), $var4);
-        nPn_NBTTagCompound_setCompoundTag($var18, $rt_s(482), $var3);
-        nPn_NBTTagCompound_setTag($var18, $rt_s(483), $var6);
-        nPn_NBTTagCompound_setTag($var18, $rt_s(507), $var16);
+        $var18.$key = $rt_s(506);
+        nPn_NBTTagCompound_setCompoundTag($var18, $rt_s(463), $var15);
+        nPn_NBTTagCompound_setCompoundTag($var18, $rt_s(464), $var4);
+        nPn_NBTTagCompound_setCompoundTag($var18, $rt_s(465), $var3);
+        nPn_NBTTagCompound_setTag($var18, $rt_s(466), $var6);
+        nPn_NBTTagCompound_setTag($var18, $rt_s(490), $var16);
         nPn_NBTTagCompound_setFloat($var18, $rt_s(399), nmc_Minecraft_mc.$thePlayer.$posX);
         nPn_NBTTagCompound_setFloat($var18, $rt_s(400), nmc_Minecraft_mc.$thePlayer.$posY);
         nPn_NBTTagCompound_setFloat($var18, $rt_s(401), nmc_Minecraft_mc.$thePlayer.$posZ);
@@ -34075,7 +34044,7 @@ function jnc_CharsetEncoder_onMalformedInput($this, $newAction) {
         return $this;
     }
     var$2 = new jl_IllegalArgumentException;
-    jl_Throwable__init_(var$2, $rt_s(524));
+    jl_Throwable__init_(var$2, $rt_s(507));
     $rt_throw(var$2);
 }
 function jnc_CharsetEncoder_implOnMalformedInput($this, $newAction) {
@@ -34088,7 +34057,7 @@ function jnc_CharsetEncoder_onUnmappableCharacter($this, $newAction) {
         return $this;
     }
     var$2 = new jl_IllegalArgumentException;
-    jl_Throwable__init_(var$2, $rt_s(524));
+    jl_Throwable__init_(var$2, $rt_s(507));
     $rt_throw(var$2);
 }
 function jnc_CharsetEncoder_implOnUnmappableCharacter($this, $newAction) {
@@ -34463,7 +34432,7 @@ function olo_WebGL$12_handleEvent($this, $evt) {
         return;
     }
     $evt = new jl_IllegalArgumentException;
-    jl_Throwable__init_($evt, $rt_s(525));
+    jl_Throwable__init_($evt, $rt_s(508));
     $rt_throw($evt);
 }
 function olo_WebGL$12_handleEvent$exported$0(var$0, var$1) {
@@ -34583,7 +34552,7 @@ function jn_IntBufferImpl_get0($this, $index) {
     var$2 = new jl_IndexOutOfBoundsException;
     var$3 = new jl_StringBuilder;
     jl_AbstractStringBuilder__init_(var$3);
-    jl_Throwable__init_(var$2, jl_AbstractStringBuilder_toString(jl_StringBuilder_append(jl_StringBuilder_append1(jl_StringBuilder_append(jl_StringBuilder_append1(jl_StringBuilder_append(var$3, $rt_s(526)), $index), $rt_s(250)), $this.$limit), $rt_s(34))));
+    jl_Throwable__init_(var$2, jl_AbstractStringBuilder_toString(jl_StringBuilder_append(jl_StringBuilder_append1(jl_StringBuilder_append(jl_StringBuilder_append1(jl_StringBuilder_append(var$3, $rt_s(509)), $index), $rt_s(250)), $this.$limit), $rt_s(34))));
     $rt_throw(var$2);
 }
 function jn_IntBufferImpl_put0($this, $index, $b) {
@@ -34600,7 +34569,7 @@ function jn_IntBufferImpl_put0($this, $index, $b) {
     var$4 = new jl_IndexOutOfBoundsException;
     var$3 = new jl_StringBuilder;
     jl_AbstractStringBuilder__init_(var$3);
-    jl_Throwable__init_(var$4, jl_AbstractStringBuilder_toString(jl_StringBuilder_append(jl_StringBuilder_append1(jl_StringBuilder_append(jl_StringBuilder_append1(jl_StringBuilder_append(var$3, $rt_s(526)), $index), $rt_s(250)), $this.$limit), $rt_s(34))));
+    jl_Throwable__init_(var$4, jl_AbstractStringBuilder_toString(jl_StringBuilder_append(jl_StringBuilder_append1(jl_StringBuilder_append(jl_StringBuilder_append1(jl_StringBuilder_append(var$3, $rt_s(509)), $index), $rt_s(250)), $this.$limit), $rt_s(34))));
     $rt_throw(var$4);
 }
 function jn_IntBufferImpl_isReadOnly($this) {
@@ -34829,7 +34798,7 @@ function nmgl_Light_updateLists($this, $var1, $var2, $var3, $var4, $var5, $var6)
                     $this.$lightingUpdateCounter = var$12 + 1 | 0;
                     var$10[var$12] = $var9;
                     if (!($this.$chunks.data[var$11] & var$13))
-                        ji_PrintStream_println(jl_System_out(), $rt_s(527));
+                        ji_PrintStream_println(jl_System_out(), $rt_s(510));
                     if ($this.$lightingUpdateCounter > ($this.$lightingUpdateList3.data.length - 32 | 0)) {
                         var$10 = $this.$lightingUpdateList3.data;
                         $var9 = $this.$lightingUpdateCounter - 1 | 0;
@@ -35309,12 +35278,12 @@ function nmcg_GuiGameOver_drawScreen($this, $var1, $var2, $var3) {
         nmcg_Gui_drawGradientRect(0, 0, $this.$width1, $this.$height1, 1615855616, (-1602211792));
         olo_WebGLManager_glPushMatrix();
         olo_WebGLManager_glScalef(2.0, 2.0, 2.0);
-        nmcg_Gui_drawCenteredString($this.$fontRenderer0, $rt_s(528), ($this.$width1 / 2 | 0) / 2 | 0, 30, 16777215);
+        nmcg_Gui_drawCenteredString($this.$fontRenderer0, $rt_s(511), ($this.$width1 / 2 | 0) / 2 | 0, 30, 16777215);
         olo_WebGLManager_glPopMatrix();
         $var10000 = $this.$fontRenderer0;
         $var10001 = new jl_StringBuilder;
         jl_AbstractStringBuilder__init_($var10001);
-        nmcg_Gui_drawCenteredString($var10000, jl_AbstractStringBuilder_toString(jl_StringBuilder_append1(jl_StringBuilder_append($var10001, $rt_s(529)), $this.$mc6.$thePlayer.$getScore)), $this.$width1 / 2 | 0, 100, 16777215);
+        nmcg_Gui_drawCenteredString($var10000, jl_AbstractStringBuilder_toString(jl_StringBuilder_append1(jl_StringBuilder_append($var10001, $rt_s(512)), $this.$mc6.$thePlayer.$getScore)), $this.$width1 / 2 | 0, 100, 16777215);
         $ptr = 1;
     case 1:
         nmcg_GuiScreen_drawScreen($this, $var1, $var2, $var3);
@@ -35518,7 +35487,7 @@ function cjj_InfBlocks_proc($this, $r) {
                                             $i = $b & 65535;
                                             if (var$10 != $i) {
                                                 $this.$mode1 = 9;
-                                                $this.$z1.$msg = $rt_s(530);
+                                                $this.$z1.$msg = $rt_s(513);
                                                 $this.$bitb = $b;
                                                 $this.$bitk = $k;
                                                 $this.$z1.$avail_in = $n;
@@ -35581,7 +35550,7 @@ function cjj_InfBlocks_proc($this, $r) {
                                                     $r = $b >>> 3;
                                                     var$10 = $k + (-3) | 0;
                                                     $this.$mode1 = 9;
-                                                    $this.$z1.$msg = $rt_s(531);
+                                                    $this.$z1.$msg = $rt_s(514);
                                                     $this.$bitb = $r;
                                                     $this.$bitk = var$10;
                                                     $this.$z1.$avail_in = $n;
@@ -35833,7 +35802,7 @@ function cjj_InfBlocks_proc($this, $r) {
                     return cjj_InfBlocks_inflate_flush($this, $r);
                 }
                 $this.$mode1 = 9;
-                $this.$z1.$msg = $rt_s(532);
+                $this.$z1.$msg = $rt_s(515);
                 $this.$bitb = $b;
                 $this.$bitk = $k;
                 $this.$z1.$avail_in = $n;
@@ -35845,7 +35814,7 @@ function cjj_InfBlocks_proc($this, $r) {
             }
             $this.$blens = null;
             $this.$mode1 = 9;
-            $this.$z1.$msg = $rt_s(533);
+            $this.$z1.$msg = $rt_s(516);
             $this.$bitb = $b;
             $this.$bitk = $k;
             $this.$z1.$avail_in = $n;
@@ -36162,9 +36131,9 @@ function nmcg_GuiIngameMenu_initGui($this) {
     ju_ArrayList_clear($this.$controlList);
     ju_ArrayList_add($this.$controlList, nmcg_GuiButton__init_(0, ($this.$width1 / 2 | 0) - 100 | 0, $this.$height1 / 4 | 0, $rt_s(386)));
     ju_ArrayList_add($this.$controlList, nmcg_GuiButton__init_(1, ($this.$width1 / 2 | 0) - 100 | 0, ($this.$height1 / 4 | 0) + 24 | 0, $rt_s(383)));
-    ju_ArrayList_add($this.$controlList, nmcg_GuiButton__init_(2, ($this.$width1 / 2 | 0) - 100 | 0, ($this.$height1 / 4 | 0) + 48 | 0, $rt_s(534)));
+    ju_ArrayList_add($this.$controlList, nmcg_GuiButton__init_(2, ($this.$width1 / 2 | 0) - 100 | 0, ($this.$height1 / 4 | 0) + 48 | 0, $rt_s(517)));
     ju_ArrayList_add($this.$controlList, nmcg_GuiButton__init_(3, ($this.$width1 / 2 | 0) - 100 | 0, ($this.$height1 / 4 | 0) + 72 | 0, $rt_s(384)));
-    ju_ArrayList_add($this.$controlList, nmcg_GuiButton__init_(4, ($this.$width1 / 2 | 0) - 100 | 0, ($this.$height1 / 4 | 0) + 120 | 0, $rt_s(535)));
+    ju_ArrayList_add($this.$controlList, nmcg_GuiButton__init_(4, ($this.$width1 / 2 | 0) - 100 | 0, ($this.$height1 / 4 | 0) + 120 | 0, $rt_s(518)));
     ju_ArrayList_get($this.$controlList, 2).$enabled = 0;
     ju_ArrayList_get($this.$controlList, 3).$enabled = 0;
 }
@@ -36194,7 +36163,7 @@ function nmcg_GuiIngameMenu_actionPerformed($this, $var1) {
                 var$2 = $this.$mc6;
                 var$3 = new nmcg_GuiSaveLevel;
                 nmcg_GuiLoadLevel__init_0(var$3, $this);
-                var$3.$title0 = $rt_s(536);
+                var$3.$title0 = $rt_s(519);
                 $ptr = 5;
                 continue main;
             }
@@ -36227,7 +36196,7 @@ function nmcg_GuiIngameMenu_actionPerformed($this, $var1) {
                 var$2 = $this.$mc6;
                 var$3 = new nmcg_GuiSaveLevel;
                 nmcg_GuiLoadLevel__init_0(var$3, $this);
-                var$3.$title0 = $rt_s(536);
+                var$3.$title0 = $rt_s(519);
                 $ptr = 5;
                 continue main;
             }
@@ -36254,7 +36223,7 @@ function nmcg_GuiIngameMenu_actionPerformed($this, $var1) {
                 var$2 = $this.$mc6;
                 var$3 = new nmcg_GuiSaveLevel;
                 nmcg_GuiLoadLevel__init_0(var$3, $this);
-                var$3.$title0 = $rt_s(536);
+                var$3.$title0 = $rt_s(519);
                 $ptr = 5;
                 continue main;
             }
@@ -36332,7 +36301,7 @@ function nmcg_GuiIngameMenu_drawScreen($this, $var1, $var2, $var3) {
         if ($rt_suspending()) {
             break main;
         }
-        nmcg_Gui_drawCenteredString($this.$fontRenderer0, $rt_s(537), $this.$width1 / 2 | 0, 40, 16777215);
+        nmcg_Gui_drawCenteredString($this.$fontRenderer0, $rt_s(520), $this.$width1 / 2 | 0, 40, 16777215);
         $ptr = 2;
     case 2:
         nmcg_GuiScreen_drawScreen($this, $var1, $var2, $var3);
@@ -37358,9 +37327,9 @@ function cjj_InfTree_inflate_trees_bits($this, $c, $bb, $tb, $hp, $z) {
     $this.$hn.data[0] = 0;
     $result = cjj_InfTree_huft_build($this, $c, 0, 19, 19, null, null, $tb, $bb, $hp, $this.$hn, $this.$v);
     if ($result == (-3))
-        $z.$msg = $rt_s(538);
+        $z.$msg = $rt_s(521);
     else if (!($result != (-5) && $bb.data[0])) {
-        $z.$msg = $rt_s(539);
+        $z.$msg = $rt_s(522);
         $result = (-3);
     }
     return $result;
@@ -37376,20 +37345,20 @@ function cjj_InfTree_inflate_trees_dynamic($this, $nl, $nd, $c, $bl, $bd, $tl, $
         if (!$nd && !(!$bd.data[0] && $nl > 257))
             return 0;
         if ($nd == (-3))
-            $z.$msg = $rt_s(540);
+            $z.$msg = $rt_s(523);
         else if ($nd == (-5)) {
-            $z.$msg = $rt_s(541);
+            $z.$msg = $rt_s(524);
             $nd = (-3);
         } else if ($nd != (-4)) {
-            $z.$msg = $rt_s(542);
+            $z.$msg = $rt_s(525);
             $nd = (-3);
         }
         return $nd;
     }
     if ($result == (-3))
-        $z.$msg = $rt_s(543);
+        $z.$msg = $rt_s(526);
     else if ($result != (-4)) {
-        $z.$msg = $rt_s(544);
+        $z.$msg = $rt_s(527);
         $result = (-3);
     }
     return $result;
@@ -39397,7 +39366,7 @@ function cjj_InfCodes_proc($this, $r) {
                             }
                             if ($j & 64) {
                                 $this.$mode2 = 9;
-                                $this.$z2.$msg = $rt_s(545);
+                                $this.$z2.$msg = $rt_s(528);
                                 $this.$s.$bitb = var$4;
                                 $this.$s.$bitk = var$5;
                                 $this.$z2.$avail_in = $n;
@@ -39472,7 +39441,7 @@ function cjj_InfCodes_proc($this, $r) {
                     }
                     if (!($e & 32)) {
                         $this.$mode2 = 9;
-                        $this.$z2.$msg = $rt_s(546);
+                        $this.$z2.$msg = $rt_s(529);
                         $this.$s.$bitb = var$4;
                         $this.$s.$bitk = var$5;
                         $this.$z2.$avail_in = $n;
@@ -39656,7 +39625,7 @@ function cjj_InfCodes_inflate_fast($this, $bl, $bd, $tl, $tl_index, $td, $td_ind
                             if ($bd & 16)
                                 break;
                             if ($bd & 64) {
-                                $z.$msg = $rt_s(545);
+                                $z.$msg = $rt_s(528);
                                 $bl = $z.$avail_in - $n | 0;
                                 $bd = $k >> 3;
                                 if ($bd < $bl)
@@ -39779,7 +39748,7 @@ function cjj_InfCodes_inflate_fast($this, $bl, $bd, $tl, $tl_index, $td, $td_ind
                             $s.$write5 = $q;
                             return 1;
                         }
-                        $z.$msg = $rt_s(546);
+                        $z.$msg = $rt_s(529);
                         $c = $z.$avail_in - $n | 0;
                         $bl = $k >> 3;
                         if ($bl < $c)
@@ -40106,7 +40075,7 @@ function nmgp_AxisAlignedBB_expand($this, $var1, $var2, $var3) {
     var var$4;
     if ($this.$minY0 > $this.$maxY0) {
         var$4 = new jl_IllegalArgumentException;
-        jl_Throwable__init_(var$4, $rt_s(547));
+        jl_Throwable__init_(var$4, $rt_s(530));
         $rt_throw(var$4);
     }
     return nmgp_AxisAlignedBB__init_0($this.$minX0 - $var1, $this.$minY0 - $var2, $this.$minZ0 - $var3, $var1 + $this.$maxX0, $var2 + $this.$maxY0, $var3 + $this.$maxZ0);
@@ -40322,13 +40291,13 @@ var nPs_IndexedDBFilesystem$FileExists_$VALUES = null;
 function nPs_IndexedDBFilesystem$FileExists__clinit_() {
     var var$1, var$2, var$3;
     var$1 = new nPs_IndexedDBFilesystem$FileExists;
-    jl_Enum__init_0(var$1, $rt_s(548), 0);
+    jl_Enum__init_0(var$1, $rt_s(531), 0);
     nPs_IndexedDBFilesystem$FileExists_FILE = var$1;
     var$1 = new nPs_IndexedDBFilesystem$FileExists;
-    jl_Enum__init_0(var$1, $rt_s(549), 1);
+    jl_Enum__init_0(var$1, $rt_s(532), 1);
     nPs_IndexedDBFilesystem$FileExists_DIRECTORY = var$1;
     var$1 = new nPs_IndexedDBFilesystem$FileExists;
-    jl_Enum__init_0(var$1, $rt_s(550), 2);
+    jl_Enum__init_0(var$1, $rt_s(533), 2);
     nPs_IndexedDBFilesystem$FileExists_FALSE = var$1;
     var$2 = $rt_createArray(nPs_IndexedDBFilesystem$FileExists, 3);
     var$3 = var$2.data;
@@ -40519,16 +40488,16 @@ function nmgem_EntityItem_attackEntityFrom($this, $var1, $var2) {
 }
 function nmgem_EntityItem_writeEntityToNBT($this, $var1) {
     nPn_NBTTagCompound_setShort($var1, $rt_s(409), $this.$health0 << 24 >> 24 << 16 >> 16);
-    nPn_NBTTagCompound_setShort($var1, $rt_s(551), $this.$age0 << 16 >> 16);
-    nPn_NBTTagCompound_setCompoundTag($var1, $rt_s(520), nmgi_ItemStack_writeToNBT($this.$item, nPn_NBTTagCompound__init_()));
+    nPn_NBTTagCompound_setShort($var1, $rt_s(534), $this.$age0 << 16 >> 16);
+    nPn_NBTTagCompound_setCompoundTag($var1, $rt_s(503), nmgi_ItemStack_writeToNBT($this.$item, nPn_NBTTagCompound__init_()));
 }
 function nmgem_EntityItem_readEntityFromNBT($this, $var1) {
     $this.$health0 = nPn_NBTTagCompound_getShort($var1, $rt_s(409)) & 255;
-    $this.$age0 = nPn_NBTTagCompound_getShort($var1, $rt_s(551));
-    $this.$item = nmgi_ItemStack__init_2(nPn_NBTTagCompound_getCompoundTag($var1, $rt_s(520)));
+    $this.$age0 = nPn_NBTTagCompound_getShort($var1, $rt_s(534));
+    $this.$item = nmgi_ItemStack__init_2(nPn_NBTTagCompound_getCompoundTag($var1, $rt_s(503)));
 }
 function nmgem_EntityItem_getEntityString($this) {
-    return $rt_s(520);
+    return $rt_s(503);
 }
 function nmgem_EntityItem_onCollideWithPlayer($this, $var1) {
     if (!$this.$delayBeforeCanPickup && nmgep_InventoryPlayer_storePartialItemStack($var1.$inventory, $this.$item)) {
@@ -40541,7 +40510,7 @@ function nmcgc_GuiFurnace() {
     this.$furnaceInventory = null;
 }
 function nmcgc_GuiFurnace_drawGuiContainerForegroundLayer($this) {
-    nmcg_FontRenderer_drawString($this.$fontRenderer0, $rt_s(509), 60, 6, 4210752);
+    nmcg_FontRenderer_drawString($this.$fontRenderer0, $rt_s(492), 60, 6, 4210752);
     nmcg_FontRenderer_drawString($this.$fontRenderer0, $rt_s(317), 8, ($this.$ySize0 - 96 | 0) + 2 | 0, 4210752);
 }
 function nmcgc_GuiFurnace_drawGuiContainerBackgroundLayer($this) {
@@ -40554,7 +40523,7 @@ function nmcgc_GuiFurnace_drawGuiContainerBackgroundLayer($this) {
     main: while (true) { switch ($ptr) {
     case 0:
         var$1 = $this.$mc6.$renderEngine;
-        var$2 = $rt_s(552);
+        var$2 = $rt_s(535);
         $ptr = 1;
     case 1:
         $tmp = nmcr_RenderEngine_getTexture(var$1, var$2);
@@ -40628,7 +40597,7 @@ function nmcgc_GuiCrafting_drawGuiContainerBackgroundLayer($this) {
     main: while (true) { switch ($ptr) {
     case 0:
         var$1 = $this.$mc6.$renderEngine;
-        var$2 = $rt_s(553);
+        var$2 = $rt_s(536);
         $ptr = 1;
     case 1:
         $tmp = nmcr_RenderEngine_getTexture(var$1, var$2);
@@ -40704,7 +40673,7 @@ function nmcgc_GuiChest_drawGuiContainerBackgroundLayer($this) {
     main: while (true) { switch ($ptr) {
     case 0:
         var$1 = $this.$mc6.$renderEngine;
-        var$2 = $rt_s(554);
+        var$2 = $rt_s(537);
         $ptr = 1;
     case 1:
         $tmp = nmcr_RenderEngine_getTexture(var$1, var$2);
@@ -41291,7 +41260,7 @@ function jnc_CharsetDecoder_onMalformedInput($this, $newAction) {
         return $this;
     }
     var$2 = new jl_IllegalArgumentException;
-    jl_Throwable__init_(var$2, $rt_s(555));
+    jl_Throwable__init_(var$2, $rt_s(538));
     $rt_throw(var$2);
 }
 function jnc_CharsetDecoder_implOnMalformedInput($this, $newAction) {
@@ -41304,7 +41273,7 @@ function jnc_CharsetDecoder_onUnmappableCharacter($this, $newAction) {
         return $this;
     }
     var$2 = new jl_IllegalArgumentException;
-    jl_Throwable__init_(var$2, $rt_s(555));
+    jl_Throwable__init_(var$2, $rt_s(538));
     $rt_throw(var$2);
 }
 function jnc_CharsetDecoder_implOnUnmappableCharacter($this, $newAction) {
@@ -41769,7 +41738,7 @@ function nmcre_RenderPlayer_shouldRenderPass($this, $var1, $var2) {
                 $var9 = $var8;
                 $var1 = new jl_StringBuilder;
                 jl_AbstractStringBuilder__init_($var1);
-                $var1 = jl_StringBuilder_append(jl_StringBuilder_append(jl_StringBuilder_append($var1, $rt_s(556)), nmcre_RenderPlayer_armorFilenamePrefix.data[$var9.$renderIndex]), $rt_s(557));
+                $var1 = jl_StringBuilder_append(jl_StringBuilder_append(jl_StringBuilder_append($var1, $rt_s(539)), nmcre_RenderPlayer_armorFilenamePrefix.data[$var9.$renderIndex]), $rt_s(540));
                 $var4 = $rt_compare($var2, 2);
                 $var1 = jl_AbstractStringBuilder_toString(jl_StringBuilder_append(jl_StringBuilder_append1($var1, $var4 ? 1 : 2), $rt_s(209)));
                 $ptr = 1;
@@ -41845,10 +41814,10 @@ function nmcre_RenderPlayer__clinit_() {
     var$1 = $rt_createArray(jl_String, 5);
     var$2 = var$1.data;
     var$2[0] = $rt_s(264);
-    var$2[1] = $rt_s(558);
-    var$2[2] = $rt_s(559);
-    var$2[3] = $rt_s(560);
-    var$2[4] = $rt_s(561);
+    var$2[1] = $rt_s(541);
+    var$2[2] = $rt_s(542);
+    var$2[3] = $rt_s(543);
+    var$2[4] = $rt_s(544);
     nmcre_RenderPlayer_armorFilenamePrefix = var$1;
 }
 function nmcg_GuiButton() {
@@ -42128,7 +42097,7 @@ function nmgem_EntitySpider__init_(var_0) {
 }
 function nmgem_EntitySpider__init_0($this, $var1) {
     nmgem_EntityMob__init_($this, $var1);
-    $this.$texture = $rt_s(562);
+    $this.$texture = $rt_s(545);
     nmge_Entity_setSize($this, 1.399999976158142, 0.8999999761581421);
     $this.$moveSpeed = 0.800000011920929;
 }
@@ -42167,7 +42136,7 @@ function nmgem_EntitySpider_readEntityFromNBT($this, $var1) {
     nmge_EntityLiving_readEntityFromNBT($this, $var1);
 }
 function nmgem_EntitySpider_getEntityString($this) {
-    return $rt_s(516);
+    return $rt_s(499);
 }
 function nmgem_EntitySpider_scoreValue($this) {
     nmgi_Item_$callClinit();
@@ -42193,7 +42162,7 @@ function nmcre_RenderSpider_shouldRenderPass($this, $var1, $var2) {
             return 0;
         if ($var2)
             return 0;
-        $var1 = $rt_s(563);
+        $var1 = $rt_s(546);
         $ptr = 1;
     case 1:
         nmcre_Render_loadTexture($this, $var1);
@@ -42232,7 +42201,7 @@ function nmgea_EntityPig__init_(var_0) {
 }
 function nmgea_EntityPig__init_0($this, $var1) {
     nmge_EntityCreature__init_0($this, $var1);
-    $this.$texture = $rt_s(564);
+    $this.$texture = $rt_s(547);
     nmge_Entity_setSize($this, 0.8999999761581421, 0.8999999761581421);
 }
 function nmgea_EntityPig_writeEntityToNBT($this, $var1) {
@@ -42242,7 +42211,7 @@ function nmgea_EntityPig_readEntityFromNBT($this, $var1) {
     nmge_EntityLiving_readEntityFromNBT($this, $var1);
 }
 function nmgea_EntityPig_getEntityString($this) {
-    return $rt_s(512);
+    return $rt_s(495);
 }
 function nmgea_EntityPig_scoreValue($this) {
     nmgi_Item_$callClinit();
@@ -42323,7 +42292,7 @@ function nmgea_EntitySheep__init_(var_0) {
 function nmgea_EntitySheep__init_0($this, $var1) {
     nmge_EntityCreature__init_0($this, $var1);
     $this.$sheared = 0;
-    $this.$texture = $rt_s(565);
+    $this.$texture = $rt_s(548);
     nmge_Entity_setSize($this, 0.8999999761581421, 1.2999999523162842);
 }
 function nmgea_EntitySheep_attackEntityFrom($this, $var1, $var2) {
@@ -42349,14 +42318,14 @@ function nmgea_EntitySheep_attackEntityFrom($this, $var1, $var2) {
 }
 function nmgea_EntitySheep_writeEntityToNBT($this, $var1) {
     nmge_EntityLiving_writeEntityToNBT($this, $var1);
-    nPn_NBTTagCompound_setBoolean($var1, $rt_s(566), $this.$sheared);
+    nPn_NBTTagCompound_setBoolean($var1, $rt_s(549), $this.$sheared);
 }
 function nmgea_EntitySheep_readEntityFromNBT($this, $var1) {
     nmge_EntityLiving_readEntityFromNBT($this, $var1);
-    $this.$sheared = nPn_NBTTagCompound_getBoolean($var1, $rt_s(566));
+    $this.$sheared = nPn_NBTTagCompound_getBoolean($var1, $rt_s(549));
 }
 function nmgea_EntitySheep_getEntityString($this) {
-    return $rt_s(513);
+    return $rt_s(496);
 }
 function nmcre_RenderSheep() {
     nmcre_RenderLiving.call(this);
@@ -42371,7 +42340,7 @@ function nmcre_RenderSheep_shouldRenderPass($this, $var1, $var2) {
     main: while (true) { switch ($ptr) {
     case 0:
         $var10001 = $var1;
-        $var1 = $rt_s(567);
+        $var1 = $rt_s(550);
         $ptr = 1;
     case 1:
         nmcre_Render_loadTexture($this, $var1);
@@ -42431,7 +42400,7 @@ function nmgem_EntityCreeper__init_0($this, $var1) {
     nmgem_EntityMob__init_($this, $var1);
     $this.$fuseTime = 30;
     $this.$creeperState = (-1);
-    $this.$texture = $rt_s(568);
+    $this.$texture = $rt_s(551);
 }
 function nmgem_EntityCreeper_writeEntityToNBT($this, $var1) {
     nmge_EntityLiving_writeEntityToNBT($this, $var1);
@@ -42440,7 +42409,7 @@ function nmgem_EntityCreeper_readEntityFromNBT($this, $var1) {
     nmge_EntityLiving_readEntityFromNBT($this, $var1);
 }
 function nmgem_EntityCreeper_getEntityString($this) {
-    return $rt_s(514);
+    return $rt_s(497);
 }
 function nmgem_EntityCreeper_updatePlayerActionState($this) {
     $this.$lastActiveTime = $this.$timeSinceIgnited;
@@ -42514,7 +42483,7 @@ function nmgem_EntitySkeleton__init_(var_0) {
 }
 function nmgem_EntitySkeleton__init_0($this, $var1) {
     nmgem_EntityMob__init_($this, $var1);
-    $this.$texture = $rt_s(569);
+    $this.$texture = $rt_s(552);
 }
 function nmgem_EntitySkeleton_onLivingUpdate($this) {
     var $var1;
@@ -42550,7 +42519,7 @@ function nmgem_EntitySkeleton_readEntityFromNBT($this, $var1) {
     nmge_EntityLiving_readEntityFromNBT($this, $var1);
 }
 function nmgem_EntitySkeleton_getEntityString($this) {
-    return $rt_s(515);
+    return $rt_s(498);
 }
 function nmgem_EntitySkeleton_scoreValue($this) {
     nmgi_Item_$callClinit();
@@ -42604,7 +42573,7 @@ function nmgem_EntityZombie__init_(var_0) {
 }
 function nmgem_EntityZombie__init_0($this, $var1) {
     nmgem_EntityMob__init_($this, $var1);
-    $this.$texture = $rt_s(519);
+    $this.$texture = $rt_s(502);
     $this.$moveSpeed = 0.5;
     $this.$attackStrength = 5;
 }
@@ -42618,7 +42587,7 @@ function nmgem_EntityZombie_onLivingUpdate($this) {
     nmgem_EntityMob_onLivingUpdate($this);
 }
 function nmgem_EntityZombie_getEntityString($this) {
-    return $rt_s(517);
+    return $rt_s(500);
 }
 function nmgem_EntityZombie_scoreValue($this) {
     nmgi_Item_$callClinit();
@@ -42631,7 +42600,7 @@ function nmgem_EntityGiantZombie_getBlockPathWeight($this, $var1, $var2, $var3) 
     return nmgl_World_getLightBrightness($this.$worldObj3, $var1, $var2, $var3) - 0.5;
 }
 function nmgem_EntityGiantZombie_getEntityString($this) {
-    return $rt_s(518);
+    return $rt_s(501);
 }
 function nmcre_RenderGiantZombie() {
     nmcre_RenderLiving.call(this);
@@ -42804,22 +42773,22 @@ function nmge_EntityPainting_attackEntityFrom($this, $var1, $var2) {
     return 1;
 }
 function nmge_EntityPainting_writeEntityToNBT($this, $var1) {
-    nPn_NBTTagCompound_setByte($var1, $rt_s(570), $this.$direction << 24 >> 24);
-    nPn_NBTTagCompound_setString($var1, $rt_s(571), $this.$art.$title1);
-    nPn_NBTTagCompound_setInteger($var1, $rt_s(572), $this.$xPosition);
-    nPn_NBTTagCompound_setInteger($var1, $rt_s(573), $this.$yPosition);
-    nPn_NBTTagCompound_setInteger($var1, $rt_s(574), $this.$zPosition);
+    nPn_NBTTagCompound_setByte($var1, $rt_s(553), $this.$direction << 24 >> 24);
+    nPn_NBTTagCompound_setString($var1, $rt_s(554), $this.$art.$title1);
+    nPn_NBTTagCompound_setInteger($var1, $rt_s(555), $this.$xPosition);
+    nPn_NBTTagCompound_setInteger($var1, $rt_s(556), $this.$yPosition);
+    nPn_NBTTagCompound_setInteger($var1, $rt_s(557), $this.$zPosition);
 }
 function nmge_EntityPainting_getEntityString($this) {
-    return $rt_s(521);
+    return $rt_s(504);
 }
 function nmge_EntityPainting_readEntityFromNBT($this, $var1) {
     var $var6, $var2, $var3, $var4, $var5;
-    $this.$direction = nPn_NBTTagCompound_getByte($var1, $rt_s(570));
-    $this.$xPosition = nPn_NBTTagCompound_getInteger($var1, $rt_s(572));
-    $this.$yPosition = nPn_NBTTagCompound_getInteger($var1, $rt_s(573));
-    $this.$zPosition = nPn_NBTTagCompound_getInteger($var1, $rt_s(574));
-    $var6 = nPn_NBTTagCompound_getString($var1, $rt_s(571));
+    $this.$direction = nPn_NBTTagCompound_getByte($var1, $rt_s(553));
+    $this.$xPosition = nPn_NBTTagCompound_getInteger($var1, $rt_s(555));
+    $this.$yPosition = nPn_NBTTagCompound_getInteger($var1, $rt_s(556));
+    $this.$zPosition = nPn_NBTTagCompound_getInteger($var1, $rt_s(557));
+    $var6 = nPn_NBTTagCompound_getString($var1, $rt_s(554));
     $var2 = nmge_EnumArt_values().data;
     $var3 = $var2.length;
     $var4 = 0;
@@ -42852,7 +42821,7 @@ function nmcre_RenderPainting_doRender($this, $var1, $var2, $var3, $var4, $var5,
         olo_WebGLManager_glTranslatef($var2, $var3, $var4);
         olo_WebGLManager_glRotatef($var5, 0.0, 1.0, 0.0);
         olo_WebGLManager_glEnable(2977);
-        $var1 = $rt_s(575);
+        $var1 = $rt_s(558);
         $ptr = 1;
     case 1:
         nmcre_Render_loadTexture($this, $var1);
@@ -43132,15 +43101,15 @@ function nmgep_EntityArrow_onEntityUpdate($this) {
     nmge_Entity_setPosition($this, $this.$posX, $this.$posY, $this.$posZ);
 }
 function nmgep_EntityArrow_writeEntityToNBT($this, $var1) {
-    nPn_NBTTagCompound_setShort($var1, $rt_s(576), $this.$xTile << 16 >> 16);
-    nPn_NBTTagCompound_setShort($var1, $rt_s(577), $this.$yTile << 16 >> 16);
-    nPn_NBTTagCompound_setShort($var1, $rt_s(578), $this.$zTile << 16 >> 16);
-    nPn_NBTTagCompound_setByte($var1, $rt_s(579), $this.$inTile << 24 >> 24);
-    nPn_NBTTagCompound_setByte($var1, $rt_s(580), $this.$arrowShake << 24 >> 24);
-    nPn_NBTTagCompound_setByte($var1, $rt_s(581), (!$this.$inGround ? 0 : 1) << 24 >> 24);
+    nPn_NBTTagCompound_setShort($var1, $rt_s(559), $this.$xTile << 16 >> 16);
+    nPn_NBTTagCompound_setShort($var1, $rt_s(560), $this.$yTile << 16 >> 16);
+    nPn_NBTTagCompound_setShort($var1, $rt_s(561), $this.$zTile << 16 >> 16);
+    nPn_NBTTagCompound_setByte($var1, $rt_s(562), $this.$inTile << 24 >> 24);
+    nPn_NBTTagCompound_setByte($var1, $rt_s(563), $this.$arrowShake << 24 >> 24);
+    nPn_NBTTagCompound_setByte($var1, $rt_s(564), (!$this.$inGround ? 0 : 1) << 24 >> 24);
 }
 function nmgep_EntityArrow_getEntityString($this) {
-    return $rt_s(582);
+    return $rt_s(565);
 }
 function nmgep_EntityArrow_onCollideWithPlayer($this, $var1) {
     var var$2, var$3;
@@ -43171,7 +43140,7 @@ function nmcre_RenderArrow_doRender($this, $var1, $var2, $var3, $var4, $var5, $v
     main: while (true) { switch ($ptr) {
     case 0:
         $var8 = $var1;
-        $var1 = $rt_s(583);
+        $var1 = $rt_s(566);
         $ptr = 1;
     case 1:
         nmcre_Render_loadTexture($this, $var1);
@@ -43280,10 +43249,10 @@ function nmgem_EntityTNTPrimed_onEntityUpdate($this) {
         nmgl_World_spawnParticle($this.$worldObj3, $rt_s(273), $this.$posX, $this.$posY + 0.5, $this.$posZ, 0.0, 0.0, 0.0);
 }
 function nmgem_EntityTNTPrimed_writeEntityToNBT($this, $var1) {
-    nPn_NBTTagCompound_setByte($var1, $rt_s(584), $this.$fuse << 24 >> 24);
+    nPn_NBTTagCompound_setByte($var1, $rt_s(567), $this.$fuse << 24 >> 24);
 }
 function nmgem_EntityTNTPrimed_getEntityString($this) {
-    return $rt_s(585);
+    return $rt_s(568);
 }
 function nmgem_EntityTNTPrimed_getShadowSize($this) {
     return 0.0;
@@ -44043,7 +44012,7 @@ function nmglbt_TileEntityFurnace_setInventorySlotContents($this, $var1, $var2) 
 }
 function nmglbt_TileEntityFurnace_readFromNBT($this, $var1) {
     var $var2, $var3, $var4, $var5;
-    $var2 = nPn_NBTTagCompound_getTagList($var1, $rt_s(586));
+    $var2 = nPn_NBTTagCompound_getTagList($var1, $rt_s(569));
     $this.$furnaceItemStacks = $rt_createArray(nmgi_ItemStack, $this.$furnaceItemStacks.data.length);
     $var3 = 0;
     while ($var3 < nPn_NBTTagList_tagCount($var2)) {
@@ -44053,19 +44022,19 @@ function nmglbt_TileEntityFurnace_readFromNBT($this, $var1) {
             $this.$furnaceItemStacks.data[$var5] = nmgi_ItemStack__init_2($var4);
         $var3 = $var3 + 1 | 0;
     }
-    $this.$furnaceBurnTime = nPn_NBTTagCompound_getShort($var1, $rt_s(587));
-    $this.$furnaceCookTime = nPn_NBTTagCompound_getShort($var1, $rt_s(588));
+    $this.$furnaceBurnTime = nPn_NBTTagCompound_getShort($var1, $rt_s(570));
+    $this.$furnaceCookTime = nPn_NBTTagCompound_getShort($var1, $rt_s(571));
     $this.$currentItemBurnTime = nmglbt_TileEntityFurnace_getItemBurnTime($this.$furnaceItemStacks.data[1]);
     $var1 = jl_System_out();
     $var2 = new jl_StringBuilder;
     jl_AbstractStringBuilder__init_($var2);
-    ji_PrintStream_println($var1, jl_AbstractStringBuilder_toString(jl_StringBuilder_append1(jl_StringBuilder_append(jl_StringBuilder_append1(jl_StringBuilder_append($var2, $rt_s(589)), $this.$furnaceBurnTime), $rt_s(30)), $this.$currentItemBurnTime)));
+    ji_PrintStream_println($var1, jl_AbstractStringBuilder_toString(jl_StringBuilder_append1(jl_StringBuilder_append(jl_StringBuilder_append1(jl_StringBuilder_append($var2, $rt_s(572)), $this.$furnaceBurnTime), $rt_s(30)), $this.$currentItemBurnTime)));
 }
 function nmglbt_TileEntityFurnace_writeToNBT($this, $var1) {
     var $var2, $var3, $var4;
-    nPn_NBTTagCompound_setShort($var1, $rt_s(587), $this.$furnaceBurnTime << 16 >> 16);
-    nPn_NBTTagCompound_setShort($var1, $rt_s(588), $this.$furnaceCookTime << 16 >> 16);
-    nPn_NBTTagCompound_setString($var1, $rt_s(402), $rt_s(509));
+    nPn_NBTTagCompound_setShort($var1, $rt_s(570), $this.$furnaceBurnTime << 16 >> 16);
+    nPn_NBTTagCompound_setShort($var1, $rt_s(571), $this.$furnaceCookTime << 16 >> 16);
+    nPn_NBTTagCompound_setString($var1, $rt_s(402), $rt_s(492));
     $var2 = nPn_NBTTagList__init_();
     $var3 = 0;
     while ($var3 < $this.$furnaceItemStacks.data.length) {
@@ -44077,7 +44046,7 @@ function nmglbt_TileEntityFurnace_writeToNBT($this, $var1) {
         }
         $var3 = $var3 + 1 | 0;
     }
-    nPn_NBTTagCompound_setTag($var1, $rt_s(586), $var2);
+    nPn_NBTTagCompound_setTag($var1, $rt_s(569), $var2);
 }
 function nmglbt_TileEntityFurnace_getInventoryStackLimit($this) {
     return 64;
@@ -44233,7 +44202,7 @@ function otcit_DateTimeZoneBuilder() {
 var otcit_DateTimeZoneBuilder_gmtCache = null;
 function otcit_DateTimeZoneBuilder_access$000() {
     if (otcit_DateTimeZoneBuilder_gmtCache === null)
-        otcit_DateTimeZoneBuilder_gmtCache = ju_TimeZone_getTimeZone($rt_s(590));
+        otcit_DateTimeZoneBuilder_gmtCache = ju_TimeZone_getTimeZone($rt_s(573));
     return otcit_DateTimeZoneBuilder_gmtCache;
 }
 function nmglbt_TileEntityChest() {
@@ -44274,11 +44243,11 @@ function nmglbt_TileEntityChest_setInventorySlotContents($this, $var1, $var2) {
         $var2.$stackSize = 64;
 }
 function nmglbt_TileEntityChest_getInvName($this) {
-    return $rt_s(508);
+    return $rt_s(491);
 }
 function nmglbt_TileEntityChest_readFromNBT($this, $var1) {
     var $var5, $var2, $var3, $var4;
-    $var5 = nPn_NBTTagCompound_getTagList($var1, $rt_s(586));
+    $var5 = nPn_NBTTagCompound_getTagList($var1, $rt_s(569));
     $this.$chestContents = $rt_createArray(nmgi_ItemStack, 27);
     $var2 = 0;
     while ($var2 < nPn_NBTTagList_tagCount($var5)) {
@@ -44291,7 +44260,7 @@ function nmglbt_TileEntityChest_readFromNBT($this, $var1) {
 }
 function nmglbt_TileEntityChest_writeToNBT($this, $var1) {
     var $var2, $var3, $var4;
-    nPn_NBTTagCompound_setString($var1, $rt_s(402), $rt_s(508));
+    nPn_NBTTagCompound_setString($var1, $rt_s(402), $rt_s(491));
     $var2 = nPn_NBTTagList__init_();
     $var3 = 0;
     while ($var3 < $this.$chestContents.data.length) {
@@ -44303,7 +44272,7 @@ function nmglbt_TileEntityChest_writeToNBT($this, $var1) {
         }
         $var3 = $var3 + 1 | 0;
     }
-    nPn_NBTTagCompound_setTag($var1, $rt_s(586), $var2);
+    nPn_NBTTagCompound_setTag($var1, $rt_s(569), $var2);
 }
 function nmglbt_TileEntityChest_getInventoryStackLimit($this) {
     return 64;
@@ -44321,7 +44290,7 @@ function nmcg_GuiOptions__init_(var_0, var_1) {
 }
 function nmcg_GuiOptions__init_0($this, $var1, $var2) {
     nmcg_GuiScreen__init_($this);
-    $this.$screenTitle = $rt_s(591);
+    $this.$screenTitle = $rt_s(574);
     $this.$parentScreen = $var1;
     $this.$options1 = $var2;
 }
@@ -44332,8 +44301,8 @@ function nmcg_GuiOptions_initGui($this) {
         ju_ArrayList_add($this.$controlList, nmcg_GuiSmallButton__init_($var1, (($this.$width1 / 2 | 0) - 155 | 0) + (($var1 % 2 | 0) * 160 | 0) | 0, ($this.$height1 / 6 | 0) + (24 * ($var1 >> 1) | 0) | 0, nmc_GameSettings_setOptionString($this.$options1, $var1)));
         $var1 = $var1 + 1 | 0;
     }
-    ju_ArrayList_add($this.$controlList, nmcg_GuiButton__init_(100, ($this.$width1 / 2 | 0) - 100 | 0, (($this.$height1 / 6 | 0) + 120 | 0) + 12 | 0, $rt_s(592)));
-    ju_ArrayList_add($this.$controlList, nmcg_GuiButton__init_(200, ($this.$width1 / 2 | 0) - 100 | 0, ($this.$height1 / 6 | 0) + 168 | 0, $rt_s(593)));
+    ju_ArrayList_add($this.$controlList, nmcg_GuiButton__init_(100, ($this.$width1 / 2 | 0) - 100 | 0, (($this.$height1 / 6 | 0) + 120 | 0) + 12 | 0, $rt_s(575)));
+    ju_ArrayList_add($this.$controlList, nmcg_GuiButton__init_(200, ($this.$width1 / 2 | 0) - 100 | 0, ($this.$height1 / 6 | 0) + 168 | 0, $rt_s(576)));
 }
 function nmcg_GuiOptions_actionPerformed($this, $var1) {
     var var$2, var$3, var$4, $ptr, $tmp;
@@ -44354,7 +44323,7 @@ function nmcg_GuiOptions_actionPerformed($this, $var1) {
                 var$3 = new nmcg_GuiControls;
                 var$4 = $this.$options1;
                 nmcg_GuiScreen__init_(var$3);
-                var$3.$screenTitle0 = $rt_s(594);
+                var$3.$screenTitle0 = $rt_s(577);
                 var$3.$buttonId = (-1);
                 var$3.$parentScreen0 = $this;
                 var$3.$options2 = var$4;
@@ -44438,29 +44407,29 @@ function nmcg_GuiNewLevel__init_0($this, $var1) {
     nmcg_GuiScreen__init_($this);
     var$2 = $rt_createArray(jl_String, 4);
     var$3 = var$2.data;
-    var$3[0] = $rt_s(595);
-    var$3[1] = $rt_s(596);
-    var$3[2] = $rt_s(597);
-    var$3[3] = $rt_s(598);
+    var$3[0] = $rt_s(578);
+    var$3[1] = $rt_s(579);
+    var$3[2] = $rt_s(580);
+    var$3[3] = $rt_s(581);
     $this.$worldType = var$2;
     var$2 = $rt_createArray(jl_String, 3);
     var$3 = var$2.data;
-    var$3[0] = $rt_s(599);
-    var$3[1] = $rt_s(600);
-    var$3[2] = $rt_s(601);
+    var$3[0] = $rt_s(582);
+    var$3[1] = $rt_s(583);
+    var$3[2] = $rt_s(584);
     $this.$worldShape = var$2;
     var$2 = $rt_createArray(jl_String, 3);
     var$3 = var$2.data;
-    var$3[0] = $rt_s(602);
+    var$3[0] = $rt_s(585);
     var$3[1] = $rt_s(350);
-    var$3[2] = $rt_s(603);
+    var$3[2] = $rt_s(586);
     $this.$worldSize = var$2;
     var$2 = $rt_createArray(jl_String, 4);
     var$3 = var$2.data;
     var$3[0] = $rt_s(350);
-    var$3[1] = $rt_s(604);
-    var$3[2] = $rt_s(605);
-    var$3[3] = $rt_s(606);
+    var$3[1] = $rt_s(587);
+    var$3[2] = $rt_s(588);
+    var$3[3] = $rt_s(589);
     $this.$worldTheme = var$2;
     $this.$selectedWorldType = 1;
     $this.$selectedWorldShape = 0;
@@ -44470,12 +44439,12 @@ function nmcg_GuiNewLevel__init_0($this, $var1) {
 }
 function nmcg_GuiNewLevel_initGui($this) {
     ju_ArrayList_clear($this.$controlList);
-    ju_ArrayList_add($this.$controlList, nmcg_GuiButton__init_(0, ($this.$width1 / 2 | 0) - 100 | 0, $this.$height1 / 4 | 0, $rt_s(607)));
-    ju_ArrayList_add($this.$controlList, nmcg_GuiButton__init_(1, ($this.$width1 / 2 | 0) - 100 | 0, ($this.$height1 / 4 | 0) + 24 | 0, $rt_s(608)));
-    ju_ArrayList_add($this.$controlList, nmcg_GuiButton__init_(2, ($this.$width1 / 2 | 0) - 100 | 0, ($this.$height1 / 4 | 0) + 48 | 0, $rt_s(609)));
-    ju_ArrayList_add($this.$controlList, nmcg_GuiButton__init_(3, ($this.$width1 / 2 | 0) - 100 | 0, ($this.$height1 / 4 | 0) + 72 | 0, $rt_s(610)));
-    ju_ArrayList_add($this.$controlList, nmcg_GuiButton__init_(4, ($this.$width1 / 2 | 0) - 100 | 0, (($this.$height1 / 4 | 0) + 96 | 0) + 12 | 0, $rt_s(611)));
-    ju_ArrayList_add($this.$controlList, nmcg_GuiButton__init_(5, ($this.$width1 / 2 | 0) - 100 | 0, (($this.$height1 / 4 | 0) + 120 | 0) + 12 | 0, $rt_s(612)));
+    ju_ArrayList_add($this.$controlList, nmcg_GuiButton__init_(0, ($this.$width1 / 2 | 0) - 100 | 0, $this.$height1 / 4 | 0, $rt_s(590)));
+    ju_ArrayList_add($this.$controlList, nmcg_GuiButton__init_(1, ($this.$width1 / 2 | 0) - 100 | 0, ($this.$height1 / 4 | 0) + 24 | 0, $rt_s(591)));
+    ju_ArrayList_add($this.$controlList, nmcg_GuiButton__init_(2, ($this.$width1 / 2 | 0) - 100 | 0, ($this.$height1 / 4 | 0) + 48 | 0, $rt_s(592)));
+    ju_ArrayList_add($this.$controlList, nmcg_GuiButton__init_(3, ($this.$width1 / 2 | 0) - 100 | 0, ($this.$height1 / 4 | 0) + 72 | 0, $rt_s(593)));
+    ju_ArrayList_add($this.$controlList, nmcg_GuiButton__init_(4, ($this.$width1 / 2 | 0) - 100 | 0, (($this.$height1 / 4 | 0) + 96 | 0) + 12 | 0, $rt_s(594)));
+    ju_ArrayList_add($this.$controlList, nmcg_GuiButton__init_(5, ($this.$width1 / 2 | 0) - 100 | 0, (($this.$height1 / 4 | 0) + 120 | 0) + 12 | 0, $rt_s(595)));
     nmcg_GuiNewLevel_worldOptions($this);
 }
 function nmcg_GuiNewLevel_worldOptions($this) {
@@ -44483,19 +44452,19 @@ function nmcg_GuiNewLevel_worldOptions($this) {
     var$1 = ju_ArrayList_get($this.$controlList, 0);
     var$2 = new jl_StringBuilder;
     jl_AbstractStringBuilder__init_(var$2);
-    var$1.$displayString = jl_AbstractStringBuilder_toString(jl_StringBuilder_append(jl_StringBuilder_append(var$2, $rt_s(607)), $this.$worldType.data[$this.$selectedWorldType]));
+    var$1.$displayString = jl_AbstractStringBuilder_toString(jl_StringBuilder_append(jl_StringBuilder_append(var$2, $rt_s(590)), $this.$worldType.data[$this.$selectedWorldType]));
     var$1 = ju_ArrayList_get($this.$controlList, 1);
     var$2 = new jl_StringBuilder;
     jl_AbstractStringBuilder__init_(var$2);
-    var$1.$displayString = jl_AbstractStringBuilder_toString(jl_StringBuilder_append(jl_StringBuilder_append(var$2, $rt_s(613)), $this.$worldShape.data[$this.$selectedWorldShape]));
+    var$1.$displayString = jl_AbstractStringBuilder_toString(jl_StringBuilder_append(jl_StringBuilder_append(var$2, $rt_s(596)), $this.$worldShape.data[$this.$selectedWorldShape]));
     var$1 = ju_ArrayList_get($this.$controlList, 2);
     var$2 = new jl_StringBuilder;
     jl_AbstractStringBuilder__init_(var$2);
-    var$1.$displayString = jl_AbstractStringBuilder_toString(jl_StringBuilder_append(jl_StringBuilder_append(var$2, $rt_s(609)), $this.$worldSize.data[$this.$selectedWorldSize]));
+    var$1.$displayString = jl_AbstractStringBuilder_toString(jl_StringBuilder_append(jl_StringBuilder_append(var$2, $rt_s(592)), $this.$worldSize.data[$this.$selectedWorldSize]));
     var$1 = ju_ArrayList_get($this.$controlList, 3);
     var$2 = new jl_StringBuilder;
     jl_AbstractStringBuilder__init_(var$2);
-    var$1.$displayString = jl_AbstractStringBuilder_toString(jl_StringBuilder_append(jl_StringBuilder_append(var$2, $rt_s(610)), $this.$worldTheme.data[$this.$selectedWorldTheme]));
+    var$1.$displayString = jl_AbstractStringBuilder_toString(jl_StringBuilder_append(jl_StringBuilder_append(var$2, $rt_s(593)), $this.$worldTheme.data[$this.$selectedWorldTheme]));
 }
 function nmcg_GuiNewLevel_actionPerformed($this, $var1) {
     var $e, var$3, var$4, var$5, var$6, $$je, $ptr, $tmp;
@@ -44610,7 +44579,7 @@ function nmcg_GuiNewLevel_drawScreen($this, $var1, $var2, $var3) {
         if ($rt_suspending()) {
             break main;
         }
-        nmcg_Gui_drawCenteredString($this.$fontRenderer0, $rt_s(614), $this.$width1 / 2 | 0, 40, 16777215);
+        nmcg_Gui_drawCenteredString($this.$fontRenderer0, $rt_s(597), $this.$width1 / 2 | 0, 40, 16777215);
         $ptr = 2;
     case 2:
         nmcg_GuiScreen_drawScreen($this, $var1, $var2, $var3);
@@ -44644,7 +44613,7 @@ function nmcg_GuiLoadLevel__init_0($this, $var1) {
     $this.$loaded = 0;
     $this.$levels = null;
     $this.$status0 = $rt_s(9);
-    $this.$title0 = $rt_s(615);
+    $this.$title0 = $rt_s(598);
     $this.$frozen = 0;
     $this.$parent = $var1;
 }
@@ -44659,11 +44628,11 @@ function nmcg_GuiLoadLevel_updateScreen($this) {
     case 0:
         if ($this.$selectedFile === null)
             return;
-        if (!jl_String_endsWith(ji_File_getName($this.$selectedFile), $rt_s(616))) {
+        if (!jl_String_endsWith(ji_File_getName($this.$selectedFile), $rt_s(599))) {
             var$1 = new ji_File;
             var$2 = new jl_StringBuilder;
             jl_AbstractStringBuilder__init_(var$2);
-            ji_File__init_(var$1, jl_AbstractStringBuilder_toString(jl_StringBuilder_append(jl_StringBuilder_append(var$2, ji_File_getAbsolutePath($this.$selectedFile)), $rt_s(616))));
+            ji_File__init_(var$1, jl_AbstractStringBuilder_toString(jl_StringBuilder_append(jl_StringBuilder_append(var$2, ji_File_getAbsolutePath($this.$selectedFile)), $rt_s(599))));
             $this.$selectedFile = var$1;
         }
         $this.$openLevel($this.$selectedFile);
@@ -44691,8 +44660,8 @@ function nmcg_GuiLoadLevel_run($this) {
     main: while (true) { switch ($ptr) {
     case 0:
         try {
-            $this.$status0 = $rt_s(617);
-            $var1 = jn_URL__init_(jl_StringBuilder_toString(jl_StringBuilder_append(jl_StringBuilder_append(jl_StringBuilder_append(jl_StringBuilder_append(jl_StringBuilder__init_(), $rt_s(618)), $this.$mc6.$minecraftUri), $rt_s(619)), $this.$mc6.$session.$username)));
+            $this.$status0 = $rt_s(600);
+            $var1 = jn_URL__init_(jl_StringBuilder_toString(jl_StringBuilder_append(jl_StringBuilder_append(jl_StringBuilder_append(jl_StringBuilder_append(jl_StringBuilder__init_(), $rt_s(601)), $this.$mc6.$minecraftUri), $rt_s(602)), $this.$mc6.$session.$username)));
             $var3 = new ji_BufferedReader;
             $var2 = new ji_InputStreamReader;
             $var1 = jn_URL_openConnection($var1);
@@ -44707,7 +44676,7 @@ function nmcg_GuiLoadLevel_run($this) {
             }
         }
         jl_Throwable_printStackTrace0($var2);
-        $this.$status0 = $rt_s(620);
+        $this.$status0 = $rt_s(603);
         $this.$finished1 = 1;
         return;
     case 1:
@@ -44722,7 +44691,7 @@ function nmcg_GuiLoadLevel_run($this) {
                         $var1 = $tmp;
                         ji_InputStreamReader__init_($var2, $var1);
                         ji_BufferedReader__init_($var3, $var2);
-                        $this.$levels = jl_String_split(ji_BufferedReader_readLine($var3), $rt_s(621));
+                        $this.$levels = jl_String_split(ji_BufferedReader_readLine($var3), $rt_s(604));
                         if ($this.$levels.data.length < 5)
                             break c;
                         $this.$setLevels($this.$levels);
@@ -44752,7 +44721,7 @@ function nmcg_GuiLoadLevel_run($this) {
                 }
             }
             jl_Throwable_printStackTrace0($var2);
-            $this.$status0 = $rt_s(620);
+            $this.$status0 = $rt_s(603);
             $this.$finished1 = 1;
         }
         return;
@@ -44777,12 +44746,12 @@ function nmcg_GuiLoadLevel_initGui($this) {
     jl_Thread_start(jl_Thread__init_1($this));
     $var1 = 0;
     while ($var1 < 5) {
-        ju_ArrayList_add($this.$controlList, nmcg_GuiButton__init_($var1, ($this.$width1 / 2 | 0) - 100 | 0, ($this.$height1 / 6 | 0) + ($var1 * 24 | 0) | 0, $rt_s(622)));
+        ju_ArrayList_add($this.$controlList, nmcg_GuiButton__init_($var1, ($this.$width1 / 2 | 0) - 100 | 0, ($this.$height1 / 6 | 0) + ($var1 * 24 | 0) | 0, $rt_s(605)));
         ju_ArrayList_get($this.$controlList, $var1).$visible = 0;
         $var1 = $var1 + 1 | 0;
     }
-    ju_ArrayList_add($this.$controlList, nmcg_GuiButton__init_(5, ($this.$width1 / 2 | 0) - 100 | 0, (($this.$height1 / 6 | 0) + 120 | 0) + 12 | 0, $rt_s(623)));
-    ju_ArrayList_add($this.$controlList, nmcg_GuiButton__init_(6, ($this.$width1 / 2 | 0) - 100 | 0, ($this.$height1 / 6 | 0) + 168 | 0, $rt_s(612)));
+    ju_ArrayList_add($this.$controlList, nmcg_GuiButton__init_(5, ($this.$width1 / 2 | 0) - 100 | 0, (($this.$height1 / 6 | 0) + 120 | 0) + 12 | 0, $rt_s(606)));
+    ju_ArrayList_add($this.$controlList, nmcg_GuiButton__init_(6, ($this.$width1 / 2 | 0) - 100 | 0, ($this.$height1 / 6 | 0) + 168 | 0, $rt_s(595)));
     ju_ArrayList_get($this.$controlList, 5).$visible = 0;
 }
 function nmcg_GuiLoadLevel_actionPerformed($this, $var1) {
@@ -44930,7 +44899,7 @@ function nmcg_GuiSaveLevel() {
 }
 function nmcg_GuiSaveLevel_initGui($this) {
     nmcg_GuiLoadLevel_initGui($this);
-    ju_ArrayList_get($this.$controlList, 5).$displayString = $rt_s(624);
+    ju_ArrayList_get($this.$controlList, 5).$displayString = $rt_s(607);
 }
 function nmcg_GuiSaveLevel_setLevels($this, $var1) {
     var $var2, var$3;
@@ -44973,7 +44942,7 @@ function nmcg_GuiSaveLevel_openLevel0($this, $var1) {
         var$3 = new nmcg_GuiNameLevel;
         var$4 = ju_ArrayList_get($this.$controlList, $var1).$displayString;
         nmcg_GuiScreen__init_(var$3);
-        var$3.$title2 = $rt_s(625);
+        var$3.$title2 = $rt_s(608);
         var$3.$counter = 0;
         var$3.$parent0 = $this;
         var$3.$id3 = $var1;
@@ -45037,25 +45006,25 @@ function nmge_EnumArt__init_0($this, var$1, var$2, $var3, $var4, $var5, $var6, $
 }
 function nmge_EnumArt__clinit_() {
     var var$1, var$2;
-    nmge_EnumArt_Kebab = nmge_EnumArt__init_($rt_s(626), 0, $rt_s(626), 16, 16, 0, 0);
-    nmge_EnumArt_Aztec = nmge_EnumArt__init_($rt_s(627), 1, $rt_s(627), 16, 16, 16, 0);
-    nmge_EnumArt_Alban = nmge_EnumArt__init_($rt_s(628), 2, $rt_s(628), 16, 16, 32, 0);
-    nmge_EnumArt_Aztec2 = nmge_EnumArt__init_($rt_s(629), 3, $rt_s(629), 16, 16, 48, 0);
-    nmge_EnumArt_Bomb = nmge_EnumArt__init_($rt_s(630), 4, $rt_s(630), 16, 16, 64, 0);
-    nmge_EnumArt_Plant = nmge_EnumArt__init_($rt_s(631), 5, $rt_s(631), 16, 16, 80, 0);
-    nmge_EnumArt_Wasteland = nmge_EnumArt__init_($rt_s(632), 6, $rt_s(632), 16, 16, 96, 0);
-    nmge_EnumArt_Pool = nmge_EnumArt__init_($rt_s(633), 7, $rt_s(633), 32, 16, 0, 32);
-    nmge_EnumArt_Courbet = nmge_EnumArt__init_($rt_s(634), 8, $rt_s(634), 32, 16, 32, 32);
-    nmge_EnumArt_Sea = nmge_EnumArt__init_($rt_s(635), 9, $rt_s(635), 32, 16, 64, 32);
-    nmge_EnumArt_Sunset = nmge_EnumArt__init_($rt_s(636), 10, $rt_s(636), 32, 16, 96, 32);
-    nmge_EnumArt_Wanderer = nmge_EnumArt__init_($rt_s(637), 11, $rt_s(637), 16, 32, 0, 64);
-    nmge_EnumArt_Match = nmge_EnumArt__init_($rt_s(638), 12, $rt_s(638), 32, 32, 0, 128);
-    nmge_EnumArt_Bust = nmge_EnumArt__init_($rt_s(639), 13, $rt_s(639), 32, 32, 32, 128);
-    nmge_EnumArt_Stage = nmge_EnumArt__init_($rt_s(640), 14, $rt_s(640), 32, 32, 64, 128);
-    nmge_EnumArt_Void = nmge_EnumArt__init_($rt_s(641), 15, $rt_s(641), 32, 32, 96, 128);
-    nmge_EnumArt_SkullAndRoses = nmge_EnumArt__init_($rt_s(642), 16, $rt_s(642), 32, 32, 128, 128);
-    nmge_EnumArt_Fighters = nmge_EnumArt__init_($rt_s(643), 17, $rt_s(643), 64, 32, 0, 96);
-    nmge_EnumArt_Pointer = nmge_EnumArt__init_($rt_s(644), 18, $rt_s(644), 64, 64, 0, 192);
+    nmge_EnumArt_Kebab = nmge_EnumArt__init_($rt_s(609), 0, $rt_s(609), 16, 16, 0, 0);
+    nmge_EnumArt_Aztec = nmge_EnumArt__init_($rt_s(610), 1, $rt_s(610), 16, 16, 16, 0);
+    nmge_EnumArt_Alban = nmge_EnumArt__init_($rt_s(611), 2, $rt_s(611), 16, 16, 32, 0);
+    nmge_EnumArt_Aztec2 = nmge_EnumArt__init_($rt_s(612), 3, $rt_s(612), 16, 16, 48, 0);
+    nmge_EnumArt_Bomb = nmge_EnumArt__init_($rt_s(613), 4, $rt_s(613), 16, 16, 64, 0);
+    nmge_EnumArt_Plant = nmge_EnumArt__init_($rt_s(614), 5, $rt_s(614), 16, 16, 80, 0);
+    nmge_EnumArt_Wasteland = nmge_EnumArt__init_($rt_s(615), 6, $rt_s(615), 16, 16, 96, 0);
+    nmge_EnumArt_Pool = nmge_EnumArt__init_($rt_s(616), 7, $rt_s(616), 32, 16, 0, 32);
+    nmge_EnumArt_Courbet = nmge_EnumArt__init_($rt_s(617), 8, $rt_s(617), 32, 16, 32, 32);
+    nmge_EnumArt_Sea = nmge_EnumArt__init_($rt_s(618), 9, $rt_s(618), 32, 16, 64, 32);
+    nmge_EnumArt_Sunset = nmge_EnumArt__init_($rt_s(619), 10, $rt_s(619), 32, 16, 96, 32);
+    nmge_EnumArt_Wanderer = nmge_EnumArt__init_($rt_s(620), 11, $rt_s(620), 16, 32, 0, 64);
+    nmge_EnumArt_Match = nmge_EnumArt__init_($rt_s(621), 12, $rt_s(621), 32, 32, 0, 128);
+    nmge_EnumArt_Bust = nmge_EnumArt__init_($rt_s(622), 13, $rt_s(622), 32, 32, 32, 128);
+    nmge_EnumArt_Stage = nmge_EnumArt__init_($rt_s(623), 14, $rt_s(623), 32, 32, 64, 128);
+    nmge_EnumArt_Void = nmge_EnumArt__init_($rt_s(624), 15, $rt_s(624), 32, 32, 96, 128);
+    nmge_EnumArt_SkullAndRoses = nmge_EnumArt__init_($rt_s(625), 16, $rt_s(625), 32, 32, 128, 128);
+    nmge_EnumArt_Fighters = nmge_EnumArt__init_($rt_s(626), 17, $rt_s(626), 64, 32, 0, 96);
+    nmge_EnumArt_Pointer = nmge_EnumArt__init_($rt_s(627), 18, $rt_s(627), 64, 64, 0, 192);
     var$1 = $rt_createArray(nmge_EnumArt, 19);
     var$2 = var$1.data;
     var$2[0] = nmge_EnumArt_Kebab;
@@ -45112,7 +45081,7 @@ function jnc_MalformedInputException_getMessage($this) {
     var var$1;
     var$1 = new jl_StringBuilder;
     jl_AbstractStringBuilder__init_(var$1);
-    return jl_AbstractStringBuilder_toString(jl_StringBuilder_append1(jl_StringBuilder_append(var$1, $rt_s(645)), $this.$length3));
+    return jl_AbstractStringBuilder_toString(jl_StringBuilder_append1(jl_StringBuilder_append(var$1, $rt_s(628)), $this.$length3));
 }
 function jnc_UnmappableCharacterException() {
     jnc_CharacterCodingException.call(this);
@@ -45122,7 +45091,7 @@ function jnc_UnmappableCharacterException_getMessage($this) {
     var var$1;
     var$1 = new jl_StringBuilder;
     jl_AbstractStringBuilder__init_(var$1);
-    return jl_AbstractStringBuilder_toString(jl_StringBuilder_append1(jl_StringBuilder_append(var$1, $rt_s(646)), $this.$length4));
+    return jl_AbstractStringBuilder_toString(jl_StringBuilder_append1(jl_StringBuilder_append(var$1, $rt_s(629)), $this.$length4));
 }
 function nmce_EntityBubbleFX() {
     nmce_EntityFX.call(this);
@@ -45406,7 +45375,7 @@ function nmgir_CraftingManager__init_0($this) {
     var$3 = var$2.data;
     var$3[0] = $rt_s(64);
     var$3[1] = $rt_s(88);
-    var$3[2] = $rt_s(647);
+    var$3[2] = $rt_s(630);
     var$3[3] = jl_Character_valueOf(88);
     nmglb_Block_$callClinit();
     var$3[4] = nmglb_Block_mushroomBrown;
@@ -45420,7 +45389,7 @@ function nmgir_CraftingManager__init_0($this) {
     var$3 = var$2.data;
     var$3[0] = $rt_s(64);
     var$3[1] = $rt_s(88);
-    var$3[2] = $rt_s(647);
+    var$3[2] = $rt_s(630);
     var$3[3] = jl_Character_valueOf(88);
     var$3[4] = nmglb_Block_mushroomRed;
     var$3[5] = jl_Character_valueOf(89);
@@ -45432,26 +45401,26 @@ function nmgir_CraftingManager__init_0($this) {
     var$4 = nmgi_ItemStack__init_3(nmglb_Block_crate);
     var$2 = $rt_createArray(jl_Object, 5);
     var$3 = var$2.data;
-    var$3[0] = $rt_s(648);
-    var$3[1] = $rt_s(649);
-    var$3[2] = $rt_s(648);
+    var$3[0] = $rt_s(631);
+    var$3[1] = $rt_s(632);
+    var$3[2] = $rt_s(631);
     var$3[3] = jl_Character_valueOf(35);
     var$3[4] = nmglb_Block_planks;
     nmgir_CraftingManager_addRecipe($this, var$4, var$2);
     var$4 = nmgi_ItemStack__init_3(nmglb_Block_stoneOvenIdle);
     var$2 = $rt_createArray(jl_Object, 5);
     var$3 = var$2.data;
-    var$3[0] = $rt_s(648);
-    var$3[1] = $rt_s(649);
-    var$3[2] = $rt_s(648);
+    var$3[0] = $rt_s(631);
+    var$3[1] = $rt_s(632);
+    var$3[2] = $rt_s(631);
     var$3[3] = jl_Character_valueOf(35);
     var$3[4] = nmglb_Block_cobblestone;
     nmgir_CraftingManager_addRecipe($this, var$4, var$2);
     var$4 = nmgi_ItemStack__init_3(nmglb_Block_workbench);
     var$2 = $rt_createArray(jl_Object, 4);
     var$3 = var$2.data;
-    var$3[0] = $rt_s(650);
-    var$3[1] = $rt_s(650);
+    var$3[0] = $rt_s(633);
+    var$3[1] = $rt_s(633);
     var$3[2] = jl_Character_valueOf(35);
     var$3[3] = nmglb_Block_planks;
     nmgir_CraftingManager_addRecipe($this, var$4, var$2);
@@ -45459,18 +45428,18 @@ function nmgir_CraftingManager__init_0($this) {
     var$4 = nmgi_ItemStack__init_5(nmglb_Block_clothGray, 1);
     var$2 = $rt_createArray(jl_Object, 5);
     var$3 = var$2.data;
-    var$3[0] = $rt_s(648);
-    var$3[1] = $rt_s(648);
-    var$3[2] = $rt_s(648);
+    var$3[0] = $rt_s(631);
+    var$3[1] = $rt_s(631);
+    var$3[2] = $rt_s(631);
     var$3[3] = jl_Character_valueOf(35);
     var$3[4] = nmgi_Item_silk;
     nmgir_CraftingManager_addRecipe($this, var$4, var$2);
     var$4 = nmgi_ItemStack__init_5(nmglb_Block_tnt, 1);
     var$2 = $rt_createArray(jl_Object, 7);
     var$3 = var$2.data;
-    var$3[0] = $rt_s(651);
-    var$3[1] = $rt_s(652);
-    var$3[2] = $rt_s(651);
+    var$3[0] = $rt_s(634);
+    var$3[1] = $rt_s(635);
+    var$3[2] = $rt_s(634);
     var$3[3] = jl_Character_valueOf(88);
     var$3[4] = nmgi_Item_gunpowder;
     var$3[5] = jl_Character_valueOf(35);
@@ -45479,22 +45448,22 @@ function nmgir_CraftingManager__init_0($this) {
     var$4 = nmgi_ItemStack__init_5(nmglb_Block_stairSingle, 3);
     var$2 = $rt_createArray(jl_Object, 3);
     var$3 = var$2.data;
-    var$3[0] = $rt_s(648);
+    var$3[0] = $rt_s(631);
     var$3[1] = jl_Character_valueOf(35);
     var$3[2] = nmglb_Block_cobblestone;
     nmgir_CraftingManager_addRecipe($this, var$4, var$2);
     var$4 = nmgi_ItemStack__init_5(nmglb_Block_planks, 4);
     var$2 = $rt_createArray(jl_Object, 3);
     var$3 = var$2.data;
-    var$3[0] = $rt_s(647);
+    var$3[0] = $rt_s(630);
     var$3[1] = jl_Character_valueOf(35);
     var$3[2] = nmglb_Block_wood;
     nmgir_CraftingManager_addRecipe($this, var$4, var$2);
     var$4 = nmgi_ItemStack__init_8(nmgi_Item_stick, 4);
     var$3 = $rt_createArray(jl_Object, 4);
     var$2 = var$3.data;
-    var$2[0] = $rt_s(647);
-    var$2[1] = $rt_s(647);
+    var$2[0] = $rt_s(630);
+    var$2[1] = $rt_s(630);
     var$2[2] = jl_Character_valueOf(35);
     var$2[3] = nmglb_Block_planks;
     nmgir_CraftingManager_addRecipe($this, var$4, var$3);
@@ -45502,7 +45471,7 @@ function nmgir_CraftingManager__init_0($this) {
     var$2 = $rt_createArray(jl_Object, 6);
     var$3 = var$2.data;
     var$3[0] = $rt_s(88);
-    var$3[1] = $rt_s(647);
+    var$3[1] = $rt_s(630);
     var$3[2] = jl_Character_valueOf(88);
     var$3[3] = nmgi_Item_coal;
     var$3[4] = jl_Character_valueOf(35);
@@ -45511,16 +45480,16 @@ function nmgir_CraftingManager__init_0($this) {
     var$4 = nmgi_ItemStack__init_8(nmgi_Item_bowlEmpty, 4);
     var$2 = $rt_createArray(jl_Object, 4);
     var$3 = var$2.data;
-    var$3[0] = $rt_s(649);
-    var$3[1] = $rt_s(653);
+    var$3[0] = $rt_s(632);
+    var$3[1] = $rt_s(636);
     var$3[2] = jl_Character_valueOf(35);
     var$3[3] = nmglb_Block_planks;
     nmgir_CraftingManager_addRecipe($this, var$4, var$2);
     var$4 = nmgi_ItemStack__init_8(nmgi_Item_striker, 1);
     var$2 = $rt_createArray(jl_Object, 6);
     var$3 = var$2.data;
-    var$3[0] = $rt_s(654);
-    var$3[1] = $rt_s(655);
+    var$3[0] = $rt_s(637);
+    var$3[1] = $rt_s(638);
     var$3[2] = jl_Character_valueOf(65);
     var$3[3] = nmgi_Item_ingotIron;
     var$3[4] = jl_Character_valueOf(66);
@@ -45529,23 +45498,23 @@ function nmgir_CraftingManager__init_0($this) {
     var$4 = nmgi_ItemStack__init_8(nmgi_Item_bread, 1);
     var$2 = $rt_createArray(jl_Object, 3);
     var$3 = var$2.data;
-    var$3[0] = $rt_s(648);
+    var$3[0] = $rt_s(631);
     var$3[1] = jl_Character_valueOf(35);
     var$3[2] = nmgi_Item_wheat;
     nmgir_CraftingManager_addRecipe($this, var$4, var$2);
     var$4 = nmgi_ItemStack__init_8(nmgi_Item_painting, 1);
     var$2 = $rt_createArray(jl_Object, 7);
     var$3 = var$2.data;
-    var$3[0] = $rt_s(648);
-    var$3[1] = $rt_s(652);
-    var$3[2] = $rt_s(648);
+    var$3[0] = $rt_s(631);
+    var$3[1] = $rt_s(635);
+    var$3[2] = $rt_s(631);
     var$3[3] = jl_Character_valueOf(35);
     var$3[4] = nmglb_Block_planks;
     var$3[5] = jl_Character_valueOf(88);
     var$3[6] = nmglb_Block_clothGray;
     nmgir_CraftingManager_addRecipe($this, var$4, var$2);
     ju_Collections_sort($this.$recipes, nmgir_RecipeSorter__init_($this));
-    ji_PrintStream_println(jl_System_out(), jl_StringBuilder_toString(jl_StringBuilder_append(jl_StringBuilder_append1(jl_StringBuilder__init_(), ju_ArrayList_size($this.$recipes)), $rt_s(656))));
+    ji_PrintStream_println(jl_System_out(), jl_StringBuilder_toString(jl_StringBuilder_append(jl_StringBuilder_append1(jl_StringBuilder__init_(), ju_ArrayList_size($this.$recipes)), $rt_s(639))));
 }
 function nmgir_CraftingManager_addRecipe($this, $var1, $var2) {
     var $var14, $var3, $var4, $var5, $var6, $var8, $var7, $var9, $var11, $var12, $var13, $var15, $var10;
@@ -45642,7 +45611,7 @@ function nmcg_GuiControls_initGui($this) {
         ju_ArrayList_add($this.$controlList, nmcg_GuiSmallButton__init_($var1, (($this.$width1 / 2 | 0) - 155 | 0) + (($var1 % 2 | 0) * 160 | 0) | 0, ($this.$height1 / 6 | 0) + (24 * ($var1 >> 1) | 0) | 0, nmc_GameSettings_setKeyBindingString($this.$options2, $var1)));
         $var1 = $var1 + 1 | 0;
     }
-    ju_ArrayList_add($this.$controlList, nmcg_GuiButton__init_(200, ($this.$width1 / 2 | 0) - 100 | 0, ($this.$height1 / 6 | 0) + 168 | 0, $rt_s(593)));
+    ju_ArrayList_add($this.$controlList, nmcg_GuiButton__init_(200, ($this.$width1 / 2 | 0) - 100 | 0, ($this.$height1 / 6 | 0) + 168 | 0, $rt_s(576)));
 }
 function nmcg_GuiControls_actionPerformed($this, $var1) {
     var $var2, var$3, $ptr, $tmp;
@@ -45662,7 +45631,7 @@ function nmcg_GuiControls_actionPerformed($this, $var1) {
             $this.$buttonId = $var1.$id2;
             var$3 = new jl_StringBuilder;
             jl_AbstractStringBuilder__init_(var$3);
-            $var1.$displayString = jl_AbstractStringBuilder_toString(jl_StringBuilder_append(jl_StringBuilder_append(jl_StringBuilder_append(var$3, $rt_s(657)), nmc_GameSettings_setKeyBindingString($this.$options2, $var1.$id2)), $rt_s(658)));
+            $var1.$displayString = jl_AbstractStringBuilder_toString(jl_StringBuilder_append(jl_StringBuilder_append(jl_StringBuilder_append(var$3, $rt_s(640)), nmc_GameSettings_setKeyBindingString($this.$options2, $var1.$id2)), $rt_s(641)));
             return;
         }
         $var1 = $this.$mc6;
@@ -46216,27 +46185,27 @@ function nmgir_RecipesTools__init_0($this) {
     var$2 = var$1.data;
     var$3 = $rt_createArray(jl_String, 3);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(659);
-    var$4[1] = $rt_s(653);
-    var$4[2] = $rt_s(653);
+    var$4[0] = $rt_s(642);
+    var$4[1] = $rt_s(636);
+    var$4[2] = $rt_s(636);
     var$2[0] = var$3;
     var$3 = $rt_createArray(jl_String, 3);
     var$4 = var$3.data;
     var$4[0] = $rt_s(88);
-    var$4[1] = $rt_s(647);
-    var$4[2] = $rt_s(647);
+    var$4[1] = $rt_s(630);
+    var$4[2] = $rt_s(630);
     var$2[1] = var$3;
     var$3 = $rt_createArray(jl_String, 3);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(660);
-    var$4[1] = $rt_s(661);
-    var$4[2] = $rt_s(662);
+    var$4[0] = $rt_s(643);
+    var$4[1] = $rt_s(644);
+    var$4[2] = $rt_s(645);
     var$2[2] = var$3;
     var$3 = $rt_createArray(jl_String, 3);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(660);
-    var$4[1] = $rt_s(662);
-    var$4[2] = $rt_s(662);
+    var$4[0] = $rt_s(643);
+    var$4[1] = $rt_s(645);
+    var$4[2] = $rt_s(645);
     var$2[3] = var$3;
     $this.$recipePatterns = var$1;
     var$1 = $rt_createArray($rt_arraycls(jl_Object), 5);
@@ -46328,7 +46297,7 @@ function nmgir_RecipesWeapons__init_0($this) {
     var$4 = var$3.data;
     var$4[0] = $rt_s(88);
     var$4[1] = $rt_s(88);
-    var$4[2] = $rt_s(647);
+    var$4[2] = $rt_s(630);
     var$2[0] = var$3;
     $this.$recipePatterns0 = var$1;
     var$1 = $rt_createArray($rt_arraycls(jl_Object), 2);
@@ -46382,9 +46351,9 @@ function nmgir_RecipesWeapons_addRecipes($this, $var1) {
     nmgi_ItemStack__init_9($var5, nmgi_Item_bow, 1);
     var$5 = $rt_createArray(jl_Object, 7);
     var$10 = var$5.data;
-    var$10[0] = $rt_s(663);
-    var$10[1] = $rt_s(664);
-    var$10[2] = $rt_s(663);
+    var$10[0] = $rt_s(646);
+    var$10[1] = $rt_s(647);
+    var$10[2] = $rt_s(646);
     var$10[3] = jl_Character_valueOf(88);
     var$10[4] = nmgi_Item_silk;
     var$10[5] = jl_Character_valueOf(35);
@@ -46394,7 +46363,7 @@ function nmgir_RecipesWeapons_addRecipes($this, $var1) {
     var$5 = $rt_createArray(jl_Object, 9);
     var$10 = var$5.data;
     var$10[0] = $rt_s(88);
-    var$10[1] = $rt_s(647);
+    var$10[1] = $rt_s(630);
     var$10[2] = $rt_s(64);
     var$10[3] = jl_Character_valueOf(89);
     var$10[4] = nmgi_Item_feather;
@@ -46445,16 +46414,16 @@ function nmgir_RecipesIngots_addRecipes($this, $var1) {
         var$5 = nmgi_ItemStack__init_3($var3);
         var$6 = $rt_createArray(jl_Object, 5);
         var$7 = var$6.data;
-        var$7[0] = $rt_s(648);
-        var$7[1] = $rt_s(648);
-        var$7[2] = $rt_s(648);
+        var$7[0] = $rt_s(631);
+        var$7[1] = $rt_s(631);
+        var$7[2] = $rt_s(631);
         var$7[3] = jl_Character_valueOf(35);
         var$7[4] = $var4;
         nmgir_CraftingManager_addRecipe($var1, var$5, var$6);
         var$5 = nmgi_ItemStack__init_8($var4, 9);
         var$6 = $rt_createArray(jl_Object, 3);
         var$7 = var$6.data;
-        var$7[0] = $rt_s(647);
+        var$7[0] = $rt_s(630);
         var$7[1] = jl_Character_valueOf(35);
         var$7[2] = $var3;
         nmgir_CraftingManager_addRecipe($var1, var$5, var$6);
@@ -46499,25 +46468,25 @@ function nmgir_RecipesArmor__init_0($this) {
     var$2 = var$1.data;
     var$3 = $rt_createArray(jl_String, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(659);
-    var$4[1] = $rt_s(665);
+    var$4[0] = $rt_s(642);
+    var$4[1] = $rt_s(648);
     var$2[0] = var$3;
     var$3 = $rt_createArray(jl_String, 3);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(665);
-    var$4[1] = $rt_s(659);
-    var$4[2] = $rt_s(659);
+    var$4[0] = $rt_s(648);
+    var$4[1] = $rt_s(642);
+    var$4[2] = $rt_s(642);
     var$2[1] = var$3;
     var$3 = $rt_createArray(jl_String, 3);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(659);
-    var$4[1] = $rt_s(665);
-    var$4[2] = $rt_s(665);
+    var$4[0] = $rt_s(642);
+    var$4[1] = $rt_s(648);
+    var$4[2] = $rt_s(648);
     var$2[2] = var$3;
     var$3 = $rt_createArray(jl_String, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(665);
-    var$4[1] = $rt_s(665);
+    var$4[0] = $rt_s(648);
+    var$4[1] = $rt_s(648);
     var$2[3] = var$3;
     $this.$recipePatterns1 = var$1;
     var$1 = $rt_createArray($rt_arraycls(jl_Object), 5);
@@ -46692,7 +46661,7 @@ function otcfm_InMemoryVirtualDirectory_createFile($this, $fileName) {
     var $file, var$3;
     if (!otcfm_AbstractInMemoryVirtualFile_canWrite($this)) {
         $fileName = new ji_IOException;
-        jl_Throwable__init_($fileName, $rt_s(666));
+        jl_Throwable__init_($fileName, $rt_s(649));
         $rt_throw($fileName);
     }
     if (ju_HashMap_containsKey($this.$children, $fileName))
@@ -46709,7 +46678,7 @@ function otcfm_InMemoryVirtualDirectory_createFile($this, $fileName) {
     $fileName = new jl_IllegalArgumentException;
     var$3 = new jl_StringBuilder;
     jl_AbstractStringBuilder__init_(var$3);
-    jl_Throwable__init_($fileName, jl_AbstractStringBuilder_toString(jl_StringBuilder_append(jl_StringBuilder_append(jl_StringBuilder_append(var$3, $rt_s(667)), $file.$name8), $rt_s(668))));
+    jl_Throwable__init_($fileName, jl_AbstractStringBuilder_toString(jl_StringBuilder_append(jl_StringBuilder_append(jl_StringBuilder_append(var$3, $rt_s(650)), $file.$name8), $rt_s(651))));
     $rt_throw($fileName);
 }
 function ju_LinkedHashMap() {
@@ -47048,17 +47017,17 @@ function jn_URL_setupStreamHandler($this) {
         var$2 = (-1);
         switch (jl_String_hashCode(var$1)) {
             case 101730:
-                if (!jl_String_equals(var$1, $rt_s(669)))
+                if (!jl_String_equals(var$1, $rt_s(652)))
                     break a;
                 var$2 = 2;
                 break a;
             case 3213448:
-                if (!jl_String_equals(var$1, $rt_s(670)))
+                if (!jl_String_equals(var$1, $rt_s(653)))
                     break a;
                 var$2 = 0;
                 break a;
             case 99617003:
-                if (!jl_String_equals(var$1, $rt_s(671)))
+                if (!jl_String_equals(var$1, $rt_s(654)))
                     break a;
                 var$2 = 1;
                 break a;
@@ -47092,7 +47061,7 @@ function jn_URL_toExternalForm($this) {
         return jn_URLStreamHandler_toExternalForm($this.$strmHandler, $this);
     var$1 = new jl_StringBuilder;
     jl_AbstractStringBuilder__init_(var$1);
-    return jl_AbstractStringBuilder_toString(jl_StringBuilder_append(jl_StringBuilder_append(jl_StringBuilder_append(jl_StringBuilder_append(jl_StringBuilder_append(var$1, $rt_s(672)), $this.$protocol), $rt_s(673)), $this.$host), $this.$file));
+    return jl_AbstractStringBuilder_toString(jl_StringBuilder_append(jl_StringBuilder_append(jl_StringBuilder_append(jl_StringBuilder_append(jl_StringBuilder_append(var$1, $rt_s(655)), $this.$protocol), $rt_s(656)), $this.$host), $this.$file));
 }
 function jn_URL_getFile($this) {
     return $this.$file;
@@ -47130,11 +47099,11 @@ function jn_URL_set($this, $protocol, $host, $port, $authority, $userInfo, $path
     else if ($path === null) {
         var$9 = new jl_StringBuilder;
         jl_AbstractStringBuilder__init_(var$9);
-        var$9 = jl_AbstractStringBuilder_toString(jl_StringBuilder_append(jl_StringBuilder_append(var$9, $rt_s(674)), $query));
+        var$9 = jl_AbstractStringBuilder_toString(jl_StringBuilder_append(jl_StringBuilder_append(var$9, $rt_s(657)), $query));
     } else {
         var$9 = new jl_StringBuilder;
         jl_AbstractStringBuilder__init_(var$9);
-        var$9 = jl_AbstractStringBuilder_toString(jl_StringBuilder_append(jl_StringBuilder_append(jl_StringBuilder_append(var$9, $path), $rt_s(674)), $query));
+        var$9 = jl_AbstractStringBuilder_toString(jl_StringBuilder_append(jl_StringBuilder_append(jl_StringBuilder_append(var$9, $path), $rt_s(657)), $query));
     }
     jn_URL_set0($this, $protocol, $host, $port, var$9, $ref);
     $this.$authority = $authority;
@@ -47368,7 +47337,7 @@ function nmglg_LevelGenerator_generate($this, $var1, $var2, $var3, $var4) {
         if ($this.$floatingGen)
             $var5 = (($var4 - 64 | 0) / 48 | 0) + 1 | 0;
         $this.$phases = 13 + ($var5 * 4 | 0) | 0;
-        nmc_LoadingScreenRenderer_displayProgressMessage($this.$guiLoading, $rt_s(675));
+        nmc_LoadingScreenRenderer_displayProgressMessage($this.$guiLoading, $rt_s(658));
         $var6 = nmgl_World__init_();
         $var6.$waterLevel = $this.$waterLevel0;
         $var6.$groundLevel = $this.$groundLevel0;
@@ -47381,7 +47350,7 @@ function nmglg_LevelGenerator_generate($this, $var1, $var2, $var3, $var4) {
         $var25 = $var4 - 32 | 0;
         if ($var7 >= $var5) {
             $var13 = $this.$guiLoading;
-            $var50 = $rt_s(676);
+            $var50 = $rt_s(659);
             $ptr = 1;
             continue main;
         }
@@ -47389,7 +47358,7 @@ function nmglg_LevelGenerator_generate($this, $var1, $var2, $var3, $var4) {
         $this.$groundLevel0 = $this.$waterLevel0 - 2 | 0;
         if (!$this.$flatGen) {
             $var13 = $this.$guiLoading;
-            $var50 = $rt_s(677);
+            $var50 = $rt_s(660);
             $ptr = 3;
             continue main;
         }
@@ -47455,7 +47424,7 @@ function nmglg_LevelGenerator_generate($this, $var1, $var2, $var3, $var4) {
         $var22 = 0;
         if ($var22 >= $this.$width5) {
             $var13 = $this.$guiLoading;
-            $var50 = $rt_s(678);
+            $var50 = $rt_s(661);
             $ptr = 14;
             continue main;
         }
@@ -47504,9 +47473,9 @@ function nmglg_LevelGenerator_generate($this, $var1, $var2, $var3, $var4) {
             break main;
         }
         $var53 = $tmp;
-        ji_PrintStream_println(jl_System_out(), jl_StringBuilder_toString(jl_StringBuilder_append1(jl_StringBuilder_append(jl_StringBuilder_append1(jl_StringBuilder_append(jl_StringBuilder_append1(jl_StringBuilder_append(jl_StringBuilder_append1(jl_StringBuilder_append(jl_StringBuilder__init_(), $rt_s(679)), $var52), $rt_s(680)), $var44), $rt_s(681)), $var45), $rt_s(682)), $var53)));
+        ji_PrintStream_println(jl_System_out(), jl_StringBuilder_toString(jl_StringBuilder_append1(jl_StringBuilder_append(jl_StringBuilder_append1(jl_StringBuilder_append(jl_StringBuilder_append1(jl_StringBuilder_append(jl_StringBuilder_append1(jl_StringBuilder_append(jl_StringBuilder__init_(), $rt_s(662)), $var52), $rt_s(663)), $var44), $rt_s(664)), $var45), $rt_s(665)), $var53)));
         $var13 = $this.$guiLoading;
-        $var50 = $rt_s(683);
+        $var50 = $rt_s(666);
         $ptr = 9;
     case 9:
         nmc_LoadingScreenRenderer_displayLoadingString($var13, $var50);
@@ -47538,7 +47507,7 @@ function nmglg_LevelGenerator_generate($this, $var1, $var2, $var3, $var4) {
             $this.$waterLevel0 = $this.$groundLevel0 - 16 | 0;
         }
         $var13 = $this.$guiLoading;
-        $var50 = $rt_s(684);
+        $var50 = $rt_s(667);
         $ptr = 18;
         continue main;
     case 12:
@@ -47670,7 +47639,7 @@ function nmglg_LevelGenerator_generate($this, $var1, $var2, $var3, $var4) {
         $var22 = $var22 + 1 | 0;
         if ($var22 >= $this.$width5) {
             $var13 = $this.$guiLoading;
-            $var50 = $rt_s(678);
+            $var50 = $rt_s(661);
             $ptr = 14;
             continue main;
         }
@@ -47695,7 +47664,7 @@ function nmglg_LevelGenerator_generate($this, $var1, $var2, $var3, $var4) {
         $var52 = 0;
         if ($var52 >= $this.$width5) {
             $var13 = $this.$guiLoading;
-            $var50 = $rt_s(685);
+            $var50 = $rt_s(668);
             $ptr = 21;
             continue main;
         }
@@ -47714,7 +47683,7 @@ function nmglg_LevelGenerator_generate($this, $var1, $var2, $var3, $var4) {
             break main;
         }
         $var13 = $this.$guiLoading;
-        $var50 = $rt_s(685);
+        $var50 = $rt_s(668);
         $ptr = 21;
         continue main;
     case 18:
@@ -47793,7 +47762,7 @@ function nmglg_LevelGenerator_generate($this, $var1, $var2, $var3, $var4) {
         $var6.$waterLevel = $this.$waterLevel0;
         $var6.$groundLevel = $this.$groundLevel0;
         $var13 = $this.$guiLoading;
-        $var50 = $rt_s(686);
+        $var50 = $rt_s(669);
         $ptr = 27;
         continue main;
     case 21:
@@ -47819,7 +47788,7 @@ function nmglg_LevelGenerator_generate($this, $var1, $var2, $var3, $var4) {
         $var44 = $var52_0 - 2 | 0;
         if ($var21 >= $var49) {
             $var13 = $this.$guiLoading;
-            $var50 = $rt_s(687);
+            $var50 = $rt_s(670);
             $ptr = 24;
             continue main;
         }
@@ -47846,7 +47815,7 @@ function nmglg_LevelGenerator_generate($this, $var1, $var2, $var3, $var4) {
         $var52 = $var52 + 1 | 0;
         if ($var52 >= $this.$width5) {
             $var13 = $this.$guiLoading;
-            $var50 = $rt_s(685);
+            $var50 = $rt_s(668);
             $ptr = 21;
             continue main;
         }
@@ -47880,7 +47849,7 @@ function nmglg_LevelGenerator_generate($this, $var1, $var2, $var3, $var4) {
         $var7 = $var7 + 1 | 0;
         if ($var7 >= $var5) {
             $var13 = $this.$guiLoading;
-            $var50 = $rt_s(676);
+            $var50 = $rt_s(659);
             $ptr = 1;
             continue main;
         }
@@ -47888,7 +47857,7 @@ function nmglg_LevelGenerator_generate($this, $var1, $var2, $var3, $var4) {
         $this.$groundLevel0 = $this.$waterLevel0 - 2 | 0;
         if (!$this.$flatGen) {
             $var13 = $this.$guiLoading;
-            $var50 = $rt_s(677);
+            $var50 = $rt_s(660);
             $ptr = 3;
             continue main;
         }
@@ -47950,7 +47919,7 @@ function nmglg_LevelGenerator_generate($this, $var1, $var2, $var3, $var4) {
         $var21 = $var21 + 1 | 0;
         if ($var21 >= $var49) {
             $var13 = $this.$guiLoading;
-            $var50 = $rt_s(687);
+            $var50 = $rt_s(670);
             $ptr = 24;
             continue main;
         }
@@ -47978,7 +47947,7 @@ function nmglg_LevelGenerator_generate($this, $var1, $var2, $var3, $var4) {
         }
         nmgl_World_generate($var6, $var2, $var4, $var3, $this.$blocksByteArray, null);
         $var13 = $this.$guiLoading;
-        $var50 = $rt_s(688);
+        $var50 = $rt_s(671);
         $ptr = 30;
     case 30:
         nmc_LoadingScreenRenderer_displayLoadingString($var13, $var50);
@@ -48001,7 +47970,7 @@ function nmglg_LevelGenerator_generate($this, $var1, $var2, $var3, $var4) {
         nmgl_World_findSpawn($var6);
         nmglg_LevelGenerator_generateHouse($var6);
         $var13 = $this.$guiLoading;
-        $var50 = $rt_s(689);
+        $var50 = $rt_s(672);
         $ptr = 33;
     case 33:
         nmc_LoadingScreenRenderer_displayLoadingString($var13, $var50);
@@ -48093,7 +48062,7 @@ function nmglg_LevelGenerator_generate($this, $var1, $var2, $var3, $var4) {
         $var7 = $var7 + 1 | 0;
         if ($var7 >= $var5) {
             $var13 = $this.$guiLoading;
-            $var50 = $rt_s(676);
+            $var50 = $rt_s(659);
             $ptr = 1;
             continue main;
         }
@@ -48101,7 +48070,7 @@ function nmglg_LevelGenerator_generate($this, $var1, $var2, $var3, $var4) {
         $this.$groundLevel0 = $this.$waterLevel0 - 2 | 0;
         if (!$this.$flatGen) {
             $var13 = $this.$guiLoading;
-            $var50 = $rt_s(677);
+            $var50 = $rt_s(660);
             $ptr = 3;
             continue main;
         }
@@ -48169,7 +48138,7 @@ function nmglg_LevelGenerator_generate($this, $var1, $var2, $var3, $var4) {
             break main;
         }
         $var13 = $this.$guiLoading;
-        $var50 = $rt_s(690);
+        $var50 = $rt_s(673);
         $ptr = 47;
     case 47:
         nmc_LoadingScreenRenderer_displayLoadingString($var13, $var50);
@@ -48185,7 +48154,7 @@ function nmglg_LevelGenerator_generate($this, $var1, $var2, $var3, $var4) {
         $var2 = 0;
         if ($var2 >= 10000) {
             $var13 = $this.$guiLoading;
-            $var50 = $rt_s(691);
+            $var50 = $rt_s(674);
             $ptr = 50;
             continue main;
         }
@@ -48222,10 +48191,10 @@ function nmglg_LevelGenerator_generate($this, $var1, $var2, $var3, $var4) {
         if ($var2 >= 1000) {
             $var6.$createTime = jl_System_currentTimeMillis();
             $var6.$authorName = $var1;
-            $var6.$name3 = $rt_s(692);
+            $var6.$name3 = $rt_s(675);
             if ($this.$phaseBar == $this.$phases)
                 return $var6;
-            $rt_throw(jl_IllegalStateException__init_(jl_StringBuilder_toString(jl_StringBuilder_append1(jl_StringBuilder_append(jl_StringBuilder_append1(jl_StringBuilder_append(jl_StringBuilder__init_(), $rt_s(693)), $this.$phases), $rt_s(694)), $this.$phaseBar))));
+            $rt_throw(jl_IllegalStateException__init_(jl_StringBuilder_toString(jl_StringBuilder_append1(jl_StringBuilder_append(jl_StringBuilder_append1(jl_StringBuilder_append(jl_StringBuilder__init_(), $rt_s(676)), $this.$phases), $rt_s(677)), $this.$phaseBar))));
         }
         var$19 = $var2 * 100.0 / 999.0;
         $ptr = 53;
@@ -48239,7 +48208,7 @@ function nmglg_LevelGenerator_generate($this, $var1, $var2, $var3, $var4) {
         $var2 = $var2 + 1 | 0;
         if ($var2 >= 10000) {
             $var13 = $this.$guiLoading;
-            $var50 = $rt_s(691);
+            $var50 = $rt_s(674);
             $ptr = 50;
             continue main;
         }
@@ -48255,10 +48224,10 @@ function nmglg_LevelGenerator_generate($this, $var1, $var2, $var3, $var4) {
         if ($var2 >= 1000) {
             $var6.$createTime = jl_System_currentTimeMillis();
             $var6.$authorName = $var1;
-            $var6.$name3 = $rt_s(692);
+            $var6.$name3 = $rt_s(675);
             if ($this.$phaseBar == $this.$phases)
                 return $var6;
-            $rt_throw(jl_IllegalStateException__init_(jl_StringBuilder_toString(jl_StringBuilder_append1(jl_StringBuilder_append(jl_StringBuilder_append1(jl_StringBuilder_append(jl_StringBuilder__init_(), $rt_s(693)), $this.$phases), $rt_s(694)), $this.$phaseBar))));
+            $rt_throw(jl_IllegalStateException__init_(jl_StringBuilder_toString(jl_StringBuilder_append1(jl_StringBuilder_append(jl_StringBuilder_append1(jl_StringBuilder_append(jl_StringBuilder__init_(), $rt_s(676)), $this.$phases), $rt_s(677)), $this.$phaseBar))));
         }
         var$19 = $var2 * 100.0 / 999.0;
         continue main;
@@ -48775,7 +48744,7 @@ function nmglg_LevelGenerator_setNextPhase($this, $var1) {
     case 0:
         if ($var1 < 0.0) {
             var$2 = new jl_IllegalStateException;
-            jl_Throwable__init_(var$2, $rt_s(695));
+            jl_Throwable__init_(var$2, $rt_s(678));
             $rt_throw(var$2);
         }
         $var2 = (($this.$phaseBar - 1 | 0) + $var1 / 100.0) * 100.0 / $this.$phases | 0;
@@ -48926,7 +48895,7 @@ function nmglg_LevelGenerator_floodFill($this, $var1, $var2, $var3, $var4, $var5
                     break a;
             }
             if (!($var18 == $var3 && $var19 == $var13))
-                ji_PrintStream_println(jl_System_out(), $rt_s(696));
+                ji_PrintStream_println(jl_System_out(), $rt_s(679));
             $var24 = 0;
             $var25 = 0;
             $var20 = 0;
@@ -49021,8 +48990,8 @@ function nmcg_GuiNameLevel() {
 function nmcg_GuiNameLevel_initGui($this) {
     ju_ArrayList_clear($this.$controlList);
     olo_WebGL_enableRepeatEvents0(1);
-    ju_ArrayList_add($this.$controlList, nmcg_GuiButton__init_(0, ($this.$width1 / 2 | 0) - 100 | 0, ($this.$height1 / 4 | 0) + 120 | 0, $rt_s(697)));
-    ju_ArrayList_add($this.$controlList, nmcg_GuiButton__init_(1, ($this.$width1 / 2 | 0) - 100 | 0, ($this.$height1 / 4 | 0) + 144 | 0, $rt_s(612)));
+    ju_ArrayList_add($this.$controlList, nmcg_GuiButton__init_(0, ($this.$width1 / 2 | 0) - 100 | 0, ($this.$height1 / 4 | 0) + 120 | 0, $rt_s(680)));
+    ju_ArrayList_add($this.$controlList, nmcg_GuiButton__init_(1, ($this.$width1 / 2 | 0) - 100 | 0, ($this.$height1 / 4 | 0) + 144 | 0, $rt_s(595)));
     ju_ArrayList_get($this.$controlList, 0).$enabled = jl_String_length(jl_String_trim($this.$name7)) <= 1 ? 0 : 1;
 }
 function nmcg_GuiNameLevel_onGuiClosed($this) {
@@ -49088,7 +49057,7 @@ function nmcg_GuiNameLevel_keyTyped($this, $var1, $var2) {
     var var$3;
     if ($var2 == 14 && jl_String_length($this.$name7) > 0)
         $this.$name7 = jl_String_substring($this.$name7, 0, jl_String_length($this.$name7) - 1 | 0);
-    if (jl_String_indexOf0($rt_s(698), $var1) >= 0 && jl_String_length($this.$name7) < 64) {
+    if (jl_String_indexOf0($rt_s(681), $var1) >= 0 && jl_String_length($this.$name7) < 64) {
         var$3 = new jl_StringBuilder;
         jl_AbstractStringBuilder__init_(var$3);
         var$3 = jl_StringBuilder_append(var$3, $this.$name7);
@@ -49125,7 +49094,7 @@ function nmcg_GuiNameLevel_drawScreen($this, $var1, $var2, $var3) {
         var$11 = $this.$fontRenderer0;
         var$12 = new jl_StringBuilder;
         jl_AbstractStringBuilder__init_(var$12);
-        nmcg_FontRenderer_drawStringWithShadow(var$11, jl_AbstractStringBuilder_toString(jl_StringBuilder_append(jl_StringBuilder_append(var$12, $this.$name7), ($this.$counter / 6 | 0) % 2 | 0 ? $rt_s(9) : $rt_s(557))), $var4 + 4 | 0, $var5 + 6 | 0, 14737632);
+        nmcg_FontRenderer_drawStringWithShadow(var$11, jl_AbstractStringBuilder_toString(jl_StringBuilder_append(jl_StringBuilder_append(var$12, $this.$name7), ($this.$counter / 6 | 0) % 2 | 0 ? $rt_s(9) : $rt_s(540))), $var4 + 4 | 0, $var5 + 6 | 0, 14737632);
         $ptr = 2;
     case 2:
         nmcg_GuiScreen_drawScreen($this, $var1, $var2, $var3);
@@ -49182,7 +49151,7 @@ function ji_FileOutputStream__init_0($this, $file) {
     var var$2, $$je;
     if (jl_String_isEmpty(ji_File_getName($file))) {
         $file = new ji_FileNotFoundException;
-        jl_Throwable__init_($file, $rt_s(699));
+        jl_Throwable__init_($file, $rt_s(682));
         $rt_throw($file);
     }
     var$2 = ji_File_findParentFile($file);
@@ -49537,7 +49506,7 @@ function jn_URLStreamHandler_parseURL($this, $u, $str, $start, $end) {
         $authority = $u.$authority;
         $userInfo = $u.$userInfo;
         $refIdx = jl_String_indexOf($parseString, 35, 0);
-        if (jl_String_startsWith0($parseString, $rt_s(700)) && !jl_String_startsWith0($parseString, $rt_s(701))) {
+        if (jl_String_startsWith0($parseString, $rt_s(683)) && !jl_String_startsWith0($parseString, $rt_s(684))) {
             $hostIdx = 2;
             $port = (-1);
             $end = jl_String_indexOf($parseString, 47, $hostIdx);
@@ -49663,29 +49632,29 @@ function jn_URLStreamHandler_parseURL($this, $u, $str, $start, $end) {
             if ($start < 0)
                 break b;
         }
-        if (!(jl_String_startsWith($str, $rt_s(700), $start) && jl_String_indexOf($str, 47, $start + 2 | 0) == (-1)))
+        if (!(jl_String_startsWith($str, $rt_s(683), $start) && jl_String_indexOf($str, 47, $start + 2 | 0) == (-1)))
             return;
     }
     $u = new jl_StringIndexOutOfBoundsException;
     $str = new jl_StringBuilder;
     jl_AbstractStringBuilder__init_($str);
-    jl_Throwable__init_($u, jl_AbstractStringBuilder_toString(jl_StringBuilder_append1(jl_StringBuilder_append($str, $rt_s(702)), $end)));
+    jl_Throwable__init_($u, jl_AbstractStringBuilder_toString(jl_StringBuilder_append1(jl_StringBuilder_append($str, $rt_s(685)), $end)));
     $rt_throw($u);
 }
 function jn_URLStreamHandler_canonicalizePath($path) {
     var $dirIndex, var$3, var$4;
     while (true) {
-        $dirIndex = jl_String_indexOf2($path, $rt_s(703));
+        $dirIndex = jl_String_indexOf2($path, $rt_s(686));
         if ($dirIndex < 0)
             break;
         var$3 = new jl_StringBuilder;
         jl_AbstractStringBuilder__init_(var$3);
         $path = jl_AbstractStringBuilder_toString(jl_StringBuilder_append(jl_StringBuilder_append(var$3, jl_String_substring($path, 0, $dirIndex + 1 | 0)), jl_String_substring0($path, $dirIndex + 3 | 0)));
     }
-    if (jl_String_endsWith($path, $rt_s(704)))
+    if (jl_String_endsWith($path, $rt_s(687)))
         $path = jl_String_substring($path, 0, jl_String_length($path) - 1 | 0);
     while (true) {
-        var$4 = jl_String_indexOf2($path, $rt_s(705));
+        var$4 = jl_String_indexOf2($path, $rt_s(688));
         if (var$4 < 0)
             break;
         if (!var$4) {
@@ -49696,7 +49665,7 @@ function jn_URLStreamHandler_canonicalizePath($path) {
         jl_AbstractStringBuilder__init_(var$3);
         $path = jl_AbstractStringBuilder_toString(jl_StringBuilder_append(jl_StringBuilder_append(var$3, jl_String_substring($path, 0, jl_String_lastIndexOf($path, 47, var$4 - 1 | 0))), jl_String_substring0($path, var$4 + 3 | 0)));
     }
-    if (jl_String_endsWith($path, $rt_s(706)) && jl_String_length($path) > 3)
+    if (jl_String_endsWith($path, $rt_s(689)) && jl_String_length($path) > 3)
         $path = jl_String_substring($path, 0, jl_String_lastIndexOf($path, 47, jl_String_length($path) - 4 | 0) + 1 | 0);
     return $path;
 }
@@ -49711,7 +49680,7 @@ function jn_URLStreamHandler_toExternalForm($this, $url) {
     jl_AbstractStringBuilder_append($answer, 58);
     $authority = $url.$authority;
     if ($authority !== null && jl_String_length($authority) > 0) {
-        jl_StringBuilder_append($answer, $rt_s(700));
+        jl_StringBuilder_append($answer, $rt_s(683));
         jl_StringBuilder_append($answer, $url.$authority);
     }
     $file = $url.$file;
@@ -49824,15 +49793,15 @@ function jni_XHRStreamHandler_openConnection($this, $u) {
     var$2.$url = $u;
     var$3 = $rt_createArray(jl_String, 7);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(707);
+    var$4[0] = $rt_s(690);
     var$4[1] = $rt_s(167);
-    var$4[2] = $rt_s(708);
-    var$4[3] = $rt_s(709);
-    var$4[4] = $rt_s(710);
-    var$4[5] = $rt_s(711);
-    var$4[6] = $rt_s(712);
+    var$4[2] = $rt_s(691);
+    var$4[3] = $rt_s(692);
+    var$4[4] = $rt_s(693);
+    var$4[5] = $rt_s(694);
+    var$4[6] = $rt_s(695);
     var$2.$methodTokens = var$3;
-    var$2.$method0 = $rt_s(707);
+    var$2.$method0 = $rt_s(690);
     var$2.$responseCode = (-1);
     var$2.$instanceFollowRedirects = jn_HttpURLConnection_followRedirects;
     var$2.$chunkLength = (-1);
@@ -49858,7 +49827,7 @@ function jni_DummyStreamHandler_openConnection($this, $u) {
     var$2 = new ji_IOException;
     var$3 = new jl_StringBuilder;
     jl_AbstractStringBuilder__init_(var$3);
-    jl_Throwable__init_(var$2, jl_AbstractStringBuilder_toString(jl_StringBuilder_append(jl_StringBuilder_append(var$3, $rt_s(713)), $u.$protocol)));
+    jl_Throwable__init_(var$2, jl_AbstractStringBuilder_toString(jl_StringBuilder_append(jl_StringBuilder_append(var$3, $rt_s(696)), $u.$protocol)));
     $rt_throw(var$2);
 }
 function nmglgn_NoiseGeneratorPerlin() {
@@ -50139,7 +50108,7 @@ function jni_XHRURLConnection_getInputStream($this) {
             var$2 = new ji_IOException;
             var$3 = new jl_StringBuilder;
             jl_AbstractStringBuilder__init_(var$3);
-            jl_Throwable__init_(var$2, jl_AbstractStringBuilder_toString(jl_StringBuilder_append(jl_StringBuilder_append(jl_StringBuilder_append1(jl_StringBuilder_append(var$3, $rt_s(714)), $this.$responseCode), $rt_s(715)), $this.$responseMessage)));
+            jl_Throwable__init_(var$2, jl_AbstractStringBuilder_toString(jl_StringBuilder_append(jl_StringBuilder_append(jl_StringBuilder_append1(jl_StringBuilder_append(var$3, $rt_s(697)), $this.$responseCode), $rt_s(698)), $this.$responseMessage)));
             $rt_throw(var$2);
         }
         $this.$requestPerformed = 1;
@@ -50156,7 +50125,7 @@ function jni_XHRURLConnection_getInputStream($this) {
         var$2 = new ji_IOException;
         var$3 = new jl_StringBuilder;
         jl_AbstractStringBuilder__init_(var$3);
-        jl_Throwable__init_(var$2, jl_AbstractStringBuilder_toString(jl_StringBuilder_append(jl_StringBuilder_append(jl_StringBuilder_append1(jl_StringBuilder_append(var$3, $rt_s(714)), $this.$responseCode), $rt_s(715)), $this.$responseMessage)));
+        jl_Throwable__init_(var$2, jl_AbstractStringBuilder_toString(jl_StringBuilder_append(jl_StringBuilder_append(jl_StringBuilder_append1(jl_StringBuilder_append(var$3, $rt_s(697)), $this.$responseCode), $rt_s(698)), $this.$responseMessage)));
         $rt_throw(var$2);
     default: $rt_invalidPointer();
     }}
@@ -51116,7 +51085,7 @@ function otcfm_VirtualFileImpl_createFile($this, $fileName) {
     $inMemory = otcfm_VirtualFileImpl_findInMemory($this);
     if ($inMemory === null) {
         $inMemory = new ji_IOException;
-        jl_Throwable__init_($inMemory, $rt_s(716));
+        jl_Throwable__init_($inMemory, $rt_s(699));
         $rt_throw($inMemory);
     }
     return $inMemory.$createFile0($fileName) === null ? 0 : 1;
@@ -51710,7 +51679,7 @@ function jur_Lexer_parseCharClassName($this) {
         if ($this.$pattern.data[$this.$index6] != 123) {
             $sb = new jl_StringBuilder;
             jl_AbstractStringBuilder__init_($sb);
-            return jl_AbstractStringBuilder_toString(jl_StringBuilder_append(jl_StringBuilder_append($sb, $rt_s(717)), jl_String__init_1($this.$pattern, jur_Lexer_nextIndex($this), 1)));
+            return jl_AbstractStringBuilder_toString(jl_StringBuilder_append(jl_StringBuilder_append($sb, $rt_s(700)), jl_String__init_1($this.$pattern, jur_Lexer_nextIndex($this), 1)));
         }
         jur_Lexer_nextIndex($this);
         $ch = 0;
@@ -51731,14 +51700,14 @@ function jur_Lexer_parseCharClassName($this) {
     if (jl_String_length($res) == 1) {
         $sb = new jl_StringBuilder;
         jl_AbstractStringBuilder__init_($sb);
-        return jl_AbstractStringBuilder_toString(jl_StringBuilder_append(jl_StringBuilder_append($sb, $rt_s(717)), $res));
+        return jl_AbstractStringBuilder_toString(jl_StringBuilder_append(jl_StringBuilder_append($sb, $rt_s(700)), $res));
     }
     b: {
         c: {
             if (jl_String_length($res) > 3) {
-                if (jl_String_startsWith0($res, $rt_s(717)))
+                if (jl_String_startsWith0($res, $rt_s(700)))
                     break c;
-                if (jl_String_startsWith0($res, $rt_s(718)))
+                if (jl_String_startsWith0($res, $rt_s(701)))
                     break c;
             }
             break b;
@@ -52049,7 +52018,7 @@ function jur_PatternSyntaxException_getMessage($this) {
     if ($this.$pattern3 !== null && jl_String_length($this.$pattern3)) {
         var$8 = new jl_StringBuilder;
         jl_AbstractStringBuilder__init_(var$8);
-        $filler = jl_AbstractStringBuilder_toString(jl_StringBuilder_append(jl_StringBuilder_append(jl_StringBuilder_append(jl_StringBuilder_append(jl_StringBuilder_append1(var$8, $this.$index7), $rt_s(719)), $this.$pattern3), $rt_s(719)), $filler));
+        $filler = jl_AbstractStringBuilder_toString(jl_StringBuilder_append(jl_StringBuilder_append(jl_StringBuilder_append(jl_StringBuilder_append(jl_StringBuilder_append1(var$8, $this.$index7), $rt_s(702)), $this.$pattern3), $rt_s(702)), $filler));
     } else
         $filler = $rt_s(9);
     return jl_AbstractStringBuilder_toString(jl_StringBuilder_append(var$7, $filler));
@@ -53160,7 +53129,7 @@ function jur_Quantifier_toString($this) {
     var var$1;
     var$1 = new jl_StringBuilder;
     jl_AbstractStringBuilder__init_(var$1);
-    return jl_AbstractStringBuilder_toString(jl_StringBuilder_append(jl_StringBuilder_append(jl_StringBuilder_append(jl_StringBuilder_append1(jl_StringBuilder_append(var$1, $rt_s(720)), $this.$min2), $rt_s(721)), $this.$max1 == 2147483647 ? $rt_s(9) : jl_Integer_toString(jl_Integer__init_($this.$max1))), $rt_s(722)));
+    return jl_AbstractStringBuilder_toString(jl_StringBuilder_append(jl_StringBuilder_append(jl_StringBuilder_append(jl_StringBuilder_append1(jl_StringBuilder_append(var$1, $rt_s(703)), $this.$min2), $rt_s(704)), $this.$max1 == 2147483647 ? $rt_s(9) : jl_Integer_toString(jl_Integer__init_($this.$max1))), $rt_s(705)));
 }
 function jur_FSet$PossessiveFSet() {
     jur_AbstractSet.call(this);
@@ -55038,152 +55007,152 @@ function jur_AbstractCharClass$PredefinedCharacterClasses__clinit_() {
     var$2 = var$1.data;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(723);
+    var$4[0] = $rt_s(706);
     var$4[1] = jur_AbstractCharClass$LazyLower__init_();
     var$2[0] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(724);
+    var$4[0] = $rt_s(707);
     var$4[1] = jur_AbstractCharClass$LazyUpper__init_();
     var$2[1] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(725);
+    var$4[0] = $rt_s(708);
     var$4[1] = jur_AbstractCharClass$LazyASCII__init_();
     var$2[2] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(726);
+    var$4[0] = $rt_s(709);
     var$4[1] = jur_AbstractCharClass$LazyAlpha__init_();
     var$2[3] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(727);
+    var$4[0] = $rt_s(710);
     var$4[1] = jur_AbstractCharClass$PredefinedCharacterClasses_digit;
     var$2[4] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(728);
+    var$4[0] = $rt_s(711);
     var$4[1] = jur_AbstractCharClass$LazyAlnum__init_();
     var$2[5] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(729);
+    var$4[0] = $rt_s(712);
     var$4[1] = jur_AbstractCharClass$LazyPunct__init_();
     var$2[6] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(730);
+    var$4[0] = $rt_s(713);
     var$4[1] = jur_AbstractCharClass$LazyGraph__init_();
     var$2[7] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(731);
+    var$4[0] = $rt_s(714);
     var$4[1] = jur_AbstractCharClass$LazyPrint__init_();
     var$2[8] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(732);
+    var$4[0] = $rt_s(715);
     var$4[1] = jur_AbstractCharClass$LazyBlank__init_();
     var$2[9] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(733);
+    var$4[0] = $rt_s(716);
     var$4[1] = jur_AbstractCharClass$LazyCntrl__init_();
     var$2[10] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(734);
+    var$4[0] = $rt_s(717);
     var$4[1] = jur_AbstractCharClass$LazyXDigit__init_();
     var$2[11] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(735);
+    var$4[0] = $rt_s(718);
     var$4[1] = jur_AbstractCharClass$LazyJavaLowerCase__init_();
     var$2[12] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(736);
+    var$4[0] = $rt_s(719);
     var$4[1] = jur_AbstractCharClass$LazyJavaUpperCase__init_();
     var$2[13] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(737);
+    var$4[0] = $rt_s(720);
     var$4[1] = jur_AbstractCharClass$LazyJavaWhitespace__init_();
     var$2[14] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(738);
+    var$4[0] = $rt_s(721);
     var$4[1] = jur_AbstractCharClass$LazyJavaMirrored__init_();
     var$2[15] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(739);
+    var$4[0] = $rt_s(722);
     var$4[1] = jur_AbstractCharClass$LazyJavaDefined__init_();
     var$2[16] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(740);
+    var$4[0] = $rt_s(723);
     var$4[1] = jur_AbstractCharClass$LazyJavaDigit__init_();
     var$2[17] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(741);
+    var$4[0] = $rt_s(724);
     var$4[1] = jur_AbstractCharClass$LazyJavaIdentifierIgnorable__init_();
     var$2[18] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(742);
+    var$4[0] = $rt_s(725);
     var$4[1] = jur_AbstractCharClass$LazyJavaISOControl__init_();
     var$2[19] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(743);
+    var$4[0] = $rt_s(726);
     var$4[1] = jur_AbstractCharClass$LazyJavaJavaIdentifierPart__init_();
     var$2[20] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(744);
+    var$4[0] = $rt_s(727);
     var$4[1] = jur_AbstractCharClass$LazyJavaJavaIdentifierStart__init_();
     var$2[21] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(745);
+    var$4[0] = $rt_s(728);
     var$4[1] = jur_AbstractCharClass$LazyJavaLetter__init_();
     var$2[22] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(746);
+    var$4[0] = $rt_s(729);
     var$4[1] = jur_AbstractCharClass$LazyJavaLetterOrDigit__init_();
     var$2[23] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(747);
+    var$4[0] = $rt_s(730);
     var$4[1] = jur_AbstractCharClass$LazyJavaSpaceChar__init_();
     var$2[24] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(748);
+    var$4[0] = $rt_s(731);
     var$4[1] = jur_AbstractCharClass$LazyJavaTitleCase__init_();
     var$2[25] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(749);
+    var$4[0] = $rt_s(732);
     var$4[1] = jur_AbstractCharClass$LazyJavaUnicodeIdentifierPart__init_();
     var$2[26] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(750);
+    var$4[0] = $rt_s(733);
     var$4[1] = jur_AbstractCharClass$LazyJavaUnicodeIdentifierStart__init_();
     var$2[27] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(751);
+    var$4[0] = $rt_s(734);
     var$4[1] = jur_AbstractCharClass$PredefinedCharacterClasses_space;
     var$2[28] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(752);
+    var$4[0] = $rt_s(735);
     var$4[1] = jur_AbstractCharClass$LazyWord__init_();
     var$2[29] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
@@ -55193,7 +55162,7 @@ function jur_AbstractCharClass$PredefinedCharacterClasses__clinit_() {
     var$2[30] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(753);
+    var$4[0] = $rt_s(736);
     var$4[1] = jur_AbstractCharClass$PredefinedCharacterClasses_space;
     var$2[31] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
@@ -55203,7 +55172,7 @@ function jur_AbstractCharClass$PredefinedCharacterClasses__clinit_() {
     var$2[32] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(754);
+    var$4[0] = $rt_s(737);
     var$4[1] = jur_AbstractCharClass$PredefinedCharacterClasses_digit;
     var$2[33] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
@@ -55213,667 +55182,667 @@ function jur_AbstractCharClass$PredefinedCharacterClasses__clinit_() {
     var$2[34] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(755);
+    var$4[0] = $rt_s(738);
     var$4[1] = jur_AbstractCharClass$LazyRange__init_(0, 127);
     var$2[35] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(756);
+    var$4[0] = $rt_s(739);
     var$4[1] = jur_AbstractCharClass$LazyRange__init_(128, 255);
     var$2[36] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(757);
+    var$4[0] = $rt_s(740);
     var$4[1] = jur_AbstractCharClass$LazyRange__init_(256, 383);
     var$2[37] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(758);
+    var$4[0] = $rt_s(741);
     var$4[1] = jur_AbstractCharClass$LazyRange__init_(384, 591);
     var$2[38] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(759);
+    var$4[0] = $rt_s(742);
     var$4[1] = jur_AbstractCharClass$LazyRange__init_(592, 687);
     var$2[39] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(760);
+    var$4[0] = $rt_s(743);
     var$4[1] = jur_AbstractCharClass$LazyRange__init_(688, 767);
     var$2[40] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(761);
+    var$4[0] = $rt_s(744);
     var$4[1] = jur_AbstractCharClass$LazyRange__init_(768, 879);
     var$2[41] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(762);
+    var$4[0] = $rt_s(745);
     var$4[1] = jur_AbstractCharClass$LazyRange__init_(880, 1023);
     var$2[42] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(763);
+    var$4[0] = $rt_s(746);
     var$4[1] = jur_AbstractCharClass$LazyRange__init_(1024, 1279);
     var$2[43] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(764);
+    var$4[0] = $rt_s(747);
     var$4[1] = jur_AbstractCharClass$LazyRange__init_(1280, 1327);
     var$2[44] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(765);
+    var$4[0] = $rt_s(748);
     var$4[1] = jur_AbstractCharClass$LazyRange__init_(1328, 1423);
     var$2[45] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(766);
+    var$4[0] = $rt_s(749);
     var$4[1] = jur_AbstractCharClass$LazyRange__init_(1424, 1535);
     var$2[46] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(767);
+    var$4[0] = $rt_s(750);
     var$4[1] = jur_AbstractCharClass$LazyRange__init_(1536, 1791);
     var$2[47] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(768);
+    var$4[0] = $rt_s(751);
     var$4[1] = jur_AbstractCharClass$LazyRange__init_(1792, 1871);
     var$2[48] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(769);
+    var$4[0] = $rt_s(752);
     var$4[1] = jur_AbstractCharClass$LazyRange__init_(1872, 1919);
     var$2[49] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(770);
+    var$4[0] = $rt_s(753);
     var$4[1] = jur_AbstractCharClass$LazyRange__init_(1920, 1983);
     var$2[50] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(771);
+    var$4[0] = $rt_s(754);
     var$4[1] = jur_AbstractCharClass$LazyRange__init_(2304, 2431);
     var$2[51] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(772);
+    var$4[0] = $rt_s(755);
     var$4[1] = jur_AbstractCharClass$LazyRange__init_(2432, 2559);
     var$2[52] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(773);
+    var$4[0] = $rt_s(756);
     var$4[1] = jur_AbstractCharClass$LazyRange__init_(2560, 2687);
     var$2[53] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(774);
+    var$4[0] = $rt_s(757);
     var$4[1] = jur_AbstractCharClass$LazyRange__init_(2688, 2815);
     var$2[54] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(775);
+    var$4[0] = $rt_s(758);
     var$4[1] = jur_AbstractCharClass$LazyRange__init_(2816, 2943);
     var$2[55] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(776);
+    var$4[0] = $rt_s(759);
     var$4[1] = jur_AbstractCharClass$LazyRange__init_(2944, 3071);
     var$2[56] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(777);
+    var$4[0] = $rt_s(760);
     var$4[1] = jur_AbstractCharClass$LazyRange__init_(3072, 3199);
     var$2[57] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(778);
+    var$4[0] = $rt_s(761);
     var$4[1] = jur_AbstractCharClass$LazyRange__init_(3200, 3327);
     var$2[58] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(779);
+    var$4[0] = $rt_s(762);
     var$4[1] = jur_AbstractCharClass$LazyRange__init_(3328, 3455);
     var$2[59] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(780);
+    var$4[0] = $rt_s(763);
     var$4[1] = jur_AbstractCharClass$LazyRange__init_(3456, 3583);
     var$2[60] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(781);
+    var$4[0] = $rt_s(764);
     var$4[1] = jur_AbstractCharClass$LazyRange__init_(3584, 3711);
     var$2[61] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(782);
+    var$4[0] = $rt_s(765);
     var$4[1] = jur_AbstractCharClass$LazyRange__init_(3712, 3839);
     var$2[62] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(783);
+    var$4[0] = $rt_s(766);
     var$4[1] = jur_AbstractCharClass$LazyRange__init_(3840, 4095);
     var$2[63] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(784);
+    var$4[0] = $rt_s(767);
     var$4[1] = jur_AbstractCharClass$LazyRange__init_(4096, 4255);
     var$2[64] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(785);
+    var$4[0] = $rt_s(768);
     var$4[1] = jur_AbstractCharClass$LazyRange__init_(4256, 4351);
     var$2[65] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(786);
+    var$4[0] = $rt_s(769);
     var$4[1] = jur_AbstractCharClass$LazyRange__init_(4352, 4607);
     var$2[66] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(787);
+    var$4[0] = $rt_s(770);
     var$4[1] = jur_AbstractCharClass$LazyRange__init_(4608, 4991);
     var$2[67] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(788);
+    var$4[0] = $rt_s(771);
     var$4[1] = jur_AbstractCharClass$LazyRange__init_(4992, 5023);
     var$2[68] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(789);
+    var$4[0] = $rt_s(772);
     var$4[1] = jur_AbstractCharClass$LazyRange__init_(5024, 5119);
     var$2[69] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(790);
+    var$4[0] = $rt_s(773);
     var$4[1] = jur_AbstractCharClass$LazyRange__init_(5120, 5759);
     var$2[70] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(791);
+    var$4[0] = $rt_s(774);
     var$4[1] = jur_AbstractCharClass$LazyRange__init_(5760, 5791);
     var$2[71] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(792);
+    var$4[0] = $rt_s(775);
     var$4[1] = jur_AbstractCharClass$LazyRange__init_(5792, 5887);
     var$2[72] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(793);
+    var$4[0] = $rt_s(776);
     var$4[1] = jur_AbstractCharClass$LazyRange__init_(5888, 5919);
     var$2[73] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(794);
+    var$4[0] = $rt_s(777);
     var$4[1] = jur_AbstractCharClass$LazyRange__init_(5920, 5951);
     var$2[74] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(795);
+    var$4[0] = $rt_s(778);
     var$4[1] = jur_AbstractCharClass$LazyRange__init_(5952, 5983);
     var$2[75] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(796);
+    var$4[0] = $rt_s(779);
     var$4[1] = jur_AbstractCharClass$LazyRange__init_(5984, 6015);
     var$2[76] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(797);
+    var$4[0] = $rt_s(780);
     var$4[1] = jur_AbstractCharClass$LazyRange__init_(6016, 6143);
     var$2[77] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(798);
+    var$4[0] = $rt_s(781);
     var$4[1] = jur_AbstractCharClass$LazyRange__init_(6144, 6319);
     var$2[78] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(799);
+    var$4[0] = $rt_s(782);
     var$4[1] = jur_AbstractCharClass$LazyRange__init_(6400, 6479);
     var$2[79] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(800);
+    var$4[0] = $rt_s(783);
     var$4[1] = jur_AbstractCharClass$LazyRange__init_(6480, 6527);
     var$2[80] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(801);
+    var$4[0] = $rt_s(784);
     var$4[1] = jur_AbstractCharClass$LazyRange__init_(6528, 6623);
     var$2[81] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(802);
+    var$4[0] = $rt_s(785);
     var$4[1] = jur_AbstractCharClass$LazyRange__init_(6624, 6655);
     var$2[82] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(803);
+    var$4[0] = $rt_s(786);
     var$4[1] = jur_AbstractCharClass$LazyRange__init_(6656, 6687);
     var$2[83] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(804);
+    var$4[0] = $rt_s(787);
     var$4[1] = jur_AbstractCharClass$LazyRange__init_(7424, 7551);
     var$2[84] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(805);
+    var$4[0] = $rt_s(788);
     var$4[1] = jur_AbstractCharClass$LazyRange__init_(7552, 7615);
     var$2[85] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(806);
+    var$4[0] = $rt_s(789);
     var$4[1] = jur_AbstractCharClass$LazyRange__init_(7616, 7679);
     var$2[86] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(807);
+    var$4[0] = $rt_s(790);
     var$4[1] = jur_AbstractCharClass$LazyRange__init_(7680, 7935);
     var$2[87] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(808);
+    var$4[0] = $rt_s(791);
     var$4[1] = jur_AbstractCharClass$LazyRange__init_(7936, 8191);
     var$2[88] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(809);
+    var$4[0] = $rt_s(792);
     var$4[1] = jur_AbstractCharClass$LazyRange__init_(8192, 8303);
     var$2[89] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(810);
+    var$4[0] = $rt_s(793);
     var$4[1] = jur_AbstractCharClass$LazyRange__init_(8304, 8351);
     var$2[90] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(811);
+    var$4[0] = $rt_s(794);
     var$4[1] = jur_AbstractCharClass$LazyRange__init_(8352, 8399);
     var$2[91] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(812);
+    var$4[0] = $rt_s(795);
     var$4[1] = jur_AbstractCharClass$LazyRange__init_(8400, 8447);
     var$2[92] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(813);
+    var$4[0] = $rt_s(796);
     var$4[1] = jur_AbstractCharClass$LazyRange__init_(8448, 8527);
     var$2[93] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(814);
+    var$4[0] = $rt_s(797);
     var$4[1] = jur_AbstractCharClass$LazyRange__init_(8528, 8591);
     var$2[94] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(815);
+    var$4[0] = $rt_s(798);
     var$4[1] = jur_AbstractCharClass$LazyRange__init_(8592, 8703);
     var$2[95] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(816);
+    var$4[0] = $rt_s(799);
     var$4[1] = jur_AbstractCharClass$LazyRange__init_(8704, 8959);
     var$2[96] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(817);
+    var$4[0] = $rt_s(800);
     var$4[1] = jur_AbstractCharClass$LazyRange__init_(8960, 9215);
     var$2[97] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(818);
+    var$4[0] = $rt_s(801);
     var$4[1] = jur_AbstractCharClass$LazyRange__init_(9216, 9279);
     var$2[98] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(819);
+    var$4[0] = $rt_s(802);
     var$4[1] = jur_AbstractCharClass$LazyRange__init_(9280, 9311);
     var$2[99] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(820);
+    var$4[0] = $rt_s(803);
     var$4[1] = jur_AbstractCharClass$LazyRange__init_(9312, 9471);
     var$2[100] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(821);
+    var$4[0] = $rt_s(804);
     var$4[1] = jur_AbstractCharClass$LazyRange__init_(9472, 9599);
     var$2[101] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(822);
+    var$4[0] = $rt_s(805);
     var$4[1] = jur_AbstractCharClass$LazyRange__init_(9600, 9631);
     var$2[102] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(823);
+    var$4[0] = $rt_s(806);
     var$4[1] = jur_AbstractCharClass$LazyRange__init_(9632, 9727);
     var$2[103] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(824);
+    var$4[0] = $rt_s(807);
     var$4[1] = jur_AbstractCharClass$LazyRange__init_(9728, 9983);
     var$2[104] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(825);
+    var$4[0] = $rt_s(808);
     var$4[1] = jur_AbstractCharClass$LazyRange__init_(9984, 10175);
     var$2[105] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(826);
+    var$4[0] = $rt_s(809);
     var$4[1] = jur_AbstractCharClass$LazyRange__init_(10176, 10223);
     var$2[106] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(827);
+    var$4[0] = $rt_s(810);
     var$4[1] = jur_AbstractCharClass$LazyRange__init_(10224, 10239);
     var$2[107] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(828);
+    var$4[0] = $rt_s(811);
     var$4[1] = jur_AbstractCharClass$LazyRange__init_(10240, 10495);
     var$2[108] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(829);
+    var$4[0] = $rt_s(812);
     var$4[1] = jur_AbstractCharClass$LazyRange__init_(10496, 10623);
     var$2[109] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(830);
+    var$4[0] = $rt_s(813);
     var$4[1] = jur_AbstractCharClass$LazyRange__init_(10624, 10751);
     var$2[110] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(831);
+    var$4[0] = $rt_s(814);
     var$4[1] = jur_AbstractCharClass$LazyRange__init_(10752, 11007);
     var$2[111] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(832);
+    var$4[0] = $rt_s(815);
     var$4[1] = jur_AbstractCharClass$LazyRange__init_(11008, 11263);
     var$2[112] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(833);
+    var$4[0] = $rt_s(816);
     var$4[1] = jur_AbstractCharClass$LazyRange__init_(11264, 11359);
     var$2[113] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(834);
+    var$4[0] = $rt_s(817);
     var$4[1] = jur_AbstractCharClass$LazyRange__init_(11392, 11519);
     var$2[114] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(835);
+    var$4[0] = $rt_s(818);
     var$4[1] = jur_AbstractCharClass$LazyRange__init_(11520, 11567);
     var$2[115] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(836);
+    var$4[0] = $rt_s(819);
     var$4[1] = jur_AbstractCharClass$LazyRange__init_(11568, 11647);
     var$2[116] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(837);
+    var$4[0] = $rt_s(820);
     var$4[1] = jur_AbstractCharClass$LazyRange__init_(11648, 11743);
     var$2[117] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(838);
+    var$4[0] = $rt_s(821);
     var$4[1] = jur_AbstractCharClass$LazyRange__init_(11776, 11903);
     var$2[118] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(839);
+    var$4[0] = $rt_s(822);
     var$4[1] = jur_AbstractCharClass$LazyRange__init_(11904, 12031);
     var$2[119] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(840);
+    var$4[0] = $rt_s(823);
     var$4[1] = jur_AbstractCharClass$LazyRange__init_(12032, 12255);
     var$2[120] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(841);
+    var$4[0] = $rt_s(824);
     var$4[1] = jur_AbstractCharClass$LazyRange__init_(12272, 12287);
     var$2[121] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(842);
+    var$4[0] = $rt_s(825);
     var$4[1] = jur_AbstractCharClass$LazyRange__init_(12288, 12351);
     var$2[122] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(843);
+    var$4[0] = $rt_s(826);
     var$4[1] = jur_AbstractCharClass$LazyRange__init_(12352, 12447);
     var$2[123] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(844);
+    var$4[0] = $rt_s(827);
     var$4[1] = jur_AbstractCharClass$LazyRange__init_(12448, 12543);
     var$2[124] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(845);
+    var$4[0] = $rt_s(828);
     var$4[1] = jur_AbstractCharClass$LazyRange__init_(12544, 12591);
     var$2[125] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(846);
+    var$4[0] = $rt_s(829);
     var$4[1] = jur_AbstractCharClass$LazyRange__init_(12592, 12687);
     var$2[126] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(847);
+    var$4[0] = $rt_s(830);
     var$4[1] = jur_AbstractCharClass$LazyRange__init_(12688, 12703);
     var$2[127] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(848);
+    var$4[0] = $rt_s(831);
     var$4[1] = jur_AbstractCharClass$LazyRange__init_(12704, 12735);
     var$2[128] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(849);
+    var$4[0] = $rt_s(832);
     var$4[1] = jur_AbstractCharClass$LazyRange__init_(12736, 12783);
     var$2[129] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(850);
+    var$4[0] = $rt_s(833);
     var$4[1] = jur_AbstractCharClass$LazyRange__init_(12784, 12799);
     var$2[130] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(851);
+    var$4[0] = $rt_s(834);
     var$4[1] = jur_AbstractCharClass$LazyRange__init_(12800, 13055);
     var$2[131] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(852);
+    var$4[0] = $rt_s(835);
     var$4[1] = jur_AbstractCharClass$LazyRange__init_(13056, 13311);
     var$2[132] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(853);
+    var$4[0] = $rt_s(836);
     var$4[1] = jur_AbstractCharClass$LazyRange__init_(13312, 19893);
     var$2[133] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(854);
+    var$4[0] = $rt_s(837);
     var$4[1] = jur_AbstractCharClass$LazyRange__init_(19904, 19967);
     var$2[134] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(855);
+    var$4[0] = $rt_s(838);
     var$4[1] = jur_AbstractCharClass$LazyRange__init_(19968, 40959);
     var$2[135] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(856);
+    var$4[0] = $rt_s(839);
     var$4[1] = jur_AbstractCharClass$LazyRange__init_(40960, 42127);
     var$2[136] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(857);
+    var$4[0] = $rt_s(840);
     var$4[1] = jur_AbstractCharClass$LazyRange__init_(42128, 42191);
     var$2[137] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(858);
+    var$4[0] = $rt_s(841);
     var$4[1] = jur_AbstractCharClass$LazyRange__init_(42752, 42783);
     var$2[138] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(859);
+    var$4[0] = $rt_s(842);
     var$4[1] = jur_AbstractCharClass$LazyRange__init_(43008, 43055);
     var$2[139] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(860);
+    var$4[0] = $rt_s(843);
     var$4[1] = jur_AbstractCharClass$LazyRange__init_(44032, 55203);
     var$2[140] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(861);
+    var$4[0] = $rt_s(844);
     var$4[1] = jur_AbstractCharClass$LazyRange__init_(55296, 56191);
     var$2[141] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(862);
+    var$4[0] = $rt_s(845);
     var$4[1] = jur_AbstractCharClass$LazyRange__init_(56192, 56319);
     var$2[142] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(863);
+    var$4[0] = $rt_s(846);
     var$4[1] = jur_AbstractCharClass$LazyRange__init_(56320, 57343);
     var$2[143] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(864);
+    var$4[0] = $rt_s(847);
     var$4[1] = jur_AbstractCharClass$LazyRange__init_(57344, 63743);
     var$2[144] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(865);
+    var$4[0] = $rt_s(848);
     var$4[1] = jur_AbstractCharClass$LazyRange__init_(63744, 64255);
     var$2[145] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(866);
+    var$4[0] = $rt_s(849);
     var$4[1] = jur_AbstractCharClass$LazyRange__init_(64256, 64335);
     var$2[146] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(867);
+    var$4[0] = $rt_s(850);
     var$4[1] = jur_AbstractCharClass$LazyRange__init_(64336, 65023);
     var$2[147] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(868);
+    var$4[0] = $rt_s(851);
     var$4[1] = jur_AbstractCharClass$LazyRange__init_(65024, 65039);
     var$2[148] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(869);
+    var$4[0] = $rt_s(852);
     var$4[1] = jur_AbstractCharClass$LazyRange__init_(65040, 65055);
     var$2[149] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(870);
+    var$4[0] = $rt_s(853);
     var$4[1] = jur_AbstractCharClass$LazyRange__init_(65056, 65071);
     var$2[150] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(871);
+    var$4[0] = $rt_s(854);
     var$4[1] = jur_AbstractCharClass$LazyRange__init_(65072, 65103);
     var$2[151] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(872);
+    var$4[0] = $rt_s(855);
     var$4[1] = jur_AbstractCharClass$LazyRange__init_(65104, 65135);
     var$2[152] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(873);
+    var$4[0] = $rt_s(856);
     var$4[1] = jur_AbstractCharClass$LazyRange__init_(65136, 65279);
     var$2[153] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(874);
+    var$4[0] = $rt_s(857);
     var$4[1] = jur_AbstractCharClass$LazyRange__init_(65280, 65519);
     var$2[154] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(875);
+    var$4[0] = $rt_s(858);
     var$4[1] = jur_AbstractCharClass$LazyRange__init_(0, 1114111);
     var$2[155] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(876);
+    var$4[0] = $rt_s(859);
     var$4[1] = jur_AbstractCharClass$LazySpecialsBlock__init_();
     var$2[156] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(877);
+    var$4[0] = $rt_s(860);
     var$4[1] = jur_AbstractCharClass$LazyCategory__init_(0, 1);
     var$2[157] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(878);
+    var$4[0] = $rt_s(861);
     var$4[1] = jur_AbstractCharClass$LazyCategoryScope__init_(62, 1);
     var$2[158] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(879);
+    var$4[0] = $rt_s(862);
     var$4[1] = jur_AbstractCharClass$LazyCategory__init_(1, 1);
     var$2[159] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(880);
+    var$4[0] = $rt_s(863);
     var$4[1] = jur_AbstractCharClass$LazyCategory__init_(2, 1);
     var$2[160] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(881);
+    var$4[0] = $rt_s(864);
     var$4[1] = jur_AbstractCharClass$LazyCategory__init_(3, 0);
     var$2[161] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(882);
+    var$4[0] = $rt_s(865);
     var$4[1] = jur_AbstractCharClass$LazyCategory__init_(4, 0);
     var$2[162] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(883);
+    var$4[0] = $rt_s(866);
     var$4[1] = jur_AbstractCharClass$LazyCategory__init_(5, 1);
     var$2[163] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(884);
+    var$4[0] = $rt_s(867);
     var$4[1] = jur_AbstractCharClass$LazyCategoryScope__init_(448, 1);
     var$2[164] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(885);
+    var$4[0] = $rt_s(868);
     var$4[1] = jur_AbstractCharClass$LazyCategory__init_(6, 1);
     var$2[165] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(886);
+    var$4[0] = $rt_s(869);
     var$4[1] = jur_AbstractCharClass$LazyCategory__init_(7, 0);
     var$2[166] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(887);
+    var$4[0] = $rt_s(870);
     var$4[1] = jur_AbstractCharClass$LazyCategory__init_(8, 1);
     var$2[167] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
@@ -55883,127 +55852,127 @@ function jur_AbstractCharClass$PredefinedCharacterClasses__clinit_() {
     var$2[168] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(888);
+    var$4[0] = $rt_s(871);
     var$4[1] = jur_AbstractCharClass$LazyCategory__init_(9, 1);
     var$2[169] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(889);
+    var$4[0] = $rt_s(872);
     var$4[1] = jur_AbstractCharClass$LazyCategory__init_(10, 1);
     var$2[170] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(890);
+    var$4[0] = $rt_s(873);
     var$4[1] = jur_AbstractCharClass$LazyCategory__init_(11, 1);
     var$2[171] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(891);
+    var$4[0] = $rt_s(874);
     var$4[1] = jur_AbstractCharClass$LazyCategoryScope__init_(28672, 0);
     var$2[172] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(892);
+    var$4[0] = $rt_s(875);
     var$4[1] = jur_AbstractCharClass$LazyCategory__init_(12, 0);
     var$2[173] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(893);
+    var$4[0] = $rt_s(876);
     var$4[1] = jur_AbstractCharClass$LazyCategory__init_(13, 0);
     var$2[174] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(894);
+    var$4[0] = $rt_s(877);
     var$4[1] = jur_AbstractCharClass$LazyCategory__init_(14, 0);
     var$2[175] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(895);
+    var$4[0] = $rt_s(878);
     var$4[1] = jur_AbstractCharClass$LazyCategoryScope__init_0(983040, 1, 1);
     var$2[176] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(896);
+    var$4[0] = $rt_s(879);
     var$4[1] = jur_AbstractCharClass$LazyCategory__init_(15, 0);
     var$2[177] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(897);
+    var$4[0] = $rt_s(880);
     var$4[1] = jur_AbstractCharClass$LazyCategory__init_(16, 1);
     var$2[178] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(898);
+    var$4[0] = $rt_s(881);
     var$4[1] = jur_AbstractCharClass$LazyCategory__init_(18, 1);
     var$2[179] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(899);
+    var$4[0] = $rt_s(882);
     var$4[1] = jur_AbstractCharClass$LazyCategory__init_0(19, 0, 1);
     var$2[180] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(900);
+    var$4[0] = $rt_s(883);
     var$4[1] = jur_AbstractCharClass$LazyCategoryScope__init_(1643118592, 1);
     var$2[181] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(901);
+    var$4[0] = $rt_s(884);
     var$4[1] = jur_AbstractCharClass$LazyCategory__init_(20, 0);
     var$2[182] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(902);
+    var$4[0] = $rt_s(885);
     var$4[1] = jur_AbstractCharClass$LazyCategory__init_(21, 0);
     var$2[183] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(903);
+    var$4[0] = $rt_s(886);
     var$4[1] = jur_AbstractCharClass$LazyCategory__init_(22, 0);
     var$2[184] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(904);
+    var$4[0] = $rt_s(887);
     var$4[1] = jur_AbstractCharClass$LazyCategory__init_(23, 0);
     var$2[185] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(905);
+    var$4[0] = $rt_s(888);
     var$4[1] = jur_AbstractCharClass$LazyCategory__init_(24, 1);
     var$2[186] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(906);
+    var$4[0] = $rt_s(889);
     var$4[1] = jur_AbstractCharClass$LazyCategoryScope__init_(2113929216, 1);
     var$2[187] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(907);
+    var$4[0] = $rt_s(890);
     var$4[1] = jur_AbstractCharClass$LazyCategory__init_(25, 1);
     var$2[188] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(908);
+    var$4[0] = $rt_s(891);
     var$4[1] = jur_AbstractCharClass$LazyCategory__init_(26, 0);
     var$2[189] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(909);
+    var$4[0] = $rt_s(892);
     var$4[1] = jur_AbstractCharClass$LazyCategory__init_(27, 0);
     var$2[190] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(910);
+    var$4[0] = $rt_s(893);
     var$4[1] = jur_AbstractCharClass$LazyCategory__init_(28, 1);
     var$2[191] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(911);
+    var$4[0] = $rt_s(894);
     var$4[1] = jur_AbstractCharClass$LazyCategory__init_(29, 0);
     var$2[192] = var$3;
     var$3 = $rt_createArray(jl_Object, 2);
     var$4 = var$3.data;
-    var$4[0] = $rt_s(912);
+    var$4[0] = $rt_s(895);
     var$4[1] = jur_AbstractCharClass$LazyCategory__init_(30, 0);
     var$2[193] = var$3;
     jur_AbstractCharClass$PredefinedCharacterClasses_contents = var$1;
@@ -57297,7 +57266,7 @@ function jni_XHRURLConnection$performRequest$lambda$_5_0_stateChanged(var$0) {
         var$1.$responseHeaders = ju_HashMap__init_();
         var$1.$headerFields = ju_HashMap__init_();
         while (var$9 < jl_String_length(var$3)) {
-            var$6 = jl_String_indexOf1(var$3, $rt_s(913), var$9);
+            var$6 = jl_String_indexOf1(var$3, $rt_s(896), var$9);
             if (var$6 < 0)
                 var$6 = jl_String_length(var$3);
             var$7 = jl_String_indexOf(var$3, 58, var$9);
@@ -57564,7 +57533,7 @@ function otcfm_InMemoryVirtualFile_createFile($this, $fileName) {
     var$2 = new ji_IOException;
     var$3 = new jl_StringBuilder;
     jl_AbstractStringBuilder__init_(var$3);
-    jl_Throwable__init_(var$2, jl_AbstractStringBuilder_toString(jl_StringBuilder_append(jl_StringBuilder_append(jl_StringBuilder_append(var$3, $rt_s(914)), $fileName), $rt_s(915))));
+    jl_Throwable__init_(var$2, jl_AbstractStringBuilder_toString(jl_StringBuilder_append(jl_StringBuilder_append(jl_StringBuilder_append(var$3, $rt_s(897)), $fileName), $rt_s(898))));
     $rt_throw(var$2);
 }
 function jur_AbstractCharClass$LazyJavaLowerCase$1() {
@@ -58969,20 +58938,19 @@ $rt_stringPool(["Can\'t enter monitor from another thread synchronously", "@", "
 "TINY", "Peaceful", "Easy", "Normal", "Hard", "%clamp%", "%blur%", "!!", "0123456789abcdef", "C: ", ". F: ", ", O: ", "E: ", ". B: ", ", I: ", "/terrain/sun.png", "/terrain/moon.png", "/clouds.png", "/grass.png", "bubble", "explode", "The level is corrupt!", ". L: ", "/particles.png", "/gui/gui.png", "/gui/icons.png", "Minecraft Indev (Made by PeytonPlayz585)", "P: ", ". T: ", "Free memory: ", "% of ", "MB", "Allocated memory: ", "% (", "MB)", "Made by PeytonPlayz585!", "Generate new level...", "Load level..",
 "Play tutorial level", "Options...", "/gui/logo.png", "Fuck Mojang, Distribute to everyone!", "need dictionary", "unknown compression method", "unknown header flags set", "incorrect data check", "incorrect length check", "incorrect header check", "invalid window size", "bad extra field length", "header crc mismatch", "The last int in src ", "player-x", "player-y", "player-z", "id", "Pos", "Motion", "Rotation", "FallDistance", "Fire", "Air", "Health", "HurtTime", "DeathTime", "AttackTime", "Score", "Slot", "LocalPlayer",
 "Count", "Damage", "Crafting", "/gui/inventory.png", "Wrong number of repetitions of X pattern at ", "IGNORE", "REPLACE", "REPORT", "/glsl/core.glsl", "\n#define CC_a_color\n", "#define CC_a_normal\n", "#define CC_a_texture0\n", "#define CC_lighting\n", "#define CC_fog\n", "#define CC_alphatest\n", "#define CC_unit0\n", "\n#define CC_VERT\n", "\n\n", "\n[/glsl/core.glsl][CC_VERT] ", "broken shader file", "\n#define CC_FRAG\n", "\n[/glsl/core.glsl][CC_FRAG] ", "a_position", "a_texture0", "a_color", "a_normal",
-"\n[LINKER] ", "matrix_m", "matrix_p", "matrix_t", "colorUniform", "normalUniform", "light0Pos", "light1Pos", "fogColor", "fogMode", "fogStart", "fogEnd", "fogDensity", "fogPremultiply", "alphaTestF", "tex0", "texCoordV0", "OW KNOWS!", "%clamp%/shadow.png", "Hi from PeytonPlayz585", "You Eagler!", "Setting up World", ":)", "Isn\'t Indev the best version?", "I hate Microsoft!", "Notch is the best!", "PeytonPlayz585!", "Random text lol...", "Spam ping Winix!", "Ghost ping Winix!", "DM Winix for no reason!", "Spam ping Winix lol!",
-"PeytonPlayz585\'s Birthday is 10/11", "Yee!", "WebGL 2.0!", "ShadowCraft!", "Loading level", "Reading..", "About", "Map", "Environment", "Entities", "Width", "Length", "Height", "Preparing level..", "Spawn", "Author", "Name", "CreatedOn", "CloudColor", "SkyColor", "FogColor", "SkyBrightness", "CloudHeight", "SurroundingGroundHeight", "SurroundingWaterHeight", "SurroundingWaterType", "TimeOfDay", "Blocks", "Data", "Preparing entities..", "Skipping unknown entity id \"", "\"", "Error reading entity", "TileEntities",
-"Chest", "Furnace", "Skipping unknown tile entity id \"", "Error reading tileentity", "Pig", "Sheep", "Creeper", "Skeleton", "Spider", "Zombie", "Giant", "/mob/zombie.png", "Item", "Painting", "SurroundingGroundType", "MinecraftLevel", "Action must be non-null", "array size does not equal image size", "Index ", "OMG ERROR!", "Game over!", "Score: &e", "invalid stored block lengths", "invalid block type", "too many length or distance symbols", "invalid bit length repeat", "Save level..", "Back to game", "Save level",
-"Game menu", "oversubscribed dynamic bit lengths tree", "incomplete dynamic bit lengths tree", "oversubscribed distance tree", "incomplete distance tree", "empty distance tree with lengths", "oversubscribed literal/length tree", "incomplete literal/length tree", "invalid distance code", "invalid literal/length code", "NOOOOOO!", "FILE", "DIRECTORY", "FALSE", "Age", "/gui/furnace.png", "/gui/crafting.png", "/gui/container.png", "newAction must be non-null", "/armor/", "_", "chain", "iron", "diamond", "gold",
-"/mob/spider.png", "/mob/spider_eyes.png", "/mob/pig.png", "/mob/sheep.png", "Sheared", "/mob/sheep_fur.png", "/mob/creeper.png", "/mob/skeleton.png", "Dir", "Motive", "TileX", "TileY", "TileZ", "/art/kz.png", "xTile", "yTile", "zTile", "inTile", "shake", "inGround", "Arrow", "/item/arrows.png", "Fuse", "PrimedTnt", "Items", "BurnTime", "CookTime", "Lit: ", "GMT+00:00", "Options", "Controls...", "Done", "Controls", "Inland", "Island", "Floating", "Flat", "Square", "Long", "Deep", "Small", "Huge", "Hell", "Paradise",
-"Woods", "Type: ", "Shape:", "Size: ", "Theme: ", "Create", "Cancel", "Shape: ", "Generate new level", "Load level", ".mclevel", "Getting level list..", "http://", "/listmaps.jsp?user=", "Failed to load levels", ";", "---", "Load file...", "Save file...", "Enter level name:", "Kebab", "Aztec", "Alban", "Aztec2", "Bomb", "Plant", "Wasteland", "Pool", "Courbet", "Sea", "Sunset", "Wanderer", "Match", "Bust", "Stage", "Void", "SkullAndRoses", "Fighters", "Pointer", "Malformed input of length ", "Unmappable characters of length ",
-"#", "###", "# #", "##", "X#X", "#X#", " # ", "A ", " B", " recipes", "> ", " <", "XXX", "XX", "X#", " #", " #X", "# X", "X X", "Directory is read-only", "File ", " already exists", "ftp", "http", "https", "unknown protocol(", ")://", "?", "Generating level", "Carving..", "Raising..", "Eroding..", "Coal: ", ", Iron: ", ", Gold: ", ", Diamond: ", "Melting..", "Watering..", "Soiling..", "Assembling..", "Growing..", "Building..", "Planting..", "Lighting..", "Spawning..", "A Nice World", "Wrong number of phases! Wanted ",
-", got ", "Failed to set next phase!", "Diagonal flood!?", "Save", "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789 ,.:-_\'*!\"#%/()=+?[]{}<>", "Invalid file name", "//", "////", "String index out of bounds: ", "/./", "/.", "/../", "/..", "GET", "HEAD", "OPTIONS", "POST", "PUT", "TRACE", "Unsupported protocol: ", "HTTP status: ", " ", "Directory does not exist", "Is", "In", ", ", "{", ",", "}", "Lower", "Upper", "ASCII", "Alpha", "Digit", "Alnum", "Punct", "Graph", "Print", "Blank", "Cntrl", "XDigit",
-"javaLowerCase", "javaUpperCase", "javaWhitespace", "javaMirrored", "javaDefined", "javaDigit", "javaIdentifierIgnorable", "javaISOControl", "javaJavaIdentifierPart", "javaJavaIdentifierStart", "javaLetter", "javaLetterOrDigit", "javaSpaceChar", "javaTitleCase", "javaUnicodeIdentifierPart", "javaUnicodeIdentifierStart", "Space", "w", "s", "d", "BasicLatin", "Latin-1Supplement", "LatinExtended-A", "LatinExtended-B", "IPAExtensions", "SpacingModifierLetters", "CombiningDiacriticalMarks", "Greek", "Cyrillic", "CyrillicSupplement",
-"Armenian", "Hebrew", "Arabic", "Syriac", "ArabicSupplement", "Thaana", "Devanagari", "Bengali", "Gurmukhi", "Gujarati", "Oriya", "Tamil", "Telugu", "Kannada", "Malayalam", "Sinhala", "Thai", "Lao", "Tibetan", "Myanmar", "Georgian", "HangulJamo", "Ethiopic", "EthiopicSupplement", "Cherokee", "UnifiedCanadianAboriginalSyllabics", "Ogham", "Runic", "Tagalog", "Hanunoo", "Buhid", "Tagbanwa", "Khmer", "Mongolian", "Limbu", "TaiLe", "NewTaiLue", "KhmerSymbols", "Buginese", "PhoneticExtensions", "PhoneticExtensionsSupplement",
-"CombiningDiacriticalMarksSupplement", "LatinExtendedAdditional", "GreekExtended", "GeneralPunctuation", "SuperscriptsandSubscripts", "CurrencySymbols", "CombiningMarksforSymbols", "LetterlikeSymbols", "NumberForms", "Arrows", "MathematicalOperators", "MiscellaneousTechnical", "ControlPictures", "OpticalCharacterRecognition", "EnclosedAlphanumerics", "BoxDrawing", "BlockElements", "GeometricShapes", "MiscellaneousSymbols", "Dingbats", "MiscellaneousMathematicalSymbols-A", "SupplementalArrows-A", "BraillePatterns",
-"SupplementalArrows-B", "MiscellaneousMathematicalSymbols-B", "SupplementalMathematicalOperators", "MiscellaneousSymbolsandArrows", "Glagolitic", "Coptic", "GeorgianSupplement", "Tifinagh", "EthiopicExtended", "SupplementalPunctuation", "CJKRadicalsSupplement", "KangxiRadicals", "IdeographicDescriptionCharacters", "CJKSymbolsandPunctuation", "Hiragana", "Katakana", "Bopomofo", "HangulCompatibilityJamo", "Kanbun", "BopomofoExtended", "CJKStrokes", "KatakanaPhoneticExtensions", "EnclosedCJKLettersandMonths", "CJKCompatibility",
-"CJKUnifiedIdeographsExtensionA", "YijingHexagramSymbols", "CJKUnifiedIdeographs", "YiSyllables", "YiRadicals", "ModifierToneLetters", "SylotiNagri", "HangulSyllables", "HighSurrogates", "HighPrivateUseSurrogates", "LowSurrogates", "PrivateUseArea", "CJKCompatibilityIdeographs", "AlphabeticPresentationForms", "ArabicPresentationForms-A", "VariationSelectors", "VerticalForms", "CombiningHalfMarks", "CJKCompatibilityForms", "SmallFormVariants", "ArabicPresentationForms-B", "HalfwidthandFullwidthForms", "all",
-"Specials", "Cn", "IsL", "Lu", "Ll", "Lt", "Lm", "Lo", "IsM", "Mn", "Me", "Mc", "Nd", "Nl", "No", "IsZ", "Zs", "Zl", "Zp", "IsC", "Cc", "Cf", "Co", "Cs", "IsP", "Pd", "Ps", "Pe", "Pc", "Po", "IsS", "Sm", "Sc", "Sk", "So", "Pi", "Pf", "\r\n", "Can\'t create file ", " since parent path denotes regular file"]);
+"\n[LINKER] ", "matrix_m", "matrix_p", "matrix_t", "colorUniform", "normalUniform", "light0Pos", "light1Pos", "fogColor", "fogMode", "fogStart", "fogEnd", "fogDensity", "fogPremultiply", "alphaTestF", "tex0", "texCoordV0", "OW KNOWS!", "%clamp%/shadow.png", "Loading level", "Reading..", "About", "Map", "Environment", "Entities", "Width", "Length", "Height", "Preparing level..", "Spawn", "Author", "Name", "CreatedOn", "CloudColor", "SkyColor", "FogColor", "SkyBrightness", "CloudHeight", "SurroundingGroundHeight",
+"SurroundingWaterHeight", "SurroundingWaterType", "TimeOfDay", "Blocks", "Data", "Preparing entities..", "Skipping unknown entity id \"", "\"", "Error reading entity", "TileEntities", "Chest", "Furnace", "Skipping unknown tile entity id \"", "Error reading tileentity", "Pig", "Sheep", "Creeper", "Skeleton", "Spider", "Zombie", "Giant", "/mob/zombie.png", "Item", "Painting", "SurroundingGroundType", "MinecraftLevel", "Action must be non-null", "array size does not equal image size", "Index ", "OMG ERROR!", "Game over!",
+"Score: &e", "invalid stored block lengths", "invalid block type", "too many length or distance symbols", "invalid bit length repeat", "Save level..", "Back to game", "Save level", "Game menu", "oversubscribed dynamic bit lengths tree", "incomplete dynamic bit lengths tree", "oversubscribed distance tree", "incomplete distance tree", "empty distance tree with lengths", "oversubscribed literal/length tree", "incomplete literal/length tree", "invalid distance code", "invalid literal/length code", "NOOOOOO!", "FILE",
+"DIRECTORY", "FALSE", "Age", "/gui/furnace.png", "/gui/crafting.png", "/gui/container.png", "newAction must be non-null", "/armor/", "_", "chain", "iron", "diamond", "gold", "/mob/spider.png", "/mob/spider_eyes.png", "/mob/pig.png", "/mob/sheep.png", "Sheared", "/mob/sheep_fur.png", "/mob/creeper.png", "/mob/skeleton.png", "Dir", "Motive", "TileX", "TileY", "TileZ", "/art/kz.png", "xTile", "yTile", "zTile", "inTile", "shake", "inGround", "Arrow", "/item/arrows.png", "Fuse", "PrimedTnt", "Items", "BurnTime",
+"CookTime", "Lit: ", "GMT+00:00", "Options", "Controls...", "Done", "Controls", "Inland", "Island", "Floating", "Flat", "Square", "Long", "Deep", "Small", "Huge", "Hell", "Paradise", "Woods", "Type: ", "Shape:", "Size: ", "Theme: ", "Create", "Cancel", "Shape: ", "Generate new level", "Load level", ".mclevel", "Getting level list..", "http://", "/listmaps.jsp?user=", "Failed to load levels", ";", "---", "Load file...", "Save file...", "Enter level name:", "Kebab", "Aztec", "Alban", "Aztec2", "Bomb", "Plant",
+"Wasteland", "Pool", "Courbet", "Sea", "Sunset", "Wanderer", "Match", "Bust", "Stage", "Void", "SkullAndRoses", "Fighters", "Pointer", "Malformed input of length ", "Unmappable characters of length ", "#", "###", "# #", "##", "X#X", "#X#", " # ", "A ", " B", " recipes", "> ", " <", "XXX", "XX", "X#", " #", " #X", "# X", "X X", "Directory is read-only", "File ", " already exists", "ftp", "http", "https", "unknown protocol(", ")://", "?", "Generating level", "Carving..", "Raising..", "Eroding..", "Coal: ", ", Iron: ",
+", Gold: ", ", Diamond: ", "Melting..", "Watering..", "Soiling..", "Assembling..", "Growing..", "Building..", "Planting..", "Lighting..", "Spawning..", "A Nice World", "Wrong number of phases! Wanted ", ", got ", "Failed to set next phase!", "Diagonal flood!?", "Save", "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789 ,.:-_\'*!\"#%/()=+?[]{}<>", "Invalid file name", "//", "////", "String index out of bounds: ", "/./", "/.", "/../", "/..", "GET", "HEAD", "OPTIONS", "POST", "PUT", "TRACE", "Unsupported protocol: ",
+"HTTP status: ", " ", "Directory does not exist", "Is", "In", ", ", "{", ",", "}", "Lower", "Upper", "ASCII", "Alpha", "Digit", "Alnum", "Punct", "Graph", "Print", "Blank", "Cntrl", "XDigit", "javaLowerCase", "javaUpperCase", "javaWhitespace", "javaMirrored", "javaDefined", "javaDigit", "javaIdentifierIgnorable", "javaISOControl", "javaJavaIdentifierPart", "javaJavaIdentifierStart", "javaLetter", "javaLetterOrDigit", "javaSpaceChar", "javaTitleCase", "javaUnicodeIdentifierPart", "javaUnicodeIdentifierStart",
+"Space", "w", "s", "d", "BasicLatin", "Latin-1Supplement", "LatinExtended-A", "LatinExtended-B", "IPAExtensions", "SpacingModifierLetters", "CombiningDiacriticalMarks", "Greek", "Cyrillic", "CyrillicSupplement", "Armenian", "Hebrew", "Arabic", "Syriac", "ArabicSupplement", "Thaana", "Devanagari", "Bengali", "Gurmukhi", "Gujarati", "Oriya", "Tamil", "Telugu", "Kannada", "Malayalam", "Sinhala", "Thai", "Lao", "Tibetan", "Myanmar", "Georgian", "HangulJamo", "Ethiopic", "EthiopicSupplement", "Cherokee", "UnifiedCanadianAboriginalSyllabics",
+"Ogham", "Runic", "Tagalog", "Hanunoo", "Buhid", "Tagbanwa", "Khmer", "Mongolian", "Limbu", "TaiLe", "NewTaiLue", "KhmerSymbols", "Buginese", "PhoneticExtensions", "PhoneticExtensionsSupplement", "CombiningDiacriticalMarksSupplement", "LatinExtendedAdditional", "GreekExtended", "GeneralPunctuation", "SuperscriptsandSubscripts", "CurrencySymbols", "CombiningMarksforSymbols", "LetterlikeSymbols", "NumberForms", "Arrows", "MathematicalOperators", "MiscellaneousTechnical", "ControlPictures", "OpticalCharacterRecognition",
+"EnclosedAlphanumerics", "BoxDrawing", "BlockElements", "GeometricShapes", "MiscellaneousSymbols", "Dingbats", "MiscellaneousMathematicalSymbols-A", "SupplementalArrows-A", "BraillePatterns", "SupplementalArrows-B", "MiscellaneousMathematicalSymbols-B", "SupplementalMathematicalOperators", "MiscellaneousSymbolsandArrows", "Glagolitic", "Coptic", "GeorgianSupplement", "Tifinagh", "EthiopicExtended", "SupplementalPunctuation", "CJKRadicalsSupplement", "KangxiRadicals", "IdeographicDescriptionCharacters", "CJKSymbolsandPunctuation",
+"Hiragana", "Katakana", "Bopomofo", "HangulCompatibilityJamo", "Kanbun", "BopomofoExtended", "CJKStrokes", "KatakanaPhoneticExtensions", "EnclosedCJKLettersandMonths", "CJKCompatibility", "CJKUnifiedIdeographsExtensionA", "YijingHexagramSymbols", "CJKUnifiedIdeographs", "YiSyllables", "YiRadicals", "ModifierToneLetters", "SylotiNagri", "HangulSyllables", "HighSurrogates", "HighPrivateUseSurrogates", "LowSurrogates", "PrivateUseArea", "CJKCompatibilityIdeographs", "AlphabeticPresentationForms", "ArabicPresentationForms-A",
+"VariationSelectors", "VerticalForms", "CombiningHalfMarks", "CJKCompatibilityForms", "SmallFormVariants", "ArabicPresentationForms-B", "HalfwidthandFullwidthForms", "all", "Specials", "Cn", "IsL", "Lu", "Ll", "Lt", "Lm", "Lo", "IsM", "Mn", "Me", "Mc", "Nd", "Nl", "No", "IsZ", "Zs", "Zl", "Zp", "IsC", "Cc", "Cf", "Co", "Cs", "IsP", "Pd", "Ps", "Pe", "Pc", "Po", "IsS", "Sm", "Sc", "Sk", "So", "Pi", "Pf", "\r\n", "Can\'t create file ", " since parent path denotes regular file"]);
 jl_String.prototype.toString = function() {
     return $rt_ustr(this);
 };
