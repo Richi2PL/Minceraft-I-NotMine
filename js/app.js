@@ -931,9 +931,9 @@ function nP_MinecraftMain_main($args) {
         nmgi_ItemArmor__clinit_();
         nPm_Base64__clinit_();
         nPm_BaseNCodec__clinit_();
+        ol_GLAllocation__clinit_();
         jl_Thread__clinit_();
         jnc_Charset$Charsets__clinit_();
-        ol_GLAllocation__clinit_();
         nPm_BaseNCodec$CodecPolicy__clinit_();
         nmc_GameSettings__clinit_();
         nmgl_World__clinit_();
@@ -6955,6 +6955,7 @@ function nmc_Minecraft() {
     a.$inGameHasFocus = 0;
     a.$ticksUntilSave = 0;
     a.$ticksUntilSave2 = 0;
+    a.$buffer1 = null;
 }
 var nmc_Minecraft_mc = null;
 var nmc_Minecraft_inventoryTicks = 0;
@@ -6988,7 +6989,7 @@ function nmc_Minecraft__init_0($this, $var3, $var4) {
     var$3.$anaglyphEnable = 0;
     var$3.$farPlaneDistance = 0.0;
     var$3.$pointedEntity = null;
-    var$3.$fogColorBuffer = ol_BufferUtils_createFloatBuffer(16);
+    var$3.$fogColorBuffer = ol_GLAllocation_createDirectFloatBuffer(16);
     var$3.$mc0 = $this;
     var$4 = new nmcr_ItemRenderer;
     var$4.$itemToRender = null;
@@ -7007,6 +7008,7 @@ function nmc_Minecraft__init_0($this, $var3, $var4) {
     $this.$skipRenderWorld = 0;
     $this.$ticksUntilSave = 6000;
     $this.$ticksUntilSave2 = 100;
+    $this.$buffer1 = ol_GLAllocation_createDirectFloatBuffer(16);
     nmcm_ModelBiped__init_(new nmcm_ModelBiped, 0.0);
     $this.$objectMouseOver = null;
     $this.$server = null;
@@ -9495,6 +9497,28 @@ function nmc_Minecraft_setLevel($this, $var1) {
 function nmc_Minecraft_getMinecraft() {
     return nmc_Minecraft_mc;
 }
+function nmc_Minecraft_setLighting($this, $var1) {
+    var $var3;
+    if (!$var1) {
+        olo_WebGLManager_glDisable(2896);
+        olo_WebGLManager_glDisable(16384);
+    } else {
+        olo_WebGLManager_glEnable(2896);
+        olo_WebGLManager_glEnable(16384);
+        olo_WebGLManager_glEnable(2903);
+        $var3 = nmgp_Vec3D_normalize(nmgp_Vec3D__init_(0.0, (-1.0), 0.5));
+        nmc_Minecraft_createBuffer($this, $var3.$xCoord, $var3.$yCoord, $var3.$zCoord, 0.0);
+        nmc_Minecraft_createBuffer($this, 0.30000001192092896, 0.30000001192092896, 0.30000001192092896, 1.0);
+        nmc_Minecraft_createBuffer($this, 0.0, 0.0, 0.0, 1.0);
+        nmc_Minecraft_createBuffer($this, 0.699999988079071, 0.699999988079071, 0.699999988079071, 1.0);
+    }
+}
+function nmc_Minecraft_createBuffer($this, $var1, $var2, $var3, $var4) {
+    jn_Buffer_clear($this.$buffer1);
+    jn_FloatBufferImpl_put(jn_FloatBufferImpl_put(jn_FloatBufferImpl_put(jn_FloatBufferImpl_put($this.$buffer1, $var1), $var2), $var3), $var4);
+    jn_Buffer_flip($this.$buffer1);
+    return $this.$buffer1;
+}
 function nmc_Minecraft__clinit_() {
     nmc_Minecraft_inventoryTicks = 0;
 }
@@ -11061,7 +11085,7 @@ function nPm_BaseNCodec_compareUnsigned($xx, $yy) {
     return $xx < 0 ? (-1) : $xx ? 1 : 0;
 }
 function nPm_BaseNCodec_available($this, $context) {
-    return $context.$buffer1 === null ? 0 : $context.$pos0 - $context.$readPos | 0;
+    return $context.$buffer2 === null ? 0 : $context.$pos0 - $context.$readPos | 0;
 }
 function nPm_BaseNCodec_containsAlphabetOrPad($this, $arrayOctet) {
     var var$2, var$3, $element;
@@ -11124,13 +11148,13 @@ function nPm_BaseNCodec_encode0($this, $pArray, $offset, $length) {
 }
 function nPm_BaseNCodec_ensureBufferSize($this, $size, $context) {
     var var$3, var$4, var$5;
-    if ($context.$buffer1 === null) {
-        $context.$buffer1 = $rt_createByteArray(jl_Math_max($size, 8192));
+    if ($context.$buffer2 === null) {
+        $context.$buffer2 = $rt_createByteArray(jl_Math_max($size, 8192));
         $context.$pos0 = 0;
         $context.$readPos = 0;
-    } else if ((($context.$pos0 + $size | 0) - $context.$buffer1.data.length | 0) > 0) {
+    } else if ((($context.$pos0 + $size | 0) - $context.$buffer2.data.length | 0) > 0) {
         $size = $context.$pos0 + $size | 0;
-        var$3 = $context.$buffer1.data.length * 2 | 0;
+        var$3 = $context.$buffer2.data.length * 2 | 0;
         if (nPm_BaseNCodec_compareUnsigned(var$3, $size) < 0)
             var$3 = $size;
         if (nPm_BaseNCodec_compareUnsigned(var$3, 2147483639) <= 0)
@@ -11147,11 +11171,11 @@ function nPm_BaseNCodec_ensureBufferSize($this, $size, $context) {
                 $size = 2147483639;
         }
         var$5 = $rt_createByteArray($size);
-        jl_System_arraycopy($context.$buffer1, 0, var$5, 0, $context.$buffer1.data.length);
-        $context.$buffer1 = var$5;
+        jl_System_arraycopy($context.$buffer2, 0, var$5, 0, $context.$buffer2.data.length);
+        $context.$buffer2 = var$5;
         return var$5;
     }
-    return $context.$buffer1;
+    return $context.$buffer2;
 }
 function nPm_BaseNCodec_getDefaultBufferSize($this) {
     return 8192;
@@ -11168,13 +11192,13 @@ function nPm_BaseNCodec_isStrictDecoding($this) {
 }
 function nPm_BaseNCodec_readResults($this, $b, $bPos, $bAvail, $context) {
     var $len;
-    if ($context.$buffer1 === null)
+    if ($context.$buffer2 === null)
         return !$context.$eof0 ? 0 : (-1);
     $len = jl_Math_min(nPm_BaseNCodec_available($this, $context), $bAvail);
-    jl_System_arraycopy($context.$buffer1, $context.$readPos, $b, $bPos, $len);
+    jl_System_arraycopy($context.$buffer2, $context.$readPos, $b, $bPos, $len);
     $context.$readPos = $context.$readPos + $len | 0;
     if ($context.$readPos >= $context.$pos0)
-        $context.$buffer1 = null;
+        $context.$buffer2 = null;
     return $len;
 }
 function nPm_BaseNCodec__clinit_() {
@@ -13126,6 +13150,66 @@ function nmcr_EntityRenderer_setupFog($this) {
     }
     olo_WebGLManager_glEnable(2903);
 }
+function ol_GLAllocation() {
+    jl_Object.call(this);
+}
+var ol_GLAllocation_displayLists = null;
+var ol_GLAllocation_textureNames = null;
+function ol_GLAllocation_generateDisplayLists($i) {
+    var $j;
+    jl_Object_monitorEnterSync($rt_cls(ol_GLAllocation));
+    try {
+        $j = olo_WebGLManager_glGenLists($i);
+        ju_ArrayList_add(ol_GLAllocation_displayLists, jl_Integer_valueOf($j));
+        ju_ArrayList_add(ol_GLAllocation_displayLists, jl_Integer_valueOf($i));
+        return $j;
+    } finally {
+        jl_Object_monitorExitSync($rt_cls(ol_GLAllocation));
+    }
+}
+function ol_GLAllocation_generateTextureNames($intbuffer) {
+    var $i, var$3, var$4, var$5, $tx;
+    jl_Object_monitorEnterSync($rt_cls(ol_GLAllocation));
+    try {
+        $i = $intbuffer.$position;
+        while ($i < $intbuffer.$limit) {
+            olo_WebGLManager_$callClinit();
+            var$3 = olo_WebGLManager_texObjects;
+            olo_WebGL_$callClinit();
+            var$4 = new olo_WebGL$TextureGL;
+            var$5 = olo_WebGL_webgl.createTexture();
+            var$4.$w = (-1);
+            var$4.$h0 = (-1);
+            var$4.$nearest = 1;
+            var$4.$anisotropic = 0;
+            var$4.$obj4 = var$5;
+            $tx = olo_GLObjectMap_register(var$3, var$4);
+            jn_IntBufferImpl_put0($intbuffer, $i, $tx);
+            ju_ArrayList_add(ol_GLAllocation_textureNames, jl_Integer_valueOf($tx));
+            $i = $i + 1 | 0;
+        }
+    } finally {
+        jl_Object_monitorExitSync($rt_cls(ol_GLAllocation));
+    }
+}
+function ol_GLAllocation_createDirectFloatBuffer($par0) {
+    var var$2, var$3, var$4, var$5;
+    var$2 = $rt_createFloatArray($par0);
+    var$3 = var$2.data.length;
+    var$4 = new jn_FloatBufferOverArray;
+    var$5 = 0 + var$3 | 0;
+    jn_Buffer__init_(var$4, var$3);
+    var$4.$position = 0;
+    var$4.$limit = var$5;
+    var$4.$start3 = 0;
+    var$4.$readOnly = 0;
+    var$4.$array1 = var$2;
+    return var$4;
+}
+function ol_GLAllocation__clinit_() {
+    ol_GLAllocation_displayLists = ju_ArrayList__init_();
+    ol_GLAllocation_textureNames = ju_ArrayList__init_();
+}
 function nmcm_ModelBase() {
     jl_Object.call(this);
 }
@@ -13894,68 +13978,8 @@ function nPn_NBTTagList_tagAt($this, $var1) {
 function nPn_NBTTagList_tagCount($this) {
     return $this.$tagList.$size;
 }
-function ol_GLAllocation() {
-    jl_Object.call(this);
-}
-var ol_GLAllocation_displayLists = null;
-var ol_GLAllocation_textureNames = null;
-function ol_GLAllocation_generateDisplayLists($i) {
-    var $j;
-    jl_Object_monitorEnterSync($rt_cls(ol_GLAllocation));
-    try {
-        $j = olo_WebGLManager_glGenLists($i);
-        ju_ArrayList_add(ol_GLAllocation_displayLists, jl_Integer_valueOf($j));
-        ju_ArrayList_add(ol_GLAllocation_displayLists, jl_Integer_valueOf($i));
-        return $j;
-    } finally {
-        jl_Object_monitorExitSync($rt_cls(ol_GLAllocation));
-    }
-}
-function ol_GLAllocation_generateTextureNames($intbuffer) {
-    var $i, var$3, var$4, var$5, $tx;
-    jl_Object_monitorEnterSync($rt_cls(ol_GLAllocation));
-    try {
-        $i = $intbuffer.$position;
-        while ($i < $intbuffer.$limit) {
-            olo_WebGLManager_$callClinit();
-            var$3 = olo_WebGLManager_texObjects;
-            olo_WebGL_$callClinit();
-            var$4 = new olo_WebGL$TextureGL;
-            var$5 = olo_WebGL_webgl.createTexture();
-            var$4.$w = (-1);
-            var$4.$h0 = (-1);
-            var$4.$nearest = 1;
-            var$4.$anisotropic = 0;
-            var$4.$obj4 = var$5;
-            $tx = olo_GLObjectMap_register(var$3, var$4);
-            jn_IntBufferImpl_put0($intbuffer, $i, $tx);
-            ju_ArrayList_add(ol_GLAllocation_textureNames, jl_Integer_valueOf($tx));
-            $i = $i + 1 | 0;
-        }
-    } finally {
-        jl_Object_monitorExitSync($rt_cls(ol_GLAllocation));
-    }
-}
-function ol_GLAllocation__clinit_() {
-    ol_GLAllocation_displayLists = ju_ArrayList__init_();
-    ol_GLAllocation_textureNames = ju_ArrayList__init_();
-}
 function ol_BufferUtils() {
     ol_GLAllocation.call(this);
-}
-function ol_BufferUtils_createFloatBuffer($i1) {
-    var var$2, var$3, var$4, var$5;
-    var$2 = $rt_createFloatArray($i1);
-    var$3 = var$2.data.length;
-    var$4 = new jn_FloatBufferOverArray;
-    var$5 = 0 + var$3 | 0;
-    jn_Buffer__init_(var$4, var$3);
-    var$4.$position = 0;
-    var$4.$limit = var$5;
-    var$4.$start3 = 0;
-    var$4.$readOnly = 0;
-    var$4.$array1 = var$2;
-    return var$4;
 }
 function ol_BufferUtils_createIntBuffer($i1) {
     return jn_IntBuffer_wrap($rt_createIntArray($i1));
@@ -14453,6 +14477,145 @@ function nmcr_ItemRenderer_equippedItemRender($this) {
 function nmcr_ItemRenderer_resetEquippedProgress($this) {
     $this.$equippedProgress = 0.0;
 }
+function jn_Buffer() {
+    var a = this; jl_Object.call(a);
+    a.$capacity = 0;
+    a.$position = 0;
+    a.$limit = 0;
+    a.$mark0 = 0;
+}
+function jn_Buffer__init_0(var_0) {
+    var var_1 = new jn_Buffer();
+    jn_Buffer__init_(var_1, var_0);
+    return var_1;
+}
+function jn_Buffer__init_($this, $capacity) {
+    $this.$mark0 = (-1);
+    $this.$capacity = $capacity;
+    $this.$limit = $capacity;
+}
+function jn_Buffer_capacity($this) {
+    return $this.$capacity;
+}
+function jn_Buffer_position($this) {
+    return $this.$position;
+}
+function jn_Buffer_position0($this, $newPosition) {
+    var var$2, var$3;
+    if ($newPosition >= 0 && $newPosition <= $this.$limit) {
+        $this.$position = $newPosition;
+        if ($newPosition < $this.$mark0)
+            $this.$mark0 = 0;
+        return $this;
+    }
+    var$2 = new jl_IllegalArgumentException;
+    var$3 = new jl_StringBuilder;
+    jl_AbstractStringBuilder__init_(var$3);
+    jl_Throwable__init_(var$2, jl_AbstractStringBuilder_toString(jl_StringBuilder_append(jl_StringBuilder_append1(jl_StringBuilder_append(jl_StringBuilder_append1(jl_StringBuilder_append(var$3, $rt_s(249)), $newPosition), $rt_s(250)), $this.$limit), $rt_s(223))));
+    $rt_throw(var$2);
+}
+function jn_Buffer_limit0($this) {
+    return $this.$limit;
+}
+function jn_Buffer_limit($this, $newLimit) {
+    var var$2, var$3;
+    if ($newLimit >= 0 && $newLimit <= $this.$capacity) {
+        if ($this.$mark0 > $newLimit)
+            $this.$mark0 = (-1);
+        $this.$limit = $newLimit;
+        if ($this.$position > $this.$limit)
+            $this.$position = $this.$limit;
+        return $this;
+    }
+    var$2 = new jl_IllegalArgumentException;
+    var$3 = new jl_StringBuilder;
+    jl_AbstractStringBuilder__init_(var$3);
+    jl_Throwable__init_(var$2, jl_AbstractStringBuilder_toString(jl_StringBuilder_append(jl_StringBuilder_append1(jl_StringBuilder_append(jl_StringBuilder_append1(jl_StringBuilder_append(var$3, $rt_s(251)), $newLimit), $rt_s(250)), $this.$capacity), $rt_s(223))));
+    $rt_throw(var$2);
+}
+function jn_Buffer_clear($this) {
+    $this.$position = 0;
+    $this.$limit = $this.$capacity;
+    $this.$mark0 = (-1);
+    return $this;
+}
+function jn_Buffer_flip($this) {
+    $this.$limit = $this.$position;
+    $this.$position = 0;
+    $this.$mark0 = (-1);
+    return $this;
+}
+function jn_Buffer_remaining($this) {
+    return $this.$limit - $this.$position | 0;
+}
+function jn_Buffer_hasRemaining($this) {
+    return $this.$position >= $this.$limit ? 0 : 1;
+}
+function jn_FloatBuffer() {
+    jn_Buffer.call(this);
+}
+function jn_FloatBuffer_get($this, $dst, $offset, $length) {
+    var var$4, var$5, $pos, var$7, var$8, $i, var$10;
+    if ($offset >= 0) {
+        var$4 = $dst.data;
+        var$5 = var$4.length;
+        if ($offset < var$5) {
+            $pos = $offset + $length | 0;
+            if ($pos > var$5) {
+                var$7 = new jl_IndexOutOfBoundsException;
+                var$8 = new jl_StringBuilder;
+                jl_AbstractStringBuilder__init_(var$8);
+                jl_Throwable__init_(var$7, jl_AbstractStringBuilder_toString(jl_StringBuilder_append1(jl_StringBuilder_append(jl_StringBuilder_append1(jl_StringBuilder_append(var$8, $rt_s(252)), $pos), $rt_s(253)), var$5)));
+                $rt_throw(var$7);
+            }
+            if (jn_Buffer_remaining($this) < $length) {
+                var$7 = new jn_BufferUnderflowException;
+                jl_Throwable__init_0(var$7);
+                $rt_throw(var$7);
+            }
+            if ($length < 0) {
+                var$7 = new jl_IndexOutOfBoundsException;
+                var$8 = new jl_StringBuilder;
+                jl_AbstractStringBuilder__init_(var$8);
+                jl_Throwable__init_(var$7, jl_AbstractStringBuilder_toString(jl_StringBuilder_append(jl_StringBuilder_append1(jl_StringBuilder_append(var$8, $rt_s(254)), $length), $rt_s(255))));
+                $rt_throw(var$7);
+            }
+            $pos = $this.$position;
+            $i = 0;
+            while ($i < $length) {
+                var$10 = $offset + 1 | 0;
+                var$5 = $pos + 1 | 0;
+                var$4[$offset] = jn_FloatBufferOverArray_getElement($this, $pos);
+                $i = $i + 1 | 0;
+                $offset = var$10;
+                $pos = var$5;
+            }
+            $this.$position = $this.$position + $length | 0;
+            return $this;
+        }
+    }
+    $dst = $dst.data;
+    var$8 = new jl_IndexOutOfBoundsException;
+    var$7 = new jl_StringBuilder;
+    jl_AbstractStringBuilder__init_(var$7);
+    jl_Throwable__init_(var$8, jl_AbstractStringBuilder_toString(jl_StringBuilder_append(jl_StringBuilder_append1(jl_StringBuilder_append(jl_StringBuilder_append1(jl_StringBuilder_append(var$7, $rt_s(256)), $offset), $rt_s(250)), $dst.length), $rt_s(34))));
+    $rt_throw(var$8);
+}
+function jn_FloatBuffer_get0($this, $dst) {
+    return jn_FloatBuffer_get($this, $dst, 0, $dst.data.length);
+}
+function jn_FloatBuffer_clear($this) {
+    jn_Buffer_clear($this);
+    return $this;
+}
+function jn_FloatBuffer_flip($this) {
+    jn_Buffer_flip($this);
+    return $this;
+}
+function jn_FloatBuffer_limit($this, $newLimit) {
+    jn_Buffer_limit($this, $newLimit);
+    return $this;
+}
 function nmglb_Block() {
     var a = this; jl_Object.call(a);
     a.$blockIndexInTexture = 0;
@@ -14570,7 +14733,7 @@ function nmglb_Block__init_0($this, $var1, $var2) {
         $var2 = new jl_IllegalArgumentException;
         var$3 = new jl_StringBuilder;
         jl_AbstractStringBuilder__init_(var$3);
-        jl_Throwable__init_($var2, jl_AbstractStringBuilder_toString(jl_StringBuilder_append0(jl_StringBuilder_append(jl_StringBuilder_append0(jl_StringBuilder_append(jl_StringBuilder_append1(jl_StringBuilder_append(var$3, $rt_s(249)), $var1), $rt_s(250)), nmglb_Block_blocksList.data[$var1]), $rt_s(251)), $this)));
+        jl_Throwable__init_($var2, jl_AbstractStringBuilder_toString(jl_StringBuilder_append0(jl_StringBuilder_append(jl_StringBuilder_append0(jl_StringBuilder_append(jl_StringBuilder_append1(jl_StringBuilder_append(var$3, $rt_s(257)), $var1), $rt_s(258)), nmglb_Block_blocksList.data[$var1]), $rt_s(259)), $this)));
         $rt_throw($var2);
     }
     $this.$material = $var2;
@@ -14822,15 +14985,15 @@ function nmglb_Block_onBlockPlaced($this, $var1, $var2, $var3, $var4, $var5) {
 }
 function nmglb_Block__clinit_() {
     var $var10000, $var2;
-    nmglb_Block_soundPowderFootstep = nmglb_StepSound__init_($rt_s(252), 1.0, 1.0);
-    nmglb_Block_soundWoodFootstep = nmglb_StepSound__init_($rt_s(253), 1.0, 1.0);
-    nmglb_Block_soundGravelFootstep = nmglb_StepSound__init_($rt_s(254), 1.0, 1.0);
-    nmglb_Block_soundGrassFootstep = nmglb_StepSound__init_($rt_s(255), 1.0, 1.0);
-    nmglb_Block_soundStoneFootstep = nmglb_StepSound__init_($rt_s(252), 1.0, 1.0);
-    nmglb_Block_soundMetalFootstep = nmglb_StepSound__init_($rt_s(252), 1.0, 1.5);
-    nmglb_Block_soundGlassFootstep = nmglb_StepSoundGlass__init_($rt_s(252), 1.0, 1.0);
-    nmglb_Block_soundClothFootstep = nmglb_StepSound__init_($rt_s(256), 1.0, 1.0);
-    nmglb_Block_soundSandFootstep = nmglb_StepSoundSand__init_($rt_s(257), 1.0, 1.0);
+    nmglb_Block_soundPowderFootstep = nmglb_StepSound__init_($rt_s(260), 1.0, 1.0);
+    nmglb_Block_soundWoodFootstep = nmglb_StepSound__init_($rt_s(261), 1.0, 1.0);
+    nmglb_Block_soundGravelFootstep = nmglb_StepSound__init_($rt_s(262), 1.0, 1.0);
+    nmglb_Block_soundGrassFootstep = nmglb_StepSound__init_($rt_s(263), 1.0, 1.0);
+    nmglb_Block_soundStoneFootstep = nmglb_StepSound__init_($rt_s(260), 1.0, 1.0);
+    nmglb_Block_soundMetalFootstep = nmglb_StepSound__init_($rt_s(260), 1.0, 1.5);
+    nmglb_Block_soundGlassFootstep = nmglb_StepSoundGlass__init_($rt_s(260), 1.0, 1.0);
+    nmglb_Block_soundClothFootstep = nmglb_StepSound__init_($rt_s(264), 1.0, 1.0);
+    nmglb_Block_soundSandFootstep = nmglb_StepSoundSand__init_($rt_s(265), 1.0, 1.0);
     nmglb_Block_blocksList = $rt_createArray(nmglb_Block, 256);
     nmglb_Block_tickOnLoad = $rt_createBooleanArray(256);
     nmglb_Block_opaqueCubeLookup = $rt_createBooleanArray(256);
@@ -15385,7 +15548,7 @@ function ji_DataOutputStream_writeUTF($this, $str) {
     $utfCount = ji_DataOutputStream_countUTFBytes($this, $str);
     if (Long_gt($utfCount, Long_fromInt(65535))) {
         $str = new ji_IOException;
-        jl_Throwable__init_($str, $rt_s(258));
+        jl_Throwable__init_($str, $rt_s(266));
         $rt_throw($str);
     }
     var$3 = $utfCount.lo;
@@ -16824,7 +16987,7 @@ function otciu_CLDRHelper_resolveDateFormatSymbols($map, $language, $country) {
     else {
         $localeCode = new jl_StringBuilder;
         jl_AbstractStringBuilder__init_($localeCode);
-        $localeCode = jl_AbstractStringBuilder_toString(jl_StringBuilder_append(jl_StringBuilder_append(jl_StringBuilder_append($localeCode, $language), $rt_s(259)), $country));
+        $localeCode = jl_AbstractStringBuilder_toString(jl_StringBuilder_append(jl_StringBuilder_append(jl_StringBuilder_append($localeCode, $language), $rt_s(267)), $country));
     }
     $arrayRes = $map.hasOwnProperty($rt_ustr($localeCode)) ? $map[$rt_ustr($localeCode)] : $map.hasOwnProperty($rt_ustr($language)) ? $map[$rt_ustr($language)] : $map.root;
     $result = $rt_createArray(jl_String, $arrayRes.length);
@@ -17022,80 +17185,6 @@ function otpp_ResourceAccessor_keysToStrings($keys) {
     }
     return $result;
 }
-function jn_Buffer() {
-    var a = this; jl_Object.call(a);
-    a.$capacity = 0;
-    a.$position = 0;
-    a.$limit = 0;
-    a.$mark0 = 0;
-}
-function jn_Buffer__init_0(var_0) {
-    var var_1 = new jn_Buffer();
-    jn_Buffer__init_(var_1, var_0);
-    return var_1;
-}
-function jn_Buffer__init_($this, $capacity) {
-    $this.$mark0 = (-1);
-    $this.$capacity = $capacity;
-    $this.$limit = $capacity;
-}
-function jn_Buffer_capacity($this) {
-    return $this.$capacity;
-}
-function jn_Buffer_position($this) {
-    return $this.$position;
-}
-function jn_Buffer_position0($this, $newPosition) {
-    var var$2, var$3;
-    if ($newPosition >= 0 && $newPosition <= $this.$limit) {
-        $this.$position = $newPosition;
-        if ($newPosition < $this.$mark0)
-            $this.$mark0 = 0;
-        return $this;
-    }
-    var$2 = new jl_IllegalArgumentException;
-    var$3 = new jl_StringBuilder;
-    jl_AbstractStringBuilder__init_(var$3);
-    jl_Throwable__init_(var$2, jl_AbstractStringBuilder_toString(jl_StringBuilder_append(jl_StringBuilder_append1(jl_StringBuilder_append(jl_StringBuilder_append1(jl_StringBuilder_append(var$3, $rt_s(260)), $newPosition), $rt_s(261)), $this.$limit), $rt_s(223))));
-    $rt_throw(var$2);
-}
-function jn_Buffer_limit0($this) {
-    return $this.$limit;
-}
-function jn_Buffer_limit($this, $newLimit) {
-    var var$2, var$3;
-    if ($newLimit >= 0 && $newLimit <= $this.$capacity) {
-        if ($this.$mark0 > $newLimit)
-            $this.$mark0 = (-1);
-        $this.$limit = $newLimit;
-        if ($this.$position > $this.$limit)
-            $this.$position = $this.$limit;
-        return $this;
-    }
-    var$2 = new jl_IllegalArgumentException;
-    var$3 = new jl_StringBuilder;
-    jl_AbstractStringBuilder__init_(var$3);
-    jl_Throwable__init_(var$2, jl_AbstractStringBuilder_toString(jl_StringBuilder_append(jl_StringBuilder_append1(jl_StringBuilder_append(jl_StringBuilder_append1(jl_StringBuilder_append(var$3, $rt_s(262)), $newLimit), $rt_s(261)), $this.$capacity), $rt_s(223))));
-    $rt_throw(var$2);
-}
-function jn_Buffer_clear($this) {
-    $this.$position = 0;
-    $this.$limit = $this.$capacity;
-    $this.$mark0 = (-1);
-    return $this;
-}
-function jn_Buffer_flip($this) {
-    $this.$limit = $this.$position;
-    $this.$position = 0;
-    $this.$mark0 = (-1);
-    return $this;
-}
-function jn_Buffer_remaining($this) {
-    return $this.$limit - $this.$position | 0;
-}
-function jn_Buffer_hasRemaining($this) {
-    return $this.$position >= $this.$limit ? 0 : 1;
-}
 function jn_ByteBuffer() {
     var a = this; jn_Buffer.call(a);
     a.$start4 = 0;
@@ -17109,7 +17198,7 @@ function jn_ByteBuffer_allocate($capacity) {
     var$2 = new jl_IllegalArgumentException;
     var$3 = new jl_StringBuilder;
     jl_AbstractStringBuilder__init_(var$3);
-    jl_Throwable__init_(var$2, jl_AbstractStringBuilder_toString(jl_StringBuilder_append1(jl_StringBuilder_append(var$3, $rt_s(263)), $capacity)));
+    jl_Throwable__init_(var$2, jl_AbstractStringBuilder_toString(jl_StringBuilder_append1(jl_StringBuilder_append(var$3, $rt_s(268)), $capacity)));
     $rt_throw(var$2);
 }
 function jn_ByteBuffer_wrap($array, $offset, $length) {
@@ -17129,7 +17218,7 @@ function jn_ByteBuffer_get0($this, $dst, $offset, $length) {
                 var$7 = new jl_IndexOutOfBoundsException;
                 var$8 = new jl_StringBuilder;
                 jl_AbstractStringBuilder__init_(var$8);
-                jl_Throwable__init_(var$7, jl_AbstractStringBuilder_toString(jl_StringBuilder_append1(jl_StringBuilder_append(jl_StringBuilder_append1(jl_StringBuilder_append(var$8, $rt_s(264)), $pos), $rt_s(265)), var$5)));
+                jl_Throwable__init_(var$7, jl_AbstractStringBuilder_toString(jl_StringBuilder_append1(jl_StringBuilder_append(jl_StringBuilder_append1(jl_StringBuilder_append(var$8, $rt_s(269)), $pos), $rt_s(253)), var$5)));
                 $rt_throw(var$7);
             }
             if (jn_Buffer_remaining($this) < $length) {
@@ -17141,7 +17230,7 @@ function jn_ByteBuffer_get0($this, $dst, $offset, $length) {
                 var$8 = new jl_IndexOutOfBoundsException;
                 var$7 = new jl_StringBuilder;
                 jl_AbstractStringBuilder__init_(var$7);
-                jl_Throwable__init_(var$8, jl_AbstractStringBuilder_toString(jl_StringBuilder_append(jl_StringBuilder_append1(jl_StringBuilder_append(var$7, $rt_s(266)), $length), $rt_s(267))));
+                jl_Throwable__init_(var$8, jl_AbstractStringBuilder_toString(jl_StringBuilder_append(jl_StringBuilder_append1(jl_StringBuilder_append(var$7, $rt_s(254)), $length), $rt_s(255))));
                 $rt_throw(var$8);
             }
             $pos = $this.$position + $this.$start4 | 0;
@@ -17163,7 +17252,7 @@ function jn_ByteBuffer_get0($this, $dst, $offset, $length) {
     var$7 = new jl_IndexOutOfBoundsException;
     var$8 = new jl_StringBuilder;
     jl_AbstractStringBuilder__init_(var$8);
-    jl_Throwable__init_(var$7, jl_AbstractStringBuilder_toString(jl_StringBuilder_append(jl_StringBuilder_append1(jl_StringBuilder_append(jl_StringBuilder_append1(jl_StringBuilder_append(var$8, $rt_s(268)), $offset), $rt_s(261)), $dst.length), $rt_s(34))));
+    jl_Throwable__init_(var$7, jl_AbstractStringBuilder_toString(jl_StringBuilder_append(jl_StringBuilder_append1(jl_StringBuilder_append(jl_StringBuilder_append1(jl_StringBuilder_append(var$8, $rt_s(256)), $offset), $rt_s(250)), $dst.length), $rt_s(34))));
     $rt_throw(var$7);
 }
 function jn_ByteBuffer_get($this, $dst) {
@@ -17192,14 +17281,14 @@ function jn_ByteBuffer_put($this, $src, $offset, $length) {
                 var$4 = new jl_IndexOutOfBoundsException;
                 var$8 = new jl_StringBuilder;
                 jl_AbstractStringBuilder__init_(var$8);
-                jl_Throwable__init_(var$4, jl_AbstractStringBuilder_toString(jl_StringBuilder_append1(jl_StringBuilder_append(jl_StringBuilder_append1(jl_StringBuilder_append(var$8, $rt_s(269)), $pos), $rt_s(265)), var$6)));
+                jl_Throwable__init_(var$4, jl_AbstractStringBuilder_toString(jl_StringBuilder_append1(jl_StringBuilder_append(jl_StringBuilder_append1(jl_StringBuilder_append(var$8, $rt_s(270)), $pos), $rt_s(253)), var$6)));
                 $rt_throw(var$4);
             }
             if ($length < 0) {
                 var$4 = new jl_IndexOutOfBoundsException;
                 var$8 = new jl_StringBuilder;
                 jl_AbstractStringBuilder__init_(var$8);
-                jl_Throwable__init_(var$4, jl_AbstractStringBuilder_toString(jl_StringBuilder_append(jl_StringBuilder_append1(jl_StringBuilder_append(var$8, $rt_s(266)), $length), $rt_s(267))));
+                jl_Throwable__init_(var$4, jl_AbstractStringBuilder_toString(jl_StringBuilder_append(jl_StringBuilder_append1(jl_StringBuilder_append(var$8, $rt_s(254)), $length), $rt_s(255))));
                 $rt_throw(var$4);
             }
             $pos = $this.$position + $this.$start4 | 0;
@@ -17221,7 +17310,7 @@ function jn_ByteBuffer_put($this, $src, $offset, $length) {
     var$8 = new jl_IndexOutOfBoundsException;
     var$4 = new jl_StringBuilder;
     jl_AbstractStringBuilder__init_(var$4);
-    jl_Throwable__init_(var$8, jl_AbstractStringBuilder_toString(jl_StringBuilder_append(jl_StringBuilder_append1(jl_StringBuilder_append(jl_StringBuilder_append1(jl_StringBuilder_append(var$4, $rt_s(268)), $offset), $rt_s(261)), $src.length), $rt_s(34))));
+    jl_Throwable__init_(var$8, jl_AbstractStringBuilder_toString(jl_StringBuilder_append(jl_StringBuilder_append1(jl_StringBuilder_append(jl_StringBuilder_append1(jl_StringBuilder_append(var$4, $rt_s(256)), $offset), $rt_s(250)), $src.length), $rt_s(34))));
     $rt_throw(var$8);
 }
 function jn_ByteBuffer_put0($this, $src) {
@@ -17256,70 +17345,54 @@ function jn_ByteBuffer_position($this, $newPosition) {
 function jl_CloneNotSupportedException() {
     jl_Exception.call(this);
 }
-function jn_FloatBuffer() {
-    jn_Buffer.call(this);
+function jn_FloatBufferImpl() {
+    jn_FloatBuffer.call(this);
 }
-function jn_FloatBuffer_get($this, $dst, $offset, $length) {
-    var var$4, var$5, $pos, var$7, var$8, $i, var$10;
-    if ($offset >= 0) {
-        var$4 = $dst.data;
-        var$5 = var$4.length;
-        if ($offset < var$5) {
-            $pos = $offset + $length | 0;
-            if ($pos > var$5) {
-                var$7 = new jl_IndexOutOfBoundsException;
-                var$8 = new jl_StringBuilder;
-                jl_AbstractStringBuilder__init_(var$8);
-                jl_Throwable__init_(var$7, jl_AbstractStringBuilder_toString(jl_StringBuilder_append1(jl_StringBuilder_append(jl_StringBuilder_append1(jl_StringBuilder_append(var$8, $rt_s(270)), $pos), $rt_s(265)), var$5)));
-                $rt_throw(var$7);
-            }
-            if (jn_Buffer_remaining($this) < $length) {
-                var$7 = new jn_BufferUnderflowException;
-                jl_Throwable__init_0(var$7);
-                $rt_throw(var$7);
-            }
-            if ($length < 0) {
-                var$7 = new jl_IndexOutOfBoundsException;
-                var$8 = new jl_StringBuilder;
-                jl_AbstractStringBuilder__init_(var$8);
-                jl_Throwable__init_(var$7, jl_AbstractStringBuilder_toString(jl_StringBuilder_append(jl_StringBuilder_append1(jl_StringBuilder_append(var$8, $rt_s(266)), $length), $rt_s(267))));
-                $rt_throw(var$7);
-            }
-            $pos = $this.$position;
-            $i = 0;
-            while ($i < $length) {
-                var$10 = $offset + 1 | 0;
-                var$5 = $pos + 1 | 0;
-                var$4[$offset] = jn_FloatBufferOverArray_getElement($this, $pos);
-                $i = $i + 1 | 0;
-                $offset = var$10;
-                $pos = var$5;
-            }
-            $this.$position = $this.$position + $length | 0;
-            return $this;
-        }
+function jn_FloatBufferImpl_get($this) {
+    var var$1, var$2;
+    if ($this.$position < $this.$limit) {
+        var$1 = $this.$position;
+        $this.$position = var$1 + 1 | 0;
+        return jn_FloatBufferOverArray_getElement($this, var$1);
     }
-    $dst = $dst.data;
-    var$8 = new jl_IndexOutOfBoundsException;
-    var$7 = new jl_StringBuilder;
-    jl_AbstractStringBuilder__init_(var$7);
-    jl_Throwable__init_(var$8, jl_AbstractStringBuilder_toString(jl_StringBuilder_append(jl_StringBuilder_append1(jl_StringBuilder_append(jl_StringBuilder_append1(jl_StringBuilder_append(var$7, $rt_s(268)), $offset), $rt_s(261)), $dst.length), $rt_s(34))));
-    $rt_throw(var$8);
+    var$2 = new jn_BufferUnderflowException;
+    jl_Throwable__init_0(var$2);
+    $rt_throw(var$2);
 }
-function jn_FloatBuffer_get0($this, $dst) {
-    return jn_FloatBuffer_get($this, $dst, 0, $dst.data.length);
+function jn_FloatBufferImpl_put($this, $b) {
+    var var$2, var$3;
+    if (jn_FloatBufferImpl_isReadOnly($this)) {
+        var$2 = new jn_ReadOnlyBufferException;
+        jl_Throwable__init_0(var$2);
+        $rt_throw(var$2);
+    }
+    if ($this.$position < $this.$limit) {
+        var$3 = $this.$position;
+        $this.$position = var$3 + 1 | 0;
+        jn_FloatBufferOverArray_putElement($this, var$3, $b);
+        return $this;
+    }
+    var$2 = new jn_BufferOverflowException;
+    jl_Throwable__init_0(var$2);
+    $rt_throw(var$2);
 }
-function jn_FloatBuffer_clear($this) {
-    jn_Buffer_clear($this);
-    return $this;
+function jn_FloatBufferImpl_isReadOnly($this) {
+    return $this.$readOnly;
 }
-function jn_FloatBuffer_flip($this) {
-    jn_Buffer_flip($this);
-    return $this;
+function jn_FloatBufferOverArray() {
+    var a = this; jn_FloatBufferImpl.call(a);
+    a.$readOnly = 0;
+    a.$start3 = 0;
+    a.$array1 = null;
 }
-function jn_FloatBuffer_limit($this, $newLimit) {
-    jn_Buffer_limit($this, $newLimit);
-    return $this;
+function jn_FloatBufferOverArray_getElement($this, $index) {
+    return $this.$array1.data[$index + $this.$start3 | 0];
+}
+function jn_FloatBufferOverArray_putElement($this, $index, $value) {
+    $this.$array1.data[$index + $this.$start3 | 0] = $value;
+}
+function jn_FloatBufferOverArray_readOnly($this) {
+    return $this.$readOnly;
 }
 function nmglb_StepSound() {
     var a = this; jl_Object.call(a);
@@ -20059,7 +20132,7 @@ function jn_CharBuffer_allocate($capacity) {
     var$2 = new jl_IllegalArgumentException;
     var$3 = new jl_StringBuilder;
     jl_AbstractStringBuilder__init_(var$3);
-    jl_Throwable__init_(var$2, jl_AbstractStringBuilder_toString(jl_StringBuilder_append1(jl_StringBuilder_append(var$3, $rt_s(263)), $capacity)));
+    jl_Throwable__init_(var$2, jl_AbstractStringBuilder_toString(jl_StringBuilder_append1(jl_StringBuilder_append(var$3, $rt_s(268)), $capacity)));
     $rt_throw(var$2);
 }
 function jn_CharBuffer_wrap0($array, $offset, $length) {
@@ -20079,7 +20152,7 @@ function jn_CharBuffer_get0($this, $dst, $offset, $length) {
                 var$7 = new jl_IndexOutOfBoundsException;
                 var$8 = new jl_StringBuilder;
                 jl_AbstractStringBuilder__init_(var$8);
-                jl_Throwable__init_(var$7, jl_AbstractStringBuilder_toString(jl_StringBuilder_append1(jl_StringBuilder_append(jl_StringBuilder_append1(jl_StringBuilder_append(var$8, $rt_s(296)), $pos), $rt_s(265)), var$5)));
+                jl_Throwable__init_(var$7, jl_AbstractStringBuilder_toString(jl_StringBuilder_append1(jl_StringBuilder_append(jl_StringBuilder_append1(jl_StringBuilder_append(var$8, $rt_s(296)), $pos), $rt_s(253)), var$5)));
                 $rt_throw(var$7);
             }
             if (jn_Buffer_remaining($this) < $length) {
@@ -20091,7 +20164,7 @@ function jn_CharBuffer_get0($this, $dst, $offset, $length) {
                 var$7 = new jl_IndexOutOfBoundsException;
                 var$8 = new jl_StringBuilder;
                 jl_AbstractStringBuilder__init_(var$8);
-                jl_Throwable__init_(var$7, jl_AbstractStringBuilder_toString(jl_StringBuilder_append(jl_StringBuilder_append1(jl_StringBuilder_append(var$8, $rt_s(266)), $length), $rt_s(267))));
+                jl_Throwable__init_(var$7, jl_AbstractStringBuilder_toString(jl_StringBuilder_append(jl_StringBuilder_append1(jl_StringBuilder_append(var$8, $rt_s(254)), $length), $rt_s(255))));
                 $rt_throw(var$7);
             }
             $pos = $this.$position;
@@ -20112,7 +20185,7 @@ function jn_CharBuffer_get0($this, $dst, $offset, $length) {
     var$8 = new jl_IndexOutOfBoundsException;
     var$7 = new jl_StringBuilder;
     jl_AbstractStringBuilder__init_(var$7);
-    jl_Throwable__init_(var$8, jl_AbstractStringBuilder_toString(jl_StringBuilder_append(jl_StringBuilder_append1(jl_StringBuilder_append(jl_StringBuilder_append1(jl_StringBuilder_append(var$7, $rt_s(268)), $offset), $rt_s(261)), $dst.length), $rt_s(34))));
+    jl_Throwable__init_(var$8, jl_AbstractStringBuilder_toString(jl_StringBuilder_append(jl_StringBuilder_append1(jl_StringBuilder_append(jl_StringBuilder_append1(jl_StringBuilder_append(var$7, $rt_s(256)), $offset), $rt_s(250)), $dst.length), $rt_s(34))));
     $rt_throw(var$8);
 }
 function jn_CharBuffer_get($this, $dst) {
@@ -20139,14 +20212,14 @@ function jn_CharBuffer_put($this, $src, $offset, $length) {
                 var$4 = new jl_IndexOutOfBoundsException;
                 var$8 = new jl_StringBuilder;
                 jl_AbstractStringBuilder__init_(var$8);
-                jl_Throwable__init_(var$4, jl_AbstractStringBuilder_toString(jl_StringBuilder_append1(jl_StringBuilder_append(jl_StringBuilder_append1(jl_StringBuilder_append(var$8, $rt_s(297)), $pos), $rt_s(265)), var$6)));
+                jl_Throwable__init_(var$4, jl_AbstractStringBuilder_toString(jl_StringBuilder_append1(jl_StringBuilder_append(jl_StringBuilder_append1(jl_StringBuilder_append(var$8, $rt_s(297)), $pos), $rt_s(253)), var$6)));
                 $rt_throw(var$4);
             }
             if ($length < 0) {
                 var$4 = new jl_IndexOutOfBoundsException;
                 var$8 = new jl_StringBuilder;
                 jl_AbstractStringBuilder__init_(var$8);
-                jl_Throwable__init_(var$4, jl_AbstractStringBuilder_toString(jl_StringBuilder_append(jl_StringBuilder_append1(jl_StringBuilder_append(var$8, $rt_s(266)), $length), $rt_s(267))));
+                jl_Throwable__init_(var$4, jl_AbstractStringBuilder_toString(jl_StringBuilder_append(jl_StringBuilder_append1(jl_StringBuilder_append(var$8, $rt_s(254)), $length), $rt_s(255))));
                 $rt_throw(var$4);
             }
             $pos = $this.$position;
@@ -20167,7 +20240,7 @@ function jn_CharBuffer_put($this, $src, $offset, $length) {
     var$8 = new jl_IndexOutOfBoundsException;
     var$4 = new jl_StringBuilder;
     jl_AbstractStringBuilder__init_(var$4);
-    jl_Throwable__init_(var$8, jl_AbstractStringBuilder_toString(jl_StringBuilder_append(jl_StringBuilder_append1(jl_StringBuilder_append(jl_StringBuilder_append1(jl_StringBuilder_append(var$4, $rt_s(268)), $offset), $rt_s(261)), $src.length), $rt_s(34))));
+    jl_Throwable__init_(var$8, jl_AbstractStringBuilder_toString(jl_StringBuilder_append(jl_StringBuilder_append1(jl_StringBuilder_append(jl_StringBuilder_append1(jl_StringBuilder_append(var$4, $rt_s(256)), $offset), $rt_s(250)), $src.length), $rt_s(34))));
     $rt_throw(var$8);
 }
 function jn_CharBuffer_put0($this, $src, $start, $end) {
@@ -20212,7 +20285,7 @@ function jn_CharBuffer_put0($this, $src, $start, $end) {
     var$6 = new jl_IndexOutOfBoundsException;
     var$5 = new jl_StringBuilder;
     jl_AbstractStringBuilder__init_(var$5);
-    jl_Throwable__init_(var$6, jl_AbstractStringBuilder_toString(jl_StringBuilder_append(jl_StringBuilder_append1(jl_StringBuilder_append(jl_StringBuilder_append1(jl_StringBuilder_append(var$5, $rt_s(299)), $start), $rt_s(261)), jl_String_length($src)), $rt_s(34))));
+    jl_Throwable__init_(var$6, jl_AbstractStringBuilder_toString(jl_StringBuilder_append(jl_StringBuilder_append1(jl_StringBuilder_append(jl_StringBuilder_append1(jl_StringBuilder_append(var$5, $rt_s(299)), $start), $rt_s(250)), jl_String_length($src)), $rt_s(34))));
     $rt_throw(var$6);
 }
 function jn_CharBuffer_put1($this, $src) {
@@ -21082,55 +21155,6 @@ function nPm_BaseNCodec$CodecPolicy__clinit_() {
     var$3[0] = nPm_BaseNCodec$CodecPolicy_STRICT;
     var$3[1] = nPm_BaseNCodec$CodecPolicy_LENIANT;
     nPm_BaseNCodec$CodecPolicy_$VALUES = var$2;
-}
-function jn_FloatBufferImpl() {
-    jn_FloatBuffer.call(this);
-}
-function jn_FloatBufferImpl_get($this) {
-    var var$1, var$2;
-    if ($this.$position < $this.$limit) {
-        var$1 = $this.$position;
-        $this.$position = var$1 + 1 | 0;
-        return jn_FloatBufferOverArray_getElement($this, var$1);
-    }
-    var$2 = new jn_BufferUnderflowException;
-    jl_Throwable__init_0(var$2);
-    $rt_throw(var$2);
-}
-function jn_FloatBufferImpl_put($this, $b) {
-    var var$2, var$3;
-    if (jn_FloatBufferImpl_isReadOnly($this)) {
-        var$2 = new jn_ReadOnlyBufferException;
-        jl_Throwable__init_0(var$2);
-        $rt_throw(var$2);
-    }
-    if ($this.$position < $this.$limit) {
-        var$3 = $this.$position;
-        $this.$position = var$3 + 1 | 0;
-        jn_FloatBufferOverArray_putElement($this, var$3, $b);
-        return $this;
-    }
-    var$2 = new jn_BufferOverflowException;
-    jl_Throwable__init_0(var$2);
-    $rt_throw(var$2);
-}
-function jn_FloatBufferImpl_isReadOnly($this) {
-    return $this.$readOnly;
-}
-function jn_FloatBufferOverArray() {
-    var a = this; jn_FloatBufferImpl.call(a);
-    a.$readOnly = 0;
-    a.$start3 = 0;
-    a.$array1 = null;
-}
-function jn_FloatBufferOverArray_getElement($this, $index) {
-    return $this.$array1.data[$index + $this.$start3 | 0];
-}
-function jn_FloatBufferOverArray_putElement($this, $index, $value) {
-    $this.$array1.data[$index + $this.$start3 | 0] = $value;
-}
-function jn_FloatBufferOverArray_readOnly($this) {
-    return $this.$readOnly;
 }
 function nmglm_MaterialTransparent() {
     nmglm_Material.call(this);
@@ -23761,9 +23785,13 @@ function nmcr_RenderEngine_readTextureImage($this, $inputstream) {
     $rt_nativeThread().push($this, $inputstream, var$2, $ptr);
 }
 function nmcr_RenderEngine_bindTexture($i) {
-    if ($i < 0)
+    nmc_Minecraft_setLighting(nmc_Minecraft_mc, 1);
+    if ($i < 0) {
+        nmc_Minecraft_setLighting(nmc_Minecraft_mc, 0);
         return;
+    }
     olo_WebGLManager_glBindTexture(3553, $i);
+    nmc_Minecraft_setLighting(nmc_Minecraft_mc, 0);
 }
 function nmcg_FontRenderer() {
     var a = this; jl_Object.call(a);
@@ -28968,6 +28996,7 @@ function nmcr_Tessellator_setNormal($this, $par1, $par2, $par3) {
     $this.$hasNormals = 1;
     $len = jl_Math_sqrt($par1 * $par1 + $par2 * $par2 + $par3 * $par3);
     $this.$normal = (($par1 / $len * 125.0 | 0) + 125 | 0) & 255 | ((($par2 / $len * 125.0 | 0) + 125 | 0) & 255) << 8 | ((($par3 / $len * 125.0 | 0) + 125 | 0) & 255) << 16;
+    olo_WebGLManager_glNormal3f($par1, $par2, $par3);
 }
 function nmcr_Tessellator__clinit_() {
     var var$1, var$2;
@@ -29020,14 +29049,14 @@ function jn_IntBuffer_put($this, $src, $offset, $length) {
                 var$4 = new jl_IndexOutOfBoundsException;
                 var$8 = new jl_StringBuilder;
                 jl_AbstractStringBuilder__init_(var$8);
-                jl_Throwable__init_(var$4, jl_AbstractStringBuilder_toString(jl_StringBuilder_append1(jl_StringBuilder_append(jl_StringBuilder_append1(jl_StringBuilder_append(var$8, $rt_s(398)), $pos), $rt_s(265)), var$6)));
+                jl_Throwable__init_(var$4, jl_AbstractStringBuilder_toString(jl_StringBuilder_append1(jl_StringBuilder_append(jl_StringBuilder_append1(jl_StringBuilder_append(var$8, $rt_s(398)), $pos), $rt_s(253)), var$6)));
                 $rt_throw(var$4);
             }
             if ($length < 0) {
                 var$4 = new jl_IndexOutOfBoundsException;
                 var$8 = new jl_StringBuilder;
                 jl_AbstractStringBuilder__init_(var$8);
-                jl_Throwable__init_(var$4, jl_AbstractStringBuilder_toString(jl_StringBuilder_append(jl_StringBuilder_append1(jl_StringBuilder_append(var$8, $rt_s(266)), $length), $rt_s(267))));
+                jl_Throwable__init_(var$4, jl_AbstractStringBuilder_toString(jl_StringBuilder_append(jl_StringBuilder_append1(jl_StringBuilder_append(var$8, $rt_s(254)), $length), $rt_s(255))));
                 $rt_throw(var$4);
             }
             $pos = $this.$position;
@@ -29048,7 +29077,7 @@ function jn_IntBuffer_put($this, $src, $offset, $length) {
     var$8 = new jl_IndexOutOfBoundsException;
     var$4 = new jl_StringBuilder;
     jl_AbstractStringBuilder__init_(var$4);
-    jl_Throwable__init_(var$8, jl_AbstractStringBuilder_toString(jl_StringBuilder_append(jl_StringBuilder_append1(jl_StringBuilder_append(jl_StringBuilder_append1(jl_StringBuilder_append(var$4, $rt_s(268)), $offset), $rt_s(261)), $src.length), $rt_s(34))));
+    jl_Throwable__init_(var$8, jl_AbstractStringBuilder_toString(jl_StringBuilder_append(jl_StringBuilder_append1(jl_StringBuilder_append(jl_StringBuilder_append1(jl_StringBuilder_append(var$4, $rt_s(256)), $offset), $rt_s(250)), $src.length), $rt_s(34))));
     $rt_throw(var$8);
 }
 function jn_IntBuffer_clear($this) {
@@ -34554,7 +34583,7 @@ function jn_IntBufferImpl_get0($this, $index) {
     var$2 = new jl_IndexOutOfBoundsException;
     var$3 = new jl_StringBuilder;
     jl_AbstractStringBuilder__init_(var$3);
-    jl_Throwable__init_(var$2, jl_AbstractStringBuilder_toString(jl_StringBuilder_append(jl_StringBuilder_append1(jl_StringBuilder_append(jl_StringBuilder_append1(jl_StringBuilder_append(var$3, $rt_s(526)), $index), $rt_s(261)), $this.$limit), $rt_s(34))));
+    jl_Throwable__init_(var$2, jl_AbstractStringBuilder_toString(jl_StringBuilder_append(jl_StringBuilder_append1(jl_StringBuilder_append(jl_StringBuilder_append1(jl_StringBuilder_append(var$3, $rt_s(526)), $index), $rt_s(250)), $this.$limit), $rt_s(34))));
     $rt_throw(var$2);
 }
 function jn_IntBufferImpl_put0($this, $index, $b) {
@@ -34571,7 +34600,7 @@ function jn_IntBufferImpl_put0($this, $index, $b) {
     var$4 = new jl_IndexOutOfBoundsException;
     var$3 = new jl_StringBuilder;
     jl_AbstractStringBuilder__init_(var$3);
-    jl_Throwable__init_(var$4, jl_AbstractStringBuilder_toString(jl_StringBuilder_append(jl_StringBuilder_append1(jl_StringBuilder_append(jl_StringBuilder_append1(jl_StringBuilder_append(var$3, $rt_s(526)), $index), $rt_s(261)), $this.$limit), $rt_s(34))));
+    jl_Throwable__init_(var$4, jl_AbstractStringBuilder_toString(jl_StringBuilder_append(jl_StringBuilder_append1(jl_StringBuilder_append(jl_StringBuilder_append1(jl_StringBuilder_append(var$3, $rt_s(526)), $index), $rt_s(250)), $this.$limit), $rt_s(34))));
     $rt_throw(var$4);
 }
 function jn_IntBufferImpl_isReadOnly($this) {
@@ -35303,7 +35332,7 @@ function nmcg_GuiGameOver_doesGuiPauseGame($this) {
 function nPm_BaseNCodec$Context() {
     var a = this; jl_Object.call(a);
     a.$ibitWorkArea = 0;
-    a.$buffer1 = null;
+    a.$buffer2 = null;
     a.$pos0 = 0;
     a.$readPos = 0;
     a.$eof0 = 0;
@@ -37016,9 +37045,9 @@ function nmcrc_ClippingHelperImplementation__clinit_() {
     var$1.$projectionMatrix0 = $rt_createFloatArray(16);
     var$1.$modelviewMatrix = $rt_createFloatArray(16);
     var$1.$clippingMatrix = $rt_createFloatArray(16);
-    var$1.$projectionMatrixBuffer = ol_BufferUtils_createFloatBuffer(16);
-    var$1.$modelviewMatrixBuffer = ol_BufferUtils_createFloatBuffer(16);
-    var$1.$ICamera = ol_BufferUtils_createFloatBuffer(16);
+    var$1.$projectionMatrixBuffer = ol_GLAllocation_createDirectFloatBuffer(16);
+    var$1.$modelviewMatrixBuffer = ol_GLAllocation_createDirectFloatBuffer(16);
+    var$1.$ICamera = ol_GLAllocation_createDirectFloatBuffer(16);
     nmcrc_ClippingHelperImplementation_instance = var$1;
 }
 function nmcrc_ICamera() {
@@ -37089,7 +37118,7 @@ function nmc_RenderHelper_setColorBuffer($var0, $var1, $var2, $var3) {
     return nmc_RenderHelper_colorBuffer;
 }
 function nmc_RenderHelper__clinit_() {
-    nmc_RenderHelper_colorBuffer = ol_BufferUtils_createFloatBuffer(16);
+    nmc_RenderHelper_colorBuffer = ol_GLAllocation_createDirectFloatBuffer(16);
 }
 function cjj_InfTree() {
     var a = this; jl_Object.call(a);
@@ -41705,6 +41734,7 @@ function nmcre_RenderPlayer_renderPlayer($this, $var1, $var2, $var3, $var4, $var
     }
     main: while (true) { switch ($ptr) {
     case 0:
+        nmc_Minecraft_setLighting(nmc_Minecraft_mc, 1);
         $var3 = $var3 - $var1.$yOffset;
         $ptr = 1;
     case 1:
@@ -41712,6 +41742,7 @@ function nmcre_RenderPlayer_renderPlayer($this, $var1, $var2, $var3, $var4, $var
         if ($rt_suspending()) {
             break main;
         }
+        nmc_Minecraft_setLighting(nmc_Minecraft_mc, 0);
         return;
     default: $rt_invalidPointer();
     }}
@@ -41813,7 +41844,7 @@ function nmcre_RenderPlayer__clinit_() {
     var var$1, var$2;
     var$1 = $rt_createArray(jl_String, 5);
     var$2 = var$1.data;
-    var$2[0] = $rt_s(256);
+    var$2[0] = $rt_s(264);
     var$2[1] = $rt_s(558);
     var$2[2] = $rt_s(559);
     var$2[3] = $rt_s(560);
@@ -44734,7 +44765,7 @@ function nmcg_GuiLoadLevel_setLevels($this, $var1) {
     $var2 = 0;
     while ($var2 < 5) {
         var$3 = $var1.data;
-        ju_ArrayList_get($this.$controlList, $var2).$enabled = jl_String_equals(var$3[$var2], $rt_s(259)) ? 0 : 1;
+        ju_ArrayList_get($this.$controlList, $var2).$enabled = jl_String_equals(var$3[$var2], $rt_s(267)) ? 0 : 1;
         ju_ArrayList_get($this.$controlList, $var2).$displayString = var$3[$var2];
         ju_ArrayList_get($this.$controlList, $var2).$visible = 1;
         $var2 = $var2 + 1 | 0;
@@ -44947,7 +44978,7 @@ function nmcg_GuiSaveLevel_openLevel0($this, $var1) {
         var$3.$parent0 = $this;
         var$3.$id3 = $var1;
         var$3.$name7 = var$4;
-        if (jl_String_equals(var$3.$name7, $rt_s(259)))
+        if (jl_String_equals(var$3.$name7, $rt_s(267)))
             var$3.$name7 = $rt_s(9);
         $ptr = 1;
     case 1:
@@ -47129,7 +47160,7 @@ function ji_Reader__init_0($this) {
 function ji_BufferedReader() {
     var a = this; ji_Reader.call(a);
     a.$innerReader = null;
-    a.$buffer2 = null;
+    a.$buffer3 = null;
     a.$index4 = 0;
     a.$count3 = 0;
     a.$eof1 = 0;
@@ -47144,7 +47175,7 @@ function ji_BufferedReader__init_($this, $innerReader) {
     ji_Reader__init_0($this);
     $this.$mark1 = (-1);
     $this.$innerReader = $innerReader;
-    $this.$buffer2 = $rt_createCharArray(jl_Math_max(64, 1024));
+    $this.$buffer3 = $rt_createCharArray(jl_Math_max(64, 1024));
 }
 function ji_BufferedReader_readLine($this) {
     var $line, var$2, var$3, $ch;
@@ -47161,7 +47192,7 @@ function ji_BufferedReader_readLine($this) {
         while (true) {
             if ($this.$index4 >= $this.$count3 && !ji_BufferedReader_fillBuffer($this, 0))
                 break a;
-            var$2 = $this.$buffer2.data;
+            var$2 = $this.$buffer3.data;
             var$3 = $this.$index4;
             $this.$index4 = var$3 + 1 | 0;
             $ch = var$2[var$3];
@@ -47170,7 +47201,7 @@ function ji_BufferedReader_readLine($this) {
             if ($ch == 13) {
                 if ($this.$index4 >= $this.$count3 && !ji_BufferedReader_fillBuffer($this, 0))
                     break a;
-                if ($this.$buffer2.data[$this.$index4] != 10)
+                if ($this.$buffer3.data[$this.$index4] != 10)
                     break a;
                 $this.$index4 = $this.$index4 + 1 | 0;
                 break a;
@@ -47186,9 +47217,9 @@ function ji_BufferedReader_fillBuffer($this, $offset) {
         return 0;
     a: {
         while (true) {
-            if ($offset >= $this.$buffer2.data.length)
+            if ($offset >= $this.$buffer3.data.length)
                 break a;
-            $charsRead = ji_InputStreamReader_read($this.$innerReader, $this.$buffer2, $offset, $this.$buffer2.data.length - $offset | 0);
+            $charsRead = ji_InputStreamReader_read($this.$innerReader, $this.$buffer3, $offset, $this.$buffer3.data.length - $offset | 0);
             if ($charsRead == (-1)) {
                 $this.$eof1 = 1;
                 break a;
@@ -58197,6 +58228,7 @@ nmc_Timer, 0, jl_Object, [], 4, 3, 0, 0,
 u_IProgressUpdate, 0, jl_Object, [], 3, 3, 0, 0,
 nmc_LoadingScreenRenderer, 0, jl_Object, [u_IProgressUpdate], 0, 3, 0, 0,
 nmcr_EntityRenderer, 0, jl_Object, [], 4, 3, 0, 0,
+ol_GLAllocation, 0, jl_Object, [], 0, 3, 0, 0,
 nmcm_ModelBase, 0, jl_Object, [], 1, 3, 0, 0,
 nmcm_ModelBiped, 0, nmcm_ModelBase, [], 0, 3, 0, ["$render0", function(var_1, var_2, var_3, var_4, var_5, var_6) { nmcm_ModelBiped_render(this, var_1, var_2, var_3, var_4, var_5, var_6); }, "$setRotationAngles", function(var_1, var_2, var_3, var_4, var_5, var_6) { nmcm_ModelBiped_setRotationAngles(this, var_1, var_2, var_3, var_4, var_5, var_6); }],
 nmcrt_TextureFX, 0, jl_Object, [], 0, 3, 0, 0,
@@ -58216,16 +58248,17 @@ jnc_UnsupportedCharsetException, "UnsupportedCharsetException", 7, jl_IllegalArg
 jl_NullPointerException, "NullPointerException", 10, jl_RuntimeException, [], 0, 3, 0, 0,
 nPn_NBTTagByte, 0, nPn_NBTBase, [], 4, 3, 0, ["$writeTagContents", function(var_1) { nPn_NBTTagByte_writeTagContents(this, var_1); }, "$readTagContents", function(var_1) { nPn_NBTTagByte_readTagContents(this, var_1); }, "$getType0", function() { return nPn_NBTTagByte_getType(this); }],
 nPn_NBTTagShort, 0, nPn_NBTBase, [], 4, 3, 0, ["$writeTagContents", function(var_1) { nPn_NBTTagShort_writeTagContents(this, var_1); }, "$readTagContents", function(var_1) { nPn_NBTTagShort_readTagContents(this, var_1); }, "$getType0", function() { return nPn_NBTTagShort_getType(this); }],
-nPn_NBTTagInt, 0, nPn_NBTBase, [], 4, 3, 0, ["$writeTagContents", function(var_1) { nPn_NBTTagInt_writeTagContents(this, var_1); }, "$readTagContents", function(var_1) { nPn_NBTTagInt_readTagContents(this, var_1); }, "$getType0", function() { return nPn_NBTTagInt_getType(this); }],
-nPn_NBTTagLong, 0, nPn_NBTBase, [], 4, 3, 0, ["$writeTagContents", function(var_1) { nPn_NBTTagLong_writeTagContents(this, var_1); }, "$readTagContents", function(var_1) { nPn_NBTTagLong_readTagContents(this, var_1); }, "$getType0", function() { return nPn_NBTTagLong_getType(this); }]]);
-$rt_metadata([nPn_NBTTagFloat, 0, nPn_NBTBase, [], 4, 3, 0, ["$writeTagContents", function(var_1) { nPn_NBTTagFloat_writeTagContents(this, var_1); }, "$readTagContents", function(var_1) { nPn_NBTTagFloat_readTagContents(this, var_1); }, "$getType0", function() { return nPn_NBTTagFloat_getType(this); }],
+nPn_NBTTagInt, 0, nPn_NBTBase, [], 4, 3, 0, ["$writeTagContents", function(var_1) { nPn_NBTTagInt_writeTagContents(this, var_1); }, "$readTagContents", function(var_1) { nPn_NBTTagInt_readTagContents(this, var_1); }, "$getType0", function() { return nPn_NBTTagInt_getType(this); }]]);
+$rt_metadata([nPn_NBTTagLong, 0, nPn_NBTBase, [], 4, 3, 0, ["$writeTagContents", function(var_1) { nPn_NBTTagLong_writeTagContents(this, var_1); }, "$readTagContents", function(var_1) { nPn_NBTTagLong_readTagContents(this, var_1); }, "$getType0", function() { return nPn_NBTTagLong_getType(this); }],
+nPn_NBTTagFloat, 0, nPn_NBTBase, [], 4, 3, 0, ["$writeTagContents", function(var_1) { nPn_NBTTagFloat_writeTagContents(this, var_1); }, "$readTagContents", function(var_1) { nPn_NBTTagFloat_readTagContents(this, var_1); }, "$getType0", function() { return nPn_NBTTagFloat_getType(this); }],
 nPn_NBTTagDouble, 0, nPn_NBTBase, [], 4, 3, 0, ["$writeTagContents", function(var_1) { nPn_NBTTagDouble_writeTagContents(this, var_1); }, "$readTagContents", function(var_1) { nPn_NBTTagDouble_readTagContents(this, var_1); }, "$getType0", function() { return nPn_NBTTagDouble_getType(this); }],
 nPn_NBTTagByteArray, 0, nPn_NBTBase, [], 4, 3, 0, ["$writeTagContents", function(var_1) { nPn_NBTTagByteArray_writeTagContents(this, var_1); }, "$readTagContents", function(var_1) { nPn_NBTTagByteArray_readTagContents(this, var_1); }, "$getType0", function() { return nPn_NBTTagByteArray_getType(this); }],
 nPn_NBTTagString, 0, nPn_NBTBase, [], 4, 3, 0, ["$writeTagContents", function(var_1) { nPn_NBTTagString_writeTagContents(this, var_1); }, "$readTagContents", function(var_1) { nPn_NBTTagString_readTagContents(this, var_1); }, "$getType0", function() { return nPn_NBTTagString_getType(this); }],
 nPn_NBTTagList, 0, nPn_NBTBase, [], 4, 3, 0, ["$writeTagContents", function(var_1) { nPn_NBTTagList_writeTagContents(this, var_1); }, "$readTagContents", function(var_1) { nPn_NBTTagList_readTagContents(this, var_1); }, "$getType0", function() { return nPn_NBTTagList_getType(this); }],
-ol_GLAllocation, 0, jl_Object, [], 0, 3, 0, 0,
 ol_BufferUtils, 0, ol_GLAllocation, [], 0, 3, 0, 0,
 nmcr_ItemRenderer, 0, jl_Object, [], 4, 3, 0, 0,
+jn_Buffer, 0, jl_Object, [], 1, 3, 0, 0,
+jn_FloatBuffer, 0, jn_Buffer, [jl_Comparable], 1, 3, 0, 0,
 nmglb_Block, "Block", 15, jl_Object, [], 0, 3, nmglb_Block_$callClinit, ["$renderAsNormalBlock", function() { return nmglb_Block_renderAsNormalBlock(this); }, "$getRenderType", function() { return nmglb_Block_getRenderType(this); }, "$getBlockBrightness", function(var_1, var_2, var_3, var_4) { return nmglb_Block_getBlockBrightness(this, var_1, var_2, var_3, var_4); }, "$shouldSideBeRendered", function(var_1, var_2, var_3, var_4, var_5) { return nmglb_Block_shouldSideBeRendered(this, var_1, var_2, var_3, var_4,
 var_5); }, "$getBlockTexture", function(var_1, var_2, var_3, var_4, var_5) { return nmglb_Block_getBlockTexture(this, var_1, var_2, var_3, var_4, var_5); }, "$getBlockTextureFromSideAndMetadata", function(var_1, var_2) { return nmglb_Block_getBlockTextureFromSideAndMetadata(this, var_1, var_2); }, "$getBlockTextureFromSide", function(var_1) { return nmglb_Block_getBlockTextureFromSide(this, var_1); }, "$getCollisionBoundingBoxFromPool", function(var_1, var_2, var_3) { return nmglb_Block_getCollisionBoundingBoxFromPool(this,
 var_1, var_2, var_3); }, "$isOpaqueCube", function() { return nmglb_Block_isOpaqueCube(this); }, "$isCollidable", function() { return nmglb_Block_isCollidable(this); }, "$updateTick", function(var_1, var_2, var_3, var_4, var_5) { nmglb_Block_updateTick(this, var_1, var_2, var_3, var_4, var_5); }, "$randomDisplayTick", function(var_1, var_2, var_3, var_4, var_5) { nmglb_Block_randomDisplayTick(this, var_1, var_2, var_3, var_4, var_5); }, "$onBlockDestroyedByPlayer", function(var_1, var_2, var_3, var_4, var_5)
@@ -58251,10 +58284,10 @@ nmcr_RenderBlocks, 0, jl_Object, [], 4, 3, 0, 0,
 nmcm_ModelRenderer, 0, jl_Object, [], 4, 3, 0, 0,
 otciu_CLDRHelper, 0, jl_Object, [], 4, 3, 0, 0,
 otpp_ResourceAccessor, 0, jl_Object, [], 4, 0, 0, 0,
-jn_Buffer, 0, jl_Object, [], 1, 3, 0, 0,
 jn_ByteBuffer, 0, jn_Buffer, [jl_Comparable], 1, 3, 0, 0,
 jl_CloneNotSupportedException, "CloneNotSupportedException", 10, jl_Exception, [], 0, 3, 0, 0,
-jn_FloatBuffer, 0, jn_Buffer, [jl_Comparable], 1, 3, 0, 0,
+jn_FloatBufferImpl, 0, jn_FloatBuffer, [], 1, 0, 0, 0,
+jn_FloatBufferOverArray, 0, jn_FloatBufferImpl, [], 0, 0, 0, 0,
 nmglb_StepSound, 0, jl_Object, [], 0, 3, 0, 0,
 nmglb_StepSoundGlass, 0, nmglb_StepSound, [], 4, 0, 0, 0,
 nmglb_StepSoundSand, 0, nmglb_StepSound, [], 4, 0, 0, 0,
@@ -58277,10 +58310,10 @@ nmglb_BlockSand, "BlockSand", 15, nmglb_Block, [], 0, 3, 0, ["$onBlockAdded", fu
 nmglb_BlockGravel, "BlockGravel", 15, nmglb_BlockSand, [], 4, 3, 0, ["$idDropped", function(var_1, var_2) { return nmglb_BlockGravel_idDropped(this, var_1, var_2); }],
 nmglb_BlockOre, "BlockOre", 15, nmglb_Block, [], 4, 3, 0, ["$idDropped", function(var_1, var_2) { return nmglb_BlockOre_idDropped(this, var_1, var_2); }, "$quantityDropped", function(var_1) { return nmglb_BlockOre_quantityDropped(this, var_1); }],
 nmglb_BlockLog, "BlockLog", 15, nmglb_Block, [], 4, 3, 0, ["$quantityDropped", function(var_1) { return nmglb_BlockLog_quantityDropped(this, var_1); }, "$idDropped", function(var_1, var_2) { return nmglb_BlockLog_idDropped(this, var_1, var_2); }, "$getBlockTextureFromSide", function(var_1) { return nmglb_BlockLog_getBlockTextureFromSide(this, var_1); }],
-nmglb_BlockLeavesBase, 0, nmglb_Block, [], 0, 3, 0, ["$isOpaqueCube", function() { return nmglb_BlockLeavesBase_isOpaqueCube(this); }, "$shouldSideBeRendered", function(var_1, var_2, var_3, var_4, var_5) { return nmglb_BlockLeavesBase_shouldSideBeRendered(this, var_1, var_2, var_3, var_4, var_5); }],
-nmglb_BlockLeaves, "BlockLeaves", 15, nmglb_BlockLeavesBase, [], 4, 3, 0, ["$updateTick", function(var_1, var_2, var_3, var_4, var_5) { nmglb_BlockLeaves_updateTick(this, var_1, var_2, var_3, var_4, var_5); }, "$quantityDropped", function(var_1) { return nmglb_BlockLeaves_quantityDropped(this, var_1); }, "$idDropped", function(var_1, var_2) { return nmglb_BlockLeaves_idDropped(this, var_1, var_2); }],
-nmglb_BlockSponge, "BlockSponge", 15, nmglb_Block, [], 4, 3, 0, ["$onBlockAdded", function(var_1, var_2, var_3, var_4) { nmglb_BlockSponge_onBlockAdded(this, var_1, var_2, var_3, var_4); }, "$onBlockRemoval", function(var_1, var_2, var_3, var_4) { nmglb_BlockSponge_onBlockRemoval(this, var_1, var_2, var_3, var_4); }]]);
-$rt_metadata([nmglb_BlockBreakable, 0, nmglb_Block, [], 0, 3, 0, ["$isOpaqueCube", function() { return nmglb_BlockBreakable_isOpaqueCube(this); }, "$shouldSideBeRendered", function(var_1, var_2, var_3, var_4, var_5) { return nmglb_BlockBreakable_shouldSideBeRendered(this, var_1, var_2, var_3, var_4, var_5); }],
+nmglb_BlockLeavesBase, 0, nmglb_Block, [], 0, 3, 0, ["$isOpaqueCube", function() { return nmglb_BlockLeavesBase_isOpaqueCube(this); }, "$shouldSideBeRendered", function(var_1, var_2, var_3, var_4, var_5) { return nmglb_BlockLeavesBase_shouldSideBeRendered(this, var_1, var_2, var_3, var_4, var_5); }]]);
+$rt_metadata([nmglb_BlockLeaves, "BlockLeaves", 15, nmglb_BlockLeavesBase, [], 4, 3, 0, ["$updateTick", function(var_1, var_2, var_3, var_4, var_5) { nmglb_BlockLeaves_updateTick(this, var_1, var_2, var_3, var_4, var_5); }, "$quantityDropped", function(var_1) { return nmglb_BlockLeaves_quantityDropped(this, var_1); }, "$idDropped", function(var_1, var_2) { return nmglb_BlockLeaves_idDropped(this, var_1, var_2); }],
+nmglb_BlockSponge, "BlockSponge", 15, nmglb_Block, [], 4, 3, 0, ["$onBlockAdded", function(var_1, var_2, var_3, var_4) { nmglb_BlockSponge_onBlockAdded(this, var_1, var_2, var_3, var_4); }, "$onBlockRemoval", function(var_1, var_2, var_3, var_4) { nmglb_BlockSponge_onBlockRemoval(this, var_1, var_2, var_3, var_4); }],
+nmglb_BlockBreakable, 0, nmglb_Block, [], 0, 3, 0, ["$isOpaqueCube", function() { return nmglb_BlockBreakable_isOpaqueCube(this); }, "$shouldSideBeRendered", function(var_1, var_2, var_3, var_4, var_5) { return nmglb_BlockBreakable_shouldSideBeRendered(this, var_1, var_2, var_3, var_4, var_5); }],
 nmglb_BlockGlass, "BlockGlass", 15, nmglb_BlockBreakable, [], 4, 3, 0, ["$quantityDropped", function(var_1) { return nmglb_BlockGlass_quantityDropped(this, var_1); }],
 nmglb_BlockMushroom, "BlockMushroom", 15, nmglb_BlockFlower, [], 4, 3, 0, ["$canThisPlantGrowOnThisBlockID", function(var_1) { return nmglb_BlockMushroom_canThisPlantGrowOnThisBlockID(this, var_1); }, "$canBlockStay", function(var_1, var_2, var_3, var_4) { return nmglb_BlockMushroom_canBlockStay(this, var_1, var_2, var_3, var_4); }],
 nmglb_BlockOreBlock, "BlockOreBlock", 15, nmglb_Block, [], 4, 3, 0, ["$getBlockTextureFromSide", function(var_1) { return nmglb_BlockOreBlock_getBlockTextureFromSide(this, var_1); }],
@@ -58322,8 +58355,6 @@ ju_GregorianCalendar, 0, ju_Calendar, [], 0, 3, 0, 0,
 cjj_Checksum, 0, jl_Object, [], 3, 0, 0, 0,
 cjj_Adler32, 0, jl_Object, [cjj_Checksum], 4, 3, 0, ["$reset0", function(var_1) { cjj_Adler32_reset(this, var_1); }, "$reset", function() { cjj_Adler32_reset0(this); }, "$getValue0", function() { return cjj_Adler32_getValue(this); }, "$update", function(var_1, var_2, var_3) { cjj_Adler32_update(this, var_1, var_2, var_3); }],
 nPm_BaseNCodec$CodecPolicy, 0, jl_Enum, [], 12, 0, 0, 0,
-jn_FloatBufferImpl, 0, jn_FloatBuffer, [], 1, 0, 0, 0,
-jn_FloatBufferOverArray, 0, jn_FloatBufferImpl, [], 0, 0, 0, 0,
 nmglm_MaterialTransparent, 0, nmglm_Material, [], 4, 3, 0, ["$isSolid0", function() { return nmglm_MaterialTransparent_isSolid(this); }, "$getCanBlockGrass", function() { return nmglm_MaterialTransparent_getCanBlockGrass(this); }, "$getIsSolid", function() { return nmglm_MaterialTransparent_getIsSolid(this); }],
 nmglm_MaterialLiquid, 0, nmglm_Material, [], 4, 3, 0, ["$getIsLiquid", function() { return nmglm_MaterialLiquid_getIsLiquid(this); }, "$isSolid0", function() { return nmglm_MaterialLiquid_isSolid(this); }],
 nmglm_MaterialLogic, 0, nmglm_Material, [], 4, 3, 0, ["$isSolid0", function() { return nmglm_MaterialLogic_isSolid(this); }, "$getCanBlockGrass", function() { return nmglm_MaterialLogic_getCanBlockGrass(this); }, "$getIsSolid", function() { return nmglm_MaterialLogic_getIsSolid(this); }],
@@ -58932,7 +58963,7 @@ $rt_stringPool(["Can\'t enter monitor from another thread synchronously", "@", "
 "END", "DOWN", "NEXT", "INSERT", "DELETE", "CLEAR", "LMETA", "RMETA", "APPS", "POWER", "SLEEP", "\n", "Either src or dest is null", "_net_peytonplayz585_minecraft_indev_IndexedDBFilesystem", "Unknown Error", "Initialization Failed", "Can\'t compare ", " to ", "OPENED", "LOCKED", "ERROR", "EAGPKG!!", "invalid epk file", "<file>", " end", "invalid file hash for ", "</file>", "End of stream reached", "Malformed UTF-8 sequence", "matrix is not supported while recording display list use tessellator class instead",
 "projection matrix stack overflow", "texture matrix stack overflow", "modelview matrix stack overflow", "projection matrix stack underflow", "texture matrix stack underflow", "modelview matrix stack underflow", "only GL_QUADS supported in a display list", "vertex format inconsistent in display list", "Timer hack thread", "/default.png", "FPS: ", ", Chunk Updates: ", "/terrain.png", "anonymous", "/char.png", "http://www.minecraft.net/skin/", ".png", "/water.png", "UTC", "window.indexedDB was null or undefined",
 "yee", "charsetName is null", "Should never been thrown", "Stream closed", "footer is not found", "Unexpected end of ZLIB input stream", "�", "Replacement preconditions do not hold", "Unable to allocate array size: ", "lineSeparator must not contain base64 characters: [", "]", "Impossible modulus ", "Strict decoding: Last encoded character (before the paddings if any) is a valid base 64 alphabet but not a possible encoding. Decoding requires at least two trailing 6-bit characters to create bytes.", "Strict decoding: Last encoded character (before the paddings if any) is a valid base 64 alphabet but not a possible encoding. Expected the discarded bits from the character to be zero.",
-"/dirt.png", "main", "en", "CA", "fr", "zh", "CN", "FR", "de", "DE", "it", "IT", "ja", "JP", "ko", "KR", "TW", "GB", "US", "open error", "path", "/gui/items.png", "Slot ", " is already occupied by ", " when adding ", "stone", "wood", "gravel", "grass", "cloth", "sand", "UTF Error", "-", "New position ", " is outside of range [0;", "New limit ", "Capacity is negative: ", "The last byte in dst ", " is outside of array of size ", "Length ", " must be non-negative", "Offset ", "The last byte in src ", "The last float in dst ",
+"/dirt.png", "main", "en", "CA", "fr", "zh", "CN", "FR", "de", "DE", "it", "IT", "ja", "JP", "ko", "KR", "TW", "GB", "US", "open error", "path", "/gui/items.png", "New position ", " is outside of range [0;", "New limit ", "The last float in dst ", " is outside of array of size ", "Length ", " must be non-negative", "Offset ", "Slot ", " is already occupied by ", " when adding ", "stone", "wood", "gravel", "grass", "cloth", "sand", "UTF Error", "-", "Capacity is negative: ", "The last byte in dst ", "The last byte in src ",
 "lava", "splash", "smoke", "flame", "largesmoke", "Large chest", "Get resource: ", "CONFLICT @ ", "ERA=", "YEAR=", "MONTH=", "WEEK_OF_YEAR=", "WEEK_OF_MONTH=", "DAY_OF_MONTH=", "DAY_OF_YEAR=", "DAY_OF_WEEK=", "DAY_OF_WEEK_IN_MONTH=", "AM_PM=", "HOUR=", "HOUR_OF_DAY", "MINUTE=", "SECOND=", "MILLISECOND=", "ZONE_OFFSET=", "DST_OFFSET=", "The last char in dst ", "The last char in src ", " is outside of string of size ", "Start ", " must be before end ", "001", "STRICT", "LENIANT", "BIG_ENDIAN", "LITTLE_ENDIAN",
 "GMT", ":", "00", "Unknown zone type: ", "Id must not be null", "Unknown mode: ", "Forward", "Left", "Back", "Right", "Jump", "Inventory", "Drop", "Chat", "Toggle fog", "Save location", "Load location", "Music: ", "OFF", "ON", "Sound: ", "Invert mouse: ", "Show FPS: ", "Render distance: ", "View bobbing: ", "3d anaglyph: ", "Difficulty: ", "Limit framerate: ", "music", "sound", "invertYMouse", "showFrameRate", "viewDistance", "bobView", "anaglyph3d", "limitFramerate", "difficulty", "key_", "FAR", "NORMAL", "SHORT",
 "TINY", "Peaceful", "Easy", "Normal", "Hard", "%clamp%", "%blur%", "!!", "0123456789abcdef", "C: ", ". F: ", ", O: ", "E: ", ". B: ", ", I: ", "/terrain/sun.png", "/terrain/moon.png", "/clouds.png", "/grass.png", "bubble", "explode", "The level is corrupt!", ". L: ", "/particles.png", "/gui/gui.png", "/gui/icons.png", "Minecraft Indev (Made by PeytonPlayz585)", "P: ", ". T: ", "Free memory: ", "% of ", "MB", "Allocated memory: ", "% (", "MB)", "Made by PeytonPlayz585!", "Generate new level...", "Load level..",

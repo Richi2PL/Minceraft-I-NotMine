@@ -265,5 +265,6 @@ public class Tessellator {
 		int var5 = (int)((par2 / len) * 125.0F) + 125;
 		int var6 = (int)((par3 / len) * 125.0F) + 125;
 		this.normal = var4 & 255 | (var5 & 255) << 8 | (var6 & 255) << 16;
+		GL11.glNormal3f(par1, par2, par3);
 	}
 }

@@ -1,5 +1,11 @@
 package net.minecraft.client.render.entity;
 
+import java.nio.FloatBuffer;
+
+import org.lwjgl.GLAllocation;
+import org.lwjgl.opengl.GL11;
+
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.game.entity.Entity;
 import net.minecraft.game.entity.EntityLiving;
@@ -8,6 +14,7 @@ import net.minecraft.game.entity.player.InventoryPlayer;
 import net.minecraft.game.item.Item;
 import net.minecraft.game.item.ItemArmor;
 import net.minecraft.game.item.ItemStack;
+import net.minecraft.game.physics.Vec3D;
 
 public final class RenderPlayer extends RenderLiving {
 	private ModelBiped modelBipedMain = (ModelBiped)this.mainModel;
@@ -20,7 +27,9 @@ public final class RenderPlayer extends RenderLiving {
 	}
 
 	private void renderPlayer(EntityPlayer var1, float var2, float var3, float var4, float var5, float var6) {
+		Minecraft.getMinecraft().setLighting(true);
 		super.a(var1, var2, var3 - var1.yOffset, var4, var5, var6);
+		Minecraft.getMinecraft().setLighting(false);
 	}
 
 	public final void drawFirstPersonHand() {

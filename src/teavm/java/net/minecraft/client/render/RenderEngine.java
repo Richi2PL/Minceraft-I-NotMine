@@ -2,14 +2,19 @@ package net.minecraft.client.render;
 
 import java.io.IOException;
 import java.nio.ByteBuffer;
+import java.nio.FloatBuffer;
 import java.nio.IntBuffer;
 import java.util.HashMap;
 
 import org.lwjgl.BufferUtils;
+import org.lwjgl.GLAllocation;
 import org.lwjgl.opengl.GL11;
+
+import net.minecraft.game.physics.Vec3D;
 
 import net.PeytonPlayz585.minecraft.MinecraftImage;
 import net.minecraft.client.GameSettings;
+import net.minecraft.client.Minecraft;
 
 public class RenderEngine {
 
@@ -131,14 +136,16 @@ public class RenderEngine {
 	}
 
 	public static void bindTexture(int i) {
+		Minecraft.getMinecraft().setLighting(true);
 		if (i < 0) {
+			Minecraft.getMinecraft().setLighting(false);
 			return;
 		} else {
 			GL11.glBindTexture(3553 /* GL_TEXTURE_2D */, i);
+			Minecraft.getMinecraft().setLighting(false);
 			return;
 		}
 	}
-
 	private HashMap<String, Integer> textureMap;
 	private HashMap<Integer, MinecraftImage> textureNameToImageMap;
 	private IntBuffer singleIntBuffer;

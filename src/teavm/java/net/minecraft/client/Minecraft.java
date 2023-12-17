@@ -1,5 +1,6 @@
 package net.minecraft.client;
 
+import java.nio.FloatBuffer;
 import java.nio.IntBuffer;
 
 import net.PeytonPlayz585.storage.LevelStorageManager;
@@ -35,9 +36,11 @@ import net.minecraft.game.level.World;
 import net.minecraft.game.level.block.Block;
 import net.minecraft.game.level.generator.LevelGenerator;
 import net.minecraft.game.physics.MovingObjectPosition;
+import net.minecraft.game.physics.Vec3D;
 import util.IProgressUpdate;
 
 import org.lwjgl.BufferUtils;
+import org.lwjgl.GLAllocation;
 import org.lwjgl.opengl.GL11;
 
 public final class Minecraft implements Runnable {
@@ -697,4 +700,32 @@ public final class Minecraft implements Runnable {
 	public static Minecraft getMinecraft() {
 		return mc;
 	}
+	
+	public final void setLighting(boolean var1) {
+		if(!var1) {
+			GL11.glDisable(2896);
+			GL11.glDisable(16384);
+		} else {
+			GL11.glEnable(2896);
+		    GL11.glEnable(16384);
+		    GL11.glEnable(2903);
+		    GL11.glColorMaterial(1032, 5634);
+		    float var4 = 0.7F;
+		    float var2 = 0.3F;
+		    Vec3D var3 = (new Vec3D(0.0F, -1.0F, 0.5F)).normalize();
+		    GL11.glLight(16384, 4611, this.createBuffer(var3.xCoord, var3.yCoord, var3.zCoord, 0.0F));
+		    GL11.glLight(16384, 4609, this.createBuffer(var2, var2, var2, 1.0F));
+		    GL11.glLight(16384, 4608, this.createBuffer(0.0F, 0.0F, 0.0F, 1.0F));
+	        GL11.glLightModel(2899, this.createBuffer(var4, var4, var4, 1.0F));
+		}
+	}
+	
+	private FloatBuffer createBuffer(float var1, float var2, float var3, float var4) {
+		buffer.clear();
+	    buffer.put(var1).put(var2).put(var3).put(var4);
+	    buffer.flip();
+	    return buffer;
+	}
+
+	private FloatBuffer buffer = GLAllocation.createDirectFloatBuffer(16);
 }
