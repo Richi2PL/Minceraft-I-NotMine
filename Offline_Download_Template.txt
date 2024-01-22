@@ -1,0 +1,31 @@
+<html>
+<head>
+<title>Minecraft Indev</title>
+
+<script type="text/javascript">
+window.addEventListener("load", function() {
+    window.classicConfig = [
+		"game_frame",createAssetURI("assets"),
+		]; main();
+    });
+</script>
+
+<script type="text/javascript">
+function createAssetURI(el) {
+	var eee = document.getElementById(el);
+	var str = eee.innerText;
+	eee.remove();
+	return "data:application/octet-stream;base64," + str.trim();
+}
+</script>
+
+<script type="text/javascript">
+//app.js
+</script>
+
+<body style="margin:0px;width:100vw;height:100vh;" id="game_frame">
+<div style="display:none;" id="assets">
+//Base64 encoded resources
+</div>
+</body>
+</html>
