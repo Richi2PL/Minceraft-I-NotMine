@@ -937,7 +937,8 @@ public class WebGL {
 				for(int i = 0; i < pixels.length; ++i) {
 					pixels[i] = (pxls.get(i * 4) << 16) | (pxls.get(i * 4 + 1) << 8) | pxls.get(i * 4 + 2) | (pxls.get(i * 4 + 3) << 24);
 				}
-				ret.complete(new MinecraftImage(pixels, pxlsDat.getWidth(), pxlsDat.getHeight(), true));
+				IntBuffer buffer = IntBuffer.wrap(pixels);
+				ret.complete(new MinecraftImage(buffer, pxlsDat.getWidth(), pxlsDat.getHeight(), true));
 			}
 		});
 		toLoad.addEventListener("error", new EventListener<Event>() {
