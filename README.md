@@ -6,7 +6,7 @@
 This project is just for fun, If this project has to be taken down for any legal reasons please email at PeytonPlayz585@gmail.com
 
 # Playing in the Web Browser
-To play in the web browser please [click here](https://peytonplayz595.github.io/Minecraft-Indev-WebGL/js/). If for some reason it doesn't work please open an issue [here](https://github.com/PeytonPlayz595/Minecraft-Indev-WebGL/issues).
+To play in the web browser (The original by PeytonPlayz595) please [click here](https://peytonplayz595.github.io/Minecraft-Indev-WebGL/js/). If for some reason it doesn't work please open an issue [here](https://github.com/PeytonPlayz595/Minecraft-Indev-WebGL/issues).
 
 Here are a few reasons that it might not work:
 - Your browser doesn't support [HTML5](https://developer.mozilla.org/en-US/docs/Glossary/HTML5), at this point there is no valid excuses...
