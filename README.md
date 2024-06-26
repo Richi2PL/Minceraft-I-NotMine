@@ -1,4 +1,4 @@
-# Minceraft I WebGL
+# Minceraft I NotMine
 
   This project aims to be a 1:1 replica of Minecraft Indev 20100223 made using TeaVM and WebGL. This project can be played on almost any device and can be played in the web browser on low-end devices like Chromebooks.
 
