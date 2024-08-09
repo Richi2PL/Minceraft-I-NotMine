@@ -6,7 +6,7 @@
 This project is just for fun, If this project has to be taken down for any legal reasons please email at PeytonPlayz585@gmail.com
 
 # Playing in the Web Browser
-To play in the web browser (The original by PeytonPlayz595) please [click here](https://peytonplayz595.github.io/Minecraft-Indev-WebGL/js/). If for some reason it doesn't work please open an issue [here](https://github.com/PeytonPlayz595/Minecraft-Indev-WebGL/issues).
+ ̶T̶o̶ ̶p̶l̶a̶y̶ ̶i̶n̶ ̶t̶h̶e̶ ̶w̶e̶b̶ ̶b̶r̶o̶w̶s̶e̶r̶ ̶(̶T̶h̶e̶ ̶o̶r̶i̶g̶i̶n̶a̶l̶ ̶b̶y̶ ̶P̶e̶y̶t̶o̶n̶P̶l̶a̶y̶z̶5̶9̶5̶)̶ ̶p̶l̶e̶a̶s̶e̶ ̶c̶l̶i̶c̶k̶ ̶h̶e̶r̶e̶.̶ ̶I̶f̶ ̶f̶o̶r̶ ̶s̶o̶m̶e̶ ̶r̶e̶a̶s̶o̶n̶ ̶i̶t̶ ̶d̶o̶e̶s̶n̶'̶t̶ ̶w̶o̶r̶k̶ ̶p̶l̶e̶a̶s̶e̶ ̶o̶p̶e̶n̶ ̶a̶n̶ ̶i̶s̶s̶u̶e̶ ̶h̶e̶r̶e̶.̶ rip
 
 Here are a few reasons that it might not work:
 - Your browser doesn't support [HTML5](https://developer.mozilla.org/en-US/docs/Glossary/HTML5), at this point there is no valid excuses...
@@ -18,7 +18,7 @@ Try using the latest versions of Chrome, Edge, Opera, or Safari to see if it wil
 
 # Pros and Cons
 Pros:
-- No download, it's playable in your Web Browser for free
+- It's playable in your Web Browser
 - Get's decant FPS on low-end devices like Chromebooks
 
 Cons:
